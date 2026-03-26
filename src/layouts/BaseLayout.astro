@@ -1,4 +1,7 @@
 ---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -7,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = "Enterprise brands choose Moonb for dedicated design, video, and motion teams. One creative partner. Predictable investment. Exceptional output.",
+  description = "Moonb is your embedded creative department. Dedicated design, video, and motion teams that work as an extension of your brand.",
   ogImage = "/assets/og-image.png",
 } = Astro.props;
 
@@ -21,42 +24,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts: Inter from Google Fonts -->
+    <!-- Preload Satoshi Variable (critical font) -->
+    <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Inter for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Global Styles -->
-    <style is:global>
-      @import "../styles/global.css";
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <slot />
+    <Nav />
+    <main>
+      <slot />
+    </main>
     <script src="../scripts/scroll-reveal.js"></script>
+
+    <!-- Cal.com embed -->
+    <script is:inline>
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "book-a-demo", {origin:"https://app.cal.com"});
+      Cal.ns["book-a-demo"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
   </body>
 </html>

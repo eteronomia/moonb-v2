@@ -1,18 +1,18 @@
 # Moonb V2 — Design System & Build Rules
 
 ## What This Is
-A complete redesign of moonb.io inspired by family.co (Benji Taylor) and aave.com. 
-Enterprise creative production company site competing with Superside.
+A complete redesign of moonb.io. The goal is to replicate the design language, quality, and feel of family.co and aave.com as closely as possible, with moonb's content, custom animations, and illustrations. Competing with Superside.
 
 ## Design Philosophy
-"Quiet premium" — confidence through restraint. B&W base with color appearing through scroll-triggered animations. Every pixel of spacing, every font weight, every animation timing must be perfect. The precision IS the design.
+Copy family.co and aave.com as faithfully as humanly possible. Same spacing logic, same typography approach, same card styles, same animation restraint, same section rhythm. The only differences should be: moonb's content, moonb's brand color, and custom illustrations/animations unique to moonb. When in doubt about any design decision, look at what family.co or aave.com does and do that.
 
 ## What Moonb Is
-- An embedded creative department for enterprise brands
+- An embedded creative department for companies of all sizes
 - Provides dedicated video production, design, motion graphics, and animation teams
 - Each client gets a dedicated Creative Director
-- Enterprise clients: Dell, Intel, Toyota, Nestle, Microsoft, Opko Health, Shionogi, Refine Labs
-- Based in Lisbon, Portugal, serving US and global enterprise clients
+- Notable clients include Dell, Intel, Toyota, Nestle, Microsoft, Opko Health, Shionogi, Refine Labs
+- Based in Lisbon, Portugal, serving US and global clients
+- For ANY company that needs ongoing creative production, not just enterprise
 
 ## What Moonb Is NOT
 - NOT an agency (never call it an agency)
@@ -23,14 +23,17 @@ Enterprise creative production company site competing with Superside.
 ## Banned Words (absolute, no exceptions)
 subscription, flat fee, flat monthly fee, subscribe, plan (in pricing context), cheap, affordable, budget, discount, deal, offer, unlimited
 
+## CRITICAL: No Legacy Design Influence
+The previous moonb project (in /moonb/moonb-website/) has a completely different design direction (purple/green palette, liquid glass, paper textures, GSAP, Poppins font, rounded mega-sections). NONE of that applies here. Zero. Do not reference its DESIGN.md, DESIGN_BRIEF.md, global.css, or any component styles. The ONLY references are family.co and aave.com. If something from the old moonb project conflicts with family.co/aave.com, family.co/aave.com wins. Always. The old project is only useful for: business context (what moonb does), SEO keywords, banned words, and content (testimonials, work samples, videos).
+
 ## Banned Formatting
 Never use em dashes. Use commas, semicolons, periods, or parentheses.
 
 ## Preferred Language
-Dedicated creative team, embedded creative department, creative infrastructure, creative partner, ongoing creative partnership, your Creative Director, predictable monthly investment, enterprise-grade, human-made, taste at scale.
+Dedicated creative team, embedded creative department, creative infrastructure, creative partner, ongoing creative partnership, your Creative Director, predictable monthly investment, human-made, taste at scale.
 
 ## Copy Tone
-Confident but approachable. Think family.co warmth meets enterprise credibility. Direct, concise, no filler. Sell through clarity, not hype.
+Match family.co's tone exactly: warm, friendly, approachable, confident without being corporate. Short sentences. Feels like a friend explaining something cool, not a sales pitch. Direct, concise, no filler. NO corporate/enterprise jargon.
 
 ## Tech Stack
 - Framework: Astro 5.x (zero JS by default)
@@ -41,23 +44,31 @@ Confident but approachable. Think family.co warmth meets enterprise credibility.
 - Video: Vimeo embeds or self-hosted MP4
 - Fonts: FT Regola Neue (or Inter as free alternative) — self-hosted for speed
 
-## Design References
-- family.co — THE primary reference. Study: spacing, typography scale, card design, section rhythm, animation restraint
-- aave.com — Secondary reference. Study: color strategy, illustration style (semicircles), dark/light section flow, FT Regola Neue usage
+## Design References — COPY THESE SITES
+- family.co — PRIMARY reference for everything: spacing, typography, cards, buttons, section rhythm, nav, footer, animation approach, warmth, illustrations
+- aave.com — EQUAL reference: button styles (fully round/pill), section variety, dark sections, blog preview, illustration style (semicircles, abstract shapes), FT Regola Neue, color usage
+- superside.com — Product/section IDEAS only (not design): how they structure services, pricing approach, "made for" targeting, comparison sections, ROI messaging
 - See /references/ folder for detailed analysis documents
+- IMPORTANT: When any design decision conflicts between old moonb instructions and family.co/aave.com, ALWAYS follow family.co/aave.com
 
-## Color System
-- Base: near-black #1A1A1A, white #FFFFFF, warm off-white #FAFAF8
-- All UI starts monochrome — buttons, cards, nav, type
-- Color appears ONLY through: scroll-triggered text highlights, hover states, animated accents
-- Accent color: a refined teal/cyan that reveals itself as you scroll deeper
-- The site "comes alive" with color as you explore
+## Color System (like family.co + aave.com — natural color, not B&W gimmick)
+- Backgrounds: white #FFFFFF, warm off-white #FBFAF9 (family.co's --beige), alternating between sections
+- Headings: dark charcoal #343433 (family.co) or #1A1A1A
+- Body text: warm dark #494440 (family.co)
+- Muted text: #848281
+- Borders: #E8E8E8 (subtle, like family.co)
+- Primary button: #171717 with white text (exactly like family.co)
+- Secondary button: #F6F4EF with dark text (exactly like family.co)
+- Accent color: used naturally throughout (not hidden behind scroll animations)
+- NO B&W-to-color gimmick. Use color naturally like both reference sites do
 
-## Typography
-- Headings: Inter (700 weight), large sizes (48-72px), tight letter-spacing (-0.02em to -0.04em)
-- Body: Inter (400 weight), 16-18px, line-height 1.6
-- Hierarchy through size contrast, not weight variation
-- All text starts near-black, color appears through animation
+## Typography (FT Regola Neue — same as aave.com)
+- Headings: FT Regola Neue, Medium (500) or Semibold (600), 48-72px, letter-spacing -0.02em
+- Body: Inter, Regular (400), 16-18px, line-height 1.6
+- Small/labels: Inter, Medium (500), 13-14px
+- Hierarchy through size contrast AND font family contrast (Regola for headings, Inter for body)
+- Negative letter-spacing on ALL text (tighter = more premium)
+- Font fallback while loading: Inter from Google Fonts as fallback for Regola
 
 ## Spacing
 - 8px base grid
@@ -66,11 +77,13 @@ Confident but approachable. Think family.co warmth meets enterprise credibility.
 - Maximum content width: 1080px
 - Generous whitespace — when in doubt, add more space
 
-## Border Radius
+## Border Radius (match aave.com exactly)
+- Buttons: 9999px (full pill/round — like aave.com)
 - Cards: 12-16px
-- Buttons: 8-10px (NOT full pill — that's too playful for enterprise)
 - Sections: 0 (clean edges)
 - Images: 8-12px
+- Nav CTA button: full pill
+- Tags/pills: full pill
 
 ## Shadows
 - Cards: `0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)` (inset border style, like family.co)
@@ -94,19 +107,22 @@ Confident but approachable. Think family.co warmth meets enterprise credibility.
 - 24-32px padding
 - Hover: background shifts slightly, subtle lift
 
-### Button (Primary)
+### Button (Primary) — like aave.com
 - Background: #1A1A1A (near-black)
 - Text: #FFFFFF
-- Padding: 12px 24px
-- Border-radius: 8px
+- Padding: 12px 28px
+- Border-radius: 9999px (full pill, like aave)
 - Font-weight: 500
-- Hover: lighten to #333, lift 1px
+- Font-size: 15px
+- Hover: lighten to #333, subtle lift
 
-### Button (Secondary)  
-- Background: #F5F5F3 (light gray)
+### Button (Secondary) — like aave.com
+- Background: transparent or #F5F5F3
 - Text: #1A1A1A
+- Border: 1px solid #D4D4D4
+- Border-radius: 9999px (full pill)
 - Same sizing as primary
-- Hover: darken background slightly
+- Hover: background fills slightly
 
 ### Navigation
 - Fixed top, centered
@@ -121,16 +137,20 @@ Confident but approachable. Think family.co warmth meets enterprise credibility.
 - No rounded section corners (clean, modern)
 
 ## Homepage Sections (in order)
-1. Hero — Headline, subtext, 2 CTAs ("Book a Call" primary, "Watch Showreel" secondary opens video modal)
-2. Client logos strip — Grayscale, subtle, no fanfare
-3. "Made for" — Animated role pills (Creative Directors, CMOs, Marketing Leaders, etc.) with changing content
-4. Feature cards grid — 6 cards with mini UI mockups showing moonb's value props (like family.co's feature grid)
-5. Work showcase — Large case study cards, one at a time, auto-cycling or horizontal scroll
-6. How it works — 3 clean steps with animated SVG connecting lines + embedded process video
-7. Social proof — Testimonial cards + client stats
-8. CTA — Dark section, big headline, one button
-9. FAQ — Collapsed accordion, minimal
-10. Footer — Clean, organized columns
+1. **Hero** — Massive typographic headline ("Your creative team, without the overhead."), short subtext, 2 pill CTAs ("Book a Call" primary, "Watch Showreel" scrolls to video). NO image/video in hero. The typography IS the design. Clean, centered, massive whitespace like family.co. Showreel URL: https://vimeo.com/1084258404/bf1bb4d67b
+2. **Client logos strip** — Grayscale marquee, subtle, continuous scroll like family.co's emoji carousel
+3. **"Made for" section** — Animated role pills (Creative Directors, CMOs, Marketing Leaders, Founders, Brand Teams, Content Teams). Click one and right side changes with different illustration + copy. Like Wispr Flow's audience section
+4. **What we do / Services overview** — Cards or tabs showing Design, Video, Motion Graphics, Animation, Strategy. With animated illustrations inside each (like family.co's feature grid)
+5. **Feature cards grid** — 6 cards with mini UI mockups inside showing moonb value props (dedicated CD, fast turnaround, quality output, etc.) Exactly like family.co's "Explore Ethereum" grid
+6. **Work showcase** — Large case study cards showing actual moonb work. Horizontal scroll or auto-cycling
+7. **How it works** — 3-4 clean steps with animated SVG process flow + embedded video. Like aave's process sections
+8. **Stats/numbers** — Key metrics animated on scroll (projects delivered, client retention, etc.) Like aave's stats bar
+9. **Social proof** — Testimonial cards, scrolling carousel like family.co
+10. **Blog preview** — 2-3 latest blog post cards, like aave's blog section
+11. **Comparison section** — "Moonb vs hiring in-house" or "vs traditional agencies" (Superside does this well)
+12. **CTA** — Dark section, big headline, one pill button
+13. **FAQ** — Collapsed accordion, minimal
+14. **Footer** — Clean, organized columns like aave/family.co
 
 ## Quality Checklist (must pass before presenting ANY section)
 - [ ] Typography hierarchy is clear (one dominant size, supporting sizes are notably smaller)

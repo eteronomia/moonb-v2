@@ -1,0 +1,173 @@
+---
+const links = [
+  { label: 'Services', href: '#services' },
+  { label: 'Work', href: '#work' },
+  { label: 'How it works', href: '#how-it-works' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Moonb homepage">
+      <img src="/assets/logos/moonbee-icon.svg" alt="" class="nav__logo-icon" width="28" height="28" />
+      <span class="nav__wordmark">moonb</span>
+    </a>
+
+    <!-- Links grouped after logo, NOT centered — like family.co -->
+    <nav class="nav__links">
+      {links.map((link) => (
+        <a href={link.href} class="nav__link">{link.label}</a>
+      ))}
+    </nav>
+
+    <!-- CTA pushed to far right -->
+    <a href="#" class="btn btn--primary nav__cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
+      Get Started
+    </a>
+
+    <button class="nav__toggle" aria-label="Menu" id="nav-toggle">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-mobile" id="mobile-menu">
+  {links.map((link) => (
+    <a href={link.href} class="nav-mobile__link">{link.label}</a>
+  ))}
+  <a href="#" class="btn btn--primary" style="margin-top:12px;width:100%;justify-content:center;" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
+    Get Started
+  </a>
+</div>
+
+<style>
+  /* Full-width nav, NO border, NO separator — like family.co */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    background: var(--white);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    max-width: calc(var(--max-w) + 3rem);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 72px;
+    gap: 2.25rem;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav__logo-icon { width: 28px; height: 28px; }
+
+  .nav__wordmark {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--heading);
+    letter-spacing: -0.04em;
+  }
+
+  /* Links grouped together, not centered — family.co pattern */
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .nav__link {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--heading);
+    padding: 8px 14px;
+    border-radius: var(--r-md);
+    transition: color var(--dur-fast) ease, background var(--dur-fast) ease;
+    white-space: nowrap;
+  }
+
+  .nav__link:hover {
+    color: var(--body-muted);
+  }
+
+  /* CTA pushed to far right */
+  .nav__cta {
+    margin-left: auto;
+    padding: 10px 22px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav__toggle span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--heading);
+    border-radius: 1px;
+  }
+
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    z-index: calc(var(--z-nav) - 1);
+    background: var(--white);
+    padding: 16px 24px 24px;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-mobile.is-open { display: flex; }
+
+  .nav-mobile__link {
+    display: block;
+    padding: 14px 12px;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--heading);
+    border-radius: var(--r-md);
+  }
+
+  .nav-mobile__link:hover { background: var(--beige); }
+
+  @media (max-width: 860px) {
+    .nav__links { display: none; }
+    .nav__cta { display: none; }
+    .nav__toggle { display: flex; }
+  }
+</style>
+
+<script>
+  document.getElementById('nav-toggle')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('is-open');
+  });
+  document.getElementById('mobile-menu')?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mobile-menu')?.classList.remove('is-open'));
+  });
+</script>

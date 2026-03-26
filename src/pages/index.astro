@@ -1,95 +1,125 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Dedicated Creative Teams for Enterprise | Moonb">
-  <main>
-    <!-- Hero Section -->
-    <section class="hero section">
-      <div class="container hero__inner">
-        <h1 class="hero__headline" data-reveal>
-          Your embedded<br />creative department.
-        </h1>
-        <p class="hero__subtext" data-reveal data-reveal-delay="1">
-          Enterprise brands choose Moonb for dedicated design, video, and motion
-          teams. One creative partner. Predictable investment. Exceptional
-          output.
-        </p>
-        <div class="hero__ctas" data-reveal data-reveal-delay="2">
-          <a href="#contact" class="btn btn--primary">Book a Call</a>
-          <button class="btn btn--secondary" id="showreel-btn" type="button">
-            Watch Showreel
-          </button>
-        </div>
+<BaseLayout title="Your Creative Team | Moonb">
+
+  <section class="hero">
+    <div class="hero__inner">
+      <h1 class="hero__title" data-reveal>
+        Your own creative team.
+      </h1>
+
+      <p class="hero__sub" data-reveal data-reveal-delay="1">
+        Moonb gives you a dedicated team of designers, editors, and motion artists that work as part of your brand. Great work, on repeat.
+      </p>
+
+      <div class="hero__actions" data-reveal data-reveal-delay="2">
+        <a href="#" class="hero-btn-primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
+          Book a Call
+        </a>
+        <a href="#showreel" class="hero-btn-secondary">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" class="hero-play-icon">
+            <path d="M5.5 3C5.5 2.17 6.46 1.68 7.13 2.17L17.5 10.17C18.05 10.57 18.05 11.43 17.5 11.83L7.13 19.83C6.46 20.32 5.5 19.83 5.5 19V3Z" fill="currentColor"/>
+          </svg>
+          Watch the Video
+        </a>
       </div>
-    </section>
-  </main>
+    </div>
+
+  </section>
+
 </BaseLayout>
 
 <style>
   .hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    padding-top: calc(var(--nav-height) + var(--section-padding));
+    padding-top: 100px;
+    padding-bottom: 0;
+    background-color: var(--white);
+    overflow: hidden;
   }
 
   .hero__inner {
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-8);
+    align-items: center;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
 
-  .hero__headline {
-    font-size: var(--text-7xl);
-    font-weight: var(--font-bold);
-    letter-spacing: var(--tracking-tight);
-    line-height: var(--leading-tight);
-    color: var(--color-text-primary);
-    max-width: 800px;
+  .hero__title {
+    max-width: 700px;
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--heading);
   }
 
-  .hero__subtext {
-    font-size: var(--text-lg);
-    line-height: var(--leading-relaxed);
-    color: var(--color-text-secondary);
-    max-width: 560px;
+  .hero__sub {
+    max-width: 520px;
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 27px;
+    letter-spacing: -0.22px;
+    color: var(--body);
   }
 
-  .hero__ctas {
+  .hero__actions {
     display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
   }
 
   @media (max-width: 768px) {
     .hero {
-      min-height: 80vh;
-      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-top: 88px;
     }
 
-    .hero__headline {
-      font-size: var(--text-5xl);
+    .hero__title {
+      font-size: 40px;
+      letter-spacing: -1.2px;
+      line-height: 44px;
     }
 
-    .hero__subtext {
-      font-size: var(--text-base);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero__headline {
-      font-size: var(--text-4xl);
+    .hero__sub {
+      font-size: 16px;
+      line-height: 24px;
     }
 
-    .hero__ctas {
+    .hero__actions {
       flex-direction: column;
       width: 100%;
     }
 
-    .hero__ctas .btn {
+    .hero-btn-primary,
+    .hero-btn-secondary {
       width: 100%;
+      justify-content: center;
     }
+
+    .hero__devices {
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .device--phone { width: 90px; }
+    .device--laptop { width: 200px; }
+    .device--tablet { width: 100px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero__title {
+      font-size: 34px;
+      line-height: 38px;
+    }
+
+    .device--phone { width: 70px; }
+    .device--laptop { width: 160px; }
+    .device--tablet { width: 80px; }
   }
 </style>

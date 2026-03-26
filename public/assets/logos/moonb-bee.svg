@@ -1,0 +1,32 @@
+<svg width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wings (behind body) — translucent yellow -->
+  <ellipse cx="16" cy="10" rx="5" ry="3.5" fill="#FFE082" opacity="0.7" transform="rotate(-15 16 10)"/>
+  <ellipse cx="23" cy="9" rx="5" ry="3.5" fill="#FFE082" opacity="0.7" transform="rotate(15 23 9)"/>
+
+  <!-- Body — chunky yellow oval -->
+  <ellipse cx="20" cy="20" rx="8" ry="6.5" fill="#FFD54F"/>
+  <ellipse cx="20" cy="20" rx="8" ry="6.5" fill="none" stroke="#343433" stroke-width="0.8"/>
+
+  <!-- Stripes -->
+  <rect x="15.5" y="14.5" width="2" height="11" rx="1" fill="#343433"/>
+  <rect x="19" y="13.8" width="2" height="12.4" rx="1" fill="#343433"/>
+  <rect x="22.5" y="14.5" width="2" height="11" rx="1" fill="#343433"/>
+
+  <!-- Head -->
+  <circle cx="28" cy="19" r="3.8" fill="#343433"/>
+
+  <!-- Eyes — big cute -->
+  <circle cx="26.8" cy="18" r="1.5" fill="white"/>
+  <circle cx="29.5" cy="18" r="1.5" fill="white"/>
+  <circle cx="27.1" cy="18.2" r="0.7" fill="#343433"/>
+  <circle cx="29.8" cy="18.2" r="0.7" fill="#343433"/>
+
+  <!-- Antennae -->
+  <path d="M26.5 15.2C26 13.5 24.5 12.5 23.5 12" stroke="#343433" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+  <path d="M29 15.2C29.5 13.5 31 12.5 32 12" stroke="#343433" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+  <circle cx="23.2" cy="11.8" r="1.1" fill="#FFD54F"/>
+  <circle cx="32.3" cy="11.8" r="1.1" fill="#FFD54F"/>
+
+  <!-- Stinger -->
+  <path d="M12 20.5L10 21V20L12 20.5z" fill="#343433"/>
+</svg>

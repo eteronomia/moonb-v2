@@ -82,7 +82,7 @@
 --space-24: 96px;
 --space-32: 128px;
 
-## Border Radius
+## Border Radius (aave.com style — pill buttons)
 --radius-sm: 6px;
 --radius-md: 8px;
 --radius-lg: 12px;

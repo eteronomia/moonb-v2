@@ -1,10 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel';
 
-// https://astro.build/config
 export default defineConfig({
   output: 'static',
-  adapter: vercel(),
-  site: 'https://moonb.io',
+  site: 'https://moonb-v2.vercel.app',
 });

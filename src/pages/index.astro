@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Dedicated Creative Teams for Enterprise | Moonb">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero section">
+      <div class="container hero__inner">
+        <h1 class="hero__headline" data-reveal>
+          Your embedded<br />creative department.
+        </h1>
+        <p class="hero__subtext" data-reveal data-reveal-delay="1">
+          Enterprise brands choose Moonb for dedicated design, video, and motion
+          teams. One creative partner. Predictable investment. Exceptional
+          output.
+        </p>
+        <div class="hero__ctas" data-reveal data-reveal-delay="2">
+          <a href="#contact" class="btn btn--primary">Book a Call</a>
+          <button class="btn btn--secondary" id="showreel-btn" type="button">
+            Watch Showreel
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-height) + var(--section-padding));
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+
+  .hero__headline {
+    font-size: var(--text-7xl);
+    font-weight: var(--font-bold);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+    color: var(--color-text-primary);
+    max-width: 800px;
+  }
+
+  .hero__subtext {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    max-width: 560px;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 80vh;
+      padding-top: calc(var(--nav-height) + var(--space-16));
+    }
+
+    .hero__headline {
+      font-size: var(--text-5xl);
+    }
+
+    .hero__subtext {
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__headline {
+      font-size: var(--text-4xl);
+    }
+
+    .hero__ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero__ctas .btn {
+      width: 100%;
+    }
+  }
+</style>

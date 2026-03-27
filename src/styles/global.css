@@ -28,7 +28,11 @@
   --btn-secondary-text: #343433;
   --border: #E8E8E8;
   --border-light: rgba(0,0,0,0.06);
+  /* Accent colors — family.co uses orange, blue, green, purple throughout */
   --accent: #FF5310;
+  --accent-blue: #0066FF;
+  --accent-green: #00B67A;
+  --accent-purple: #7B61FF;
   --font-heading: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
@@ -165,13 +169,13 @@ p { color: var(--body); }
 .madefor__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
 .madefor__pill {
   height: 40px; padding: 0 20px;
-  border: 1.5px solid var(--border); border-radius: var(--r-pill);
+  border: 1.5px solid #E8E6E3; border-radius: var(--r-pill);
   background: transparent; font-family: var(--font-heading);
   font-size: 14px; font-weight: 700; color: var(--heading);
   cursor: pointer; transition: all 200ms ease;
   display: inline-flex; align-items: center;
 }
-.madefor__pill:hover { border-color: var(--heading); }
+.madefor__pill:hover { background: var(--beige); border-color: #D4D2CF; }
 .madefor__pill.is-active { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
 
 /* ==========================================================================
@@ -182,6 +186,10 @@ p { color: var(--body); }
 .services__card:hover { box-shadow: var(--sh-card-hover); transform: translateY(-2px); }
 .services__card-text { padding: 24px 28px 28px; }
 .services__tag { display: inline-block; font-family: var(--font-heading); font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px; }
+/* Alternate colors on service tags like family.co */
+.services__card:nth-child(2) .services__tag { color: var(--accent-blue); }
+.services__card:nth-child(3) .services__tag { color: var(--accent-green); }
+.services__card:nth-child(4) .services__tag { color: var(--accent-purple); }
 .services__card-text h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; }
 .services__card-text p { font-size: 15px; line-height: 22px; }
 
@@ -195,6 +203,10 @@ p { color: var(--body); }
 .feature-split__desc { margin-top: 20px; font-size: 17px; line-height: 26px; color: var(--body); max-width: 440px; }
 .feature-split__checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
 .feature-split__check { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--accent); }
+.feature-split__check:nth-child(2) { color: var(--accent-blue); }
+.feature-split__check:nth-child(2) svg path { stroke: var(--accent-blue); }
+.feature-split__check:nth-child(3) { color: var(--accent-green); }
+.feature-split__check:nth-child(3) svg path { stroke: var(--accent-green); }
 .feature-split__check svg { flex-shrink: 0; }
 
 /* Watch demo link — family.co exact style */
@@ -216,6 +228,9 @@ p { color: var(--body); }
 .details__card { background: var(--white); border-radius: var(--r-xl); overflow: hidden; }
 .details__card-visual { padding: 24px 24px 0; }
 .details__card-label { display: block; padding: 20px 24px 0; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--accent); }
+.details__card:nth-child(2) .details__card-label { color: var(--accent-blue); }
+.details__card:nth-child(3) .details__card-label { color: var(--accent-green); }
+.details__card:nth-child(4) .details__card-label { color: var(--accent-purple); }
 .details__card-desc { padding: 8px 24px 24px; font-size: 15px; line-height: 22px; color: var(--body); }
 
 /* ==========================================================================
@@ -312,15 +327,14 @@ p { color: var(--body); }
 }
 .faq__question::-webkit-details-marker { display: none; }
 
-/* Orange "+" toggle — 2 overlapping bars like family.co */
+/* Orange "+" toggle — 2 overlapping bars, animates to "—" dash on open */
 .faq__toggle { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
-.faq__toggle-h, .faq__toggle-v { position: absolute; background: var(--accent); border-radius: 2px; transition: transform 300ms ease; }
+.faq__toggle-h, .faq__toggle-v { position: absolute; background: var(--accent); border-radius: 2px; transition: transform 400ms cubic-bezier(0.19, 1, 0.22, 1), opacity 400ms cubic-bezier(0.19, 1, 0.22, 1); }
 .faq__toggle-h { width: 14px; height: 2px; top: 6px; left: 0; }
 .faq__toggle-v { width: 2px; height: 14px; top: 0; left: 6px; }
 
-/* Open state — rotate to "/" */
-.faq__item[open] .faq__toggle-h { transform: rotate(45deg); }
-.faq__item[open] .faq__toggle-v { transform: rotate(45deg); }
+/* Open state — vertical bar fades out, leaving just the horizontal dash "—" */
+.faq__item[open] .faq__toggle-v { opacity: 0; transform: scaleY(0); }
 
 .faq__answer { padding-top: 16px; }
 .faq__answer p { font-size: 17px; line-height: 26px; color: var(--body); max-width: 442px; }

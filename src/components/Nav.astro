@@ -55,6 +55,11 @@ const links = [
     right: 0;
     z-index: var(--z-nav);
     background: var(--white);
+    transition: background 300ms ease;
+  }
+
+  .nav.is-scrolled {
+    background: #F8F7F5;
   }
 
   .nav__inner {
@@ -202,6 +207,16 @@ const links = [
 </style>
 
 <script>
+  // Nav scroll — grey background on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav?.classList.add('is-scrolled');
+    } else {
+      nav?.classList.remove('is-scrolled');
+    }
+  }, { passive: true });
+
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
 

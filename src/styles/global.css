@@ -265,7 +265,7 @@ p { color: var(--body); }
    ========================================================================== */
 .reviews__header { display: flex; justify-content: space-between; align-items: baseline; }
 .reviews__sub { margin-top: 8px; font-size: 17px; color: var(--body); }
-.reviews__follow { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+.reviews__follow { display: flex; align-items: center; gap: 10px; }
 .reviews__follow-label { font-size: 13px; font-weight: 500; color: var(--body-muted); }
 .reviews__follow-btn {
   display: inline-flex; align-items: center; gap: 6px;

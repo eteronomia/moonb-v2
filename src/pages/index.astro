@@ -271,11 +271,11 @@ const faqs = [
       <p class="reviews__sub" data-reveal data-reveal-delay="1">See what people are saying.</p>
     </div>
 
-    <!-- Row 1 -->
+    <!-- Row 1 — duplicated for seamless infinite scroll -->
     <div class="reviews__row" data-reveal data-reveal-delay="2">
       <div class="reviews__track">
-        {reviews.slice(0, 4).map((r) => (
-          <div class="reviews__card">
+        {[...reviews.slice(0, 4), ...reviews.slice(0, 4)].map((r, i) => (
+          <div class="reviews__card" key={i}>
             <div class="reviews__card-header">
               <div class="reviews__avatar placeholder placeholder--avatar"></div>
               <div class="reviews__card-meta">
@@ -290,11 +290,11 @@ const faqs = [
       </div>
     </div>
 
-    <!-- Row 2 -->
+    <!-- Row 2 — scrolls opposite direction -->
     <div class="reviews__row" data-reveal data-reveal-delay="3">
       <div class="reviews__track">
-        {reviews.slice(4, 8).map((r) => (
-          <div class="reviews__card">
+        {[...reviews.slice(4, 8), ...reviews.slice(4, 8)].map((r, i) => (
+          <div class="reviews__card" key={i}>
             <div class="reviews__card-header">
               <div class="reviews__avatar placeholder placeholder--avatar"></div>
               <div class="reviews__card-meta">

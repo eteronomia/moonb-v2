@@ -269,8 +269,29 @@ p { color: var(--body); }
 .reviews__follow svg { width: 16px; height: 16px; }
 .reviews__sub { margin-top: 8px; font-size: 17px; color: var(--body); }
 
-.reviews__row { overflow: hidden; padding: 12px 0; }
-.reviews__track { display: flex; gap: 16px; padding: 0 1.5rem; }
+/* Rows auto-scroll horizontally with fade-out edges like family.co */
+.reviews__row {
+  overflow: hidden;
+  padding: 12px 0;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.reviews__track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+/* Second row scrolls opposite direction */
+.reviews__row:nth-child(odd) .reviews__track { animation-direction: reverse; }
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.reviews__track:hover { animation-play-state: paused; }
 
 .reviews__card {
   flex-shrink: 0;

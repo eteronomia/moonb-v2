@@ -21,7 +21,7 @@
   --body-muted: #848281;
   --white: #FFFFFF;
   --beige: #FBFAF9;
-  --gray-light: #f2f0ed;
+  --gray-light: #F6F4EF;
   --btn-primary-bg: #171717;
   --btn-primary-text: #FFFFFF;
   --btn-secondary-bg: #F6F4EF;
@@ -152,7 +152,7 @@ p { color: var(--body); }
 .hero { padding-top: 140px; padding-bottom: 64px; }
 .hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .hero__title { max-width: 600px; }
-.hero__sub { max-width: 440px; margin-top: 20px; font-size: 17px; line-height: 26px; color: var(--body); }
+.hero__sub { max-width: 580px; margin-top: 20px; font-size: 17px; line-height: 26px; color: var(--body); }
 .hero__actions { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
 
 /* ==========================================================================
@@ -225,7 +225,7 @@ p { color: var(--body); }
 .details__heading { font-size: 44px; font-weight: 500; letter-spacing: -1.35px; line-height: 48px; }
 .details__sub { margin-top: 14px; font-size: 17px; line-height: 26px; color: var(--body); }
 .details__right { display: flex; flex-direction: column; gap: 32px; }
-.details__card { background: var(--white); border-radius: var(--r-xl); overflow: hidden; }
+.details__card { background: var(--gray-light); border-radius: var(--r-xl); overflow: hidden; }
 .details__card-visual { padding: 24px 24px 0; }
 .details__card-label { display: block; padding: 20px 24px 0; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--accent); }
 .details__card:nth-child(2) .details__card-label { color: var(--accent-blue); }
@@ -311,6 +311,7 @@ p { color: var(--body); }
   box-shadow: var(--sh-card);
 }
 
+.reviews__avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 .reviews__card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .reviews__card-meta { flex: 1; }
 .reviews__card-name { display: block; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--heading); }
@@ -355,24 +356,25 @@ p { color: var(--body); }
   color: var(--heading); letter-spacing: -0.3px; line-height: 27px;
 }
 
-/* Red "+" toggle — rotates 360deg on open, becomes "×" at 45deg resting */
+/* Red "+" toggle — rotates 45deg on open to become "×" */
 .faq__toggle {
   position: relative; width: 14px; height: 14px; flex-shrink: 0;
-  transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .faq__toggle-h, .faq__toggle-v {
   position: absolute; background: #FF3B2F; border-radius: 2px;
+  transition: opacity 280ms ease;
 }
 .faq__toggle-h { width: 14px; height: 2px; top: 6px; left: 0; }
 .faq__toggle-v { width: 2px; height: 14px; top: 0; left: 6px; }
 
-/* Open state — full 360 spin (lands at 360 = same visual as 0, but "×" effect from the spin itself) */
-.faq__item.is-open .faq__toggle { transform: rotate(405deg); }
+/* Open state — simple 45deg */
+.faq__item.is-open .faq__toggle { transform: rotate(45deg); }
 
 /* Answer wrapper — smooth height animation */
 .faq__answer-wrap {
   overflow: hidden; height: 0;
-  transition: height 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: height 380ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .faq__answer { padding: 0 0 28px; }
 .faq__answer p { font-size: 17px; line-height: 26px; color: var(--body); max-width: 442px; }

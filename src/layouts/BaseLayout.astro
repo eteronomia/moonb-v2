@@ -55,6 +55,52 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <script src="../scripts/scroll-reveal.js"></script>
+    <script is:inline>
+      (function () {
+        function initFaq() {
+          var items = document.querySelectorAll('[data-faq-item]');
+          if (!items.length) return;
+          items.forEach(function (item) {
+            var trigger = item.querySelector('[data-faq-trigger]');
+            var wrap = item.querySelector('[data-faq-answer]');
+            if (!trigger || !wrap) return;
+            trigger.addEventListener('click', function () {
+              var isOpen = item.classList.contains('is-open');
+              items.forEach(function (other) {
+                if (other !== item && other.classList.contains('is-open')) {
+                  var ow = other.querySelector('[data-faq-answer]');
+                  ow.style.height = ow.scrollHeight + 'px';
+                  ow.offsetHeight;
+                  ow.style.height = '0';
+                  other.classList.remove('is-open');
+                  other.querySelector('[data-faq-trigger]').setAttribute('aria-expanded', 'false');
+                }
+              });
+              if (isOpen) {
+                wrap.style.height = wrap.scrollHeight + 'px';
+                wrap.offsetHeight;
+                wrap.style.height = '0';
+                item.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+              } else {
+                item.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+                wrap.style.height = wrap.scrollHeight + 'px';
+                wrap.addEventListener('transitionend', function done() {
+                  wrap.style.height = 'auto';
+                  wrap.removeEventListener('transitionend', done);
+                });
+              }
+            });
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initFaq);
+        } else {
+          initFaq();
+        }
+      })();
+    </script>
 
     <!-- Cal.com embed -->
     <script is:inline>

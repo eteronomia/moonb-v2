@@ -37,14 +37,14 @@ const steps = [
 
 /* Testimonials / "Friends of Moonb" */
 const reviews = [
-  { name: 'Rene Ugarte', role: 'Senior Producer', company: 'MOI', quote: 'They were capable of adapting to fast delivery deadlines. Moonb has become an essential part of our creative workflow.' },
-  { name: 'Marius Godo', role: 'Content Specialist', company: 'Gnosis', quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.' },
-  { name: 'Josh Kirshman', role: 'Director of Marketing', company: 'Frame', quote: 'This was the best experience we have had with a large project like this. Highly recommend.' },
-  { name: 'James Pais', role: 'Creative Service Director', company: 'Jumo Health', quote: 'My team really enjoyed working with Moonb and found the experience pretty seamless.' },
-  { name: 'Jesse Jankewicz', role: 'Director of Video', company: 'Unobravo', quote: 'The team is highly creative, talented, and eager to deliver above and beyond expectations.' },
-  { name: 'Danila De Stefano', role: 'CEO', company: 'Unobravo', quote: 'Their imagination, creativity, precision, and quality of work were impressive.' },
-  { name: 'Sarah Chen', role: 'Marketing Director', company: 'Dell', quote: 'Moonb replaced our entire freelancer roster. Better quality, faster delivery, way less management overhead.' },
-  { name: 'Marco Rossi', role: 'Brand Manager', company: 'Intel', quote: 'We went from 2-week turnaround to 48 hours. The dedicated team model just works.' },
+  { name: 'Rene Ugarte', role: 'Senior Producer', company: 'MOI', quote: 'They were capable of adapting to fast delivery deadlines. Moonb has become an essential part of our creative workflow.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif' },
+  { name: 'Marius Godo', role: 'Content Specialist', company: 'Gnosis', quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+  { name: 'Josh Kirshman', role: 'Director of Marketing', company: 'Frame', quote: 'This was the best experience we have had with a large project like this. Highly recommend.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8fbc31af3dd6d055791_Josh%20Kirshman.avif' },
+  { name: 'James Pais', role: 'Creative Service Director', company: 'Jumo Health', quote: 'My team really enjoyed working with Moonb and found the experience pretty seamless.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8b403f0791e7f30ab66_James%20Pais.avif' },
+  { name: 'Jesse Jankewicz', role: 'Director of Video', company: 'Unobravo', quote: 'The team is highly creative, talented, and eager to deliver above and beyond expectations.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8619881dbbdd76b062d_Jesse%20Jankewitz.avif' },
+  { name: 'Danila De Stefano', role: 'CEO', company: 'Unobravo', quote: 'Their imagination, creativity, precision, and quality of work were impressive.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b7a8db29c755d2647f56_Danilla%20De%20Stefano.avif' },
+  { name: 'Jacey Crawford', role: 'Content Manager', company: 'BAM', quote: 'Moonb delivered very high-quality work and the team was a pleasure to work with.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b94772a50268f13f7e1a_Jacey%20Crawford.avif' },
+  { name: 'Diane Bizzle', role: 'Art Director', company: 'Brainfuse', quote: 'The ability to quickly understand and adapt to the company branding was impressive.', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9834fa6be14f2cadf8f_Diana%20Weltzer.avif' },
 ];
 
 /* Blog posts */
@@ -70,8 +70,8 @@ const faqs = [
     <div class="container">
       <h1 class="hero__title" data-reveal>Your own creative team.</h1>
       <p class="hero__sub" data-reveal data-reveal-delay="1">
-        A dedicated team of designers, editors, and motion artists
-        that work as part of your brand. Great work, on repeat.
+        A dedicated team of designers, editors, and motion artists<br/>
+        that works as part of your brand. Great work, on repeat.
       </p>
       <div class="hero__actions" data-reveal data-reveal-delay="2">
         <a href="#showreel" class="btn btn--secondary">
@@ -165,7 +165,7 @@ const faqs = [
 
 
   <!-- ═══════ DETAILS THAT MATTER — family.co sticky section ═══════ -->
-  <section class="details section section--beige">
+  <section class="details section">
     <div class="container">
       <div class="details__inner">
         <div class="details__left">
@@ -284,7 +284,7 @@ const faqs = [
         {[...reviews.slice(0, 4), ...reviews.slice(0, 4)].map((r, i) => (
           <div class="reviews__card" key={i}>
             <div class="reviews__card-header">
-              <div class="reviews__avatar placeholder placeholder--avatar"></div>
+              <img class="reviews__avatar" src={r.avatar} alt={r.name} width="40" height="40" loading="lazy" />
               <div class="reviews__card-meta">
                 <span class="reviews__card-name">{r.name}</span>
                 <span class="reviews__card-role">{r.role}, {r.company}</span>
@@ -302,7 +302,7 @@ const faqs = [
         {[...reviews.slice(4, 8), ...reviews.slice(4, 8)].map((r, i) => (
           <div class="reviews__card" key={i}>
             <div class="reviews__card-header">
-              <div class="reviews__avatar placeholder placeholder--avatar"></div>
+              <img class="reviews__avatar" src={r.avatar} alt={r.name} width="40" height="40" loading="lazy" />
               <div class="reviews__card-meta">
                 <span class="reviews__card-name">{r.name}</span>
                 <span class="reviews__card-role">{r.role}, {r.company}</span>

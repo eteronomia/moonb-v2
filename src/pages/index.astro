@@ -1,125 +1,376 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+/* Roles for "Made for" section */
+const roles = [
+  'Creative Directors', 'CMOs', 'Marketing Leaders',
+  'Founders', 'Brand Managers', 'Content Teams',
+  'Agencies', 'Startups',
+];
+
+/* Services */
+const services = [
+  { title: 'Video Production', description: 'From commercials to social content. A dedicated team producing video that moves audiences.', tag: 'Video' },
+  { title: 'Motion Graphics', description: 'Animated explainers, product demos, and branded motion. Bring your message to life.', tag: 'Motion' },
+  { title: 'Graphic Design', description: 'Brand identities, social media, presentations, and print. Design that stands out.', tag: 'Design' },
+  { title: 'Animation', description: '2D and 3D animation for campaigns, product launches, and storytelling.', tag: 'Animation' },
+];
+
+/* Feature items for "Details that matter" sticky section */
+const details = [
+  { label: 'Your Creative Director', title: 'One person who knows your brand inside out.', desc: 'A strategic partner who learns your voice, your goals, and your audience. Not a revolving door of freelancers.' },
+  { label: 'Lightning Turnaround', title: 'Multiple deliveries every week.', desc: 'No bottlenecks, no waiting. Your dedicated team moves fast because they already know what you need.' },
+  { label: 'Predictable Investment', title: 'One monthly rate, no surprises.', desc: 'No scope creep, no hidden fees, no surprise invoices. Just great work, consistently delivered.' },
+  { label: 'Quality at Scale', title: 'From one social post to a full campaign.', desc: 'Consistent quality whether you need one deliverable or fifty. Your team scales with you.' },
+];
+
+/* Feature checklist for phone mockup section */
+const checklistItems = ['Dedicated Creative Director', 'Real-time Project Tracking', 'Unlimited Revisions'];
+
+/* How it works */
+const steps = [
+  { number: '01', title: 'Get onboarded', description: 'Sign up and meet your dedicated Creative Director on a call. We learn your brand, your goals, and your voice.' },
+  { number: '02', title: 'Request anything', description: 'Submit creative requests through our platform. Videos, designs, animations. Your CD prioritizes and plans the work.' },
+  { number: '03', title: 'Review and approve', description: 'Receive polished deliverables within days. Review, request revisions, and approve. Repeat.' },
+];
+
+/* Testimonials / "Friends of Moonb" — tweet card style */
+const reviews = [
+  { name: 'Rene Ugarte', handle: '@reneugarte', quote: 'They were capable of adapting to fast delivery deadlines. Moonb has become an essential part of our creative workflow.', company: 'MOI' },
+  { name: 'Marius Godo', handle: '@mariusgodo', quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.', company: 'Gnosis' },
+  { name: 'Josh Kirshman', handle: '@joshkirshman', quote: 'This was the best experience we have had with a large project like this. Highly recommend.', company: 'Frame' },
+  { name: 'James Pais', handle: '@jamespais', quote: 'My team really enjoyed working with Moonb and found the experience pretty seamless.', company: 'Jumo Health' },
+  { name: 'Jesse Jankewicz', handle: '@jessejank', quote: 'The team is highly creative, talented, and eager to deliver above and beyond expectations.', company: 'Unobravo' },
+  { name: 'Danila De Stefano', handle: '@danilads', quote: 'Their imagination, creativity, precision, and quality of work were impressive.', company: 'Unobravo' },
+  { name: 'Sarah Chen', handle: '@sarahchen', quote: 'Moonb replaced our entire freelancer roster. Better quality, faster delivery, way less management overhead.', company: 'Dell' },
+  { name: 'Marco Rossi', handle: '@marcorossi', quote: 'We went from 2-week turnaround to 48 hours. The dedicated team model just works.', company: 'Intel' },
+];
+
+/* Blog posts */
+const blogPosts = [
+  { title: 'Best Superside alternatives for creative teams', date: 'Published 15 March, 2026', excerpt: 'Looking for a Superside alternative? We compare the top creative production services for teams that need quality, speed, and a dedicated creative partner.', href: '/blog/superside-alternatives' },
+  { title: 'The complete guide to video production', date: 'Published 2 February, 2026', excerpt: 'Everything you need to know about producing professional video content, from planning to post-production and distribution.', href: '/blog/video-production-guide' },
+];
+
+/* FAQ */
+const faqs = [
+  { q: "Who is Moonb for?", a: "Marketing directors, creative directors, founders, and teams who need exceptional creative output but don't have the time or resources to build an internal department." },
+  { q: "Why choose Moonb over hiring internally?", a: "Building an internal creative department takes months and comes with substantial fixed costs. With Moonb, you get immediate, high-quality creative output and total flexibility for less than the cost of a single senior creative hire." },
+  { q: "What types of projects can Moonb handle?", a: "Almost everything creative: video production, motion graphics, animation (2D and 3D), graphic design, branding, and strategic creative consultation." },
+  { q: "What does onboarding look like?", a: "Sign up and you'll receive access to our production platform within minutes. Your dedicated Creative Director will contact you immediately to schedule a kickoff call." },
+  { q: "Will I own the work?", a: "Absolutely. You receive all working files and own all intellectual property created. It's your work, made by your team." },
+];
 ---
 
 <BaseLayout title="Your Creative Team | Moonb">
 
+  <!-- ═══════ HERO ═══════ -->
   <section class="hero">
-    <div class="hero__inner">
-      <h1 class="hero__title" data-reveal>
-        Your own creative team.
-      </h1>
-
+    <div class="container">
+      <h1 class="hero__title" data-reveal>Your own creative team.</h1>
       <p class="hero__sub" data-reveal data-reveal-delay="1">
-        A dedicated team of designers, editors, and motion artists that work as part of your brand. Great work, on repeat.
+        A dedicated team of designers, editors, and motion artists
+        that work as part of your brand. Great work, on repeat.
       </p>
-
       <div class="hero__actions" data-reveal data-reveal-delay="2">
-        <a href="#" class="hero-btn-primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
-          Book a Call
-        </a>
-        <a href="#showreel" class="hero-btn-secondary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 4C6 2.9 7.2 2.2 8.1 2.8L19.1 10.8C19.9 11.3 19.9 12.7 19.1 13.2L8.1 21.2C7.2 21.8 6 21.1 6 20V4Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <a href="#showreel" class="btn btn--secondary">
+          <svg class="play-icon" width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true">
+            <path d="M1 1.5C1 0.7 1.9 0.2 2.6 0.6L11 5.8C11.6 6.2 11.6 7.1 11 7.5L2.6 12.7C1.9 13.1 1 12.6 1 11.8V1.5Z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/>
           </svg>
           Showreel
         </a>
       </div>
     </div>
-
   </section>
 
+
+  <!-- ═══════ MADE FOR — right after hero for scroll incentive ═══════ -->
+  <section class="madefor section">
+    <div class="container">
+      <div class="madefor__inner">
+        <div class="madefor__left" data-reveal>
+          <h2 class="section-heading">Made for the people<br/>who build brands.</h2>
+          <p class="section-sub">Whether you lead creative, run marketing, or founded the company, Moonb becomes your team.</p>
+          <div class="madefor__pills">
+            {roles.map((role, i) => <button class={`madefor__pill${i === 0 ? ' is-active' : ''}`}>{role}</button>)}
+          </div>
+        </div>
+        <div class="madefor__right" data-reveal data-reveal-delay="1">
+          <div class="placeholder placeholder--tall"><span class="placeholder__label">Illustration: Role-specific visual</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ SERVICES ═══════ -->
+  <section class="services section section--beige" id="services">
+    <div class="container">
+      <h2 class="section-heading" data-reveal>Everything creative, one team.</h2>
+      <p class="section-sub" data-reveal data-reveal-delay="1">Video, design, motion, animation. All produced by a team that knows your brand.</p>
+
+      <div class="services__grid">
+        {services.map((s, i) => (
+          <div class="services__card" data-reveal data-reveal-delay={String(i)}>
+            <div class="services__card-visual">
+              <div class="placeholder placeholder--service"><span class="placeholder__label">Device mockup: {s.tag} example</span></div>
+            </div>
+            <div class="services__card-text">
+              <span class="services__tag">{s.tag}</span>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ FEATURE W/ PHONE MOCKUP — family.co "Wallet activity" style ═══════ -->
+  <section class="feature-split section">
+    <div class="container">
+      <div class="feature-split__inner">
+        <div class="feature-split__visual" data-reveal>
+          <div class="placeholder placeholder--phone"><span class="placeholder__label">iPhone mockup: Moonb platform dashboard</span></div>
+        </div>
+        <div class="feature-split__content" data-reveal data-reveal-delay="1">
+          <span class="feature-split__label">Your Creative Team</span>
+          <h2 class="feature-split__title">Creative output you can understand.</h2>
+          <p class="feature-split__desc">Your projects, your team, your timeline. All visible in real-time. No more chasing updates or wondering what's happening next.</p>
+          <ul class="feature-split__checklist">
+            {checklistItems.map((item) => (
+              <li class="feature-split__check">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 10L8.5 13.5L15 7" stroke="#FF5310" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="#showreel" class="feature-split__demo">
+            <div class="feature-split__demo-thumb">
+              <div class="placeholder" style="min-height: 48px; border-radius: 6px;"><span class="placeholder__label" style="font-size: 10px;">Thumb</span></div>
+            </div>
+            <div class="feature-split__demo-text">
+              <span class="feature-split__demo-title">How Moonb Works</span>
+              <span class="feature-split__demo-sub">Watch the demo</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ DETAILS THAT MATTER — family.co sticky section ═══════ -->
+  <section class="details section section--beige">
+    <div class="container">
+      <div class="details__inner">
+        <div class="details__left">
+          <h2 class="details__heading" data-reveal>Details that matter.</h2>
+          <p class="details__sub" data-reveal data-reveal-delay="1">We sweat the details, no matter how small.</p>
+        </div>
+        <div class="details__right">
+          {details.map((d, i) => (
+            <div class="details__card" data-reveal data-reveal-delay={String(i)}>
+              <div class="details__card-visual">
+                <div class="placeholder placeholder--detail"><span class="placeholder__label">UI mockup: {d.label}</span></div>
+              </div>
+              <span class="details__card-label">{d.label}</span>
+              <p class="details__card-desc">{d.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ WORK SHOWCASE ═══════ -->
+  <section class="work section" id="work">
+    <div class="container">
+      <h2 class="section-heading" data-reveal>Work that speaks for itself.</h2>
+      <p class="section-sub" data-reveal data-reveal-delay="1">Selected projects from brands we've partnered with.</p>
+
+      <div class="work__grid" data-reveal data-reveal-delay="2">
+        <div class="work__item work__item--wide">
+          <div class="placeholder placeholder--work-lg"><span class="placeholder__label">MacBook mockup: Featured project</span></div>
+          <div class="work__meta"><span class="work__client">Dell Technologies</span><span class="work__type">Video Campaign</span></div>
+        </div>
+        <div class="work__item">
+          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">iPhone mockup: Social content</span></div>
+          <div class="work__meta"><span class="work__client">Toyota</span><span class="work__type">Motion Graphics</span></div>
+        </div>
+        <div class="work__item">
+          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">iPhone mockup: Brand animation</span></div>
+          <div class="work__meta"><span class="work__client">Microsoft</span><span class="work__type">Animation</span></div>
+        </div>
+      </div>
+
+      <div class="work__cta" data-reveal><a href="/work" class="btn btn--secondary">See all work</a></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ HOW IT WORKS ═══════ -->
+  <section class="howitworks section section--beige" id="how-it-works">
+    <div class="container">
+      <h2 class="section-heading section-heading--center" data-reveal>Simple to start, easy to love.</h2>
+
+      <div class="howitworks__steps">
+        {steps.map((s, i) => (
+          <div class="howitworks__step" data-reveal data-reveal-delay={String(i)}>
+            <div class="howitworks__step-illust">
+              <div class="placeholder placeholder--step"><span class="placeholder__label">Illustration: Step {s.number}</span></div>
+            </div>
+            <span class="howitworks__number">{s.number}</span>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ STATS ═══════ -->
+  <section class="stats section">
+    <div class="container">
+      <div class="stats__grid" data-reveal>
+        <div class="stats__item"><span class="stats__number">500+</span><span class="stats__label">Projects delivered</span></div>
+        <div class="stats__item"><span class="stats__number">95%</span><span class="stats__label">Client retention</span></div>
+        <div class="stats__item"><span class="stats__number">48h</span><span class="stats__label">Average turnaround</span></div>
+        <div class="stats__item"><span class="stats__number">23+</span><span class="stats__label">Brands trust Moonb</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ SHOWREEL ═══════ -->
+  <section class="showreel section" id="showreel">
+    <div class="container" data-reveal>
+      <div class="showreel__wrap">
+        <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Moonb Showreel"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ FRIENDS OF MOONB — tweet cards like family.co ═══════ -->
+  <section class="reviews section">
+    <div class="container">
+      <div class="reviews__header" data-reveal>
+        <h2 class="section-heading">Friends of Moonb</h2>
+        <a href="https://x.com/moonb_creative" class="reviews__follow" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Follow Moonb &#x2197;
+        </a>
+      </div>
+      <p class="reviews__sub" data-reveal data-reveal-delay="1">See what people are saying.</p>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="reviews__row" data-reveal data-reveal-delay="2">
+      <div class="reviews__track">
+        {reviews.slice(0, 4).map((r) => (
+          <div class="reviews__card">
+            <div class="reviews__card-header">
+              <div class="reviews__avatar placeholder placeholder--avatar"></div>
+              <div class="reviews__card-meta">
+                <span class="reviews__card-name">{r.name}</span>
+                <span class="reviews__card-handle">{r.handle}</span>
+              </div>
+              <svg class="reviews__x-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="reviews__card-quote">{r.quote}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="reviews__row" data-reveal data-reveal-delay="3">
+      <div class="reviews__track">
+        {reviews.slice(4, 8).map((r) => (
+          <div class="reviews__card">
+            <div class="reviews__card-header">
+              <div class="reviews__avatar placeholder placeholder--avatar"></div>
+              <div class="reviews__card-meta">
+                <span class="reviews__card-name">{r.name}</span>
+                <span class="reviews__card-handle">{r.handle}</span>
+              </div>
+              <svg class="reviews__x-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="reviews__card-quote">{r.quote}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ BLOG PREVIEW — family.co 2-column ═══════ -->
+  <section class="blog section">
+    <div class="container">
+      <h2 class="section-heading" data-reveal>The latest from Moonb</h2>
+
+      <div class="blog__grid" data-reveal data-reveal-delay="1">
+        {blogPosts.map((post) => (
+          <a href={post.href} class="blog__card">
+            <div class="placeholder placeholder--blog-lg"><span class="placeholder__label">Blog thumbnail</span></div>
+            <span class="blog__card-date">{post.date}</span>
+            <h3 class="blog__card-title">{post.title}</h3>
+            <p class="blog__card-excerpt">{post.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ CTA — family.co beige pre-footer ═══════ -->
+  <section class="final-cta section section--beige">
+    <div class="container" data-reveal>
+      <div class="final-cta__inner">
+        <h2 class="final-cta__title">Ready to level up your creative?</h2>
+        <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+        <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Get Started</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ FAQ — family.co 2-column: heading LEFT, accordion RIGHT ═══════ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="faq__inner">
+        <div class="faq__left" data-reveal>
+          <h2 class="faq__heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq__right">
+          <div class="faq__list" data-reveal data-reveal-delay="1">
+            {faqs.map((faq) => (
+              <details class="faq__item">
+                <summary class="faq__question">
+                  <span>{faq.q}</span>
+                  <div class="faq__toggle" aria-hidden="true">
+                    <div class="faq__toggle-h"></div>
+                    <div class="faq__toggle-v"></div>
+                  </div>
+                </summary>
+                <div class="faq__answer"><p>{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+          <a href="/faq" class="faq__more">See More FAQs <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="#FF5310" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <Footer />
+
 </BaseLayout>
-
-<style>
-  .hero {
-    padding-top: 100px;
-    padding-bottom: 0;
-    background-color: var(--white);
-    overflow: hidden;
-  }
-
-  .hero__inner {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  .hero__title {
-    max-width: 700px;
-    font-family: var(--font-heading);
-    font-size: 52px;
-    font-weight: 500;
-    line-height: 1.06;
-    letter-spacing: -0.02em;
-    color: var(--heading);
-  }
-
-  .hero__sub {
-    max-width: 520px;
-    margin-top: 18px;
-    font-size: 17px;
-    line-height: 27px;
-    letter-spacing: -0.22px;
-    color: var(--body);
-  }
-
-  .hero__actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 28px;
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      padding-top: 88px;
-    }
-
-    .hero__title {
-      font-size: 40px;
-      letter-spacing: -1.2px;
-      line-height: 44px;
-    }
-
-    .hero__sub {
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    .hero__actions {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .hero-btn-primary,
-    .hero-btn-secondary {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .hero__devices {
-      gap: 12px;
-      margin-top: 40px;
-    }
-
-    .device--phone { width: 90px; }
-    .device--laptop { width: 200px; }
-    .device--tablet { width: 100px; }
-  }
-
-  @media (max-width: 480px) {
-    .hero__title {
-      font-size: 34px;
-      line-height: 38px;
-    }
-
-    .device--phone { width: 70px; }
-    .device--laptop { width: 160px; }
-    .device--tablet { width: 80px; }
-  }
-</style>

@@ -1,12 +1,10 @@
 /* ==========================================================================
    Moonb V2 — Global Styles
-   Copying family.co + aave.com design language as closely as possible
+   Copying family.co + aave.com design language pixel-for-pixel
    Font: Satoshi (free alternative to FT Regola Neue)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Font Face — Satoshi (self-hosted)
-   -------------------------------------------------------------------------- */
+/* Font Face */
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Variable.woff2') format('woff2'),
@@ -16,354 +14,348 @@
   font-style: normal;
 }
 
-/* --------------------------------------------------------------------------
-   CSS Custom Properties — matching family.co + aave.com tokens
-   -------------------------------------------------------------------------- */
+/* Custom Properties — family.co + aave.com tokens */
 :root {
-  /* Text colors (family.co exact values) */
-  --heading: #343433;
+  --heading: #121212;
   --body: #494440;
   --body-muted: #848281;
-
-  /* Backgrounds (family.co exact values) */
   --white: #FFFFFF;
   --beige: #FBFAF9;
-  --beige-dark: #EAEAEA;
   --gray-light: #f2f0ed;
-
-  /* Button colors (family.co exact values) */
   --btn-primary-bg: #171717;
   --btn-primary-text: #FFFFFF;
   --btn-secondary-bg: #F6F4EF;
   --btn-secondary-text: #343433;
-
-  /* Borders (family.co) */
   --border: #E8E8E8;
   --border-light: rgba(0,0,0,0.06);
-
-  /* Accent — TBD, placeholder teal for now */
-  --accent: #0D9488;
-  --accent-light: #14B8A6;
-
-  /* Typography */
+  --accent: #FF5310;
   --font-heading: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  /* Spacing (8px grid) */
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
   --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
   --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
-
-  /* Border radius */
-  --r-sm: 6px;
-  --r-md: 8px;
-  --r-lg: 12px;
-  --r-xl: 16px;
-  --r-pill: 9999px;
-
-  /* Shadows (family.co style — inset borders, not drop shadows) */
+  --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 9999px;
   --sh-card: inset 0 0 0 1px var(--border-light);
   --sh-card-hover: 0 4px 12px rgba(0,0,0,0.06), inset 0 0 0 1px var(--border-light);
-  --sh-nav: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-
-  /* Layout */
   --max-w: 1040px;
-  --max-w-narrow: 720px;
-  --nav-h: 56px;
-
-  /* Z-index */
+  --nav-h: 64px;
   --z-nav: 100;
-  --z-modal: 200;
-
-  /* Animation (family.co curve) */
   --ease: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 150ms;
   --dur: 300ms;
-  --dur-slow: 500ms;
   --dur-reveal: 800ms;
   --stagger: 80ms;
 }
 
-/* --------------------------------------------------------------------------
-   Reset
-   -------------------------------------------------------------------------- */
+/* Reset */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
-body {
-  font-family: var(--font-body);
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: -0.22px;
-  color: var(--body);
-  background-color: var(--white);
-}
-
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family: var(--font-body); font-size: 17px; font-weight: 400; line-height: 26px; letter-spacing: -0.22px; color: var(--body); background-color: var(--white); }
 img, picture, video, canvas, svg { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
 
-/* --------------------------------------------------------------------------
-   Typography — matching family.co scale
-   -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  line-height: 1.1;
-  color: var(--heading);
-}
+/* Typography — family.co scale */
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 500; line-height: 1.1; color: var(--heading); }
+h1 { font-size: 56px; letter-spacing: -0.025em; }
+h2 { font-size: 44px; letter-spacing: -1.35px; line-height: 48px; }
+h3 { font-size: 23px; letter-spacing: -0.44px; line-height: 28px; }
+p { color: var(--body); }
 
-h1 {
-  font-size: 68px;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: 32px;
-  letter-spacing: -0.69px;
-  line-height: 35px;
-}
-
-h3 {
-  font-size: 23px;
-  letter-spacing: -0.44px;
-  line-height: 25px;
-}
-
-p {
-  color: var(--body);
-}
-
-.text-muted {
-  color: var(--body-muted);
-}
-
-/* Responsive typography */
 @media (max-width: 768px) {
-  h1 { font-size: 44px; letter-spacing: -1.35px; line-height: 48px; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 20px; }
+  h1 { font-size: 38px; }
+  h2 { font-size: 32px; line-height: 36px; }
 }
 
-@media (max-width: 480px) {
-  h1 { font-size: 36px; line-height: 40px; }
-  h2 { font-size: 24px; }
-}
+/* Layout */
+.container { width: 100%; max-width: calc(var(--max-w) + 3rem); margin-inline: auto; padding-inline: 1.5rem; }
+.section { padding-block: 104px; }
+.section--beige { background-color: var(--beige); }
 
-/* --------------------------------------------------------------------------
-   Layout
-   -------------------------------------------------------------------------- */
-.container {
-  width: 100%;
-  max-width: calc(var(--max-w) + 2rem);
-  margin-inline: auto;
-  padding-inline: 1rem;
-}
+/* Section headings */
+.section-heading { font-family: var(--font-heading); font-size: 44px; font-weight: 500; line-height: 48px; letter-spacing: -1.35px; color: var(--heading); }
+.section-heading--center { text-align: center; }
+.section-sub { margin-top: 14px; font-size: 17px; line-height: 26px; color: var(--body); max-width: 520px; }
+.section-heading--center + .section-sub { text-align: center; margin-inline: auto; }
 
-.section {
-  padding-block: var(--s-24);
-}
-
-.section--beige {
-  background-color: var(--beige);
-}
-
-.section--dark {
-  background-color: var(--btn-primary-bg);
-  color: var(--white);
-}
-
-.section--dark h1, .section--dark h2, .section--dark h3, .section--dark h4 {
-  color: var(--white);
-}
-
-.section--dark p {
-  color: rgba(255,255,255,0.7);
-}
-
-/* --------------------------------------------------------------------------
-   Buttons — pill style like aave.com, colors like family.co
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   BUTTONS — all same size/style, matching user's screenshot exactly
+   Height ~40px, pill shape, weight 700, font-size 15px
+   ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--s-2);
-  padding: 12px 28px;
+  gap: 10px;
+  height: 40px;
+  padding: 0 22px;
   border: none;
   border-radius: var(--r-pill);
   font-family: var(--font-heading);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.2px;
   cursor: pointer;
-  transition: all var(--dur) var(--ease);
+  transition: all 200ms var(--ease);
   text-decoration: none;
   white-space: nowrap;
 }
 
-.btn--primary {
-  background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
-}
+.btn--primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); }
+.btn--primary:hover { background: #333; }
+.btn--secondary { background: var(--btn-secondary-bg); color: var(--btn-secondary-text); }
+.btn--secondary:hover { background: #EDE9E0; }
 
-.btn--primary:hover {
-  background-color: #333;
-  transform: translateY(-1px);
-}
+.btn .play-icon { flex-shrink: 0; }
 
-.btn--secondary {
-  background-color: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-}
+/* ==========================================================================
+   PLACEHOLDERS — illustration/animation zones
+   ========================================================================== */
+.placeholder { background: var(--beige); border: 2px dashed var(--border); border-radius: var(--r-lg); display: flex; align-items: center; justify-content: center; min-height: 200px; }
+.placeholder__label { font-size: 12px; font-weight: 500; color: var(--body-muted); text-align: center; padding: 16px; }
+.placeholder--tall { min-height: 320px; }
+.placeholder--service { min-height: 260px; border-radius: var(--r-xl); }
+.placeholder--phone { min-height: 500px; max-width: 420px; border-radius: 32px; }
+.placeholder--detail { min-height: 200px; border-radius: var(--r-xl); }
+.placeholder--step { min-height: 180px; }
+.placeholder--work-lg { min-height: 380px; border-radius: var(--r-xl); }
+.placeholder--work-sm { min-height: 300px; border-radius: var(--r-xl); }
+.placeholder--blog-lg { min-height: 280px; border-radius: var(--r-lg); }
+.placeholder--avatar { width: 40px; height: 40px; min-height: unset; border-radius: 50%; border-width: 1.5px; flex-shrink: 0; }
 
-.btn--secondary:hover {
-  background-color: #EDE9E0;
-}
-
-.btn--outline {
-  background: transparent;
-  color: var(--heading);
-  border: 1px solid var(--border);
-}
-
-.btn--outline:hover {
-  background-color: var(--beige);
-}
-
-/* Large button variant */
-.btn--lg {
-  padding: 16px 36px;
-  font-size: 16px;
-  height: 3rem;
-}
-
-/* Hero buttons — family.co exact pattern */
-.hero-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.6rem;
-  padding: 0 24px;
-  border-radius: 32px;
-  background: #171717;
-  color: #fff;
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  text-decoration: none;
-  transition: all 220ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.hero-btn-primary:hover {
-  background: #333;
-  transform: translateY(-1px);
-}
-
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 2.6rem;
-  padding: 0 24px 0 18px;
-  border-radius: 32px;
-  background: #F6F4EF;
-  color: #343433;
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  text-decoration: none;
-  transition: all 220ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.hero-btn-secondary:hover {
-  background: #EDE9E0;
-}
-
-/* --------------------------------------------------------------------------
-   Card — family.co style (inset border, no heavy shadows)
-   -------------------------------------------------------------------------- */
-.card {
-  background-color: var(--white);
-  border-radius: var(--r-lg);
-  padding: var(--s-6);
-  box-shadow: var(--sh-card);
-  transition: all var(--dur) var(--ease);
-}
-
-.card:hover {
-  background-color: var(--beige);
-}
-
-/* --------------------------------------------------------------------------
-   Scroll Reveal Animation System
-   -------------------------------------------------------------------------- */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity var(--dur-reveal) var(--ease),
-    transform var(--dur-reveal) var(--ease);
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger delays */
+/* ==========================================================================
+   SCROLL REVEAL
+   ========================================================================== */
+[data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity var(--dur-reveal) var(--ease), transform var(--dur-reveal) var(--ease); }
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
 [data-reveal-delay="1"] { transition-delay: calc(var(--stagger) * 1); }
 [data-reveal-delay="2"] { transition-delay: calc(var(--stagger) * 2); }
 [data-reveal-delay="3"] { transition-delay: calc(var(--stagger) * 3); }
 [data-reveal-delay="4"] { transition-delay: calc(var(--stagger) * 4); }
 [data-reveal-delay="5"] { transition-delay: calc(var(--stagger) * 5); }
-[data-reveal-delay="6"] { transition-delay: calc(var(--stagger) * 6); }
 
-/* --------------------------------------------------------------------------
-   Selection color (family.co style)
-   -------------------------------------------------------------------------- */
-::selection {
-  background: #D8ECFC;
-  color: #008cff;
-}
+::selection { background: #D8ECFC; color: #008cff; }
 
-/* --------------------------------------------------------------------------
-   Accessibility
-   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero { padding-top: 140px; padding-bottom: 64px; }
+.hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero__title { max-width: 600px; }
+.hero__sub { max-width: 440px; margin-top: 20px; font-size: 17px; line-height: 26px; color: var(--body); }
+.hero__actions { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
+
+/* ==========================================================================
+   SHOWREEL
+   ========================================================================== */
+.showreel { padding-top: 0; }
+.showreel__wrap { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: var(--r-xl); overflow: hidden; background: #000; }
+.showreel__wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* ==========================================================================
+   MADE FOR
+   ========================================================================== */
+.madefor__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.madefor__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.madefor__pill {
+  height: 40px; padding: 0 20px;
+  border: 1.5px solid var(--border); border-radius: var(--r-pill);
+  background: transparent; font-family: var(--font-heading);
+  font-size: 14px; font-weight: 700; color: var(--heading);
+  cursor: pointer; transition: all 200ms ease;
+  display: inline-flex; align-items: center;
+}
+.madefor__pill:hover { border-color: var(--heading); }
+.madefor__pill.is-active { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+.services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.services__card { background: var(--white); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-card); transition: all var(--dur) var(--ease); }
+.services__card:hover { box-shadow: var(--sh-card-hover); transform: translateY(-2px); }
+.services__card-text { padding: 24px 28px 28px; }
+.services__tag { display: inline-block; font-family: var(--font-heading); font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px; }
+.services__card-text h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; }
+.services__card-text p { font-size: 15px; line-height: 22px; }
+
+/* ==========================================================================
+   FEATURE SPLIT — phone mockup left, text + checklist right
+   Ref: family.co "Wallet activity you can understand" section
+   ========================================================================== */
+.feature-split__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.feature-split__label { display: block; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: 0; margin-bottom: 16px; }
+.feature-split__title { font-size: 40px; font-weight: 500; letter-spacing: -1.2px; line-height: 44px; }
+.feature-split__desc { margin-top: 20px; font-size: 17px; line-height: 26px; color: var(--body); max-width: 440px; }
+.feature-split__checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+.feature-split__check { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--accent); }
+.feature-split__check svg { flex-shrink: 0; }
+
+/* Watch demo link — family.co exact style */
+.feature-split__demo { display: flex; align-items: center; gap: 14px; margin-top: 40px; cursor: pointer; transition: opacity 200ms ease; }
+.feature-split__demo:hover { opacity: 0.7; }
+.feature-split__demo-thumb { width: 64px; height: 48px; flex-shrink: 0; border-radius: 6px; overflow: hidden; }
+.feature-split__demo-title { display: block; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--heading); }
+.feature-split__demo-sub { display: block; font-size: 13px; color: var(--body-muted); margin-top: 2px; }
+
+/* ==========================================================================
+   DETAILS THAT MATTER — sticky heading left, scrolling cards right
+   Ref: family.co "Details that matter" section
+   ========================================================================== */
+.details__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.details__left { position: sticky; top: 120px; align-self: start; }
+.details__heading { font-size: 44px; font-weight: 500; letter-spacing: -1.35px; line-height: 48px; }
+.details__sub { margin-top: 14px; font-size: 17px; line-height: 26px; color: var(--body); }
+.details__right { display: flex; flex-direction: column; gap: 32px; }
+.details__card { background: var(--white); border-radius: var(--r-xl); overflow: hidden; }
+.details__card-visual { padding: 24px 24px 0; }
+.details__card-label { display: block; padding: 20px 24px 0; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--accent); }
+.details__card-desc { padding: 8px 24px 24px; font-size: 15px; line-height: 22px; color: var(--body); }
+
+/* ==========================================================================
+   WORK SHOWCASE
+   ========================================================================== */
+.work__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-top: 48px; }
+.work__item { display: flex; flex-direction: column; gap: 16px; }
+.work__meta { display: flex; justify-content: space-between; align-items: center; }
+.work__client { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--heading); }
+.work__type { font-size: 13px; color: var(--body-muted); }
+.work__cta { text-align: center; margin-top: 48px; }
+
+/* ==========================================================================
+   HOW IT WORKS
+   ========================================================================== */
+.howitworks__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+.howitworks__step { display: flex; flex-direction: column; }
+.howitworks__step-illust { margin-bottom: 24px; }
+.howitworks__number { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--body-muted); margin-bottom: 12px; }
+.howitworks__step h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 10px; }
+.howitworks__step p { font-size: 15px; line-height: 22px; }
+
+/* ==========================================================================
+   STATS
+   ========================================================================== */
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+.stats__number { display: block; font-family: var(--font-heading); font-size: 48px; font-weight: 500; color: var(--heading); letter-spacing: -0.03em; line-height: 1; }
+.stats__label { display: block; margin-top: 8px; font-size: 15px; color: var(--body-muted); }
+
+/* ==========================================================================
+   FRIENDS OF MOONB — tweet cards like family.co
+   ========================================================================== */
+.reviews__header { display: flex; justify-content: space-between; align-items: baseline; }
+.reviews__follow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--body-muted); transition: color 140ms ease; }
+.reviews__follow:hover { color: var(--heading); }
+.reviews__follow svg { width: 16px; height: 16px; }
+.reviews__sub { margin-top: 8px; font-size: 17px; color: var(--body); }
+
+.reviews__row { overflow: hidden; padding: 12px 0; }
+.reviews__track { display: flex; gap: 16px; padding: 0 1.5rem; }
+
+.reviews__card {
+  flex-shrink: 0;
+  width: 320px;
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  box-shadow: var(--sh-card);
+}
+
+.reviews__card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.reviews__card-meta { flex: 1; }
+.reviews__card-name { display: block; font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--heading); }
+.reviews__card-handle { display: block; font-size: 13px; color: var(--body-muted); }
+.reviews__x-icon { flex-shrink: 0; color: var(--body-muted); }
+.reviews__card-quote { font-size: 15px; line-height: 22px; color: var(--body); }
+
+/* ==========================================================================
+   BLOG PREVIEW — family.co 2-column, large thumbnails
+   ========================================================================== */
+.blog__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+.blog__card { display: flex; flex-direction: column; gap: 0; transition: transform var(--dur) var(--ease); }
+.blog__card:hover { transform: translateY(-2px); }
+.blog__card .placeholder--blog-lg { margin-bottom: 20px; }
+.blog__card-date { font-size: 14px; color: var(--body-muted); margin-bottom: 8px; }
+.blog__card-title { font-size: 24px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.25; }
+.blog__card-excerpt { margin-top: 10px; font-size: 16px; line-height: 24px; color: var(--body); }
+
+/* ==========================================================================
+   FINAL CTA — beige background, left-aligned like family.co
+   ========================================================================== */
+.final-cta__inner { max-width: 520px; }
+.final-cta__title { font-size: 44px; font-weight: 500; letter-spacing: -1.35px; line-height: 48px; }
+.final-cta__sub { margin-top: 16px; font-size: 17px; line-height: 26px; color: var(--body); }
+.final-cta__inner .btn { margin-top: 32px; }
+
+/* ==========================================================================
+   FAQ — family.co EXACT: 2-column grid, heading LEFT, accordion RIGHT
+   Orange "+" toggle built from 2 divs, animates to "/" on open
+   ========================================================================== */
+.faq__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.faq__left { position: sticky; top: 120px; align-self: start; }
+.faq__heading { font-size: 44px; font-weight: 500; letter-spacing: -1.35px; line-height: 48px; }
+
+.faq__list { display: flex; flex-direction: column; }
+.faq__item { border-bottom: 1px solid var(--gray-light); padding-bottom: 28px; margin-bottom: 28px; }
+.faq__item:last-child { border-bottom: none; margin-bottom: 0; }
+
+.faq__question {
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; list-style: none;
+  font-family: var(--font-body); font-size: 19px; font-weight: 500;
+  color: var(--heading); letter-spacing: -0.3px; line-height: 27px;
+}
+.faq__question::-webkit-details-marker { display: none; }
+
+/* Orange "+" toggle — 2 overlapping bars like family.co */
+.faq__toggle { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+.faq__toggle-h, .faq__toggle-v { position: absolute; background: var(--accent); border-radius: 2px; transition: transform 300ms ease; }
+.faq__toggle-h { width: 14px; height: 2px; top: 6px; left: 0; }
+.faq__toggle-v { width: 2px; height: 14px; top: 0; left: 6px; }
+
+/* Open state — rotate to "/" */
+.faq__item[open] .faq__toggle-h { transform: rotate(45deg); }
+.faq__item[open] .faq__toggle-v { transform: rotate(45deg); }
+
+.faq__answer { padding-top: 16px; }
+.faq__answer p { font-size: 17px; line-height: 26px; color: var(--body); max-width: 442px; }
+
+/* "See More FAQs" link with orange arrow */
+.faq__more {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 32px;
+  font-family: var(--font-body); font-size: 16px; font-weight: 500;
+  color: rgb(71, 70, 69); transition: color 140ms ease;
+}
+.faq__more:hover { color: var(--heading); }
+.faq__more svg { color: var(--accent); }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 860px) {
+  .hero { padding-top: 120px; }
+  .madefor__inner { grid-template-columns: 1fr; gap: 40px; }
+  .services__grid { grid-template-columns: 1fr; }
+  .feature-split__inner { grid-template-columns: 1fr; gap: 48px; }
+  .details__inner { grid-template-columns: 1fr; gap: 48px; }
+  .details__left { position: static; }
+  .work__grid { grid-template-columns: 1fr; }
+  .howitworks__steps { grid-template-columns: 1fr; gap: 48px; }
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .blog__grid { grid-template-columns: 1fr; }
+  .faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .faq__left { position: static; }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: 34px; }
+  .hero__actions { flex-direction: column; width: 100%; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+  .stats__grid { grid-template-columns: 1fr; }
+  .reviews__card { width: 280px; }
 }

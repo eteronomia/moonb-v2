@@ -1,6 +1,6 @@
 ---
 const links = [
-  { label: 'Services', href: '#services' },
+  { label: 'Services', href: '#services', hasDropdown: true },
   { label: 'Work', href: '#work' },
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Pricing', href: '/pricing' },
@@ -15,35 +15,39 @@ const links = [
       <span class="nav__wordmark">moonb</span>
     </a>
 
-    <!-- Links grouped after logo, NOT centered — like family.co -->
-    <nav class="nav__links">
+    <nav class="nav__links" aria-label="Main navigation">
       {links.map((link) => (
-        <a href={link.href} class="nav__link">{link.label}</a>
+        <a href={link.href} class="nav__link">
+          {link.label}
+          {link.hasDropdown && (
+            <svg class="nav__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          )}
+        </a>
       ))}
     </nav>
 
-    <!-- CTA pushed to far right -->
-    <a href="#" class="btn btn--primary nav__cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
-      Get Started
+    <a href="#" class="nav__cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
+      Book a Call
     </a>
 
-    <button class="nav__toggle" aria-label="Menu" id="nav-toggle">
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" id="nav-toggle">
       <span></span><span></span>
     </button>
   </div>
 </header>
 
-<div class="nav-mobile" id="mobile-menu">
+<div class="nav-mobile" id="mobile-menu" aria-hidden="true">
   {links.map((link) => (
     <a href={link.href} class="nav-mobile__link">{link.label}</a>
   ))}
-  <a href="#" class="btn btn--primary" style="margin-top:12px;width:100%;justify-content:center;" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
-    Get Started
+  <a href="#" class="nav-mobile__cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>
+    Book a Call
   </a>
 </div>
 
 <style>
-  /* Full-width nav, NO border, NO separator — like family.co */
   .nav {
     position: fixed;
     top: 0;
@@ -56,11 +60,10 @@ const links = [
   .nav__inner {
     display: flex;
     align-items: center;
-    max-width: calc(var(--max-w) + 3rem);
+    max-width: var(--max-w);
     margin: 0 auto;
-    padding: 0 2rem;
-    height: 72px;
-    gap: 2.25rem;
+    padding: 0 1.5rem;
+    height: 64px;
   }
 
   .nav__logo {
@@ -68,47 +71,68 @@ const links = [
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    margin-right: 2rem;
   }
 
-  .nav__logo-icon { width: 28px; height: 28px; }
+  .nav__logo-icon { width: 26px; height: 26px; }
 
   .nav__wordmark {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 19px;
     color: var(--heading);
     letter-spacing: -0.04em;
   }
 
-  /* Links grouped together, not centered — family.co pattern */
   .nav__links {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 0;
   }
 
   .nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-family: var(--font-heading);
     font-size: 15px;
     font-weight: 500;
     color: var(--heading);
     padding: 8px 14px;
-    border-radius: var(--r-md);
-    transition: color var(--dur-fast) ease, background var(--dur-fast) ease;
+    transition: color 140ms ease;
     white-space: nowrap;
   }
 
-  .nav__link:hover {
-    color: var(--body-muted);
+  .nav__link:hover { color: var(--body-muted); }
+
+  .nav__arrow {
+    width: 10px;
+    height: 6px;
+    opacity: 0.5;
+    transition: transform 200ms ease;
   }
 
-  /* CTA pushed to far right */
+  .nav__link:hover .nav__arrow { transform: translateY(1px); }
+
+  /* CTA — thinner, bolder, pill */
   .nav__cta {
     margin-left: auto;
-    padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    font-family: var(--font-heading);
     font-size: 14px;
+    font-weight: 700;
+    border-radius: var(--r-pill);
+    transition: background 200ms ease;
+    white-space: nowrap;
     flex-shrink: 0;
   }
+
+  .nav__cta:hover { background: #333; }
 
   .nav__toggle {
     display: none;
@@ -132,12 +156,12 @@ const links = [
   .nav-mobile {
     display: none;
     position: fixed;
-    top: 72px;
+    top: 64px;
     left: 0;
     right: 0;
     z-index: calc(var(--z-nav) - 1);
     background: var(--white);
-    padding: 16px 24px 24px;
+    padding: 8px 24px 24px;
     flex-direction: column;
     gap: 2px;
   }
@@ -156,6 +180,20 @@ const links = [
 
   .nav-mobile__link:hover { background: var(--beige); }
 
+  .nav-mobile__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 12px 28px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: var(--r-pill);
+  }
+
   @media (max-width: 860px) {
     .nav__links { display: none; }
     .nav__cta { display: none; }
@@ -164,10 +202,20 @@ const links = [
 </style>
 
 <script>
-  document.getElementById('nav-toggle')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.toggle('is-open');
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    menu?.setAttribute('aria-hidden', String(!isOpen));
   });
-  document.getElementById('mobile-menu')?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('mobile-menu')?.classList.remove('is-open'));
+
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+    });
   });
 </script>

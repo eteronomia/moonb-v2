@@ -264,7 +264,7 @@ p { color: var(--body); }
    FRIENDS OF MOONB — tweet cards like family.co
    ========================================================================== */
 .reviews__header { display: flex; justify-content: space-between; align-items: baseline; }
-.reviews__sub { margin-top: 8px; font-size: 17px; color: var(--body); }
+.reviews__sub { margin-top: 8px; font-size: 17px; color: var(--body); margin-bottom: 48px; }
 .reviews__follow { display: flex; align-items: center; gap: 10px; }
 .reviews__follow-label { font-size: 13px; font-weight: 500; color: var(--body-muted); }
 .reviews__follow-btn {

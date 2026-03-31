@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moonb — Logo Trace Concept</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F0EFED;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      padding: 60px 24px;
+    }
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+    }
+    .page-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #aaa;
+      font-weight: 500;
+    }
+    .row {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 48px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.05);
+    }
+    .card--dark { background: #141414; }
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      font-weight: 500;
+    }
+    .card--dark .card-label { color: #444; }
+    .note {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <span class="page-title">Moonb — Logo Concept / Single Continuous Stroke</span>
+
+  <!-- MAIN: overlay trace on top of original logo -->
+  <div class="row">
+
+    <!-- Trace over the original (guide at 15% opacity) -->
+    <div class="card">
+      <div style="position:relative; width:200px; height:235px;">
+        <!-- Original logo as ghost guide -->
+        <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="200" height="235" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+          <path d="M418.175 492.2C553.993 492.2 664.095 382.098 664.095 246.28C664.095 110.462 553.993 0.359863 418.175 0.359863C282.357 0.359863 172.255 110.462 172.255 246.28C172.255 382.098 282.357 492.2 418.175 492.2Z" fill="#000"/>
+          <path d="M209.155 206.11C262.495 253.1 306.825 309 348.145 366.62L382.155 418.11C287.655 405.46 219.465 390.52 151.795 359.48C131.125 350 108.635 338.77 91.1547 324.62L77.1547 315.62C58.4947 297.32 41.5347 279.02 29.1547 255.62C11.8147 222.84 -7.1553 163.9 3.1547 127.62C35.4247 99.2295 79.2547 118.29 104.175 130.1C131.565 143.08 195.235 193.83 209.165 206.11H209.155Z" fill="#000"/>
+          <path d="M348.145 366.63C361.125 362.62 374.355 358.6 388.145 359.63C384.045 316.61 404.765 273.4 441.225 250.22C452.125 243.29 465.265 237.12 478.135 235.63C451.795 197.05 424.755 177.33 394.155 170.12C356.225 150.04 344.235 117.23 363.875 132.95C375.525 142.29 392.935 149.07 407.775 150.3C453.525 154.12 465.275 117.36 427.405 91.7498C411.175 80.7798 384.525 73.6199 365.495 80.0199C335.775 90.0299 344.235 117.23 363.875 132.95C567.145 474.66 186.775 323.55 186.775 323.55" fill="#000"/>
+          <path d="M178.145 453.629C187.465 486.499 203.795 518.049 223.325 545.949C229.865 555.289 237.345 565.399 245.145 573.629C253.795 584.019 259.385 588.849 264.145 593.629C271.875 601.369 276.675 607.059 282.145 610.629C286.355 614.979 294.145 620.629 294.145 620.629C303.755 629.409 315.585 636.709 327.145 642.629C304.115 658.549 262.145 674.629 262.145 674.629C244.635 665.069 213.615 639.659 187.145 612.629C179.165 602.459 163.325 581.949 143.295 548.979L127.325 509.439C141.975 488.969 154.835 475.249 164.145 465.639C168.005 461.719 178.145 453.639 178.145 453.639V453.629Z" fill="#000"/>
+        </svg>
+        <!-- Single stroke trace in Claude orange -->
+        <svg style="position:absolute;top:0;left:0;" width="200" height="235" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="
+
+              M 418 0
+              C 554 0 664 110 664 246
+              C 664 382 554 492 418 492
+
+              C 476 494 518 542 520 596
+              C 522 650 500 706 464 742
+              C 442 762 418 780 392 786
+              C 366 792 338 786 314 774
+              C 290 762 270 736 254 710
+              C 238 684 226 650 216 616
+              C 206 582 198 548 188 516
+              C 182 498 174 488 162 486
+
+              C 130 480 85 460 50 432
+              C 15 404 -10 368 -16 328
+              C -22 288 -14 248 -8 216
+              C -2 184 0 152 3 128
+
+              C 40 110 80 112 104 130
+              C 148 156 178 185 209 206
+
+              C 192 220 180 234 172 246
+              C 172 130 282 0 418 0
+              Z
+            
+"
+            fill="none"
+            stroke="#E07228"
+            stroke-width="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <span class="card-label">Trace on guide</span>
+    </div>
+
+    <!-- Clean stroke — no guide -->
+    <div class="card">
+      <svg width="200" height="235" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="
+            M 418 3
+            C 548 3 662 118 662 248
+            C 662 378 548 492 418 492
+
+            C 478 494 520 544 520 598
+            C 520 652 498 708 462 742
+            C 440 762 416 780 390 786
+            C 364 792 336 786 312 774
+            C 288 762 268 736 252 710
+            C 236 684 224 650 214 616
+            C 204 582 196 546 188 512
+            C 183 494 176 488 158 488
+
+            C 126 482 88 460 58 434
+            C 28 408 2 374 -6 336
+            C -14 298 6 258 38 234
+            C 70 210 108 216 135 238
+            C 162 260 168 293 162 322
+            C 156 351 148 382 144 408
+            C 140 428 144 456 156 474
+            C 164 486 174 492 186 492
+
+            C 178 482 172 390 172 248
+            C 172 118 285 3 418 3
+            Z
+          "
+          fill="none"
+          stroke="#E07228"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span class="card-label">Clean stroke</span>
+    </div>
+
+    <!-- Dark bg -->
+    <div class="card card--dark">
+      <svg width="200" height="235" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="
+            M 418 3
+            C 548 3 662 118 662 248
+            C 662 378 548 492 418 492
+
+            C 478 494 520 544 520 598
+            C 520 652 498 708 462 742
+            C 440 762 416 780 390 786
+            C 364 792 336 786 312 774
+            C 288 762 268 736 252 710
+            C 236 684 224 650 214 616
+            C 204 582 196 546 188 512
+            C 183 494 176 488 158 488
+
+            C 126 482 88 460 58 434
+            C 28 408 2 374 -6 336
+            C -14 298 6 258 38 234
+            C 70 210 108 216 135 238
+            C 162 260 168 293 162 322
+            C 156 351 148 382 144 408
+            C 140 428 144 456 156 474
+            C 164 486 174 492 186 492
+
+            C 178 482 172 390 172 248
+            C 172 118 285 3 418 3
+            Z
+          "
+          fill="none"
+          stroke="#E07228"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span class="card-label">On dark</span>
+    </div>
+
+  </div>
+
+  <!-- Small sizes -->
+  <div class="row">
+    <div class="card">
+      <svg width="64" height="75" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 418 0 C 554 0 664 110 664 246 C 664 382 554 492 418 492 C 476 494 518 542 520 596 C 522 650 500 706 464 742 C 442 762 418 780 392 786 C 366 792 338 786 314 774 C 290 762 270 736 254 710 C 238 684 226 650 216 616 C 206 582 198 548 188 516 C 182 498 174 488 162 486 C 130 480 85 460 50 432 C 15 404 -10 368 -16 328 C -22 288 -14 248 -8 216 C -2 184 0 152 3 128 C 40 110 80 112 104 130 C 148 156 178 185 209 206 C 192 220 180 234 172 246 C 172 130 282 0 418 0 Z" fill="none" stroke="#E07228" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="card-label">64px</span>
+    </div>
+    <div class="card">
+      <svg width="40" height="47" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 418 0 C 554 0 664 110 664 246 C 664 382 554 492 418 492 C 476 494 518 542 520 596 C 522 650 500 706 464 742 C 442 762 418 780 392 786 C 366 792 338 786 314 774 C 290 762 270 736 254 710 C 238 684 226 650 216 616 C 206 582 198 548 188 516 C 182 498 174 488 162 486 C 130 480 85 460 50 432 C 15 404 -10 368 -16 328 C -22 288 -14 248 -8 216 C -2 184 0 152 3 128 C 40 110 80 112 104 130 C 148 156 178 185 209 206 C 192 220 180 234 172 246 C 172 130 282 0 418 0 Z" fill="none" stroke="#E07228" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="card-label">40px</span>
+    </div>
+    <div class="card">
+      <svg width="24" height="28" viewBox="-80 0 750 790" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 418 0 C 554 0 664 110 664 246 C 664 382 554 492 418 492 C 476 494 518 542 520 596 C 522 650 500 706 464 742 C 442 762 418 780 392 786 C 366 792 338 786 314 774 C 290 762 270 736 254 710 C 238 684 226 650 216 616 C 206 582 198 548 188 516 C 182 498 174 488 162 486 C 130 480 85 460 50 432 C 15 404 -10 368 -16 328 C -22 288 -14 248 -8 216 C -2 184 0 152 3 128 C 40 110 80 112 104 130 C 148 156 178 185 209 206 C 192 220 180 234 172 246 C 172 130 282 0 418 0 Z" fill="none" stroke="#E07228" stroke-width="112" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="card-label">24px</span>
+    </div>
+  </div>
+
+  <p class="note">
+    One continuous stroke — pen never lifts.<br/>
+    Traces: circle top → right arc → body → wing → left arc → closes.<br/>
+    Color: Claude orange #E07228
+  </p>
+
+</div>
+</body>
+</html>

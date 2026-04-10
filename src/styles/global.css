@@ -207,6 +207,8 @@ p { color: var(--body); }
 .feature-split__check:nth-child(2) svg path { stroke: var(--accent-blue); }
 .feature-split__check:nth-child(3) { color: var(--accent-green); }
 .feature-split__check:nth-child(3) svg path { stroke: var(--accent-green); }
+.feature-split__check:nth-child(4) { color: var(--accent-purple); }
+.feature-split__check:nth-child(4) svg path { stroke: var(--accent-purple); }
 .feature-split__check svg { flex-shrink: 0; }
 
 /* Watch demo link — family.co exact style */

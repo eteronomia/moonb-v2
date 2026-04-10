@@ -1,10 +1,28 @@
 ---
 const links = [
-  { label: 'Services', href: '#services', hasDropdown: true },
+  { label: 'Services', href: '/services', hasDropdown: true },
   { label: 'Work', href: '#work' },
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
+];
+
+const videoServices = [
+  { label: 'Corporate Video', href: '/services/corporate-video-production' },
+  { label: 'Marketing Video', href: '/services/marketing-video-production' },
+  { label: 'Social Media Video', href: '/services/social-media-video-production' },
+  { label: 'Explainer Video', href: '/services/explainer-video-production' },
+  { label: 'Advertising Video', href: '/services/advertising-video-production' },
+  { label: 'Commercial Video', href: '/services/commercial-video-production' },
+];
+
+const designServices = [
+  { label: 'Motion Graphics', href: '/services/motion-graphics' },
+  { label: 'Animation', href: '/services/animation' },
+  { label: 'Graphic Design', href: '/services/graphic-design' },
+  { label: 'Branded Video', href: '/services/branded-video-production' },
+  { label: 'Product Demo Video', href: '/services/product-demo-video-production' },
+  { label: 'Video Series', href: '/services/video-series-video-production' },
 ];
 ---
 
@@ -17,14 +35,34 @@ const links = [
 
     <nav class="nav__links" aria-label="Main navigation">
       {links.map((link) => (
-        <a href={link.href} class="nav__link">
-          {link.label}
-          {link.hasDropdown && (
-            <svg class="nav__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          )}
-        </a>
+        link.hasDropdown ? (
+          <div class="nav__dropdown-wrap">
+            <a href={link.href} class="nav__link">
+              {link.label}
+              <svg class="nav__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="nav__dropdown">
+              <div class="nav__dropdown-inner">
+                <div class="nav__dropdown-col">
+                  <span class="nav__dropdown-label">Video Production</span>
+                  {videoServices.map((s) => (
+                    <a href={s.href} class="nav__dropdown-link">{s.label}</a>
+                  ))}
+                </div>
+                <div class="nav__dropdown-col">
+                  <span class="nav__dropdown-label">Design & Motion</span>
+                  {designServices.map((s) => (
+                    <a href={s.href} class="nav__dropdown-link">{s.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="nav__link">{link.label}</a>
+        )
       ))}
     </nav>
 
@@ -119,9 +157,76 @@ const links = [
     transition: transform 200ms ease;
   }
 
-  .nav__link:hover .nav__arrow { transform: translateY(1px); }
+  /* Dropdown wrapper */
+  .nav__dropdown-wrap {
+    position: relative;
+  }
 
-  /* CTA — family.co nav: 32px, 500 weight, 15px, beige bg */
+  .nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 12px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 180ms ease;
+  }
+
+  .nav__dropdown-wrap:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav__dropdown-wrap:hover .nav__arrow {
+    transform: rotate(180deg);
+  }
+
+  .nav__dropdown-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    min-width: 420px;
+  }
+
+  .nav__dropdown-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--body-muted);
+    margin-bottom: 12px;
+  }
+
+  .nav__dropdown-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__dropdown-link {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    padding: 6px 0;
+    transition: color 140ms ease;
+  }
+
+  .nav__dropdown-link:hover {
+    color: var(--accent);
+  }
+
+  /* CTA */
   .nav__cta {
     margin-left: auto;
     display: inline-flex;
@@ -213,7 +318,7 @@ const links = [
 </style>
 
 <script>
-  // Nav scroll — grey background on scroll
+  // Nav scroll
   const nav = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {

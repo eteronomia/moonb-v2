@@ -253,9 +253,9 @@ function formatDate(dateStr: string): string {
   /* Each row — 3-column: date (narrow) | title+tags (medium) | excerpt (wide) */
   .blog-listing__link {
     display: grid;
-    grid-template-columns: 130px 1fr 1.4fr;
-    gap: 2rem;
-    padding: 3rem 0;
+    grid-template-columns: 130px 1fr 1.6fr;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
     transition: opacity 160ms ease;
   }
 
@@ -297,12 +297,12 @@ function formatDate(dateStr: string): string {
 
   /* Right column — excerpt */
   .blog-listing__excerpt {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 23px;
-    letter-spacing: -0.13px;
+    line-height: 25px;
+    letter-spacing: -0.15px;
     color: var(--body);
-    padding-top: 4px;
+    padding-top: 2px;
   }
 
   /* Hidden items for filter */

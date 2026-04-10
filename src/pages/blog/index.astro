@@ -133,7 +133,7 @@ function formatDate(dateStr: string): string {
       </div>
 
       <!-- Post list -->
-      <ul class="blog-listing__list" data-reveal data-reveal-delay="1">
+      <ul class="blog-listing__list">
         {posts.map((post) => (
           <li class="blog-listing__item" data-category={post.category}>
             <a href={`/blog/${post.slug}`} class="blog-listing__link">

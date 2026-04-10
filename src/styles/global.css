@@ -335,8 +335,6 @@ p { color: var(--body); }
 .final-cta__inner { max-width: 520px; }
 .final-cta__title { font-size: 44px; font-weight: 500; letter-spacing: -1.35px; line-height: 48px; }
 .final-cta__sub { margin-top: 16px; font-size: 17px; line-height: 26px; color: var(--body); }
-.final-cta__inner .btn { margin-top: 32px; }
-
 /* CTA text link — family.co "Download for iOS →" style */
 .cta-link {
   display: inline-flex;

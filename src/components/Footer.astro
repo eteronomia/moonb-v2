@@ -9,20 +9,43 @@ const columns = [
   {
     title: 'Services',
     links: [
-      { label: 'Video Production', href: '/services/video-production' },
+      { label: 'Corporate Video', href: '/services/corporate-video-production' },
+      { label: 'Marketing Video', href: '/services/marketing-video-production' },
+      { label: 'Social Media Video', href: '/services/social-media-video-production' },
+      { label: 'Branded Content', href: '/services/branded-content-production' },
+      { label: 'Explainer Videos', href: '/services/explainer-video-production' },
+      { label: 'Product Demos', href: '/services/product-demo-video-production' },
       { label: 'Motion Graphics', href: '/services/motion-graphics' },
       { label: 'Graphic Design', href: '/services/graphic-design' },
       { label: 'Animation', href: '/services/animation' },
+      { label: 'Commercial Video', href: '/services/commercial-video-production' },
+      { label: 'Video Editing', href: '/services/video-editing' },
+      { label: 'Advertising Video', href: '/services/advertising-video-production' },
+    ],
+  },
+  {
+    title: 'Industries',
+    links: [
+      { label: 'E-commerce', href: '/industries/ecommerce-video-production' },
+      { label: 'SaaS & Tech', href: '/industries/saas-video-production' },
+      { label: 'Financial Services', href: '/industries/financial-video-production' },
+      { label: 'Healthcare', href: '/industries/healthcare-video-production' },
+      { label: 'Fintech', href: '/industries/fintech-video-production' },
+      { label: 'Pharma', href: '/industries/pharma-video-production' },
+      { label: 'Manufacturing', href: '/industries/manufacturing-video-production' },
+      { label: 'Blockchain', href: '/industries/blockchain-video-production' },
+      { label: 'Startup', href: '/industries/startup-video-production' },
+      { label: 'E-Learning', href: '/industries/e-learning-video-production' },
+      { label: 'Nonprofit', href: '/industries/nonprofit-video-production' },
+      { label: 'Automotive', href: '/industries/automotive-video-production' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'How it works', href: '#how-it-works' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Blog', href: '/blog' },
-      { label: 'FAQs', href: '#faq' },
-      { label: 'Press Kit', href: '/press' },
+      { label: 'FAQs', href: '/#faq' },
     ],
   },
   {
@@ -30,6 +53,7 @@ const columns = [
     links: [
       { label: 'Contact', href: 'mailto:hello@moonb.io' },
       { label: 'X (Twitter)', href: 'https://x.com/moonb_creative' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/moonb-creative/' },
       { label: 'Legal', href: '/legal' },
     ],
   },
@@ -113,10 +137,10 @@ const columns = [
     justify-content: space-between;
   }
 
-  /* Left side: logo + 3 columns */
+  /* Left side: logo + 4 columns */
   .footer__left {
     display: flex;
-    gap: 60px;
+    gap: 48px;
   }
 
   .footer__logo {
@@ -139,7 +163,7 @@ const columns = [
   }
 
   .footer__col-link {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: rgba(34, 34, 34, 0.4);
     transition: color 140ms ease;

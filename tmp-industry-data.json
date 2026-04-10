@@ -1,0 +1,842 @@
+{
+  "ecommerce-video-production": {
+    "title": "Ecommerce Video Production",
+    "heroDescription": "Ecommerce brands live and die by content velocity. Product launches, seasonal campaigns, A/B-tested ad creative, and product page videos all compete for production capacity, and Moonb produces ecommerce video at the volume your growth team needs.",
+    "serviceTypes": [
+      {
+        "title": "Product Showcase and Feature Highlight Videos",
+        "desc": "Demonstration videos highlighting product capabilities and features."
+      },
+      {
+        "title": "Social Media Ads",
+        "desc": "Video content optimized for Meta, TikTok, and Instagram platforms."
+      },
+      {
+        "title": "Lifestyle and Brand Storytelling Content",
+        "desc": "Videos that position products within customer lifestyles and brand narratives."
+      },
+      {
+        "title": "Unboxing and Product-in-Use Demonstrations",
+        "desc": "Content showing products being unboxed and used in practical contexts."
+      },
+      {
+        "title": "Seasonal Campaign and Promotional Videos",
+        "desc": "Time-sensitive content aligned with seasonal offerings and promotions."
+      },
+      {
+        "title": "User-Generated Style Content",
+        "desc": "Organic-style videos designed to enhance natural reach and engagement."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How do you approach video for ecommerce brands with seasonal product lines?",
+        "a": "Your team establishes production templates and visual frameworks that can be rapidly adapted for new seasonal collections. When new products arrive, the existing template system means fresh video content can be produced efficiently, keeping your product pages updated and your marketing assets aligned with current inventory."
+      },
+      {
+        "q": "Can video support ecommerce email marketing and retargeting?",
+        "a": "Yes. Product video clips in abandoned cart emails, post-purchase follow-ups, and retargeting ads significantly improve engagement and recovery rates. Your team produces short, compelling product clips optimized for email embedding and ad placements that remind shoppers why they were interested in the first place."
+      },
+      {
+        "q": "How does video reduce ecommerce return rates?",
+        "a": "Product videos that accurately demonstrate size, color, texture, functionality, and use cases set realistic expectations that static images often cannot. Customers who watch product video before purchasing are more confident in their selection and less likely to be surprised by what arrives, which directly reduces return rates."
+      },
+      {
+        "q": "Can product videos be used across marketplace platforms like Amazon?",
+        "a": "Yes. Your team produces video that meets the technical specifications and content guidelines of major marketplace platforms. This includes format requirements, duration limits, and content restrictions specific to each platform. Having marketplace-compliant video gives your listings a significant competitive advantage."
+      },
+      {
+        "q": "How do you optimize ecommerce video for mobile shoppers?",
+        "a": "Your team produces video with mobile-first viewing in mind: vertical and square aspect ratios, large text overlays readable on small screens, compelling visuals that work without audio, and optimized file sizes for fast loading. Since the majority of ecommerce browsing happens on mobile devices, this is standard practice for every production."
+      },
+      {
+        "q": "Can you produce video at scale for large product catalogs?",
+        "a": "Yes. Your team develops templated production workflows that maintain quality while increasing throughput. After establishing the visual style and format for your product videos, they can produce content for dozens or hundreds of SKUs using systematic production processes that keep per-unit production efficient."
+      },
+      {
+        "q": "What types of ecommerce video perform best?",
+        "a": "Product demonstration videos, lifestyle content showing products in use, and unboxing or feature highlight clips drive the strongest results. For higher-value items, comparison videos and detailed walkthroughs also perform well. Your team helps you prioritize formats based on your product category and average order value."
+      },
+      {
+        "q": "How does product video impact ecommerce conversion rates?",
+        "a": "Product pages with video consistently see higher conversion rates compared to those with static images alone. Video lets shoppers see products in context, understand features through demonstration, and build confidence in their purchase decision. The improvement is especially significant for products that are difficult to evaluate from photos alone."
+      }
+    ],
+    "testimonial": {
+      "quote": "The ability to quickly understand and adapt to the company branding was impressive.",
+      "name": "Diane Brizzle",
+      "role": "Director of Outreach",
+      "company": "Brainfuse"
+    }
+  },
+  "manufacturing-video-production": {
+    "title": "Manufacturing Video Production",
+    "heroDescription": "Manufacturing companies need video that communicates complex processes, meets safety standards, supports trade show presence, and trains workforces across global facilities.",
+    "serviceTypes": [
+      {
+        "title": "Safety Training and OSHA-Aligned Compliance Videos",
+        "desc": "Video content designed to meet occupational safety standards and regulatory requirements for manufacturing environments."
+      },
+      {
+        "title": "Process Animations and Assembly Sequence Content",
+        "desc": "Visual demonstrations showing how manufacturing processes work, including assembly sequences and equipment operations."
+      },
+      {
+        "title": "Trade Show and Exhibition Display Assets",
+        "desc": "Video content specifically created for use at industry events and trade shows to capture attention and communicate capabilities."
+      },
+      {
+        "title": "Product Specification and Capability Showcases",
+        "desc": "Videos highlighting product features, technical specifications, and manufacturing capabilities to prospects and clients."
+      },
+      {
+        "title": "Facility Tours and Operations Overview Videos",
+        "desc": "Virtual walkthroughs and comprehensive overviews of manufacturing operations for remote stakeholders and prospective clients."
+      },
+      {
+        "title": "Equipment Operation and Maintenance Guides",
+        "desc": "Instructional videos demonstrating proper equipment use and maintenance procedures for workforce training."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can you produce video content from CAD files and technical drawings?",
+        "a": "Yes. Your team can transform CAD models, engineering drawings, and technical specifications into polished 3D animations that reveal product functionality, assembly processes, and internal mechanisms. This approach produces visuals that are more detailed and controllable than physical filming and can show perspectives that are impossible to capture on camera."
+      },
+      {
+        "q": "How does video support trade show and exhibition marketing?",
+        "a": "Your team produces booth display videos, product demonstration loops, and presentation content designed specifically for the trade show environment. These assets capture attention on the show floor, communicate capabilities to booth visitors, and provide follow-up content that your sales team can share with leads after the event."
+      },
+      {
+        "q": "Can manufacturing video help with workforce training and safety?",
+        "a": "Yes. Video-based safety training delivers consistent instruction to every employee regardless of shift, location, or trainer availability. Your team produces procedure walkthroughs, hazard awareness content, and equipment operation guides that reduce workplace incidents by ensuring every worker receives the same high-quality training."
+      },
+      {
+        "q": "How do you handle proprietary or confidential manufacturing processes?",
+        "a": "Your team operates under strict confidentiality agreements and only shows what you approve for public or client-facing use. For internal training content, access controls ensure that sensitive process documentation is only viewable by authorized personnel. Your team never shares or reuses proprietary content across clients."
+      },
+      {
+        "q": "Can video support our manufacturing sales process?",
+        "a": "Yes. Video is particularly valuable in manufacturing sales because it lets you demonstrate capabilities, quality standards, and production processes to prospects who cannot visit your facility in person. Your team produces virtual facility tours, capability showcases, and product demonstration content that your sales team can use in outreach and presentations."
+      },
+      {
+        "q": "What types of manufacturing video drive the most business impact?",
+        "a": "Product demonstration videos that show your capabilities in action, facility overview content for prospective clients, and safety training videos for your workforce consistently deliver the highest returns. Trade show and exhibition content also performs well, as it extends the reach of your physical presence at industry events."
+      },
+      {
+        "q": "How do you visualize complex industrial processes in video?",
+        "a": "Your team uses 3D animation and motion graphics to break down multi-step manufacturing processes into clear, sequential visual narratives. Cutaway views, exploded diagrams, and process flow animations make it possible to show how machinery works, how materials transform, and how quality control is maintained at each stage."
+      },
+      {
+        "q": "Can you produce manufacturing videos without visiting our facility?",
+        "a": "Yes. Your team works with photos, CAD files, technical drawings, and product samples you provide. For process visualization and product demonstration, animation is the ideal medium because it can show internal mechanisms, cross-sections, and workflows that would be impossible to capture otherwise."
+      }
+    ],
+    "testimonial": {
+      "quote": "This was the best experience we have had with a large project like this.",
+      "name": "Josh Kirshman",
+      "role": "Director of Marketing and Digital",
+      "company": "United Way"
+    }
+  },
+  "blockchain-video-production": {
+    "title": "Blockchain & Web3 Video Production",
+    "heroDescription": "Blockchain and Web3 companies face the hardest communication challenge in technology: explaining decentralized systems to audiences who are not yet familiar with the underlying concepts, making clear and engaging video content essential for adoption.",
+    "serviceTypes": [
+      {
+        "title": "Protocol Explainers and Mechanism Visualizations",
+        "desc": "Visual breakdowns of blockchain protocols and how decentralized mechanisms work."
+      },
+      {
+        "title": "DeFi Product Walkthroughs and User Guides",
+        "desc": "Step-by-step video guides for decentralized finance products and platforms."
+      },
+      {
+        "title": "NFT and Digital Collectible Showcase Content",
+        "desc": "Videos showcasing NFT collections and digital collectible projects."
+      },
+      {
+        "title": "Tokenomics and Economic Model Animations",
+        "desc": "Animated visualizations of token distribution, vesting schedules, and economic models."
+      },
+      {
+        "title": "Community Governance and DAO Explainers",
+        "desc": "Educational content explaining decentralized governance structures and DAO participation."
+      },
+      {
+        "title": "Developer Onboarding and Integration Tutorials",
+        "desc": "Technical tutorial content helping developers build on blockchain platforms."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can you produce developer onboarding content for blockchain platforms?",
+        "a": "Yes. Your team produces integration tutorials, SDK walkthroughs, and API documentation videos that help developers build on your platform. Developer-facing content uses precise technical language and shows actual code examples and implementation workflows rather than high-level marketing abstractions."
+      },
+      {
+        "q": "How do you visualize tokenomics and economic models?",
+        "a": "Your team creates animated flow diagrams that show token distribution, vesting schedules, supply mechanics, and incentive structures in visual formats that are immediately understandable. These visualizations turn dense numerical data into clear visual narratives that both investors and community members can follow."
+      },
+      {
+        "q": "Can video support blockchain project fundraising and investor relations?",
+        "a": "Yes. Your team produces pitch videos, tokenomics visualizations, and ecosystem overview content designed for institutional and retail investors. These assets communicate your project's technology, market opportunity, and team credibility in a format that complements traditional pitch materials."
+      },
+      {
+        "q": "How do you build credibility through blockchain video in a trust-sensitive industry?",
+        "a": "Professional, clear video content signals that your project invests in communication quality and takes user education seriously. Your team produces content that is transparent about how your technology works, avoids hype-driven language, and focuses on demonstrable utility rather than speculative promises."
+      },
+      {
+        "q": "What types of blockchain video drive the most community engagement?",
+        "a": "Protocol explainers that help community members understand how your technology works, governance update videos that keep token holders informed, and ecosystem partnership announcements consistently drive the highest engagement. Content that makes your community feel informed and included builds the loyalty that sustains long-term adoption."
+      },
+      {
+        "q": "How do you handle the fast pace of change in the blockchain industry?",
+        "a": "Your dedicated team stays current with your protocol updates and the broader Web3 landscape through ongoing engagement with your project. When market conditions shift or your project evolves, they produce updated content because they already have full context of your technology, messaging, and visual assets."
+      },
+      {
+        "q": "Can you produce content for both crypto-native and mainstream audiences?",
+        "a": "Yes. Your team adjusts the technical depth, terminology, and visual complexity based on the target audience. Content for crypto-native communities uses industry-standard terminology and assumes baseline knowledge. Content for mainstream audiences starts from first principles and builds understanding progressively without assuming prior familiarity."
+      },
+      {
+        "q": "How do you simplify blockchain concepts for mainstream audiences?",
+        "a": "Your team uses visual metaphors, step-by-step process animations, and real-world analogies to translate abstract technical concepts into intuitive visual narratives. Rather than explaining what a smart contract is in technical terms, they show what it does through animated scenarios that audiences can immediately understand."
+      }
+    ],
+    "testimonial": {
+      "quote": "They did a great job with our brand even though it is in the early stages.",
+      "name": "Sara Jayne Cops",
+      "role": "Marketing Technology Lead",
+      "company": "Livelife"
+    }
+  },
+  "startup-video-production": {
+    "title": "Startup Video Production",
+    "heroDescription": "Startups need video at every stage: pitch decks that win funding, explainers that acquire users, product demos that convert prospects, and content that builds brand awareness, all without traditional agency overhead.",
+    "serviceTypes": [
+      {
+        "title": "Pitch and Fundraising Videos",
+        "desc": "Video content for investor presentations and fundraising rounds."
+      },
+      {
+        "title": "Product Explainers",
+        "desc": "Explainer videos that convert landing page visitors into users."
+      },
+      {
+        "title": "Demo Videos for Sales",
+        "desc": "Demo videos for sales conversations and outbound prospecting."
+      },
+      {
+        "title": "Launch Content",
+        "desc": "Launch content for Product Hunt and press outreach."
+      },
+      {
+        "title": "Social Proof Videos",
+        "desc": "Social proof videos with customer testimonials."
+      },
+      {
+        "title": "Recruiting and Culture Content",
+        "desc": "Recruiting and culture content to attract talent."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can startup video content scale from seed stage through Series B and beyond?",
+        "a": "Yes. Your team evolves with your company. Seed-stage content focuses on vision and product-market fit. Series A content emphasizes traction, growth metrics, and competitive differentiation. Series B and beyond shifts toward market leadership, enterprise credibility, and scaled marketing programs. Your team adjusts the production approach to match your maturity level."
+      },
+      {
+        "q": "How do you handle video production for pivots or major product changes?",
+        "a": "Your dedicated team's deep knowledge of your brand and product means they can adapt to pivots without starting from scratch. Existing messaging frameworks and visual assets are updated to reflect the new direction, and your team produces refreshed content that communicates the change clearly to your audience."
+      },
+      {
+        "q": "Can video support Product Hunt launches and press outreach?",
+        "a": "Yes. Launch videos are critical for Product Hunt success and media coverage. Your team produces attention-grabbing product demos and announcement videos optimized for launch platforms. These assets give journalists and early adopters the visual material they need to understand and share your product with their audiences."
+      },
+      {
+        "q": "How does video support startup hiring and employer brand?",
+        "a": "Startups compete for talent against larger, better-known companies. Video that showcases your mission, culture, team, and the problems you are solving helps candidates understand why your startup is worth joining. Your team produces recruitment content that communicates the energy and opportunity that makes startups attractive workplaces."
+      },
+      {
+        "q": "What video content should a startup prioritize first?",
+        "a": "Start with a core product explainer for your website and a short product demo for sales conversations. These two assets address the most immediate business needs: converting website visitors and supporting your sales team. From there, expand into social content, customer testimonials, and thought leadership based on where your growth priorities lie."
+      },
+      {
+        "q": "How do you work with startups that are still iterating on their product?",
+        "a": "Your team is built for iteration. Early-stage videos are produced with flexibility in mind, using visual approaches that can be updated as your product evolves. As your product matures and your messaging solidifies, your team refines the content accordingly. The continuous production model means updates are efficient and low-friction."
+      },
+      {
+        "q": "Can video help with fundraising and investor communications?",
+        "a": "Yes. A well-produced pitch video or product demo can communicate your vision and traction more effectively than a slide deck alone. Investors increasingly expect video content in fundraising materials, and a polished product demo demonstrates professionalism and market readiness that builds investor confidence."
+      },
+      {
+        "q": "When should a startup invest in professional video production?",
+        "a": "The right time is when you have product-market fit and need to scale your go-to-market efforts. Before that point, founder-led content works fine. Once you are actively acquiring customers through marketing and sales channels, professional video significantly improves conversion rates at every funnel stage, from awareness to close."
+      }
+    ],
+    "testimonial": {
+      "quote": "They did a great job with our brand even though it is in the early stages.",
+      "name": "Sara Jayne Cops",
+      "role": "Marketing Technology Lead",
+      "company": "Livelife"
+    }
+  },
+  "fintech-video-production": {
+    "title": "Fintech Video Production",
+    "heroDescription": "Fintech products are inherently complex: payment infrastructure, lending platforms, wealth management tools, and blockchain applications all require clear, accurate video content that builds user trust and simplifies complexity.",
+    "serviceTypes": [
+      {
+        "title": "Product Explainers for Apps, Platforms, and APIs",
+        "desc": "Detailed video explainers for fintech applications, platforms, and developer APIs."
+      },
+      {
+        "title": "User Onboarding and Activation Sequences",
+        "desc": "Sequential video guides for new user onboarding and feature activation."
+      },
+      {
+        "title": "Regulatory-Aware Marketing and Promotional Content",
+        "desc": "Marketing videos produced with awareness of financial regulatory requirements."
+      },
+      {
+        "title": "Investor Relations and Fundraising Videos",
+        "desc": "Video content for investor communications and fundraising presentations."
+      },
+      {
+        "title": "Financial Education Content for End Users",
+        "desc": "Educational videos helping end users understand financial concepts and products."
+      },
+      {
+        "title": "B2B Sales Enablement for Enterprise Fintech Solutions",
+        "desc": "Sales support videos for enterprise fintech sales cycles and stakeholder engagement."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can video support fintech B2B sales cycles?",
+        "a": "Yes. B2B fintech sales cycles are long and involve multiple stakeholders. Your team produces leave-behind demos, integration architecture visualizations, and ROI-focused content that sales teams can share at different stages. These assets help your champions sell internally to stakeholders who may never join a live demo call."
+      },
+      {
+        "q": "How do you handle fintech video for multi-product platforms?",
+        "a": "Your team creates a unified visual system that ties multiple products together under your brand umbrella while giving each product its own distinct messaging and visual treatment. This ensures users can navigate between products without confusion while each product video speaks directly to its specific audience's needs."
+      },
+      {
+        "q": "Can fintech video address regulatory concerns proactively?",
+        "a": "Yes. Your team produces educational content that proactively addresses common regulatory questions and builds confidence in your product's compliance posture. This is especially valuable for fintech products operating in categories where regulatory uncertainty creates hesitation among potential users."
+      },
+      {
+        "q": "How do you produce fintech content that builds user trust?",
+        "a": "Trust is the foundation of every financial relationship. Your team produces content that demonstrates security, transparency, and expertise: clear explanations of how your product protects user data, visual walkthroughs that demystify complex processes, and professional production quality that signals institutional credibility."
+      },
+      {
+        "q": "How does video support fintech user onboarding and activation?",
+        "a": "Onboarding video sequences guide new users through account setup, feature discovery, and first-use milestones in a format that is more engaging and easier to follow than text-based help documentation. Your team produces step-by-step walkthroughs that reduce support tickets, improve activation rates, and get users to their first moment of value sooner."
+      },
+      {
+        "q": "Can you produce video for both consumer and enterprise fintech products?",
+        "a": "Yes. Consumer fintech video focuses on simplicity, emotional benefit, and ease of use. Enterprise fintech content emphasizes technical capability, integration architecture, and business outcomes. Your team adjusts the visual complexity, pacing, and messaging for each audience while maintaining your core brand identity across both."
+      },
+      {
+        "q": "How do you make abstract financial technology tangible in video?",
+        "a": "Your team uses animated process flows, user journey visualizations, and before-and-after scenarios to show how your fintech product improves real financial workflows. Rather than explaining payment rails or lending algorithms in abstract terms, they visualize the actual user experience: what a customer sees, does, and gains."
+      },
+      {
+        "q": "What types of fintech video content generate the most qualified leads?",
+        "a": "Product explainer videos placed on landing pages and feature walkthrough content used in sales outreach consistently drive the highest-quality leads for fintech companies. Prospects who watch an explainer before booking a demo arrive with a stronger understanding of the product, which shortens the sales cycle and improves close rates."
+      }
+    ],
+    "testimonial": {
+      "quote": "Moonb's quick responses and quality work in a very short amount of time were impressive.",
+      "name": "Michael Boyer",
+      "role": "Marketing Manager",
+      "company": "Fortis"
+    }
+  },
+  "pharma-video-production": {
+    "title": "Pharmaceutical Video Production",
+    "heroDescription": "Pharmaceutical companies need video content that meets strict regulatory standards while remaining engaging and informative. From mechanism-of-action animations to patient education materials, every piece of pharma content requires accuracy, compliance, and production quality at enterprise scale.",
+    "serviceTypes": [
+      {
+        "title": "Mechanism of Action (MOA) Animations for HCPs",
+        "desc": "Detailed molecular and pharmacological animations for healthcare professional audiences."
+      },
+      {
+        "title": "Patient Education and Treatment Awareness Videos",
+        "desc": "Accessible educational content helping patients understand treatments and conditions."
+      },
+      {
+        "title": "Sales Representative Training and Detail Aids",
+        "desc": "Training modules combining scientific education with practical selling guidance for field representatives."
+      },
+      {
+        "title": "KOL Interview and Advisory Board Content",
+        "desc": "Key opinion leader interview content and advisory board meeting documentation."
+      },
+      {
+        "title": "Conference and Medical Meeting Presentations",
+        "desc": "Video content for medical conferences and professional meeting presentations."
+      },
+      {
+        "title": "Disease State Awareness Campaign Assets",
+        "desc": "Campaign videos raising awareness about disease states and treatment options."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can you produce patient-facing content that improves treatment adherence?",
+        "a": "Yes. Patient adherence videos that explain why a treatment works, what to expect during the course of therapy, and how to manage side effects have been shown to improve compliance. Your team produces this content with empathy and clarity, helping patients feel informed and empowered rather than overwhelmed."
+      },
+      {
+        "q": "How do you ensure pharma video content stays current with evolving clinical data?",
+        "a": "Your dedicated team maintains version-controlled production files for every asset. When new clinical data emerges, updated prescribing information is released, or new indications are approved, your team can update existing content to reflect the latest data without rebuilding from scratch."
+      },
+      {
+        "q": "Can pharma video support key opinion leader (KOL) engagement programs?",
+        "a": "Yes. Your team produces KOL interview content, advisory board meeting summaries, and speaker training materials that support your medical affairs team's engagement strategy. These assets are produced with awareness of the promotional vs. non-promotional boundaries that govern KOL interactions."
+      },
+      {
+        "q": "How do you handle fair balance requirements in pharma video?",
+        "a": "Your team integrates fair balance into the creative structure from the scripting stage rather than appending it as a legal afterthought. Risk information, contraindications, and required disclosures are woven into the narrative and visual design so they meet regulatory requirements while maintaining viewer engagement."
+      },
+      {
+        "q": "What role does video play in pharmaceutical sales representative training?",
+        "a": "Video training content helps sales representatives understand complex mechanisms of action, clinical data, competitive positioning, and compliant messaging. Your team produces training modules that combine scientific education with practical selling guidance, ensuring representatives can communicate product value accurately and compliantly in field conversations."
+      },
+      {
+        "q": "How do you manage pharma video production across multiple therapeutic areas?",
+        "a": "Your dedicated team develops expertise in each therapeutic area your organization covers. They maintain separate reference libraries, terminology guides, and visual style approaches for each area. This specialized knowledge means your cardiology content is produced with the same depth as your oncology content, without cross-contamination of messaging or visual approach."
+      },
+      {
+        "q": "Can pharma video support clinical trial recruitment?",
+        "a": "Yes. Recruitment videos that explain the trial purpose, process, and participant experience in accessible language help attract and retain qualified participants. Your team produces this content with sensitivity to the concerns prospective participants may have, using clear visual explanations that demystify the trial experience."
+      },
+      {
+        "q": "How do you visualize mechanism-of-action content for different audiences?",
+        "a": "Your team produces MOA animations at multiple levels of scientific detail. HCP-facing versions include molecular-level precision with accurate receptor interactions and pharmacological pathways. Patient-facing versions use simplified visual metaphors that communicate how a treatment works without requiring scientific background. Both versions are medically accurate, just at different levels of complexity."
+      }
+    ],
+    "testimonial": {
+      "quote": "They've delivered above and beyond.",
+      "name": "Marius Godo",
+      "role": "Digital Marketing & Content Specialist",
+      "company": "Gnosis by Lesaffre"
+    }
+  },
+  "saas-video-production": {
+    "title": "SaaS Video Production",
+    "heroDescription": "SaaS companies ship fast. New features, UI changes, and integrations create a constant need for video content that keeps pace with your engineering team, so your marketing, sales, and customer success teams always have current assets.",
+    "serviceTypes": [
+      {
+        "title": "Product Explainers and Feature Walkthroughs",
+        "desc": "Detailed walkthrough content demonstrating product capabilities and new features to users."
+      },
+      {
+        "title": "Onboarding and Activation Video Sequences",
+        "desc": "Sequential video guides designed to help users achieve first moments of value quickly."
+      },
+      {
+        "title": "Sales Enablement Demos and Leave-Behinds",
+        "desc": "Video assets supporting sales conversations and enabling representatives to share with prospects offline."
+      },
+      {
+        "title": "Feature Launch Announcements and Release Content",
+        "desc": "Announcement videos introducing new product features and releases to existing and prospective users."
+      },
+      {
+        "title": "Customer Testimonials and Case Study Videos",
+        "desc": "Videos featuring customer success stories and real-world usage examples demonstrating ROI."
+      },
+      {
+        "title": "Webinar and Thought Leadership Content",
+        "desc": "Educational and expertise-focused video content positioning the company as industry thought leaders."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What role does video play in SaaS customer retention?",
+        "a": "Video content that educates customers on advanced features, showcases new releases, and shares best practices from other customers directly reduces churn. Your team produces ongoing customer communication content that keeps users engaged, informed, and continuously discovering new value in your product."
+      },
+      {
+        "q": "How do you approach video for SaaS companies targeting multiple verticals?",
+        "a": "Your team produces vertical-specific versions of your core content, adjusting terminology, use case examples, and industry context for each target market. A healthcare SaaS demo looks different from a retail SaaS demo, even when the underlying product is the same. This segmentation makes your content feel tailored rather than generic."
+      },
+      {
+        "q": "Can video content support SaaS product-led growth strategies?",
+        "a": "Yes. Product-led growth depends on users discovering value on their own. Your team produces in-app guidance videos, feature discovery content, and upgrade-trigger tutorials that help free users experience premium features. This self-serve education model supports the viral and expansion loops that drive PLG revenue."
+      },
+      {
+        "q": "How does video support SaaS sales enablement?",
+        "a": "Your team produces leave-behind demos, competitive comparison videos, and use-case-specific product walkthroughs that sales representatives can share with prospects at different stages of the sales cycle. These assets let your sales team scale their best product demonstrations without requiring a live call for every prospect interaction."
+      },
+      {
+        "q": "How do you produce video for SaaS products with multiple user roles?",
+        "a": "Your team creates role-specific content paths: admin setup guides, end-user tutorials, and manager dashboards each get their own video content tailored to that role's interface and use case. This ensures each user sees content relevant to their experience rather than a generic overview that serves no one well."
+      },
+      {
+        "q": "Can video reduce the load on your customer support team?",
+        "a": "Yes. Help center videos, feature tutorials, and troubleshooting walkthroughs deflect a significant volume of support tickets by giving users self-serve answers in a format that is easier to follow than text documentation. Your team identifies the most common support topics and produces video content that addresses them proactively."
+      },
+      {
+        "q": "What SaaS video formats have the highest impact on trial-to-paid conversion?",
+        "a": "In-app onboarding videos that guide users to their first moment of value, feature-specific tutorials that address common drop-off points, and customer success story videos that demonstrate real-world ROI consistently have the strongest impact on converting trial users to paying customers."
+      },
+      {
+        "q": "How do you handle video updates when the product UI changes?",
+        "a": "Your dedicated team uses a modular production approach where UI screen recordings and interface animations are kept as separate layers from the narrative and branding elements. When your product ships a UI update, only the affected screen sections need to be re-captured and swapped in, rather than re-producing the entire video from scratch."
+      }
+    ],
+    "testimonial": {
+      "quote": "We were so impressed that after starting the first video we asked them for two more.",
+      "name": "Danila De Stefano",
+      "role": "CEO",
+      "company": "Unobravo"
+    }
+  },
+  "e-learning-video-production": {
+    "title": "E-Learning Video Production",
+    "heroDescription": "E-learning platforms need to produce course content at volume while maintaining consistent production quality across hundreds or thousands of modules, giving edtech companies and enterprise training organizations the content velocity required to scale their libraries.",
+    "serviceTypes": [
+      {
+        "title": "Animated Course Modules and Lecture Content",
+        "desc": "Full animated course modules and lecture videos for e-learning platforms."
+      },
+      {
+        "title": "Interactive Tutorials and Step-by-Step Walkthroughs",
+        "desc": "Hands-on tutorial content guiding learners through processes step by step."
+      },
+      {
+        "title": "Concept Explainer Animations for Complex Topics",
+        "desc": "Animated explainers breaking down difficult concepts into understandable visual narratives."
+      },
+      {
+        "title": "Microlearning Clips Under Three Minutes",
+        "desc": "Short-form learning content optimized for attention spans and knowledge retention."
+      },
+      {
+        "title": "Assessment Companion and Quiz Support Videos",
+        "desc": "Video content supporting assessments, quizzes, and knowledge checks."
+      },
+      {
+        "title": "Certification Program Video Material",
+        "desc": "Professional video content for certification and credentialing programs."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How do you adapt e-learning content for different learning styles?",
+        "a": "Your team produces content that engages multiple learning modalities: visual animations for spatial learners, narration for auditory learners, text reinforcement for reading-oriented learners, and interactive elements for kinesthetic learners. This multi-modal approach ensures the content is accessible and effective regardless of individual learning preferences."
+      },
+      {
+        "q": "Can e-learning video content be used for employee onboarding?",
+        "a": "Yes. Video-based onboarding programs ensure every new hire receives the same high-quality introduction to your company, culture, processes, and role-specific knowledge. Your team produces onboarding content that is engaging enough to set a positive tone and thorough enough to get new employees productive sooner."
+      },
+      {
+        "q": "How do you ensure consistency across hundreds of e-learning modules?",
+        "a": "Your team develops production templates and style guides at the start that define visual elements, animation patterns, typography, pacing, and narration style. Every module produced follows these standards, so whether a learner is taking their first or fiftieth module, the experience feels cohesive and professional."
+      },
+      {
+        "q": "Can you produce instructor-led course enhancements alongside self-paced content?",
+        "a": "Yes. Your team produces supplementary animations, visual aids, and demonstration videos that instructors can integrate into live teaching sessions. These assets are designed to complement rather than replace the instructor, providing visual support for concepts that are difficult to explain with slides or verbal explanation alone."
+      },
+      {
+        "q": "How do you handle subject matter that requires expert review?",
+        "a": "Your Creative Director builds subject matter expert (SME) review into the production workflow. Scripts and visual concepts are shared with your SMEs before animation begins, and revision rounds include dedicated time for expert feedback. This ensures content accuracy without creating bottlenecks that slow down production."
+      },
+      {
+        "q": "Can you produce content that meets accessibility standards?",
+        "a": "Yes. Your team produces e-learning content with closed captions, audio descriptions, high-contrast visuals, and screen reader-compatible metadata. This ensures your courses meet WCAG accessibility guidelines and are usable by learners with visual, auditory, or cognitive disabilities."
+      },
+      {
+        "q": "How do you maintain learner engagement throughout a course?",
+        "a": "Your team uses varied visual approaches within each module: alternating between animation styles, incorporating interactive elements, and using real-world examples that ground abstract concepts. Pacing is carefully managed with visual breaks between dense information segments. The goal is to make each module feel dynamic rather than repetitive."
+      },
+      {
+        "q": "What is the ideal length for an e-learning video module?",
+        "a": "Research consistently shows that e-learning modules between three and seven minutes deliver the best completion rates and knowledge retention. For complex topics, it is more effective to produce a series of short modules than a single long video. Your team structures content into focused segments that respect learner attention spans."
+      }
+    ],
+    "testimonial": {
+      "quote": "The ability to quickly understand and adapt to the company branding was impressive.",
+      "name": "Diane Brizzle",
+      "role": "Director of Outreach",
+      "company": "Brainfuse"
+    }
+  },
+  "nonprofit-video-production": {
+    "title": "Nonprofit Video Production",
+    "heroDescription": "Nonprofits rely on storytelling to drive donations, recruit volunteers, build awareness, and demonstrate impact, and continuous video production ensures your organization can communicate its mission and inspire action year-round.",
+    "serviceTypes": [
+      {
+        "title": "Fundraising Campaign and Donation Appeal Videos",
+        "desc": "Compelling video content designed to drive donations and support fundraising campaigns."
+      },
+      {
+        "title": "Impact Reporting and Annual Review Content",
+        "desc": "Video reports showcasing organizational impact and annual achievements for stakeholders."
+      },
+      {
+        "title": "Beneficiary Spotlight and Community Stories",
+        "desc": "Story-driven content highlighting the people and communities served by the organization."
+      },
+      {
+        "title": "Awareness and Advocacy Campaign Assets",
+        "desc": "Campaign videos building public awareness and driving engagement on social issues."
+      },
+      {
+        "title": "Volunteer Recruitment and Engagement Videos",
+        "desc": "Content attracting and retaining volunteers by showcasing the volunteer experience and impact."
+      },
+      {
+        "title": "Grant and Proposal Support Content",
+        "desc": "Video content strengthening grant applications and program proposals for funders."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How do you measure the impact of nonprofit video content?",
+        "a": "Beyond standard engagement metrics, your team helps you track mission-specific outcomes: donation conversion rates, volunteer sign-up rates, petition signatures, and audience growth in target demographics. Your Creative Director works with your development and communications teams to connect video performance to organizational impact indicators."
+      },
+      {
+        "q": "Can nonprofit video be used for advocacy and awareness campaigns?",
+        "a": "Yes. Advocacy video is one of the most effective tools for building public awareness and driving policy engagement. Your team produces content that communicates complex social issues in accessible, emotionally resonant ways that motivate viewers to sign petitions, contact representatives, or share the message with their networks."
+      },
+      {
+        "q": "How do you produce video for fundraising galas and events?",
+        "a": "Your team creates event-specific video content: compelling impact reels that inspire giving during live appeals, donor recognition montages, program highlight videos, and live event countdown content. These assets are designed to maximize the emotional impact of your event and drive in-room donation responses."
+      },
+      {
+        "q": "Can video support volunteer recruitment and retention?",
+        "a": "Yes. Volunteer recruitment videos that showcase the experience, community, and impact of volunteering attract higher-quality applicants who stay engaged longer. Your team produces content that communicates both the organizational mission and the personal fulfillment that comes from contributing to it."
+      },
+      {
+        "q": "How do you maximize production value on nonprofit resources?",
+        "a": "Your team maximizes every production by planning for multi-channel distribution from the start. A single production session yields assets for fundraising campaigns, social media, email, events, and website use. This approach ensures your organization gets maximum value from its creative investment without duplicating production effort."
+      },
+      {
+        "q": "Can video help with grant applications and reporting?",
+        "a": "Yes. Video impact reports and program documentation strengthen grant applications by showing funders your work in action. They also make reporting more compelling than text-heavy documents. Your team produces concise impact videos that communicate program outcomes, community engagement, and organizational capacity in a format that funders find persuasive."
+      },
+      {
+        "q": "What types of nonprofit video drive the most donations?",
+        "a": "Impact stories that connect donors to specific outcomes consistently drive the highest donation conversion rates. Videos showing the tangible results of contributions, whether that is a community transformed, an individual empowered, or a program milestone achieved, create the emotional connection that motivates giving far more effectively than statistics alone."
+      },
+      {
+        "q": "How do you tell stories about vulnerable populations responsibly?",
+        "a": "Your team follows ethical storytelling principles that center dignity and agency. Beneficiaries are portrayed as whole people, not just recipients of aid. Your program team guides consent processes, representation decisions, and messaging boundaries. The goal is to inspire support without exploiting the people your organization serves."
+      }
+    ],
+    "testimonial": {
+      "quote": "This was the best experience we have had with a large project like this.",
+      "name": "Josh Kirshman",
+      "role": "Director of Marketing and Digital",
+      "company": "United Way"
+    }
+  },
+  "tech-video-production": {
+    "title": "Tech Video Production",
+    "heroDescription": "Technology companies build products that are powerful but often difficult to explain, and video content that makes complexity accessible is essential for product marketing, sales enablement, and developer education.",
+    "serviceTypes": [
+      {
+        "title": "Product Explainers and Platform Overviews",
+        "desc": "High-level video content explaining tech products and platform capabilities to prospects."
+      },
+      {
+        "title": "Feature Launch and Release Announcement Videos",
+        "desc": "Announcement videos for new features and product releases."
+      },
+      {
+        "title": "Developer Documentation and API Tutorial Content",
+        "desc": "Technical tutorial videos for developer onboarding and API integration."
+      },
+      {
+        "title": "Technical Demos and Integration Walkthroughs",
+        "desc": "In-depth demonstration videos showing technical capabilities and integration workflows."
+      },
+      {
+        "title": "Customer Case Studies and Testimonial Videos",
+        "desc": "Video content featuring customer success stories and real-world implementation examples."
+      },
+      {
+        "title": "Conference and Event Presentation Assets",
+        "desc": "Video assets for tech conferences, events, and speaking engagements."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can you produce thought leadership video content for tech companies?",
+        "a": "Yes. Your team produces industry analysis videos, trend commentary content, and expert perspective pieces that position your leadership team as authoritative voices in your category. This content builds brand credibility and attracts an audience of decision-makers who are evaluating solutions in your space."
+      },
+      {
+        "q": "How do you handle video production for platform and infrastructure products?",
+        "a": "Platform and infrastructure products are inherently abstract. Your team uses architecture diagrams, data flow visualizations, and performance comparison animations to make invisible infrastructure tangible. The goal is to show what the platform does for its users rather than how it works under the hood, unless the audience is technical."
+      },
+      {
+        "q": "Can video support developer community building?",
+        "a": "Yes. Tutorial series, hackathon recap videos, community spotlight content, and conference presentation recordings all contribute to building an engaged developer community around your product. Your team produces content that positions your platform as one that genuinely invests in its developer ecosystem."
+      },
+      {
+        "q": "How do you keep tech video content current as products evolve?",
+        "a": "Your dedicated team retains full context of your product, technology stack, and content library. When updates ship, they know exactly which videos need updating and which remain accurate. This ongoing awareness eliminates the audit process that traditional agencies require before any update work can begin."
+      },
+      {
+        "q": "What role does video play in tech product launches?",
+        "a": "Launch videos generate awareness, demonstrate new capabilities, and give your marketing and sales teams ready-to-distribute assets from day one. Your team produces launch announcement videos, feature deep-dives, migration guides for existing users, and social-optimized clips, all coordinated to ship alongside the product release."
+      },
+      {
+        "q": "How do you balance technical depth with accessibility in product videos?",
+        "a": "Your team produces audience-specific versions from shared production assets. Developer-facing content goes deep on technical implementation details. Business-facing content focuses on outcomes, ROI, and strategic value. Each version speaks directly to its audience's priorities without diluting the message for either group."
+      },
+      {
+        "q": "Can video effectively communicate API and developer documentation?",
+        "a": "Yes. Video tutorials that walk through API endpoints, authentication flows, and integration examples are consistently rated as the most helpful developer resource format. Your team produces documentation videos that complement your written docs, showing the actual implementation process in a way that static code samples cannot."
+      },
+      {
+        "q": "How do you create video content that resonates with technical audiences?",
+        "a": "Technical audiences value precision and substance over polish. Your team produces content that demonstrates genuine product capability, uses accurate terminology, and respects the viewer's expertise. Developer-facing content includes real code examples, architecture diagrams, and integration workflows rather than generic marketing language."
+      }
+    ],
+    "testimonial": {
+      "quote": "They were capable of adapting to fast delivery deadlines.",
+      "name": "Rene Ugarte",
+      "role": "Senior Producer",
+      "company": "MOI Global"
+    }
+  },
+  "financial-video-production": {
+    "title": "Financial Services Video Production",
+    "heroDescription": "Financial services companies operate under some of the strictest communication regulations in any industry, and every piece of marketing content, client communication, and educational video must meet compliance standards while remaining engaging enough to connect with audiences.",
+    "serviceTypes": [
+      {
+        "title": "Client Education and Financial Literacy Videos",
+        "desc": "Educational content explaining financial concepts to clients in accessible language."
+      },
+      {
+        "title": "Product Explainers for Banking, Insurance, and Wealth Management",
+        "desc": "Video content explaining financial products and services across banking, insurance, and wealth management."
+      },
+      {
+        "title": "Compliance-Approved Marketing and Promotional Content",
+        "desc": "Marketing materials produced to meet financial regulatory requirements."
+      },
+      {
+        "title": "Advisor Training and Representative Education Materials",
+        "desc": "Training videos for financial advisors and representatives on products and compliance."
+      },
+      {
+        "title": "Investor Relations and Annual Report Summaries",
+        "desc": "Video content for shareholder and investor communication and reporting."
+      },
+      {
+        "title": "Digital Onboarding and Account Activation Sequences",
+        "desc": "Video content supporting customer digital account setup and activation processes."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can financial video support community reinvestment and ESG communication?",
+        "a": "Yes. Your team produces impact storytelling content that communicates your institution's community involvement, ESG initiatives, and social responsibility commitments. This content serves both regulatory reporting needs and public-facing brand building by demonstrating your institution's positive community impact."
+      },
+      {
+        "q": "How do you produce video for insurance products?",
+        "a": "Insurance products are complex and often misunderstood. Your team produces animated explainers that clarify coverage types, claim processes, and policy benefits in accessible visual language. This content helps prospects make informed decisions and reduces the confusion that often prevents purchase or leads to claim disputes."
+      },
+      {
+        "q": "Can video support digital banking and mobile app adoption?",
+        "a": "Yes. Tutorial videos and feature walkthrough content help customers adopt digital banking tools confidently. Your team produces onboarding sequences, feature discovery videos, and security education content that reduces friction in the digital adoption process and decreases branch and call center dependency."
+      },
+      {
+        "q": "How do you handle video production for wealth management audiences?",
+        "a": "Wealth management audiences expect premium production quality that reflects the level of service they receive. Your team produces content with a sophisticated visual approach, measured pacing, and authoritative tone that resonates with high-net-worth individuals while communicating complex investment concepts with clarity."
+      },
+      {
+        "q": "What types of financial video content work best for client retention?",
+        "a": "Market commentary videos, portfolio update summaries, and financial education content that helps clients understand their investments all strengthen client relationships and reduce churn. Clients who feel informed and connected to their financial institution are significantly less likely to move their accounts to a competitor."
+      },
+      {
+        "q": "How do you produce video for different financial product lines within one institution?",
+        "a": "Your team maintains separate messaging frameworks for each product line, whether that is retail banking, wealth management, insurance, or institutional services, while keeping the overarching brand identity consistent. This means a video about mortgage products and one about retirement planning both feel like they come from the same institution without blurring the product-specific messaging."
+      },
+      {
+        "q": "Can video support financial advisor and representative training?",
+        "a": "Yes. Video training modules help advisors master new products, understand updated compliance requirements, and improve client communication skills. Your team produces scenario-based training content that puts advisors in realistic client situations, building practical skills alongside product knowledge."
+      },
+      {
+        "q": "How does video build trust with financial services clients?",
+        "a": "Video allows financial institutions to humanize their brand by putting real advisors, relationship managers, and thought leaders on screen. Animated explainers that demystify complex products build confidence in prospects who might otherwise be intimidated by financial complexity. The combination of professional production quality and clear communication signals institutional credibility."
+      }
+    ],
+    "testimonial": {
+      "quote": "The workflow was particularly awesome.",
+      "name": "James Pais",
+      "role": "Creative Services Director",
+      "company": "Frame"
+    }
+  },
+  "healthcare-video-production": {
+    "title": "Healthcare Video Production",
+    "heroDescription": "Healthcare organizations need video content that communicates with both clinical accuracy and genuine empathy, covering patient education, provider training, facility marketing, and public health messaging with the care and precision the sector demands.",
+    "serviceTypes": [
+      {
+        "title": "Patient Education and Pre-Procedure Preparation Videos",
+        "desc": "Educational videos helping patients understand conditions, treatments, and what to expect before procedures."
+      },
+      {
+        "title": "Clinical Training and Continuing Education Content",
+        "desc": "Training videos for clinical staff and continuing education programs."
+      },
+      {
+        "title": "Facility Showcase and Virtual Tour Experiences",
+        "desc": "Virtual tours and facility overview videos for prospective patients and stakeholders."
+      },
+      {
+        "title": "Recruitment Videos for Clinical and Administrative Roles",
+        "desc": "Recruitment content showcasing organizational culture and career opportunities."
+      },
+      {
+        "title": "Community Health and Public Awareness Campaigns",
+        "desc": "Public health campaign videos reaching diverse community populations with health information."
+      },
+      {
+        "title": "Internal Communications for Staff and Leadership",
+        "desc": "Internal video content for organizational communications and leadership messaging."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What role does video play in community health education campaigns?",
+        "a": "Video is the most accessible medium for reaching diverse community populations with health information. Your team produces content that works across literacy levels and cultural backgrounds, using visual demonstration and clear narration to communicate preventive care, screening recommendations, and public health initiatives effectively."
+      },
+      {
+        "q": "How do you handle healthcare video in multiple languages?",
+        "a": "Your team produces master versions with localization built into the production architecture. Voiceover scripts are written for natural translation, text elements are kept in editable layers, and culturally sensitive content is flagged during scripting. This makes producing multilingual versions significantly more efficient."
+      },
+      {
+        "q": "Can you produce video content for multiple departments within a large health system?",
+        "a": "Yes. Your team develops a system-wide visual framework that maintains brand consistency, then adapts it for each department's specific audience and messaging needs. Cardiology content looks and feels different from pediatrics, but both are unmistakably part of the same health system's communication ecosystem."
+      },
+      {
+        "q": "How do you balance clinical accuracy with emotional storytelling in patient-facing content?",
+        "a": "Your team treats accuracy and empathy as complementary, not competing, priorities. Clinical facts anchor the content and build trust, while patient-centered storytelling creates emotional connection. The result is content that informs without overwhelming and empathizes without sacrificing medical rigor."
+      },
+      {
+        "q": "Can healthcare video be used for staff recruitment?",
+        "a": "Yes. Recruitment videos that showcase your organization's culture, facilities, and employee experiences are highly effective for attracting clinical and administrative talent. Your team produces content that communicates what makes your workplace distinctive, from mission-driven storytelling to day-in-the-life formats that give candidates a realistic preview."
+      },
+      {
+        "q": "How do you handle video production for telehealth and digital health platforms?",
+        "a": "Your team produces onboarding walkthroughs, feature tutorials, and patient education content designed specifically for digital health interfaces. These videos are optimized for in-app viewing, mobile screens, and low-bandwidth environments to ensure they work wherever patients access your platform."
+      },
+      {
+        "q": "Can healthcare video reduce patient anxiety before procedures?",
+        "a": "Yes. Pre-procedure education videos that walk patients through what to expect, step by step, significantly reduce anxiety and improve compliance with preparation instructions. Your team produces these with a calm, empathetic tone and clear visual explanations that make unfamiliar medical experiences feel more manageable."
+      },
+      {
+        "q": "How do you ensure medical accuracy in healthcare video content?",
+        "a": "Your team works closely with your clinical and medical affairs teams throughout the production process. Scripts are reviewed for medical accuracy before animation begins, and visual representations of procedures, conditions, or treatments are verified against clinical references. This collaborative review process ensures every piece of content meets your organization's standards for medical accuracy."
+      }
+    ],
+    "testimonial": {
+      "quote": "They brought a unique style to video animation.",
+      "name": "Sara Jayne Cops",
+      "role": "Marketing Technology Lead",
+      "company": "Livelife"
+    }
+  }
+}

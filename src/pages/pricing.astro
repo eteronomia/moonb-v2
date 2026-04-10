@@ -2,65 +2,62 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 
-const plan = {
-  name: 'Your Creative Team',
-  tagline: 'One plan, everything included',
-  description: 'A dedicated team of designers, editors, and motion artists that works as part of your brand. Great work, on repeat.',
-  features: [
-    'Dedicated Creative Director',
-    'Dedicated Creative Team',
-    'Design and Video Production',
-    'Multiple Weekly Deliveries',
-    'Weekly Calls',
-    '24/7 Direct Slack or Teams Chat',
-    'Support for Multiple Brands',
-  ],
-  guarantee: 'Not loving it after a week? Get 100% back, no questions asked.',
-};
+/* Real moonb.io copy + Superside layout structure */
 
 const included = [
-  { title: 'Unlimited Requests', desc: 'Submit as many creative briefs as you need. Your team manages the queue.', color: 'orange' },
-  { title: 'Unlimited Revisions', desc: 'We revise until you\'re happy. No revision caps, no change-order fees.', color: 'blue' },
-  { title: 'Full File Ownership', desc: 'You own everything we create. All working files, all IP. It\'s your work.', color: 'green' },
-  { title: 'Cancel Anytime', desc: 'No long-term contracts. Pause or cancel your subscription whenever you want.', color: 'purple' },
+  'Dedicated Creative Director',
+  'Dedicated Creative Team',
+  'Design and Video Production',
+  'Multiple Weekly Deliveries',
+  'Weekly Calls',
+  '24/7 Direct Slack or Teams Chat',
+  'Support for Multiple Brands',
+  'Full File Ownership',
+];
+
+const services = [
+  'Video Production', 'Motion Graphics', 'Graphic Design', 'Animation',
+  'Social Media Content', 'Explainer Videos', 'Brand Identity', 'Presentation Design',
+  'Ad Creative', 'Product Demos', 'Internal & Training Videos', 'Commercial Video',
+];
+
+const logos = [
+  { name: 'Dell', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691db30dda671fbe474b31d3_Dell_Technologies_logo%201.svg' },
+  { name: 'Intel', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691dca52df40749fbcd69aa5_Intel.svg' },
+  { name: 'Toyota', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bef26792b6bec0f6d184_TOYOTA.svg' },
+  { name: 'Microsoft', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579be8830c130e5738402a3_MICROSOFT.svg' },
+  { name: 'Nestlé', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579be9467c7bc3dd79a4a1a_NESTLE.svg' },
+  { name: 'CyberArk', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bcdba5dd52502ff0dedc_CYBERARK.svg' },
+  { name: 'Gnosis', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bcf1769cf9352c288511_GNOSIS.svg' },
+  { name: 'GSK', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bd0d4b4dccecf622b297_GSK.svg' },
+  { name: 'Politico', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bec73f22d633fb4192bb_POLITICO.svg' },
+  { name: 'State Street', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bedfe6e64721668b66ab_STATESTREET.svg' },
 ];
 
 const comparison = [
-  { feature: 'Dedicated team that knows your brand', moonb: true, inhouse: true, agency: false },
-  { feature: 'Predictable monthly cost', moonb: true, inhouse: false, agency: false },
-  { feature: 'No hiring, onboarding, or HR overhead', moonb: true, inhouse: false, agency: true },
-  { feature: 'Video + design + motion in one team', moonb: true, inhouse: false, agency: false },
-  { feature: 'Scale up or down without commitments', moonb: true, inhouse: false, agency: true },
-  { feature: 'Deliveries within 5–10 business days', moonb: true, inhouse: true, agency: false },
-  { feature: 'No per-project quotes or surprise invoices', moonb: true, inhouse: true, agency: false },
-  { feature: 'Cancel anytime', moonb: true, inhouse: false, agency: true },
-];
-
-const stats = [
-  { number: '500+', label: 'Projects delivered' },
-  { number: '95%', label: 'Client retention' },
-  { number: '5–10', label: 'Business days avg. turnaround' },
-  { number: '100%', label: 'Money-back guarantee' },
+  { point: 'Better than hiring in-house', desc: 'No long hiring process. No salaries, benefits, or equipment. Get a full creative team producing from day one.' },
+  { point: 'Beyond agencies & freelancers', desc: 'No unreliable freelancers. No agency markups. Your own dedicated team delivering world-class design and video every week.' },
+  { point: 'Super fast onboarding', desc: 'Be onboarded and briefing your team within the first week. Most clients receive their first deliverable within 5-10 business days.' },
+  { point: 'Quality content creation', desc: 'A team that learns your brand once and gets better with every deliverable. Consistent quality across every touchpoint.' },
 ];
 
 const testimonials = [
-  { quote: 'Moonb has become an essential part of our creative workflow.', name: 'Rene Ugarte', role: 'Senior Producer', company: 'MOI', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif' },
-  { quote: 'Their creative flair and dedication to getting the storytelling style right are impressive.', name: 'Marius Godo', role: 'Content Specialist', company: 'Gnosis', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
-  { quote: 'This was the best experience we have had with a large project like this.', name: 'Josh Kirshman', role: 'Director of Marketing', company: 'Frame', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8fbc31af3dd6d055791_Josh%20Kirshman.avif' },
+  { quote: 'Moonb has become an essential part of our creative workflow. They were capable of adapting to fast delivery deadlines.', name: 'Rene Ugarte', role: 'Senior Producer', company: 'MOI', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif' },
+  { quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.', name: 'Marius Godo', role: 'Content Specialist', company: 'Gnosis', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+  { quote: 'This was the best experience we have had with a large project like this. Highly recommend.', name: 'Josh Kirshman', role: 'Director of Marketing', company: 'Frame', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8fbc31af3dd6d055791_Josh%20Kirshman.avif' },
+  { quote: 'The team is highly creative, talented, and eager to deliver above and beyond expectations.', name: 'Jesse Jankewicz', role: 'Director of Video', company: 'Unobravo', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8619881dbbdd76b062d_Jesse%20Jankewitz.avif' },
 ];
 
 const faqs = [
-  { q: 'How does pricing work?', a: 'Moonb offers a simple monthly subscription. You get a dedicated creative team, unlimited requests, and unlimited revisions for one predictable monthly rate. No per-project billing, no surprise invoices.' },
-  { q: 'Is there a minimum commitment?', a: 'No. You can cancel anytime. We also offer a 100% money-back guarantee for the first week — if you\'re not happy, you get a full refund, no questions asked.' },
-  { q: 'What\'s included in the plan?', a: 'Everything creative: video production, motion graphics, graphic design, animation, and a dedicated Creative Director who manages your projects. You also get weekly calls, 24/7 Slack or Teams access, and support for multiple brands.' },
+  { q: 'How does pricing work?', a: 'Moonb adapts to your needs. Whether you need a long-term creative partner or a single high-impact project, we offer flexible plans with predictable monthly pricing. Request a quote and we\'ll scope a plan that fits.' },
+  { q: 'Is there a minimum commitment?', a: 'No long-term contracts required. You can cancel anytime. We also offer a 100% money-back guarantee for the first week — if you\'re not happy, you get a full refund, no questions asked.' },
+  { q: 'What\'s included?', a: 'Every plan includes a dedicated Creative Director, a dedicated creative team, video and design production, multiple weekly deliveries, weekly calls, 24/7 Slack or Teams access, multi-brand support, and full file ownership.' },
   { q: 'Can I pause my subscription?', a: 'Yes. If you need to take a break, you can pause your subscription and resume when you\'re ready. Your team and brand knowledge are preserved.' },
   { q: 'How fast will I receive deliverables?', a: 'Most deliverables are completed within 5–10 business days, depending on complexity. Your Creative Director manages the timeline and keeps you updated at every stage.' },
-  { q: 'What if I need more output?', a: 'If your needs grow beyond what one team can handle, we can scale your plan to include additional team members or parallel workstreams. Request a quote and we\'ll scope it together.' },
+  { q: 'What if I need a one-off project?', a: 'Moonb works for both ongoing partnerships and single high-impact projects. Request a quote and we\'ll find the right approach for your needs.' },
   { q: 'Who owns the work?', a: 'You do. All working files, source files, and intellectual property are yours. No licensing fees, no usage restrictions.' },
-  { q: 'How is this different from hiring an agency?', a: 'Traditional agencies charge per project, assign whoever is available, and start from scratch every time. Moonb gives you a dedicated team that learns your brand deeply and gets faster with every deliverable. One monthly rate, no scope creep.' },
+  { q: 'How do I get started?', a: 'Request a quote. We\'ll schedule a quick call to understand your needs, scope the right plan, and get your dedicated team assembled. Most clients are onboarded within the first week.' },
 ];
-
-const canonicalURL = new URL('/pricing', 'https://moonb-v2.vercel.app');
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -82,109 +79,82 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout title="Pricing | Moonb" description="One plan, one monthly rate. Dedicated creative team with unlimited requests and revisions. Request a quote.">
+<BaseLayout title="Pricing | Moonb" description="Flexible plans for every business. Dedicated creative team with unlimited requests and revisions. Request a quote.">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
-  <div class="pricing">
-
-    <!-- Breadcrumbs -->
-    <div class="pricing__container">
-      <nav class="pricing__breadcrumbs" aria-label="Breadcrumb" data-reveal>
-        <a href="/">Home</a>
-        <span class="pricing__sep">/</span>
-        <span>Pricing</span>
-      </nav>
-    </div>
+  <div class="pr">
 
     <!-- Hero -->
-    <section class="pricing__hero" data-reveal>
-      <div class="pricing__container">
-        <h1 class="pricing__title">One plan. One monthly rate.<br/>Everything creative.</h1>
-        <p class="pricing__subtitle">No per-project quotes. No surprise invoices. Just a dedicated team producing great work, on repeat.</p>
-      </div>
-    </section>
-
-    <!-- Plan card -->
-    <section class="pricing__plan">
-      <div class="pricing__container">
-        <div class="pricing__card" data-reveal>
-          <div class="pricing__card-header">
-            <span class="pricing__card-name">{plan.name}</span>
-            <span class="pricing__card-tagline">{plan.tagline}</span>
-          </div>
-          <p class="pricing__card-desc">{plan.description}</p>
-          <ul class="pricing__card-features">
-            {plan.features.map((f) => (
-              <li class="pricing__card-feature">
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M5 10L8.5 13.5L15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                {f}
-              </li>
-            ))}
-          </ul>
-          <a href="#" class="btn btn--primary pricing__card-cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote</a>
-          <p class="pricing__card-guarantee">{plan.guarantee}</p>
+    <section class="pr__hero">
+      <div class="pr__container">
+        <h1 class="pr__title" data-reveal>A subscription built to<br/><em>fuel your growth</em></h1>
+        <p class="pr__subtitle" data-reveal data-reveal-delay="1">Whether you need a long-term creative partner or a single high-impact project, Moonb adapts to your needs.</p>
+        <div class="pr__hero-actions" data-reveal data-reveal-delay="2">
+          <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote</a>
         </div>
       </div>
     </section>
 
-    <!-- What's included -->
-    <section class="pricing__included section">
-      <div class="pricing__container">
-        <h2 class="pricing__section-heading" data-reveal>Included with every plan</h2>
-        <div class="pricing__included-grid">
+    <!-- Included in all plans -->
+    <section class="pr__included section">
+      <div class="pr__container">
+        <h2 class="pr__section-heading" data-reveal>Included in every plan</h2>
+        <div class="pr__included-grid">
           {included.map((item, i) => (
-            <div class={`pricing__included-card pricing__included-card--${item.color}`} data-reveal data-reveal-delay={String(i)}>
-              <h3 class="pricing__included-title">{item.title}</h3>
-              <p class="pricing__included-desc">{item.desc}</p>
+            <div class="pr__included-item" data-reveal data-reveal-delay={String(Math.min(i, 4))}>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 10L8.5 13.5L15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <p class="pr__guarantee" data-reveal>Not loving it after a week? <strong>Get 100% back,</strong> no questions asked.</p>
+      </div>
+    </section>
+
+    <!-- Trusted by -->
+    <section class="pr__logos">
+      <div class="pr__container">
+        <p class="pr__logos-label" data-reveal>Trusted by leading brands</p>
+        <div class="pr__logos-marquee">
+          <div class="pr__logos-track">
+            {[...logos, ...logos, ...logos].map((logo) => (
+              <img src={logo.src} alt={logo.name} class="pr__logo" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services grid — Superside style -->
+    <section class="pr__services section section--beige">
+      <div class="pr__container">
+        <h2 class="pr__section-heading" data-reveal>12+ scalable creative services</h2>
+        <p class="pr__section-sub" data-reveal>Access every creative skill you need from one dedicated team.</p>
+        <div class="pr__services-grid">
+          {services.map((s, i) => (
+            <div class={`pr__service-chip pr__service-chip--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(Math.min(i, 5))}>
+              {s}
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Comparison table -->
-    <section class="pricing__compare section section--beige">
-      <div class="pricing__container">
-        <h2 class="pricing__section-heading" data-reveal>Moonb vs the alternatives</h2>
-        <p class="pricing__section-sub" data-reveal>See how a dedicated creative team compares to hiring in-house or working with a legacy agency.</p>
-        <div class="pricing__table-wrap" data-reveal>
-          <table class="pricing__table">
-            <thead>
-              <tr>
-                <th></th>
-                <th class="pricing__th--moonb">Moonb</th>
-                <th>In-house</th>
-                <th>Legacy agency</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((row) => (
-                <tr>
-                  <td class="pricing__td-feature">{row.feature}</td>
-                  <td class="pricing__td-check">{row.moonb ? '✓' : '—'}</td>
-                  <td class="pricing__td-check">{row.inhouse ? '✓' : '—'}</td>
-                  <td class="pricing__td-check">{row.agency ? '✓' : '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="pricing__stats section">
-      <div class="pricing__container">
-        <div class="pricing__stats-grid" data-reveal>
-          {stats.map((s) => (
-            <div class="pricing__stat">
-              <span class="pricing__stat-num">{s.number}</span>
-              <span class="pricing__stat-label">{s.label}</span>
+    <!-- A better way — comparison cards -->
+    <section class="pr__compare section">
+      <div class="pr__container">
+        <h2 class="pr__section-heading" data-reveal>A better way to get creative done</h2>
+        <p class="pr__section-sub" data-reveal>No long hiring process and no unreliable freelancers. Your own dedicated team delivering world-class design and video every week.</p>
+        <div class="pr__compare-grid">
+          {comparison.map((c, i) => (
+            <div class={`pr__compare-card pr__compare-card--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
+              <h3 class="pr__compare-title">{c.point}</h3>
+              <p class="pr__compare-desc">{c.desc}</p>
             </div>
           ))}
         </div>
@@ -192,18 +162,18 @@ const faqSchema = {
     </section>
 
     <!-- Testimonials -->
-    <section class="pricing__testimonials section section--beige">
-      <div class="pricing__container">
-        <h2 class="pricing__section-heading" data-reveal>What our clients say</h2>
-        <div class="pricing__testimonials-grid">
+    <section class="pr__testimonials section section--beige">
+      <div class="pr__container">
+        <h2 class="pr__section-heading" data-reveal>What our clients say</h2>
+        <div class="pr__testimonials-grid">
           {testimonials.map((t, i) => (
-            <div class={`pricing__testimonial pricing__testimonial--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
-              <p class="pricing__testimonial-quote">"{t.quote}"</p>
-              <div class="pricing__testimonial-footer">
-                <img src={t.avatar} alt={t.name} class="pricing__testimonial-avatar" width="40" height="40" loading="lazy" />
+            <div class={`pr__testimonial pr__testimonial--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
+              <p class="pr__testimonial-quote">"{t.quote}"</p>
+              <div class="pr__testimonial-footer">
+                <img src={t.avatar} alt={t.name} class="pr__testimonial-avatar" width="40" height="40" loading="lazy" />
                 <div>
-                  <span class="pricing__testimonial-name">{t.name}</span>
-                  <span class="pricing__testimonial-role">{t.role}, {t.company}</span>
+                  <span class="pr__testimonial-name">{t.name}</span>
+                  <span class="pr__testimonial-role">{t.role}, {t.company}</span>
                 </div>
               </div>
             </div>
@@ -212,22 +182,25 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- Mid CTA -->
-    <section class="pricing__mid-cta">
-      <div class="pricing__container">
-        <div class="pricing__mid-cta-inner" data-reveal>
-          <h2 class="pricing__mid-cta-title">Ready to get started?</h2>
+    <!-- CTA banner -->
+    <section class="pr__cta-banner">
+      <div class="pr__container">
+        <div class="pr__cta-inner" data-reveal>
+          <div>
+            <h2 class="pr__cta-title">Your creative team is ready.</h2>
+            <p class="pr__cta-sub">Request a quote and get started within a week.</p>
+          </div>
           <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}' style="background: var(--white); color: var(--heading);">Request a Quote</a>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="pricing__faq section section--beige" id="faq">
-      <div class="pricing__container">
+    <section class="pr__faq section section--beige" id="faq">
+      <div class="pr__container">
         <div class="faq__inner">
           <div class="faq__left" data-reveal>
-            <h2 class="faq__heading">Frequently Asked Questions</h2>
+            <h2 class="faq__heading">Frequently Asked<br/><em>Questions</em></h2>
           </div>
           <div class="faq__right">
             <div class="faq__list" data-reveal>
@@ -256,7 +229,7 @@ const faqSchema = {
       <div class="container" data-reveal>
         <div class="final-cta__inner">
           <h2 class="final-cta__title">Ready to level up your creative?</h2>
-          <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+          <p class="final-cta__sub">No commitment, no pressure.</p>
           <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
@@ -267,92 +240,74 @@ const faqSchema = {
 </BaseLayout>
 
 <style>
-  .pricing__container {
+  .pr__container {
     max-width: calc(var(--max-w) + 3rem);
     margin: 0 auto;
     padding: 0 1.5rem;
   }
 
-  /* Breadcrumbs */
-  .pricing__breadcrumbs {
-    padding-top: 100px;
-    margin-bottom: 40px;
-    font-size: 13px;
-    color: var(--body-muted);
-  }
-  .pricing__breadcrumbs a { color: var(--body-muted); transition: color 140ms ease; }
-  .pricing__breadcrumbs a:hover { color: var(--heading); }
-  .pricing__sep { margin: 0 6px; opacity: 0.5; }
-
-  /* Hero */
-  .pricing__hero {
+  /* ── Hero ── */
+  .pr__hero {
+    padding-top: 160px;
     padding-bottom: 64px;
     text-align: center;
   }
-  .pricing__title {
+  .pr__title {
     font-family: var(--font-heading);
-    font-size: 52px;
+    font-size: 56px;
     font-weight: 500;
-    letter-spacing: -1.6px;
-    line-height: 58px;
+    letter-spacing: -1.8px;
+    line-height: 62px;
     color: var(--heading);
-    max-width: 680px;
+    max-width: 700px;
     margin: 0 auto;
   }
-  .pricing__subtitle {
+  .pr__title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .pr__subtitle {
     margin-top: 20px;
     font-size: 18px;
     line-height: 28px;
     color: var(--body);
-    max-width: 520px;
+    max-width: 560px;
     margin-left: auto;
     margin-right: auto;
   }
+  .pr__hero-actions {
+    margin-top: 32px;
+  }
 
-  /* Plan card */
-  .pricing__plan {
-    padding-bottom: 80px;
-  }
-  .pricing__card {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 24px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    text-align: center;
-  }
-  .pricing__card-header {
+  /* ── Section headings ── */
+  .pr__section-heading {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    line-height: 38px;
+    color: var(--heading);
     margin-bottom: 16px;
   }
-  .pricing__card-name {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.6px;
-    color: var(--heading);
-  }
-  .pricing__card-tagline {
-    display: block;
-    margin-top: 4px;
-    font-size: 15px;
-    color: var(--body-muted);
-  }
-  .pricing__card-desc {
-    font-size: 16px;
-    line-height: 24px;
+  .pr__section-sub {
+    font-size: 17px;
+    line-height: 26px;
     color: var(--body);
-    margin-bottom: 28px;
+    max-width: 520px;
+    margin-bottom: 48px;
   }
-  .pricing__card-features {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+
+  /* ── Included grid ── */
+  .pr__included-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 24px;
     margin-bottom: 32px;
   }
-  .pricing__card-feature {
+  .pr__included-item {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -361,161 +316,130 @@ const faqSchema = {
     font-weight: 500;
     color: var(--heading);
   }
-  .pricing__card-feature:nth-child(1) svg { color: var(--accent); }
-  .pricing__card-feature:nth-child(2) svg { color: var(--accent-blue); }
-  .pricing__card-feature:nth-child(3) svg { color: var(--accent-green); }
-  .pricing__card-feature:nth-child(4) svg { color: var(--accent-purple); }
-  .pricing__card-feature:nth-child(5) svg { color: var(--accent); }
-  .pricing__card-feature:nth-child(6) svg { color: var(--accent-blue); }
-  .pricing__card-feature:nth-child(7) svg { color: var(--accent-green); }
+  .pr__included-item:nth-child(1) svg { color: var(--accent); }
+  .pr__included-item:nth-child(2) svg { color: var(--accent-blue); }
+  .pr__included-item:nth-child(3) svg { color: var(--accent-green); }
+  .pr__included-item:nth-child(4) svg { color: var(--accent-purple); }
+  .pr__included-item:nth-child(5) svg { color: var(--accent); }
+  .pr__included-item:nth-child(6) svg { color: var(--accent-blue); }
+  .pr__included-item:nth-child(7) svg { color: var(--accent-green); }
+  .pr__included-item:nth-child(8) svg { color: var(--accent-purple); }
 
-  .pricing__card-cta {
-    width: 100%;
-    height: 48px;
-    font-size: 16px;
-  }
-  .pricing__card-guarantee {
-    margin-top: 16px;
-    font-size: 13px;
+  .pr__guarantee {
+    font-size: 15px;
     color: var(--accent-green);
     font-weight: 500;
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-light);
   }
-
-  /* Section headings */
-  .pricing__section-heading {
-    font-family: var(--font-heading);
-    font-size: 32px;
+  .pr__guarantee strong {
     font-weight: 600;
-    letter-spacing: -0.8px;
-    line-height: 38px;
-    color: var(--heading);
-    margin-bottom: 40px;
-  }
-  .pricing__section-sub {
-    margin-top: -28px;
-    margin-bottom: 48px;
-    font-size: 17px;
-    line-height: 26px;
-    color: var(--body);
-    max-width: 520px;
   }
 
-  /* Included grid */
-  .pricing__included-grid {
+  /* ── Logos ── */
+  .pr__logos {
+    padding: 40px 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    overflow: hidden;
+  }
+  .pr__logos-label {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--body-muted);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .pr__logos-marquee {
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .pr__logos-track {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    width: max-content;
+    animation: pr-marquee 40s linear infinite;
+    will-change: transform;
+  }
+  @keyframes pr-marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.333%, 0, 0); }
+  }
+  .pr__logo {
+    height: 28px;
+    min-width: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) opacity(0.5);
+    flex-shrink: 0;
+  }
+
+  /* ── Services chips ── */
+  .pr__services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pr__service-chip {
+    padding: 10px 20px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    background: var(--white);
+    color: var(--heading);
+    border: 1px solid var(--border);
+    transition: all 200ms ease;
+  }
+  .pr__service-chip:hover { transform: translateY(-1px); }
+  .pr__service-chip--accent-1:hover { border-color: var(--accent); color: var(--accent); background: rgba(255, 83, 16, 0.04); }
+  .pr__service-chip--accent-2:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(0, 102, 255, 0.04); }
+  .pr__service-chip--accent-3:hover { border-color: var(--accent-green); color: var(--accent-green); background: rgba(0, 182, 122, 0.04); }
+  .pr__service-chip--accent-4:hover { border-color: var(--accent-purple); color: var(--accent-purple); background: rgba(123, 97, 255, 0.04); }
+
+  /* ── Comparison cards ── */
+  .pr__compare-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
-  .pricing__included-card {
+  .pr__compare-card {
     padding: 28px;
     border-radius: var(--r-xl);
     background: var(--beige);
     border-top: 3px solid transparent;
     transition: transform 200ms ease;
   }
-  .pricing__included-card:hover { transform: translateY(-2px); }
-  .pricing__included-card--orange { border-top-color: var(--accent); }
-  .pricing__included-card--blue { border-top-color: var(--accent-blue); }
-  .pricing__included-card--green { border-top-color: var(--accent-green); }
-  .pricing__included-card--purple { border-top-color: var(--accent-purple); }
+  .pr__compare-card:hover { transform: translateY(-2px); }
+  .pr__compare-card--accent-1 { border-top-color: var(--accent); }
+  .pr__compare-card--accent-2 { border-top-color: var(--accent-blue); }
+  .pr__compare-card--accent-3 { border-top-color: var(--accent-green); }
+  .pr__compare-card--accent-4 { border-top-color: var(--accent-purple); }
 
-  .pricing__included-title {
+  .pr__compare-title {
     font-family: var(--font-heading);
     font-size: 17px;
     font-weight: 600;
     letter-spacing: -0.2px;
     color: var(--heading);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-  .pricing__included-desc {
+  .pr__compare-desc {
     font-size: 14px;
     line-height: 21px;
     color: var(--body);
   }
 
-  /* Comparison table */
-  .pricing__table-wrap {
-    overflow-x: auto;
-    margin-top: 8px;
-  }
-  .pricing__table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-  }
-  .pricing__table thead th {
-    padding: 16px 20px;
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--body-muted);
-    text-align: center;
-    border-bottom: 2px solid var(--border);
-  }
-  .pricing__table thead th:first-child {
-    text-align: left;
-  }
-  .pricing__th--moonb {
-    color: var(--heading) !important;
-    font-size: 16px !important;
-  }
-  .pricing__table tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 140ms ease;
-  }
-  .pricing__table tbody tr:hover {
-    background: rgba(0, 0, 0, 0.02);
-  }
-  .pricing__td-feature {
-    padding: 16px 20px;
-    font-size: 15px;
-    color: var(--body);
-  }
-  .pricing__td-check {
-    padding: 16px 20px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .pricing__td-check:nth-child(2) {
-    color: var(--accent-green);
-    font-weight: 600;
-  }
-  .pricing__td-check:nth-child(3),
-  .pricing__td-check:nth-child(4) {
-    color: var(--body-muted);
-  }
-
-  /* Stats */
-  .pricing__stats-grid {
+  /* ── Testimonials ── */
+  .pr__testimonials-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    text-align: center;
-  }
-  .pricing__stat-num {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 48px;
-    font-weight: 500;
-    color: var(--heading);
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .pricing__stat-label {
-    display: block;
-    margin-top: 8px;
-    font-size: 15px;
-    color: var(--body-muted);
-  }
-
-  /* Testimonials */
-  .pricing__testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-  .pricing__testimonial {
+  .pr__testimonial {
     padding: 28px;
     border-radius: var(--r-xl);
     background: var(--white);
@@ -524,48 +448,48 @@ const faqSchema = {
     gap: 20px;
     border-top: 3px solid transparent;
   }
-  .pricing__testimonial--accent-1 { border-top-color: var(--accent); }
-  .pricing__testimonial--accent-2 { border-top-color: var(--accent-blue); }
-  .pricing__testimonial--accent-3 { border-top-color: var(--accent-green); }
-  .pricing__testimonial--accent-4 { border-top-color: var(--accent-purple); }
+  .pr__testimonial--accent-1 { border-top-color: var(--accent); }
+  .pr__testimonial--accent-2 { border-top-color: var(--accent-blue); }
+  .pr__testimonial--accent-3 { border-top-color: var(--accent-green); }
+  .pr__testimonial--accent-4 { border-top-color: var(--accent-purple); }
 
-  .pricing__testimonial-quote {
+  .pr__testimonial-quote {
     font-family: var(--font-heading);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 25px;
+    line-height: 23px;
     color: var(--heading);
     flex: 1;
   }
-  .pricing__testimonial-footer {
+  .pr__testimonial-footer {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-  .pricing__testimonial-avatar {
+  .pr__testimonial-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
   }
-  .pricing__testimonial-name {
+  .pr__testimonial-name {
     display: block;
     font-family: var(--font-heading);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--heading);
   }
-  .pricing__testimonial-role {
+  .pr__testimonial-role {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--body-muted);
   }
 
-  /* Mid CTA */
-  .pricing__mid-cta {
+  /* ── CTA banner ── */
+  .pr__cta-banner {
     padding: 64px 0;
   }
-  .pricing__mid-cta-inner {
+  .pr__cta-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -573,31 +497,35 @@ const faqSchema = {
     background: var(--heading);
     border-radius: 20px;
   }
-  .pricing__mid-cta-title {
+  .pr__cta-title {
     font-family: var(--font-heading);
     font-size: 28px;
     font-weight: 500;
     letter-spacing: -0.6px;
     color: var(--white);
   }
+  .pr__cta-sub {
+    margin-top: 6px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+  }
 
-  /* Responsive */
+  /* ── FAQ heading italic ── */
+  .faq__heading em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 860px) {
-    .pricing__title {
-      font-size: 36px;
-      line-height: 42px;
-    }
-    .pricing__included-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .pricing__stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .pricing__testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-    .pricing__mid-cta-inner {
+    .pr__title { font-size: 38px; line-height: 44px; }
+    .pr__included-grid { grid-template-columns: repeat(2, 1fr); }
+    .pr__compare-grid { grid-template-columns: repeat(2, 1fr); }
+    .pr__testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .pr__cta-inner {
       flex-direction: column;
       gap: 24px;
       text-align: center;
@@ -606,18 +534,9 @@ const faqSchema = {
   }
 
   @media (max-width: 480px) {
-    .pricing__title {
-      font-size: 30px;
-      line-height: 36px;
-    }
-    .pricing__included-grid {
-      grid-template-columns: 1fr;
-    }
-    .pricing__stats-grid {
-      grid-template-columns: 1fr;
-    }
-    .pricing__card {
-      padding: 28px;
-    }
+    .pr__title { font-size: 32px; line-height: 38px; }
+    .pr__included-grid { grid-template-columns: 1fr; }
+    .pr__compare-grid { grid-template-columns: 1fr; }
+    .pr__testimonials-grid { grid-template-columns: 1fr; }
   }
 </style>

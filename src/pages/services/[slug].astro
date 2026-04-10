@@ -73,6 +73,37 @@ const services: Record<string, any> = {
       text: 'Traditional agencies scope and price each project individually, creating delays and unpredictable costs. Moonb embeds a dedicated creative team into your workflow with predictable monthly pricing. Your team learns your brand deeply, retains institutional knowledge, and produces faster with every project because they already understand your organization.',
       points: sharedDiffPoints,
     },
+    bodyContent: [
+      { heading: 'What Types of Corporate Video Does Moonb Produce?', paragraphs: [
+        'Your dedicated team handles the full spectrum of corporate video production needs. This includes investor relations content such as earnings call visuals, annual report videos, and shareholder updates. Executive messaging covers thought leadership content, town hall intros, and keynote support videos.',
+        'On the recruitment and employer brand side, your team produces culture videos, role spotlights, and onboarding content that attracts top talent. Internal communications including policy updates, change management videos, and team announcements are handled with the same production quality as external content.',
+        'Training and compliance video production rounds out the offering with process walkthroughs, safety protocols, and regulatory training content. Because your dedicated team understands your organization deeply, every format maintains consistent quality and brand alignment.',
+      ]},
+      { heading: 'How Is Moonb Different from a Traditional Corporate Video Agency?', paragraphs: [
+        'Traditional agencies scope and price each corporate video production project individually, creating delays and unpredictable costs. Every new project requires a fresh brief, new onboarding, and brand realignment. This model works against the continuous content needs of modern organizations.',
+        'Moonb embeds a dedicated creative team into your workflow with predictable monthly pricing. Your team learns your brand deeply, retains institutional knowledge, and produces faster with every project because they already understand your organization. There are no scope negotiations, no change-order fees, and no re-onboarding between projects.',
+        'The result is corporate video production that operates like an internal department but with the creative range and production quality of a top-tier studio.',
+      ]},
+      { heading: 'The Corporate Video Production Process', paragraphs: [
+        'Most corporate videos move from creative brief to final delivery in five to ten business days, depending on complexity. Your Creative Director manages the timeline and keeps you updated at every stage. Revisions are included with every project, and there are no revision caps or change-order fees.',
+        'Production starts with a strategic brief where your Creative Director aligns on objectives, audience, and key messages. From there, the team handles scripting, storyboarding, animation or filming, editing, sound design, and final delivery. Every stage includes your review and approval before moving forward.',
+        'For confidential corporate content, Moonb provides standard NDA agreements and works within your organization\'s security protocols. Your dedicated team maintains strict confidentiality across all internal communications and sensitive corporate materials.',
+      ]},
+      { heading: 'Why Enterprise Teams Need a Dedicated Video Production Partner', paragraphs: [
+        'Enterprise teams need a constant stream of corporate video content, from investor updates and executive messaging to recruitment campaigns and compliance training. Managing this through agencies or freelancers creates bottlenecks: every project requires a new brief, new onboarding, and new brand alignment.',
+        'A dedicated Moonb team eliminates this friction entirely. They learn your brand voice, your internal stakeholders, and your communication cadence. The result is faster production, deeper brand consistency, and a creative partner that understands the nuances of your corporate communication.',
+        'Over time, your team accumulates institutional knowledge about your brand, your executives, your audience, and what resonates. Every subsequent corporate video production project benefits from this context, making scripts land faster, visual assets build on a growing library of approved elements, and stakeholder feedback loops shorten.',
+      ]},
+      { heading: 'Corporate Video Formats We Produce', paragraphs: [
+        'Your Moonb team produces company culture and employer brand videos, investor relations and earnings call visuals, executive thought leadership content, internal communications and town hall recaps, product launch announcements, recruitment and onboarding videos, event recap and highlight packages, and corporate social responsibility stories.',
+        'Every corporate video production format is produced to your internal brand standards with consistent visual identity across all touchpoints. Whether the output is a quarterly earnings summary or a recruitment piece, the visual and tonal identity stays consistent because the same dedicated team produces everything.',
+      ]},
+      { heading: 'The Compound Effect of a Dedicated Creative Team', paragraphs: [
+        'When the same team produces all your corporate video production, something powerful happens over time. They accumulate institutional knowledge about your brand, your executives, your audience, and what resonates. Every subsequent project benefits from this context.',
+        'Scripts land faster because the team already understands your voice. Visual assets build on a growing library of approved elements. Stakeholder feedback loops shorten because the team anticipates preferences. This compound effect means your corporate video program gets faster, more consistent, and more impactful with every month.',
+        'This is the fundamental advantage of continuous corporate video production with a dedicated team over the traditional per-project agency model. The longer you work together, the better the output becomes.',
+      ]},
+    ],
     stats: sharedStats,
     process: sharedProcess,
     work: sharedWork,
@@ -906,6 +937,24 @@ export function getStaticPaths() {
       </div>
     </section>
 
+    <!-- Body content — editorial SEO sections -->
+    {service.bodyContent?.length > 0 && (
+      <section class="svc__body section">
+        <div class="svc__container">
+          <div class="svc__body-content">
+            {service.bodyContent.map((section: {heading: string, paragraphs: string[]}, i: number) => (
+              <div class="svc__body-section" data-reveal data-reveal-delay={String(Math.min(i, 2))}>
+                <h2 class="svc__body-heading">{section.heading}</h2>
+                {section.paragraphs.map((p: string) => (
+                  <p class="svc__body-text">{p}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- Work — thumbnail grid with play overlay -->
     <section class="svc__work section" id="work">
       <div class="svc__container">
@@ -1387,6 +1436,35 @@ export function getStaticPaths() {
     font-weight: 600;
     color: var(--body-muted);
     opacity: 0.4;
+  }
+
+  /* ── Body content — editorial SEO sections ── */
+  .svc__body-content {
+    max-width: 720px;
+  }
+  .svc__body-section {
+    margin-bottom: 48px;
+  }
+  .svc__body-section:last-child {
+    margin-bottom: 0;
+  }
+  .svc__body-heading {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 32px;
+    color: var(--heading);
+    margin-bottom: 16px;
+  }
+  .svc__body-text {
+    font-size: 16px;
+    line-height: 27px;
+    color: var(--body);
+    margin-bottom: 14px;
+  }
+  .svc__body-text:last-child {
+    margin-bottom: 0;
   }
 
   /* ── Work — thumbnail grid with play overlay ── */

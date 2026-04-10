@@ -1,0 +1,770 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+/*
+  Individual blog post template — SEO-optimized, family.co editorial style
+  Narrow content column (~680px), clean typography, structured data
+
+  TODO: Replace hardcoded content with Sanity CMS fetch
+  GROQ: *[_type == "blogPost" && slug.current == $slug][0]{
+    title, slug, publishDate, body, excerpt,
+    author->{ name, bio, image },
+    category->{ name, slug },
+    "relatedPosts": relatedPosts[]->{ title, slug, publishDate, excerpt, category->{ name } },
+    seo { title, description, image, noIndex }
+  }
+*/
+
+/* Hardcoded sample post for template development */
+const post = {
+  title: 'Corporate video production: the definitive guide',
+  slug: 'corporate-video-production',
+  date: '2026-01-20',
+  dateModified: '2026-03-15',
+  category: 'Video',
+  readingTime: 12,
+  author: {
+    name: 'Lorenzo Nicolini',
+    role: 'CEO at Moonb',
+    avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif',
+    linkedin: 'https://www.linkedin.com/in/lorenzonicolini/',
+  },
+  excerpt: 'How to produce corporate video that actually engages your audience, from internal comms to brand films.',
+  seo: {
+    title: 'Corporate Video Production Guide | Moonb',
+    description: 'The definitive guide to corporate video production. Learn how to produce corporate video that engages your audience, from internal comms to brand films.',
+  },
+  headings: [
+    { id: 'what-is-corporate-video', text: 'What is corporate video?' },
+    { id: 'why-corporate-video-matters', text: 'Why corporate video matters' },
+    { id: 'types-of-corporate-video', text: 'Types of corporate video' },
+    { id: 'the-production-process', text: 'The production process' },
+    { id: 'how-to-choose-a-partner', text: 'How to choose a production partner' },
+    { id: 'costs-and-budgeting', text: 'Costs and budgeting' },
+  ],
+  faqs: [
+    { q: 'How much does corporate video production cost?', a: 'Corporate video production costs vary widely based on scope, length, and complexity. A simple talking-head video might cost $2,000-5,000, while a fully produced brand film could range from $15,000-50,000+. With Moonb, you get predictable monthly pricing that covers ongoing video production.' },
+    { q: 'How long does it take to produce a corporate video?', a: 'A typical corporate video takes 2-6 weeks from brief to final delivery, depending on complexity. With a dedicated team like Moonb, turnaround times are significantly faster because your team already knows your brand.' },
+    { q: 'Do I need to appear on camera?', a: 'Not at all. Many corporate videos use animation, motion graphics, screen recordings, or stock footage. Your Creative Director will recommend the best approach based on your goals and audience.' },
+  ],
+  relatedPosts: [
+    { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02', category: 'Video' },
+    { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12', category: 'Marketing' },
+    { title: 'The best software demo videos (and what makes them work)', slug: 'software-demo-video', date: '2025-12-05', category: 'Video' },
+  ],
+  relatedServices: [
+    { title: 'Corporate Video Production', slug: 'corporate-video-production' },
+    { title: 'Marketing Video Production', slug: 'marketing-video-production' },
+  ],
+};
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function formatDateISO(dateStr: string): string {
+  return new Date(dateStr).toISOString();
+}
+
+const canonicalURL = new URL(`/blog/${post.slug}`, Astro.site || 'https://moonb-v2.vercel.app');
+
+/* JSON-LD: BlogPosting */
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.seo.description,
+  "datePublished": formatDateISO(post.date),
+  "dateModified": formatDateISO(post.dateModified),
+  "author": {
+    "@type": "Person",
+    "name": post.author.name,
+    "url": post.author.linkedin,
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Moonb",
+    "url": "https://www.moonb.io",
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL.toString(),
+  },
+};
+
+/* JSON-LD: BreadcrumbList */
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.moonb.io" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.moonb.io/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.title },
+  ],
+};
+
+/* JSON-LD: FAQPage (optional, only if post has FAQs) */
+const faqSchema = post.faqs?.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": post.faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+} : null;
+
+export function getStaticPaths() {
+  /* TODO: Fetch all slugs from Sanity */
+  return [
+    { params: { slug: 'corporate-video-production' } },
+  ];
+}
+---
+
+<BaseLayout
+  title={post.seo.title}
+  description={post.seo.description}
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </Fragment>
+
+  <article class="post">
+    <div class="post__container">
+
+      <!-- Breadcrumbs -->
+      <nav class="post__breadcrumbs" aria-label="Breadcrumb" data-reveal>
+        <a href="/">Home</a>
+        <span class="post__breadcrumbs-sep">/</span>
+        <a href="/blog">Blog</a>
+        <span class="post__breadcrumbs-sep">/</span>
+        <span>{post.title}</span>
+      </nav>
+
+      <!-- Article header -->
+      <header class="post__header" data-reveal>
+        <div class="post__meta-top">
+          <a href={`/blog?category=${post.category}`} class="post__category">{post.category}</a>
+          <span class="post__meta-dot">·</span>
+          <time datetime={formatDateISO(post.date)} class="post__date">{formatDate(post.date)}</time>
+          <span class="post__meta-dot">·</span>
+          <span class="post__reading-time">{post.readingTime} min read</span>
+        </div>
+        <h1 class="post__title">{post.title}</h1>
+        <p class="post__subtitle">{post.excerpt}</p>
+
+        <!-- Author -->
+        <div class="post__author">
+          <img
+            src={post.author.avatar}
+            alt={post.author.name}
+            class="post__author-avatar"
+            width="40"
+            height="40"
+            loading="eager"
+          />
+          <div class="post__author-info">
+            <span class="post__author-name">{post.author.name}</span>
+            <span class="post__author-role">{post.author.role}</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Two-column layout: TOC sidebar + content -->
+      <div class="post__layout" data-reveal data-reveal-delay="1">
+
+        <!-- Table of Contents — sticky sidebar -->
+        <aside class="post__toc" aria-label="Table of contents">
+          <span class="post__toc-label">Contents</span>
+          <nav class="post__toc-nav">
+            {post.headings.map((h) => (
+              <a href={`#${h.id}`} class="post__toc-link">{h.text}</a>
+            ))}
+          </nav>
+        </aside>
+
+        <!-- Article body -->
+        <div class="post__body">
+
+          {/* TODO: Replace with Portable Text renderer. This is placeholder content. */}
+
+          <h2 id="what-is-corporate-video">What is corporate video?</h2>
+          <p>Corporate video is any video content produced by or for a business. It covers a wide range of formats: brand films, internal communications, training content, product demos, testimonials, event coverage, and more.</p>
+          <p>The best corporate video doesn't feel corporate at all. It feels human, intentional, and relevant to the audience watching it. That's what separates a forgettable company video from one that actually moves people to act.</p>
+
+          <h2 id="why-corporate-video-matters">Why corporate video matters</h2>
+          <p>Video is the most effective medium for communicating complex ideas quickly. A well-produced corporate video can condense months of messaging into a 90-second piece that resonates with your audience.</p>
+          <p>For marketing teams, corporate video drives measurable results: higher engagement on social, stronger brand recall, better conversion rates on landing pages, and a more polished brand presence across every touchpoint.</p>
+
+          <h2 id="types-of-corporate-video">Types of corporate video</h2>
+          <p>The term "corporate video" is broad. Here are the most common formats:</p>
+          <ul>
+            <li><strong>Brand films</strong> — Narrative-driven pieces that tell your company's story</li>
+            <li><strong>Product demos</strong> — Show features, explain workflows, spark interest</li>
+            <li><strong>Testimonials</strong> — Real customers sharing real experiences</li>
+            <li><strong>Internal comms</strong> — Company updates, culture videos, onboarding content</li>
+            <li><strong>Training videos</strong> — Instructional content for employees or customers</li>
+            <li><strong>Event coverage</strong> — Recaps, highlights, and live-stream content</li>
+          </ul>
+
+          <!-- Mid-article CTA -->
+          <aside class="post__cta-banner">
+            <p class="post__cta-text">Need a dedicated team for your video production?</p>
+            <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </aside>
+
+          <h2 id="the-production-process">The production process</h2>
+          <p>Every corporate video follows three phases: pre-production, production, and post-production. The quality of the final product depends heavily on how much care goes into the first phase.</p>
+          <p><strong>Pre-production</strong> is where strategy happens. Who is this video for? What should they feel? What action should they take? A clear brief, a solid script, and a well-planned shoot make everything that follows easier and better.</p>
+          <p><strong>Production</strong> is the shoot itself, or the animation and motion design phase. With a dedicated team, this moves fast because they already understand your brand, your style, and your standards.</p>
+          <p><strong>Post-production</strong> includes editing, color grading, sound design, graphics, and final delivery. Multiple rounds of review ensure the output matches your vision.</p>
+
+          <h2 id="how-to-choose-a-partner">How to choose a production partner</h2>
+          <p>The right production partner should feel like an extension of your team, not a vendor you have to manage. Look for:</p>
+          <ul>
+            <li>A dedicated point of contact (not a rotating cast of freelancers)</li>
+            <li>A portfolio that matches the quality and style you're after</li>
+            <li>Transparent pricing with no surprise invoices</li>
+            <li>Fast turnaround times and responsive communication</li>
+            <li>Willingness to learn your brand deeply, not just execute briefs</li>
+          </ul>
+
+          <h2 id="costs-and-budgeting">Costs and budgeting</h2>
+          <p>Corporate video production costs depend on format, length, complexity, and whether you need live-action or animation. One-off projects from agencies typically range from $5,000 to $50,000+ per video.</p>
+          <p>An alternative approach is a dedicated creative team model, where you pay a predictable monthly rate and get ongoing video production without the per-project markup. This works well for teams that need consistent output rather than occasional one-offs.</p>
+
+          <!-- Related services -->
+          <div class="post__services">
+            <span class="post__services-label">Related services</span>
+            <div class="post__services-links">
+              {post.relatedServices.map((s) => (
+                <a href={`/services/${s.slug}`} class="post__services-link">{s.title} →</a>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FAQ section -->
+      {post.faqs?.length > 0 && (
+        <section class="post__faq" data-reveal>
+          <h2 class="post__faq-heading">Frequently asked questions</h2>
+          <div class="faq__list">
+            {post.faqs.map((faq) => (
+              <div class="faq__item" data-faq-item>
+                <button class="faq__question" data-faq-trigger aria-expanded="false">
+                  <div class="faq__toggle" aria-hidden="true">
+                    <div class="faq__toggle-h"></div>
+                    <div class="faq__toggle-v"></div>
+                  </div>
+                  <span>{faq.q}</span>
+                </button>
+                <div class="faq__answer-wrap" data-faq-answer>
+                  <div class="faq__answer"><p>{faq.a}</p></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Related posts -->
+      <section class="post__related" data-reveal>
+        <div class="post__related-header">
+          <h2 class="post__related-heading">You may also like</h2>
+          <a href="/blog" class="cta-link">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="post__related-grid">
+          {post.relatedPosts.map((rp) => (
+            <a href={`/blog/${rp.slug}`} class="post__related-card">
+              <span class="post__related-date">{formatDate(rp.date)}</span>
+              <h3 class="post__related-title">{rp.title}</h3>
+              <span class="post__related-cat">{rp.category}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </article>
+
+  <!-- Pre-footer CTA -->
+  <section class="final-cta section section--beige">
+    <div class="container" data-reveal>
+      <div class="final-cta__inner">
+        <h2 class="final-cta__title">Ready to level up your creative?</h2>
+        <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+        <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  /* ==========================================================================
+     BLOG POST — family.co editorial + SEO best practices
+     Narrow body column (~680px), sticky TOC sidebar, clean hierarchy
+     ========================================================================== */
+
+  .post {
+    padding-top: 120px;
+    padding-bottom: 0;
+  }
+
+  .post__container {
+    max-width: calc(var(--max-w) + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Breadcrumbs */
+  .post__breadcrumbs {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--body-muted);
+    margin-bottom: 40px;
+  }
+
+  .post__breadcrumbs a {
+    color: var(--body-muted);
+    transition: color 140ms ease;
+  }
+
+  .post__breadcrumbs a:hover {
+    color: var(--heading);
+  }
+
+  .post__breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+  }
+
+  .post__breadcrumbs span:last-child {
+    color: var(--body);
+  }
+
+  /* Article header */
+  .post__header {
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+
+  .post__meta-top {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--body-muted);
+  }
+
+  .post__meta-dot {
+    margin: 0 8px;
+    opacity: 0.5;
+  }
+
+  .post__category {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0;
+  }
+
+  .post__date,
+  .post__reading-time {
+    font-weight: 400;
+  }
+
+  .post__title {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -1.2px;
+    line-height: 46px;
+    color: var(--heading);
+    margin-bottom: 16px;
+  }
+
+  .post__subtitle {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--body);
+    max-width: 580px;
+  }
+
+  /* Author */
+  .post__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .post__author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .post__author-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .post__author-role {
+    display: block;
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  /* Two-column layout: TOC + body */
+  .post__layout {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 48px;
+  }
+
+  /* Sticky TOC sidebar */
+  .post__toc {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .post__toc-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--body-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .post__toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .post__toc-link {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--body-muted);
+    line-height: 18px;
+    transition: color 140ms ease;
+  }
+
+  .post__toc-link:hover {
+    color: var(--heading);
+  }
+
+  /* Article body — constrained width for readability */
+  .post__body {
+    max-width: 680px;
+  }
+
+  .post__body h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    line-height: 34px;
+    color: var(--heading);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    scroll-margin-top: 100px;
+  }
+
+  .post__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .post__body h3 {
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    line-height: 27px;
+    color: var(--heading);
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .post__body p {
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+
+  .post__body ul,
+  .post__body ol {
+    margin-bottom: 20px;
+    padding-left: 24px;
+  }
+
+  .post__body ul {
+    list-style: disc;
+  }
+
+  .post__body ol {
+    list-style: decimal;
+  }
+
+  .post__body li {
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--body);
+    margin-bottom: 8px;
+  }
+
+  .post__body li strong {
+    color: var(--heading);
+  }
+
+  .post__body strong {
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .post__body a {
+    color: var(--accent-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 140ms ease;
+  }
+
+  .post__body a:hover {
+    opacity: 0.7;
+  }
+
+  .post__body blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+    margin: 32px 0;
+  }
+
+  .post__body blockquote p {
+    font-size: 18px;
+    line-height: 30px;
+    font-style: italic;
+    color: var(--body-muted);
+  }
+
+  .post__body img {
+    width: 100%;
+    border-radius: var(--r-lg);
+    margin: 32px 0;
+  }
+
+  /* Mid-article CTA banner */
+  .post__cta-banner {
+    background: var(--beige);
+    border-radius: var(--r-xl);
+    padding: 32px;
+    margin: 48px 0;
+  }
+
+  .post__cta-text {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--heading);
+    margin-bottom: 4px;
+  }
+
+  .post__cta-banner .cta-link {
+    margin-top: 12px;
+  }
+
+  /* Related services links */
+  .post__services {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-light);
+  }
+
+  .post__services-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--body-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .post__services-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .post__services-link {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: var(--r-pill);
+    background: var(--beige);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    transition: background 160ms ease;
+  }
+
+  .post__services-link:hover {
+    background: #EAEAEA;
+  }
+
+  /* FAQ section */
+  .post__faq {
+    max-width: 680px;
+    margin-left: calc(180px + 48px);
+    margin-top: 64px;
+    padding-top: 64px;
+    border-top: 1px solid var(--gray-light);
+  }
+
+  .post__faq-heading {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    line-height: 34px;
+    color: var(--heading);
+    margin-bottom: 32px;
+  }
+
+  /* Related posts */
+  .post__related {
+    margin-top: 80px;
+    padding-top: 64px;
+    border-top: 1px solid var(--gray-light);
+    padding-bottom: 80px;
+  }
+
+  .post__related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+
+  .post__related-heading {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    line-height: 34px;
+    color: var(--heading);
+  }
+
+  .post__related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .post__related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-radius: var(--r-xl);
+    background: var(--beige);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+
+  .post__related-card:hover {
+    background: #EAEAEA;
+    transform: translateY(-2px);
+  }
+
+  .post__related-date {
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  .post__related-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.22px;
+    line-height: 23px;
+    color: var(--heading);
+  }
+
+  .post__related-cat {
+    font-size: 13px;
+    color: var(--body-muted);
+    margin-top: auto;
+  }
+
+  /* ==========================================================================
+     RESPONSIVE
+     ========================================================================== */
+  @media (max-width: 860px) {
+    .post {
+      padding-top: 100px;
+    }
+
+    .post__layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .post__toc {
+      position: static;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .post__toc-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+    }
+
+    .post__faq {
+      margin-left: 0;
+    }
+
+    .post__related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post__title {
+      font-size: 30px;
+      line-height: 36px;
+      letter-spacing: -0.8px;
+    }
+
+    .post__body h2 {
+      font-size: 23px;
+      line-height: 29px;
+    }
+
+    .post__meta-top {
+      flex-wrap: wrap;
+    }
+  }
+</style>

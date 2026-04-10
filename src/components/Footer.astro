@@ -58,7 +58,7 @@ const columns = [
         ))}
       </div>
 
-      <!-- Right: copyright + social icons -->
+      <!-- Right: copyright + social icons + badges -->
       <div class="footer__right">
         <span class="footer__copy">&copy; {currentYear}</span>
         <div class="footer__socials">
@@ -73,6 +73,20 @@ const columns = [
           <!-- Email -->
           <a href="mailto:hello@moonb.io" class="footer__social" aria-label="Email">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          </a>
+        </div>
+        <div class="footer__badges">
+          <a href="https://clutch.co/profile/moonb#reviews" target="_blank" rel="noopener noreferrer" aria-label="Clutch Global Award Spring 2024">
+            <img src="https://cdn.prod.website-files.com/64bab9d8647370067fbace0b/66782dd82e87d83e5ea456a2_global_award_spring_2024.svg" alt="Clutch Global Award Spring 2024" width="40" height="40" loading="lazy" />
+          </a>
+          <a href="https://clutch.co/profile/moonb#reviews" target="_blank" rel="noopener noreferrer" aria-label="Top 100 Video Production Companies">
+            <img src="https://cdn.prod.website-files.com/64bab9d8647370067fbace0b/682b6bdce36d0f3648b6ab13_Badge-Image.svg" alt="Top 100 Video Production Companies" width="40" height="40" loading="lazy" />
+          </a>
+          <a href="https://clutch.co/profile/moonb#reviews" target="_blank" rel="noopener noreferrer" aria-label="Clutch Top Video Production Company 2025">
+            <img src="https://cdn.prod.website-files.com/64bab9d8647370067fbace0b/691aec61d3ce866726972a31_Clutch-2025.svg" alt="Clutch Top Video Production 2025" width="40" height="40" loading="lazy" />
+          </a>
+          <a href="https://50pros.com" target="_blank" rel="noopener noreferrer" aria-label="Global Leader Top 10 Creative Production 2026">
+            <img src="/assets/badges/2026-badge.svg" alt="Global Leader Top 10 2026" width="40" height="40" loading="lazy" />
           </a>
         </div>
       </div>
@@ -165,6 +179,25 @@ const columns = [
 
   .footer__social svg {
     display: block;
+  }
+
+  .footer__badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    opacity: 0.4;
+    transition: opacity 200ms ease;
+  }
+
+  .footer__badges:hover {
+    opacity: 0.7;
+  }
+
+  .footer__badges img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
   }
 
   @media (max-width: 860px) {

@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 
-/* Real moonb.io copy + Superside layout structure */
+/* Pricing page — Superside layout, innovative design, no multicolor ticks */
 
 const included = [
   'Dedicated Creative Director',
@@ -35,10 +35,9 @@ const logos = [
 ];
 
 const comparison = [
-  { point: 'Better than hiring in-house', desc: 'No long hiring process. No salaries, benefits, or equipment. Get a full creative team producing from day one.' },
-  { point: 'Beyond agencies & freelancers', desc: 'No unreliable freelancers. No agency markups. Your own dedicated team delivering world-class design and video every week.' },
-  { point: 'Super fast onboarding', desc: 'Be onboarded and briefing your team within the first week. Most clients receive their first deliverable within 5-10 business days.' },
-  { point: 'Quality content creation', desc: 'A team that learns your brand once and gets better with every deliverable. Consistent quality across every touchpoint.' },
+  { label: 'Hiring In-house', items: ['6–8 weeks to hire', 'Salary + benefits + tools', 'Limited to 1-2 skill sets', 'PTO, sick days, turnover risk', 'Your problem if they quit'], bad: true },
+  { label: 'Legacy Agency', items: ['2–4 week kickoff', 'Per-project quotes + markups', 'New team every project', 'Weeks of back-and-forth', 'You don\'t own the files'], bad: true },
+  { label: 'Moonb', items: ['Onboarded in days', 'One predictable monthly rate', 'Full creative team (video + design)', 'Same team, gets better over time', '100% file ownership, cancel anytime'], bad: false },
 ];
 
 const testimonials = [
@@ -100,11 +99,9 @@ const faqSchema = {
           <div class="pr__hero-right" data-reveal data-reveal-delay="1">
             <span class="pr__included-label">Included in every plan</span>
             <div class="pr__included-list">
-              {included.map((item, i) => (
+              {included.map((item) => (
                 <div class="pr__included-item">
-                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M5 10L8.5 13.5L15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <span class="pr__check-dot"></span>
                   <span>{item}</span>
                 </div>
               ))}
@@ -128,7 +125,7 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- Services grid — Superside style -->
+    <!-- Services grid -->
     <section class="pr__services section section--beige">
       <div class="pr__container">
         <h2 class="pr__section-heading" data-reveal>12+ scalable creative services</h2>
@@ -143,38 +140,55 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- A better way — comparison cards -->
+    <!-- Comparison table — 3 columns -->
     <section class="pr__compare section">
       <div class="pr__container">
-        <h2 class="pr__section-heading" data-reveal>A better way to get creative done</h2>
-        <p class="pr__section-sub" data-reveal>No long hiring process and no unreliable freelancers. Your own dedicated team delivering world-class design and video every week.</p>
+        <h2 class="pr__section-heading" data-reveal>Why teams switch to Moonb</h2>
+        <p class="pr__section-sub" data-reveal>See how Moonb compares to the alternatives.</p>
         <div class="pr__compare-grid">
-          {comparison.map((c, i) => (
-            <div class={`pr__compare-card pr__compare-card--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
-              <h3 class="pr__compare-title">{c.point}</h3>
-              <p class="pr__compare-desc">{c.desc}</p>
+          {comparison.map((col) => (
+            <div class={`pr__compare-col ${col.bad ? 'pr__compare-col--muted' : 'pr__compare-col--highlight'}`} data-reveal>
+              <h3 class="pr__compare-label">{col.label}</h3>
+              <ul class="pr__compare-list">
+                {col.items.map((item) => (
+                  <li class="pr__compare-row">
+                    {col.bad ? (
+                      <svg class="pr__compare-icon pr__compare-icon--x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    ) : (
+                      <svg class="pr__compare-icon pr__compare-icon--check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials — horizontal scroll marquee style -->
     <section class="pr__testimonials section section--beige">
       <div class="pr__container">
         <h2 class="pr__section-heading" data-reveal>What our clients say</h2>
-        <div class="pr__testimonials-grid">
-          {testimonials.map((t, i) => (
-            <div class={`pr__testimonial pr__testimonial--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
-              <p class="pr__testimonial-quote">"{t.quote}"</p>
-              <div class="pr__testimonial-footer">
-                <img src={t.avatar} alt={t.name} class="pr__testimonial-avatar" width="40" height="40" loading="lazy" />
+      </div>
+      <div class="pr__testimonials-scroll">
+        <div class="pr__testimonials-track">
+          {[...testimonials, ...testimonials].map((t) => (
+            <blockquote class="pr__quote-card">
+              <p class="pr__quote-text">{t.quote}</p>
+              <footer class="pr__quote-footer">
+                <img src={t.avatar} alt={t.name} class="pr__quote-avatar" width="36" height="36" loading="lazy" />
                 <div>
-                  <span class="pr__testimonial-name">{t.name}</span>
-                  <span class="pr__testimonial-role">{t.role}, {t.company}</span>
+                  <cite class="pr__quote-name">{t.name}</cite>
+                  <span class="pr__quote-role">{t.role}, {t.company}</span>
                 </div>
-              </div>
-            </div>
+              </footer>
+            </blockquote>
           ))}
         </div>
       </div>
@@ -255,7 +269,6 @@ const faqSchema = {
     gap: 64px;
     align-items: start;
   }
-  .pr__hero-left {}
   .pr__title {
     font-family: var(--font-heading);
     font-size: 48px;
@@ -332,24 +345,24 @@ const faqSchema = {
     margin-bottom: 48px;
   }
 
-  /* ── Included items ── */
+  /* ── Included items — minimal dot instead of colored ticks ── */
   .pr__included-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-family: var(--font-heading);
     font-size: 15px;
     font-weight: 500;
     color: var(--heading);
   }
-  .pr__included-item:nth-child(1) svg { color: var(--accent); }
-  .pr__included-item:nth-child(2) svg { color: var(--accent-blue); }
-  .pr__included-item:nth-child(3) svg { color: var(--accent-green); }
-  .pr__included-item:nth-child(4) svg { color: var(--accent-purple); }
-  .pr__included-item:nth-child(5) svg { color: var(--accent); }
-  .pr__included-item:nth-child(6) svg { color: var(--accent-blue); }
-  .pr__included-item:nth-child(7) svg { color: var(--accent-green); }
-  .pr__included-item:nth-child(8) svg { color: var(--accent-purple); }
+  .pr__check-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--heading);
+    flex-shrink: 0;
+    opacity: 0.35;
+  }
 
   /* ── Logos ── */
   .pr__logos {
@@ -407,6 +420,7 @@ const faqSchema = {
     color: var(--heading);
     border: 1px solid var(--border);
     transition: all 200ms ease;
+    cursor: default;
   }
   .pr__service-chip:hover { transform: translateY(-1px); }
   .pr__service-chip--accent-1:hover { border-color: var(--accent); color: var(--accent); background: rgba(255, 83, 16, 0.04); }
@@ -414,86 +428,133 @@ const faqSchema = {
   .pr__service-chip--accent-3:hover { border-color: var(--accent-green); color: var(--accent-green); background: rgba(0, 182, 122, 0.04); }
   .pr__service-chip--accent-4:hover { border-color: var(--accent-purple); color: var(--accent-purple); background: rgba(123, 97, 255, 0.04); }
 
-  /* ── Comparison cards ── */
+  /* ── Comparison — 3 column table ── */
   .pr__compare-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
   }
-  .pr__compare-card {
-    padding: 28px;
-    border-radius: var(--r-xl);
-    background: var(--beige);
-    border-top: 3px solid transparent;
-    transition: transform 200ms ease;
+  .pr__compare-col {
+    padding: 32px;
   }
-  .pr__compare-card:hover { transform: translateY(-2px); }
-  .pr__compare-card--accent-1 { border-top-color: var(--accent); }
-  .pr__compare-card--accent-2 { border-top-color: var(--accent-blue); }
-  .pr__compare-card--accent-3 { border-top-color: var(--accent-green); }
-  .pr__compare-card--accent-4 { border-top-color: var(--accent-purple); }
-
-  .pr__compare-title {
+  .pr__compare-col--muted {
+    background: var(--white);
+  }
+  .pr__compare-col--highlight {
+    background: var(--heading);
+  }
+  .pr__compare-col--muted + .pr__compare-col--muted {
+    border-left: 1px solid var(--border);
+  }
+  .pr__compare-label {
     font-family: var(--font-heading);
     font-size: 17px;
     font-weight: 600;
     letter-spacing: -0.2px;
-    color: var(--heading);
-    margin-bottom: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
   }
-  .pr__compare-desc {
-    font-size: 14px;
-    line-height: 21px;
-    color: var(--body);
+  .pr__compare-col--muted .pr__compare-label {
+    color: var(--body-muted);
+    border-bottom-color: var(--border);
   }
-
-  /* ── Testimonials ── */
-  .pr__testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  .pr__compare-col--highlight .pr__compare-label {
+    color: var(--white);
+    border-bottom-color: rgba(255,255,255,0.15);
   }
-  .pr__testimonial {
-    padding: 28px;
-    border-radius: var(--r-xl);
-    background: var(--white);
+  .pr__compare-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    border-top: 3px solid transparent;
+    gap: 16px;
   }
-  .pr__testimonial--accent-1 { border-top-color: var(--accent); }
-  .pr__testimonial--accent-2 { border-top-color: var(--accent-blue); }
-  .pr__testimonial--accent-3 { border-top-color: var(--accent-green); }
-  .pr__testimonial--accent-4 { border-top-color: var(--accent-purple); }
+  .pr__compare-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .pr__compare-col--muted .pr__compare-row {
+    color: var(--body);
+  }
+  .pr__compare-col--highlight .pr__compare-row {
+    color: rgba(255,255,255,0.85);
+  }
+  .pr__compare-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pr__compare-icon--x { color: var(--body-muted); opacity: 0.5; }
+  .pr__compare-icon--check { color: var(--accent-green); }
 
-  .pr__testimonial-quote {
+  /* ── Testimonials — horizontal scroll ── */
+  .pr__testimonials-scroll {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    margin-top: 40px;
+  }
+  .pr__testimonials-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: pr-testimonial-scroll 30s linear infinite;
+    will-change: transform;
+  }
+  .pr__testimonials-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes pr-testimonial-scroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  .pr__quote-card {
+    flex-shrink: 0;
+    width: 380px;
+    padding: 32px;
+    background: var(--white);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: transform 200ms ease;
+  }
+  .pr__quote-card:hover { transform: translateY(-2px); }
+  .pr__quote-text {
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
-    line-height: 23px;
+    line-height: 24px;
     color: var(--heading);
     flex: 1;
   }
-  .pr__testimonial-footer {
+  .pr__quote-footer {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-  .pr__testimonial-avatar {
-    width: 40px;
-    height: 40px;
+  .pr__quote-avatar {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     object-fit: cover;
   }
-  .pr__testimonial-name {
+  .pr__quote-name {
     display: block;
     font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 600;
+    font-style: normal;
     color: var(--heading);
   }
-  .pr__testimonial-role {
+  .pr__quote-role {
     display: block;
     font-size: 12px;
     color: var(--body-muted);
@@ -537,8 +598,9 @@ const faqSchema = {
   @media (max-width: 860px) {
     .pr__title { font-size: 36px; line-height: 42px; }
     .pr__hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .pr__compare-grid { grid-template-columns: repeat(2, 1fr); }
-    .pr__testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .pr__compare-grid { grid-template-columns: 1fr; }
+    .pr__compare-col--muted + .pr__compare-col--muted { border-left: none; border-top: 1px solid var(--border); }
+    .pr__quote-card { width: 300px; }
     .pr__cta-inner {
       flex-direction: column;
       gap: 24px;
@@ -549,7 +611,6 @@ const faqSchema = {
 
   @media (max-width: 480px) {
     .pr__title { font-size: 30px; line-height: 36px; }
-    .pr__compare-grid { grid-template-columns: 1fr; }
-    .pr__testimonials-grid { grid-template-columns: 1fr; }
+    .pr__quote-card { width: 280px; padding: 24px; }
   }
 </style>

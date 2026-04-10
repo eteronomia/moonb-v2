@@ -4,88 +4,698 @@ import Footer from '../../components/Footer.astro';
 
 /*
   Service page template — v2 redesign
-  TODO: Replace hardcoded content with Sanity CMS fetch
+  All 12 services — data expanded from moonb.io scraped content
 */
 
-const service = {
-  title: 'Corporate Video Production',
-  slug: 'corporate-video-production',
-  category: 'Video',
-  heroHeading: 'Corporate Video Production',
-  heroDescription: 'A dedicated creative team that produces corporate video continuously, from investor updates and executive messaging to recruitment content and internal communications.',
-  seo: {
-    title: 'Corporate Video Production | Moonb',
-    description: 'Corporate video production from a dedicated creative team. Investor updates, executive messaging, recruitment, internal comms. Predictable monthly pricing.',
-  },
-  serviceTypes: [
-    { title: 'Investor Relations', desc: 'Earnings call visuals, annual report videos, and shareholder updates that build confidence.' },
-    { title: 'Executive Messaging', desc: 'Thought leadership content, town hall intros, and keynote support that feels authentic.' },
-    { title: 'Recruitment & Employer Brand', desc: 'Culture videos, role spotlights, and onboarding content that attracts talent.' },
-    { title: 'Internal Communications', desc: 'Policy updates, change management videos, and team announcements that actually get watched.' },
-    { title: 'Training & Compliance', desc: 'Process walkthroughs, safety protocols, and regulatory training that holds attention.' },
-    { title: 'Event & CSR', desc: 'Event recap packages, highlight reels, and corporate social responsibility stories.' },
-  ],
-  differentiator: {
-    heading: 'The agency model is broken. We fixed it.',
-    text: 'Legacy agencies scope and price each project individually — new briefs, new quotes, new onboarding every time. Moonb is a modern creative partner: one dedicated team, one monthly rate, no surprises. Your team learns your brand deeply and gets faster with every deliverable.',
-    points: [
-      { label: 'Legacy agency', value: 'New team every project', accent: false },
-      { label: 'Moonb', value: 'Same dedicated team', accent: true },
-      { label: 'Legacy agency', value: 'Per-project quotes & invoices', accent: false },
-      { label: 'Moonb', value: 'One predictable monthly rate', accent: true },
-      { label: 'Legacy agency', value: 'Weeks of back-and-forth', accent: false },
-      { label: 'Moonb', value: '5–10 business days', accent: true },
+// Shared work items (placeholder portfolio)
+const sharedWork = [
+  { title: 'Dell Technologies — Product Launch', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ec8c76e46b46c6b6f9_Portfolio%2001.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Toyota — Recruitment Campaign', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b70a_Portfolio%2003.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1084258404' },
+];
+
+// Shared differentiator comparison points
+const sharedDiffPoints = [
+  { label: 'Legacy agency', value: 'New team every project', accent: false },
+  { label: 'Moonb', value: 'Same dedicated team', accent: true },
+  { label: 'Legacy agency', value: 'Per-project quotes & invoices', accent: false },
+  { label: 'Moonb', value: 'One predictable monthly rate', accent: true },
+  { label: 'Legacy agency', value: 'Weeks of back-and-forth', accent: false },
+  { label: 'Moonb', value: '5–10 business days', accent: true },
+];
+
+// Shared stats
+const sharedStats = [
+  { number: '500+', label: 'Videos produced' },
+  { number: '5–10', label: 'Business days to deliver' },
+  { number: '95%', label: 'Client retention' },
+];
+
+// Shared process
+const sharedProcess = [
+  { number: '01', title: 'Get onboarded', desc: 'Sign up and meet your dedicated Creative Director. We learn your brand, your goals, and your audience.', detail: 'Takes about 30 minutes' },
+  { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD manages the production pipeline and prioritizes the work.', detail: 'Unlimited requests' },
+  { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within 5–10 business days. Revisions are included — no revision caps or change-order fees.', detail: 'No revision caps' },
+];
+
+// Shared fallback testimonial
+const fallbackTestimonial = {
+  quote: "They've delivered above and beyond.",
+  name: 'Marius Godo',
+  role: 'Digital Marketing & Content Specialist',
+  company: 'Gnosis by Lesaffre',
+  avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+};
+
+const services: Record<string, any> = {
+
+  'corporate-video-production': {
+    title: 'Corporate Video Production',
+    slug: 'corporate-video-production',
+    category: 'Video',
+    heroHeading: 'Corporate Video Production',
+    heroDescription: 'A dedicated creative team that produces corporate video continuously, from investor updates and executive messaging to recruitment content and internal communications.',
+    seo: {
+      title: 'Corporate Video Production | Moonb',
+      description: 'Corporate video production from a dedicated creative team. Investor updates, executive messaging, recruitment, internal comms. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Investor Relations', desc: 'Earnings call visuals, annual report videos, and shareholder updates that build confidence.' },
+      { title: 'Executive Messaging', desc: 'Thought leadership content, town hall intros, and keynote support that feels authentic.' },
+      { title: 'Recruitment & Employer Brand', desc: 'Culture videos, role spotlights, and onboarding content that attracts talent.' },
+      { title: 'Internal Communications', desc: 'Policy updates, change management videos, and team announcements that actually get watched.' },
+      { title: 'Training & Compliance', desc: 'Process walkthroughs, safety protocols, and regulatory training that holds attention.' },
+      { title: 'Event & CSR', desc: 'Event recap packages, highlight reels, and corporate social responsibility stories.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Traditional agencies scope and price each project individually, creating delays and unpredictable costs. Moonb embeds a dedicated creative team into your workflow with predictable monthly pricing. Your team learns your brand deeply, retains institutional knowledge, and produces faster with every project because they already understand your organization.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: fallbackTestimonial,
+    faqs: [
+      { q: 'Can you produce corporate video for multi-location organizations?', a: 'Yes. Your team creates scalable production frameworks that maintain brand and quality consistency across regions and facilities. Location-specific content can be produced using animation and templated visual systems that keep every office\'s content aligned with the broader corporate identity.' },
+      { q: 'How do you approach corporate video for publicly traded companies?', a: 'Your team understands the additional layer of scrutiny that comes with public company communications. Content is produced with awareness of disclosure requirements, quiet period considerations, and the need for legal review before publication. Your Creative Director coordinates with your investor relations and legal teams to ensure every piece meets regulatory standards.' },
+      { q: 'Can corporate video support change management and organizational initiatives?', a: 'Yes. Video is one of the most effective tools for communicating organizational change because it conveys tone and intent in ways that email and memos cannot. Your team produces content that explains the why behind changes, introduces new leadership or structures, and provides a consistent message that reaches every employee regardless of location or department.' },
+      { q: 'What types of corporate video generate the most internal engagement?', a: 'Executive updates that feel authentic rather than scripted, employee recognition and milestone celebration videos, and culture-focused content that showcases real team members consistently outperform generic corporate communications. Your team focuses on making internal content feel genuine, which drives higher watch rates and stronger employee connection to the organization.' },
+      { q: 'How do you handle confidential or sensitive corporate content during production?', a: 'Your team operates under strict confidentiality protocols. All project files are stored securely, access is limited to assigned team members, and NDAs are standard practice. For particularly sensitive content like pre-announcement earnings or M&A communications, your Creative Director coordinates directly with your legal or communications team to ensure proper handling at every stage.' },
+      { q: 'Can corporate video content be localized for international offices?', a: 'Yes. Your team produces master versions designed for localization from the start. Text overlays are kept in editable layers, voiceover scripts are written for easy translation, and culturally specific references are flagged during the scripting phase. When you need a version in another language or region, the production process is significantly more efficient because the groundwork is already done.' },
+      { q: 'How do you maintain brand consistency across different corporate video formats?', a: 'Your dedicated team builds a comprehensive brand guide at the start of the engagement that covers color palettes, typography, motion design language, voiceover tone, and music direction. Every video produced references this guide, so whether the output is a quarterly earnings summary or a recruitment piece, the visual and tonal identity stays consistent.' },
+      { q: 'What makes corporate video different from other types of video content?', a: 'Corporate video serves internal and external business communication goals rather than direct advertising or entertainment. It includes investor updates, executive messaging, company culture pieces, internal announcements, and stakeholder communications. The tone, pacing, and visual approach are calibrated for professional audiences who expect clarity and credibility over flashy production.' },
+    ],
+    relatedServices: [
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Creating authentic connections through compelling video narratives.' },
+      { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
     ],
   },
-  stats: [
-    { number: '500+', label: 'Videos produced' },
-    { number: '5–10', label: 'Business days to deliver' },
-    { number: '95%', label: 'Client retention' },
-  ],
-  process: [
-    { number: '01', title: 'Get onboarded', desc: 'Sign up and meet your dedicated Creative Director. We learn your brand, your stakeholders, and your communication priorities.', detail: 'Takes about 30 minutes' },
-    { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD manages the production pipeline, coordinates stakeholder reviews, and prioritizes the work.', detail: 'Unlimited requests' },
-    { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within 5–10 business days. Revisions are included — no revision caps or change-order fees.', detail: 'No revision caps' },
-  ],
-  compound: {
-    heading: 'The compound effect of a dedicated team',
-    text: 'When the same team produces all your corporate video, they accumulate institutional knowledge about your brand, your executives, your audience, and what resonates. Scripts land faster because the team already understands your voice. Visual assets build on a growing library of approved elements. Stakeholder feedback loops shorten because the team anticipates preferences. Your corporate video program gets faster, more consistent, and more impactful with every month.',
+
+  'marketing-video-production': {
+    title: 'Marketing Video Production',
+    slug: 'marketing-video-production',
+    category: 'Video',
+    heroHeading: 'Marketing Video Production',
+    heroDescription: 'A dedicated creative team that produces brand videos, campaign assets, and content marketing video on a continuous basis so your marketing calendar never has gaps.',
+    seo: {
+      title: 'Marketing Video Production | Moonb',
+      description: 'Marketing video production from a dedicated creative team. Brand videos, campaign assets, social content, and more. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Brand Awareness Videos', desc: 'Top-of-funnel video that communicates your brand story and value proposition to new audiences.' },
+      { title: 'Product Feature Explainers', desc: 'Short, focused videos that highlight specific product capabilities and drive consideration.' },
+      { title: 'Customer Testimonial Videos', desc: 'Social proof content that builds trust with prospects at the evaluation stage.' },
+      { title: 'Campaign Launch Assets', desc: 'Coordinated video packages for product launches, seasonal campaigns, and key marketing moments.' },
+      { title: 'Social Media Content', desc: 'Platform-optimized short-form video for Instagram, LinkedIn, TikTok, and beyond.' },
+      { title: 'Thought Leadership Pieces', desc: 'Educational and opinion-led video that positions your brand as an authority in your category.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Moonb assigns a dedicated creative team that operates as your embedded video production department. They learn your brand voice, your campaign rhythm, and your audience segments. Every video is produced with strategic intent, not just visual polish.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'Moonb delivered a beautiful animated ad.',
+      name: 'Jacey Crawford',
+      role: 'Marketing Manager',
+      company: 'The BAM Companies',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'What types of marketing videos does Moonb produce?', a: 'Moonb produces brand awareness videos, product feature explainers, customer testimonial videos, campaign launch assets, social media content, email video content, event promotional videos, and thought leadership pieces.' },
+      { q: 'How does Moonb fit into our existing marketing workflow?', a: 'Your Creative Director integrates with your content calendar and campaign planning process. Briefs are submitted through Moonb\'s platform, and production timelines are aligned with your launch dates.' },
+      { q: 'Can Moonb produce video for multiple campaigns simultaneously?', a: 'Yes. Your dedicated team manages a production queue and can work on multiple campaigns in parallel. Your Creative Director prioritizes deliverables based on your campaign timeline.' },
+      { q: 'How do you maintain brand consistency across many videos?', a: 'Your dedicated team maintains a living brand toolkit that includes your visual identity, tone of voice, animation style, and messaging guidelines. Every video inherits this consistency.' },
+      { q: 'What is the typical production timeline?', a: 'Most marketing videos are delivered in five to twelve business days, depending on format and complexity. Your Creative Director provides timeline estimates during the briefing stage.' },
+      { q: 'Can we repurpose video content across channels?', a: 'Yes. Your team produces master files and platform-specific cuts simultaneously. A single brand video can be adapted into social clips, email headers, landing page hero content, and presentation assets.' },
+      { q: 'What types of marketing video drive the most measurable results?', a: 'Product explainers on landing pages consistently improve conversion rates. Testimonial and case study videos build trust at the consideration stage. Short-form social content drives top-of-funnel awareness. Your Creative Director helps prioritize formats based on where your funnel has the most opportunity for improvement.' },
+      { q: 'How does video fit into a broader content marketing strategy?', a: 'Video amplifies every other content format in your marketing mix. A single well-produced video can be repurposed into blog content, social clips, email assets, landing page heroes, and sales enablement tools. Your dedicated team plans productions with this multi-channel distribution in mind, maximizing the return on every piece of content created.' },
+    ],
+    relatedServices: [
+      { title: 'Corporate Video Production', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated creative team.' },
+      { title: 'Social Media Video Production', slug: 'social-media-video-production', desc: 'Platform-native social video that stops the scroll.' },
+      { title: 'Advertising Video Production', slug: 'advertising-video-production', desc: 'Ad creative at scale across every paid channel.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+    ],
   },
-  work: [
-    { title: 'Dell Technologies — Product Launch', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ec8c76e46b46c6b6f9_Portfolio%2001.webp', vimeo: 'https://vimeo.com/1084258404' },
-    { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1084258404' },
-    { title: 'Toyota — Recruitment Campaign', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b70a_Portfolio%2003.webp', vimeo: 'https://vimeo.com/1084258404' },
-    { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1084258404' },
-  ],
-  testimonial: {
-    quote: 'They\'ve delivered above and beyond.',
-    name: 'Marius Godo',
-    role: 'Digital Marketing & Content Specialist',
-    company: 'Gnosis by Lesaffre',
-    avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+
+  'social-media-video-production': {
+    title: 'Social Media Video Production',
+    slug: 'social-media-video-production',
+    category: 'Video',
+    heroHeading: 'Social Media Video Production',
+    heroDescription: 'Grab your audience\'s attention and make them stop scrolling. A dedicated creative team producing platform-native social video continuously.',
+    seo: {
+      title: 'Social Media Video Production | Moonb',
+      description: 'Social media video production from a dedicated creative team. Platform-native content for Instagram, TikTok, LinkedIn, and beyond. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Instagram Reels & Stories', desc: 'Short-form vertical video designed for Instagram\'s native formats and algorithm preferences.' },
+      { title: 'TikTok Content', desc: 'Trend-aware, fast-paced video built for TikTok\'s discovery-first feed.' },
+      { title: 'LinkedIn Video', desc: 'Professional short-form content optimized for B2B audiences and the LinkedIn feed.' },
+      { title: 'YouTube Shorts', desc: 'Vertical content that extends your YouTube presence into short-form discovery.' },
+      { title: 'Facebook & Meta Video', desc: 'Feed and Stories content designed for Meta\'s engagement-driven algorithm.' },
+      { title: 'Cross-Platform Packages', desc: 'Coordinated social video packages that maintain brand consistency across all channels.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Moonb enhances your brand\'s social presence by embedding a dedicated creative team that understands platform algorithms, audience behavior, and your content goals. They produce high-volume, platform-optimized social video continuously — so you always have fresh content to publish.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'They were capable of adapting to fast delivery deadlines.',
+      name: 'René Ugarte',
+      role: 'Senior Producer',
+      company: 'MOI Global',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'How do you approach video for emerging social platforms?', a: 'Your team evaluates new platforms based on where your target audience is migrating and whether the platform\'s content format aligns with your brand. When a new platform warrants investment, they adapt your visual language to its native conventions rather than simply republishing content from other channels.' },
+      { q: 'Can social media video content be tied to specific business objectives?', a: 'Yes. Every piece of social content your team produces is tied to a specific goal: awareness, engagement, traffic, leads, or conversions. This intentional approach means your social video strategy contributes measurably to business outcomes rather than just generating vanity metrics like views or likes.' },
+      { q: 'How do you optimize social video for algorithm performance?', a: 'Your team designs content with platform algorithms in mind: strong hooks in the first second to minimize scroll-past rates, pacing that maximizes watch time, and engagement triggers that encourage comments and shares. These technical optimizations are built into the creative process rather than added as an afterthought.' },
+      { q: 'Can you produce both organic and paid social video content?', a: 'Yes. Organic and paid social content have different objectives and creative requirements. Organic content builds community and engagement over time. Paid content is optimized for specific conversion goals with stronger hooks and calls to action. Your team produces both and understands the distinct creative strategies that make each format effective.' },
+      { q: 'Should social media videos include captions?', a: 'Yes. The majority of social media video is consumed with sound off, especially on mobile feeds. Your team adds burnt-in captions or animated text overlays to every social video as standard practice. This ensures your message is communicated regardless of whether the viewer has their sound on.' },
+      { q: 'How do you handle the volume of content needed for social media?', a: 'Your team builds production workflows designed for volume. Batch production sessions, reusable template systems, and modular asset libraries allow them to produce high quantities of content without sacrificing quality. A single production concept can yield a dozen or more unique social assets across formats, platforms, and variations.' },
+      { q: 'What video lengths work best for each social platform?', a: 'Optimal lengths vary by platform and objective. Instagram Reels and TikTok perform best at 15 to 30 seconds. LinkedIn videos see strong engagement at 30 to 90 seconds. YouTube content can run longer depending on the format. Your team produces platform-specific cuts from each production rather than forcing one length across all channels.' },
+      { q: 'How do you keep social video content feeling fresh and on-trend?', a: 'Your dedicated team monitors platform trends, algorithm changes, and emerging content formats as part of their ongoing work. They adapt your brand\'s visual language to current social conventions without chasing every passing trend, maintaining a balance between relevance and brand consistency that keeps your content feeling current but not disposable.' },
+    ],
+    relatedServices: [
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Advertising Video Production', slug: 'advertising-video-production', desc: 'Ad creative at scale across every paid channel.' },
+      { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Authentic brand storytelling through compelling video.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+    ],
   },
-  faqs: [
-    { q: 'Can you produce corporate video for multi-location organizations?', a: 'Yes. Your team creates scalable production frameworks that maintain brand and quality consistency across regions and facilities. Location-specific content can be produced using animation and templated visual systems that keep every office\'s content aligned with the broader corporate identity.' },
-    { q: 'How do you approach corporate video for publicly traded companies?', a: 'Your team understands the additional layer of scrutiny that comes with public company communications. Content is produced with awareness of disclosure requirements, quiet period considerations, and the need for legal review before publication. Your Creative Director coordinates with your investor relations and legal teams.' },
-    { q: 'What types of corporate video generate the most internal engagement?', a: 'Executive updates that feel authentic rather than scripted, employee recognition and milestone celebration videos, and culture-focused content that showcases real team members consistently outperform generic corporate communications.' },
-    { q: 'How do you handle confidential or sensitive corporate content?', a: 'Your team operates under strict confidentiality protocols. All project files are stored securely, access is limited to assigned team members, and NDAs are standard practice. For particularly sensitive content, your Creative Director coordinates directly with your legal or communications team.' },
-    { q: 'How do you maintain brand consistency across different corporate video formats?', a: 'Your dedicated team builds a comprehensive brand guide at the start covering color palettes, typography, motion design language, voiceover tone, and music direction. Every video references this guide, so whether the output is a quarterly earnings summary or a recruitment piece, the identity stays consistent.' },
-    { q: 'What makes corporate video different from other types of video content?', a: 'Corporate video serves internal and external business communication goals rather than direct advertising or entertainment. It includes investor updates, executive messaging, company culture pieces, internal announcements, and stakeholder communications. The tone, pacing, and visual approach are calibrated for professional audiences who expect clarity and credibility.' },
-    { q: 'Can corporate video content be localized for international offices?', a: 'Yes. Your team produces master versions designed for localization from the start. Text overlays are kept in editable layers, voiceover scripts are written for easy translation, and culturally specific references are flagged during scripting.' },
-    { q: 'Can corporate video support change management initiatives?', a: 'Yes. Video is one of the most effective tools for communicating organizational change because it conveys tone and intent in ways that email and memos cannot. Your team produces content that explains the why behind changes and provides a consistent message that reaches every employee.' },
-  ],
-  relatedServices: [
-    { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
-    { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Creating authentic connections through compelling video narratives.' },
-    { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
-  ],
-  relatedBlogPosts: [
-    { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
-    { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
-    { title: 'Corporate video production: everything you need to know', slug: 'corporate-video-production', date: '2025-08-15' },
-    { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2025-06-20' },
-  ],
+
+  'explainer-video-production': {
+    title: 'Explainer Video Production',
+    slug: 'explainer-video-production',
+    category: 'Video',
+    heroHeading: 'Explainer Video Production',
+    heroDescription: 'A dedicated creative team that turns complex products, services, and ideas into clear, engaging explainer videos built for conversion.',
+    seo: {
+      title: 'Explainer Video Production | Moonb',
+      description: 'Explainer video production from a dedicated creative team. Turn complex products into clear, engaging videos built for conversion. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: '2D Character Animation', desc: 'Engaging character-led explainers that connect with consumer and B2B audiences alike.' },
+      { title: 'Motion Graphics', desc: 'Clean, data-driven motion graphics for B2B SaaS, fintech, and technical products.' },
+      { title: 'Whiteboard & Sketch Style', desc: 'Illustrated walkthroughs that simplify complex processes and workflows.' },
+      { title: 'Kinetic Typography', desc: 'Text-driven animation that reinforces key messages with high visual impact.' },
+      { title: 'Screencast with Animation', desc: 'Product UI walkthroughs enhanced with animated overlays and callouts.' },
+      { title: 'Hybrid Live-Action & Animation', desc: 'Combined formats that blend real-world footage with animated explanation layers.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Your dedicated Creative Director leads a discovery phase focused on product understanding, audience analysis, and key messaging. The team retains all source files, enabling fast updates when your product changes — no briefing from scratch, no new quotes.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'Their imagination, creativity, precision, and quality of work were impressive.',
+      name: 'Danila De Stefano',
+      role: 'CEO',
+      company: 'Unobravo',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'Should an explainer video include a voiceover or rely on text and visuals?', a: 'Voiceover is recommended for most explainer videos because it adds a human element, guides the viewer\'s attention, and allows visual elements to focus on demonstration rather than carrying the entire narrative through text. Your team also adds captions and text reinforcement so the video communicates effectively with or without sound.' },
+      { q: 'How do you structure the narrative of an explainer video?', a: 'The most effective structure follows a problem-solution-benefit arc: open with the pain point your audience recognizes, introduce your product as the solution, show how it works, and close with the outcome or transformation the viewer can expect. This framework works because it mirrors the way people naturally evaluate solutions.' },
+      { q: 'Can an explainer video be updated when the product changes?', a: 'Yes. Your dedicated team retains all source files and project assets, so updating an explainer for new features, UI changes, or messaging shifts is straightforward. Sections of the video can be revised independently without re-producing the entire piece.' },
+      { q: 'What animation styles work best for explainer videos?', a: 'The best style depends on your brand personality and target audience. Clean 2D animation works well for B2B SaaS and fintech. Isometric and 3D-style illustration suits technical and enterprise products. Character-driven animation connects with consumer audiences. Your Creative Director recommends a style that aligns with your brand identity and audience expectations.' },
+      { q: 'How do you handle explainer videos for products with multiple features?', a: 'Rather than cramming every feature into one video, your team recommends a hub-and-spoke approach: one core explainer that covers the overall value proposition, supported by shorter feature-specific videos that dive deeper into individual capabilities. This structure serves both broad awareness and detailed evaluation needs.' },
+      { q: 'Where should an explainer video be placed for maximum impact?', a: 'The highest-impact placement is above the fold on your homepage or primary landing page, where it can immediately communicate your value proposition to new visitors. Explainer videos also perform well in email sequences, sales outreach, onboarding flows, and as the first piece of content prospects encounter in paid campaigns.' },
+      { q: 'How do you simplify complex products without losing accuracy?', a: 'Your team uses a layered approach: start with the core value proposition in plain language, then add detail progressively. Visual metaphors and process animations do the heavy lifting, showing how something works rather than just describing it. Every script goes through a clarity review to eliminate jargon and unnecessary complexity.' },
+      { q: 'What is the ideal length for an explainer video?', a: 'Most effective explainer videos run between 60 and 120 seconds. This is long enough to establish the problem, introduce the solution, and communicate the core value proposition without losing viewer attention. For more complex products, your team can produce longer formats broken into logical segments that maintain engagement throughout.' },
+    ],
+    relatedServices: [
+      { title: 'Product Demo Video Production', slug: 'product-demo-video-production', desc: 'Show off your product with demos that get results.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Corporate Video Production', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated creative team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'advertising-video-production': {
+    title: 'Advertising Video Production',
+    slug: 'advertising-video-production',
+    category: 'Video',
+    heroHeading: 'Advertising Video Production',
+    heroDescription: 'Produce advertising videos at scale with a dedicated creative team that delivers fresh ad creative continuously across YouTube, Meta, TikTok, and every paid channel.',
+    seo: {
+      title: 'Advertising Video Production | Moonb',
+      description: 'Advertising video production at scale. Fresh ad creative for YouTube, Meta, TikTok, LinkedIn, and programmatic channels. Dedicated team, predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'YouTube Ads', desc: 'Pre-roll, mid-roll, bumper ads, and Shorts optimized for YouTube\'s ad formats and viewer behavior.' },
+      { title: 'Meta & Instagram Ads', desc: 'Feed, Stories, and Reels ad creative built for Meta\'s targeting and conversion objectives.' },
+      { title: 'TikTok Ads', desc: 'Native-format ad creative with trending visual styles that performs in TikTok\'s discovery feed.' },
+      { title: 'LinkedIn Sponsored Video', desc: 'B2B-focused sponsored video optimized for LinkedIn\'s professional audience.' },
+      { title: 'Programmatic & CTV', desc: 'VAST/VPAID-compliant display video and connected TV ad spots for programmatic networks.' },
+      { title: 'A/B Testing Creative Variants', desc: 'Multiple ad variations with distinct hooks, CTAs, and visual approaches for continuous testing.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Your dedicated team functions as your in-house advertising creative department. They understand your target audiences, your performance metrics, and your brand guidelines. Every ad is built for measurable results, not just visual appeal. The team produces, iterates, and scales creative on a continuous basis — so your campaigns always have fresh assets to test and deploy.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'Moonb has managed the project efficiently, ensuring the timely delivery of outputs.',
+      name: 'Beth Paz',
+      role: 'Marketing Director',
+      company: 'Opko',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'What makes a video ad effective in the first two seconds?', a: 'The opening must create a pattern interrupt that stops the scroll. Your team uses unexpected motion, bold visual hooks, provocative questions, or striking color contrasts to capture attention before the viewer\'s thumb moves past. The core message is front-loaded so that even viewers who do not watch the full ad absorb the key takeaway.' },
+      { q: 'Can advertising video content be repurposed for organic channels?', a: 'Yes. Your team plans productions with both paid and organic distribution in mind. A single ad concept can generate paid placements, organic social posts, website hero content, and email assets. The key is designing the creative structure to be modular so that each derivative feels native to its channel.' },
+      { q: 'How do you develop a creative concept for a new ad campaign?', a: 'Your Creative Director starts with your campaign objectives, target audience, and competitive landscape. The team develops multiple creative directions with distinct hooks, visual approaches, and narrative angles. You review and select the direction that best aligns with your goals before production begins, ensuring the final output is rooted in strategy rather than guesswork.' },
+      { q: 'Why is animation the right format for advertising video?', a: 'Your team specializes in animation and motion graphics, which gives you more creative control, faster iteration, and no dependency on physical production logistics. Animation allows you to visualize concepts that would be impossible or impractical to capture on camera, and every element can be refined until it is exactly right.' },
+      { q: 'What if an ad campaign needs to pivot based on performance data?', a: 'Your dedicated team can turn around revised creative rapidly because they already have all source files, brand assets, and product context. When your media team identifies that a certain hook or visual approach is outperforming others, your creative team produces new variations that lean into what is working.' },
+      { q: 'How do you approach ad creative for products with long sales cycles?', a: 'For high-consideration purchases, your team produces sequenced ad content that moves prospects through awareness, education, and conversion stages. Early-funnel ads focus on problem awareness and brand introduction. Mid-funnel content demonstrates product value and social proof. Bottom-funnel creative drives action with urgency and clear calls to action.' },
+      { q: 'Can you produce multiple ad variations for A/B testing?', a: 'Yes. Your team routinely produces multiple versions of each ad with variations in hooks, calls to action, pacing, color treatments, and voiceover approaches. This gives your media buying team the creative volume needed to test and optimize effectively without waiting for separate production cycles.' },
+      { q: 'How do you ensure ad creative performs well across different platforms?', a: 'Your team produces platform-native versions of every ad from the start. A YouTube pre-roll has different pacing and hook requirements than a TikTok ad or a LinkedIn sponsored video. Rather than cutting down a single master file, your team creates distinct edits optimized for each platform\'s algorithm, aspect ratio, and audience behavior.' },
+    ],
+    relatedServices: [
+      { title: 'Commercial Video Production', slug: 'commercial-video-production', desc: 'Broadcast and digital commercials at scale.' },
+      { title: 'Social Media Video Production', slug: 'social-media-video-production', desc: 'Platform-native social video that stops the scroll.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+      { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2025-06-20' },
+    ],
+  },
+
+  'commercial-video-production': {
+    title: 'Commercial Video Production',
+    slug: 'commercial-video-production',
+    category: 'Video',
+    heroHeading: 'Commercial Video Production',
+    heroDescription: 'A dedicated creative team that produces broadcast and digital commercials at scale across TV, YouTube, Meta, and programmatic channels.',
+    seo: {
+      title: 'Commercial Video Production | Moonb',
+      description: 'Commercial video production for TV, YouTube, Meta, and programmatic channels. Dedicated creative team, broadcast-ready output, predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'TV Broadcast', desc: '15s, 30s, and 60s spots for linear and connected TV, meeting broadcast technical specifications.' },
+      { title: 'YouTube Commercials', desc: 'Pre-roll, mid-roll, bumper ads, and Shorts optimized for YouTube\'s ad environment.' },
+      { title: 'Social Platform Ads', desc: 'Meta, Instagram, TikTok, and LinkedIn commercial formats for paid social campaigns.' },
+      { title: 'Programmatic Video', desc: 'VAST/VPAID-compliant video for display networks and programmatic ad platforms.' },
+      { title: 'CTV & Streaming', desc: 'Ad spots formatted for connected TV and streaming platforms.' },
+      { title: 'Campaign Variant Series', desc: 'Connected commercial series sharing a visual language and narrative thread across multiple spots.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Your dedicated team functions as your in-house commercial production department. They understand your media plan, your audience segments, and your brand standards. Every commercial is built for measurable performance, not just visual impact. Your Creative Director coordinates with your media buying team to align creative delivery with campaign timelines.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: "Moonb's quick responses and quality work in a very short amount of time were impressive.",
+      name: 'Michael Boyer',
+      role: 'Marketing Manager',
+      company: 'Fortis',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'Can commercial content be adapted for different markets or demographics?', a: 'Yes. Your team builds commercial assets with adaptation in mind. Visual elements, voiceover, text overlays, and cultural references can be swapped to resonate with different demographics, regions, or languages without rebuilding the core animation from scratch.' },
+      { q: 'How do you approach sound design and music for commercials?', a: 'Sound design is treated as a core creative element, not an afterthought. Your team selects or composes music that reinforces the emotional arc of the commercial and uses sound effects to punctuate key moments. Audio mixing is optimized for each distribution channel, from TV speakers to mobile earbuds.' },
+      { q: 'Can you produce a series of connected commercials for a larger campaign?', a: 'Yes. Your team creates campaign frameworks where individual commercials share a visual language, character set, or narrative thread while each delivering a standalone message. This approach builds cumulative brand recognition across multiple touchpoints and creates anticipation for the next installment.' },
+      { q: 'How do you ensure a commercial stands out in a crowded media landscape?', a: 'Your team studies competitive creative in your category to identify visual and narrative patterns, then deliberately breaks them. The most memorable commercials subvert expectations. Your Creative Director brings insight into what audiences in your space are conditioned to see and crafts approaches that feel fresh and distinctive.' },
+      { q: 'What makes animated commercials so effective?', a: 'Animation gives you complete control over every visual element without the constraints of physical production. You can visualize abstract concepts, create impossible scenarios, and maintain perfect brand consistency. Animation also makes future updates and seasonal variations more efficient since existing assets can be modified directly.' },
+      { q: 'Can you produce commercials for both digital and broadcast?', a: 'Yes. Your team produces content that meets broadcast technical specifications (resolution, color space, audio levels) while also creating optimized digital versions for streaming platforms, social media, and programmatic ad networks. Each version is tailored to its distribution channel rather than being a one-size-fits-all export.' },
+      { q: 'How do you develop the creative concept for a commercial?', a: 'Your Creative Director starts with your campaign objectives, target audience, and key message. From there, the team develops multiple creative directions with distinct hooks, visual approaches, and narrative angles. You review and select the direction that best aligns with your goals before production begins, so there are no surprises in the final output.' },
+      { q: 'What is the difference between a commercial and a standard marketing video?', a: 'A commercial is designed for paid media placement and is built to capture attention, deliver a message, and drive action within a compressed timeframe, typically 15 to 60 seconds. Standard marketing videos can be longer and more educational. Commercials require tighter scripting, more aggressive pacing, and hooks that work within the first two seconds.' },
+    ],
+    relatedServices: [
+      { title: 'Advertising Video Production', slug: 'advertising-video-production', desc: 'Ad creative at scale across every paid channel.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Authentic brand storytelling through compelling video.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2025-06-20' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'branded-video-production': {
+    title: 'Branded Video Production',
+    slug: 'branded-video-production',
+    category: 'Video',
+    heroHeading: 'Branded Video Production',
+    heroDescription: 'Leveraging branded video content to connect with your audience and keep them engaged. Authentic storytelling that builds long-term brand equity.',
+    seo: {
+      title: 'Branded Video Production | Moonb',
+      description: 'Branded video production that builds long-term equity. Authentic storytelling, brand-first content, and continuous creative from a dedicated team.',
+    },
+    serviceTypes: [
+      { title: 'Brand Story Films', desc: 'Narrative-driven films that communicate your brand\'s mission, values, and distinctive point of view.' },
+      { title: 'Culture & Team Content', desc: 'Behind-the-scenes and employee-driven content that humanizes your brand.' },
+      { title: 'Thought Leadership Video', desc: 'Authority-building content that positions your brand as the expert in your category.' },
+      { title: 'Branded Entertainment', desc: 'Content designed to entertain or educate while keeping your brand naturally present.' },
+      { title: 'Branded Video Series', desc: 'Multi-episode series with a recurring format that builds audience relationships over time.' },
+      { title: 'Cause & Values Content', desc: 'Purpose-driven video that communicates your brand\'s commitment to what matters.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Branded video builds long-term equity. Your dedicated team invests in understanding your brand\'s values, positioning, and emotional territory at the start. Every creative decision — from script tone to color palette to music — is grounded in that understanding, ensuring authentic alignment rather than surface-level branding.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'We feel fortunate to have found such a great studio to work with.',
+      name: 'Derek Konofalski',
+      role: 'Founder',
+      company: 'Sleepy Time Studios',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'How do you balance creative storytelling with brand guidelines?', a: 'Your team treats brand guidelines as a creative framework rather than a constraint. Strong brand guidelines actually make creative work better by providing clear boundaries within which to innovate. Your Creative Director ensures every production pushes the brand forward creatively while staying within the visual and tonal parameters that make your brand recognizable.' },
+      { q: 'What platforms are most effective for branded video distribution?', a: 'YouTube is the strongest platform for long-form branded content due to its search discoverability and watch time potential. LinkedIn is highly effective for B2B brand building. Instagram and TikTok work well for shorter branded pieces that build cultural relevance. Your team produces format-specific versions so your branded content performs natively on each platform.' },
+      { q: 'Can branded video content be used in recruitment and employer branding?', a: 'Yes. Branded content that communicates your company culture, mission, and work environment is one of the most effective recruitment tools available. Your team produces content that resonates with prospective employees by showcasing what makes your organization distinctive, going beyond generic corporate messaging to convey genuine workplace identity.' },
+      { q: 'How do you ensure branded content aligns with our company values?', a: 'Your dedicated team invests heavily in understanding your brand at the start of the engagement: your values, positioning, competitive landscape, and the emotional territory you want to own. This foundational knowledge informs every creative decision, from script tone to color palette to music selection, ensuring authentic alignment rather than surface-level branding.' },
+      { q: 'How do you develop a branded video series versus a one-off piece?', a: 'A branded video series is built around a central theme or narrative arc that unfolds across multiple episodes, creating ongoing audience engagement and anticipation. Your team establishes recurring visual elements, intro/outro structures, and a consistent format that audiences recognize. This creates compounding value as each new episode builds on the audience the previous ones attracted.' },
+      { q: 'Can you produce branded content that works across both B2B and B2C audiences?', a: 'Yes. Your team tailors the tone, pacing, and visual approach for each audience while maintaining your core brand identity. B2B branded content tends to emphasize credibility, expertise, and business outcomes. B2C content leans more into emotion, lifestyle, and personal benefit. Your brand\'s visual language stays consistent across both.' },
+      { q: 'How does branded video differ from direct-response video?', a: 'Branded video builds long-term equity by communicating your values, story, and identity. Direct-response video drives immediate action like clicks, sign-ups, or purchases. The most effective video strategies include both: branded content creates the trust and recognition that makes direct-response campaigns more effective over time.' },
+      { q: 'How do you measure the ROI of branded video content?', a: 'Branded video ROI is measured through engagement metrics (watch time, shares, comments), brand lift studies, and downstream impact on consideration and conversion rates. Your Creative Director works with your marketing team to define success metrics before production begins, so every video is designed with measurable outcomes in mind.' },
+    ],
+    relatedServices: [
+      { title: 'Corporate Video Production', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated creative team.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Video Series Production', slug: 'video-series-video-production', desc: 'Multi-episode video series that build audience relationships.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'promotional-video-production': {
+    title: 'Promotional Video Production',
+    slug: 'promotional-video-production',
+    category: 'Video',
+    heroHeading: 'Promotional Video Production',
+    heroDescription: 'Give your brand the spotlight it deserves. A dedicated creative team producing promotional video that drives awareness, engagement, and action.',
+    seo: {
+      title: 'Promotional Video Production | Moonb',
+      description: 'Promotional video production from a dedicated creative team. Product launches, event campaigns, seasonal promotions. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Product Launch Videos', desc: 'Pre-launch teasers, announcement videos, and feature highlights that build momentum for new releases.' },
+      { title: 'Event Promotional Content', desc: 'Pre-event videos that drive registrations and post-event recaps that extend reach.' },
+      { title: 'Seasonal Campaign Assets', desc: 'Time-bound promotional video for sales events, seasonal offers, and campaign activations.' },
+      { title: 'Brand Announcement Videos', desc: 'Videos that communicate new partnerships, milestones, and company news with impact.' },
+      { title: 'Offer & Deal Promotions', desc: 'Short-form video designed to drive immediate response around specific offers.' },
+      { title: 'Social Promotional Clips', desc: 'Platform-native short-form promotional content optimized for engagement and sharing.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'An animated-first approach means your promotional assets are easy to update — text, color palette, voiceover — without stress or new production cycles. Your dedicated team focuses on real business goals: every promotional video is designed to drive a specific outcome, not just look impressive.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'My team really enjoyed working with Moonb and found the experience pretty seamless.',
+      name: 'James Pais',
+      role: 'Creative Services Director',
+      company: 'Frame',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'Can promotional video be used for event marketing?', a: 'Yes. Your team produces pre-event promotional content that drives registrations, during-event highlight clips for real-time engagement, and post-event recap videos that extend the life of the experience. Event promotional video is particularly effective because it combines urgency with visual storytelling.' },
+      { q: 'How do you balance promotional messaging with audience value?', a: 'The most effective promotional videos lead with value: they entertain, educate, or inspire before they sell. Your team structures promotional content so the viewer gets something worthwhile from watching, whether that is useful information, emotional connection, or entertainment, which makes them more receptive to the promotional message.' },
+      { q: 'Can promotional video support product launch campaigns?', a: 'Yes. Product launches benefit from a coordinated set of promotional assets: teaser content that builds anticipation, launch day announcement videos, feature highlight clips, and sustained follow-up content that keeps momentum going after the initial launch window. Your team produces this full suite as part of an integrated launch strategy.' },
+      { q: 'How do you write a compelling call to action for promotional video?', a: 'Effective CTAs are specific, urgent, and aligned with the viewer\'s stage in the buying process. Your team avoids generic language like "learn more" in favor of outcome-oriented prompts that tell the viewer exactly what they will get by taking action. The CTA is also reinforced visually, not just spoken, so it registers even with the sound off.' },
+      { q: 'What distribution channels work best for promotional video?', a: 'The best channel depends on where your audience is most active and receptive. Paid social (Instagram, TikTok, LinkedIn, YouTube) provides targeting precision. Email gives you direct access to warm audiences. Landing pages convert visitors who are already evaluating. Your team produces format-specific versions for each channel rather than forcing one cut to work everywhere.' },
+      { q: 'How do you ensure promotional videos stand out in crowded feeds?', a: 'Your team focuses on the first two seconds, which determine whether a viewer keeps watching or scrolls past. Strong visual hooks, unexpected motion, and bold typography pull viewers in before the core message is delivered. Every promotional video is designed with thumb-stopping power as a primary creative objective.' },
+      { q: 'Can promotional videos be adapted for seasonal or regional campaigns?', a: 'Yes. Your team builds promotional content with modularity in mind. Key visual elements, text overlays, calls to action, and messaging details are kept in editable layers so they can be swapped for different seasons, regions, or audience segments without rebuilding the entire video from scratch.' },
+      { q: 'What is the difference between a promotional video and a brand video?', a: 'Promotional videos are tied to specific campaigns, offers, or time-bound initiatives and are designed to drive immediate action. Brand videos focus on long-term positioning, identity, and emotional connection without necessarily pushing a specific call to action. Your team produces both, and often a campaign includes elements of each.' },
+    ],
+    relatedServices: [
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Advertising Video Production', slug: 'advertising-video-production', desc: 'Ad creative at scale across every paid channel.' },
+      { title: 'Commercial Video Production', slug: 'commercial-video-production', desc: 'Broadcast and digital commercials at scale.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'product-demo-video-production': {
+    title: 'Product Demo Video Production',
+    slug: 'product-demo-video-production',
+    category: 'Video',
+    heroHeading: 'Product Demo Video Production',
+    heroDescription: 'Show off your product with demo videos that get results. A dedicated creative team that produces polished, conversion-focused product demos continuously.',
+    seo: {
+      title: 'Product Demo Video Production | Moonb',
+      description: 'Product demo video production from a dedicated creative team. Overview demos, sales enablement walkthroughs, and modular demo suites. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Overview Demos', desc: 'Website-facing 2–3 minute demos that communicate your overall value proposition to new visitors.' },
+      { title: 'Sales Enablement Demos', desc: '5–7 minute workflow walkthroughs used in sales conversations and follow-up sequences.' },
+      { title: 'Modular Segmented Demos', desc: 'Core walkthrough with interchangeable intros, use cases, and CTAs tailored per vertical or persona.' },
+      { title: 'Pre-Launch Demos', desc: 'Built from wireframes, prototypes, or mockups before final product ships — perfect for presales.' },
+      { title: 'Feature Highlight Videos', desc: 'Short, focused demos for individual features used in onboarding, upsell, and support.' },
+      { title: 'Combined Format Demos', desc: 'Animated storytelling combined with screen recordings or UI animations for maximum clarity.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Complex demos lead to objections. Clear ones get results. Your dedicated team creates visual product walkthroughs that effortlessly showcase your features, benefits, and key selling points. Viewers understand right away — making it easier to close deals with less need for direct support.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'Great communication from start to finish.',
+      name: 'Jesse Jankewicz',
+      role: 'Animation Director',
+      company: 'Jumo Health',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'Can product demos incorporate customer use cases and real data?', a: 'Yes. Your team can build demos around real-world scenarios and anonymized customer data that make the product feel tangible and relevant to the viewer. Showing actual use cases rather than hypothetical examples significantly increases the viewer\'s ability to imagine themselves using the product in their own workflow.' },
+      { q: 'How long should a product demo video be?', a: 'The ideal length depends on the audience and context. A website-facing overview demo should be two to three minutes maximum. A sales enablement demo that walks through a specific workflow can run five to seven minutes. Your team structures each demo so the most compelling content appears in the first 30 seconds to hook the viewer.' },
+      { q: 'What makes a product demo video more effective than a live demo?', a: 'A produced demo is scripted, polished, and repeatable. It highlights the best features in the most compelling order, avoids the technical glitches and awkward pauses that plague live demos, and can be shared asynchronously with stakeholders who were not on the call. It also ensures every prospect sees your product at its best.' },
+      { q: 'Can product demos be personalized for different customer segments?', a: 'Yes. Your team produces modular demos where the core product walkthrough stays the same, but the intro, use case examples, and closing call to action are tailored for different verticals, company sizes, or buyer personas. This gives your sales team targeted content without requiring completely separate productions.' },
+      { q: 'Should product demos include pricing or call-to-action information?', a: 'It depends on where the video sits in your funnel. Top-of-funnel demos should focus on the problem and solution without specifics, keeping the barrier to engagement low. Bottom-of-funnel demos used in sales conversations can include more targeted details. Your Creative Director helps you determine the right approach for each use case.' },
+      { q: 'How do you handle product demos for features that are still in development?', a: 'Your team can produce demos using wireframes, prototypes, or design mockups before the final product is built. This is especially useful for pre-launch marketing, investor presentations, and sales conversations where you need to demonstrate value before the feature is live. Once the feature ships, the video can be updated with real product footage.' },
+      { q: 'What is the best format for a product demo: screen recording or animation?', a: 'The most effective product demos combine both. Animated sequences handle the storytelling, value proposition, and conceptual explanation, while screen recordings or UI animations show the actual product in action. Your team blends these approaches to create demos that are both visually engaging and practically informative.' },
+      { q: 'How often should product demo videos be updated?', a: 'Product demos should be updated whenever there is a significant UI change, a major feature release, or a shift in your target audience\'s pain points. Your dedicated team retains all source files and product knowledge, which means updating an existing demo is significantly more efficient than producing one from scratch.' },
+    ],
+    relatedServices: [
+      { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+      { title: 'Educational Video Production', slug: 'educational-video-production', desc: 'Educational video that builds authority and drives organic reach.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'video-series-video-production': {
+    title: 'Video Series Production',
+    slug: 'video-series-video-production',
+    category: 'Video',
+    heroHeading: 'Video Series Production',
+    heroDescription: 'Strengthen your brand by creating a series of videos that fit into a broader campaign or content plan. Build audience relationships through consistent, episodic content.',
+    seo: {
+      title: 'Video Series Production | Moonb',
+      description: 'Video series production from a dedicated creative team. Multi-episode series that build audience relationships and brand authority. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Industry Education Series', desc: 'Multi-episode series that simplify complex topics and establish your brand as a category authority.' },
+      { title: 'Customer Success Stories', desc: 'Testimonial-based narrative series that build social proof across multiple episodes.' },
+      { title: 'Behind-the-Scenes Content', desc: 'Organizational transparency series that humanize your brand and build audience connection.' },
+      { title: 'Leadership Update Series', desc: 'Regular internal or external communications series from company leadership.' },
+      { title: 'Departmental Spotlights', desc: 'Employee-focused episodic content for employer branding and culture communications.' },
+      { title: 'Ongoing Training Programs', desc: 'Structured educational series delivered as progressive installments for continuous learning.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'A "series bible" is established at the start — defining visual template, motion graphics package, music bed, color palette, and editorial tone. Episodes are produced through a staggered approach so your pipeline never runs dry. Your dedicated team builds compounding brand equity with every episode.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'My team really enjoyed working with Moonb and found the experience pretty seamless.',
+      name: 'James Pais',
+      role: 'Creative Services Director',
+      company: 'Frame',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'What makes a video series more effective than standalone videos?', a: 'A series builds cumulative audience engagement that standalone videos cannot achieve. Each episode reinforces your brand, deepens viewer relationships, and creates anticipation for the next installment. Over time, a series establishes your brand as a consistent, reliable source of valuable content in your category.' },
+      { q: 'How do you plan the content calendar for a video series?', a: 'Your Creative Director maps the series arc at the beginning: what each episode covers, how topics build on each other, and where narrative peaks fall. Release cadence aligns with audience consumption patterns and your marketing calendar, so each episode lands when it will have maximum impact.' },
+      { q: 'Can a video series be produced for internal audiences?', a: 'Yes. Internal series, such as leadership updates, department spotlights, or ongoing training programs, benefit from the same production principles as external content. Consistent formatting and regular cadence build viewership habits among employees, making internal video a reliable communication channel.' },
+      { q: 'How do you ensure visual and tonal consistency across a series?', a: 'Your team establishes a series bible at the start defining the visual template, motion graphics package, music bed, color palette, and editorial tone. Every episode is produced against this framework, ensuring cohesion even as individual episode topics vary.' },
+      { q: 'What topics work best for a branded video series?', a: 'Topics at the intersection of your brand expertise and audience interests perform best. Industry trends, customer success stories, educational deep-dives, and behind-the-scenes content make strong series foundations. Choose topics with enough depth to sustain multiple episodes and relevance to attract recurring viewership.' },
+      { q: 'Can a video series be repurposed into other content formats?', a: 'Yes. Each episode generates multiple derivative assets: social clips, audiograms, quote graphics, blog summaries, and email content. Teams plan repurposing during production, creating modular assets that extend value across your entire content ecosystem.' },
+      { q: 'How do you maintain viewer engagement across multiple episodes?', a: 'Build each series around a central narrative or thematic arc creating anticipation for the next episode. Consistent formatting, recognizable visual elements, and episode previews keep viewers returning. Each episode works as a standalone piece so new viewers can join without feeling lost.' },
+      { q: 'What is the ideal number of episodes for a video series?', a: 'Most effective series run between 6 and 12 episodes in their first season. This provides enough content to build momentum and establish format without overcommitting before seeing results. Your Creative Director structures the series arc and episode cadence based on goals and audience behavior.' },
+    ],
+    relatedServices: [
+      { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Authentic brand storytelling through compelling video.' },
+      { title: 'Educational Video Production', slug: 'educational-video-production', desc: 'Educational video that builds authority and drives organic reach.' },
+      { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'internal-and-training-videos': {
+    title: 'Internal and Training Videos',
+    slug: 'internal-and-training-videos',
+    category: 'Video',
+    heroHeading: 'Internal and Training Videos',
+    heroDescription: 'Ensuring that your team stays well-informed and on the same page with video updates. A dedicated creative team for all your internal communications and training content.',
+    seo: {
+      title: 'Internal and Training Videos | Moonb',
+      description: 'Internal and training video production from a dedicated creative team. Onboarding, compliance, process walkthroughs, and LMS-compatible content. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'Process Walkthroughs', desc: 'Step-by-step demonstrations of procedures and workflows that ensure consistent execution.' },
+      { title: 'Software Tutorials', desc: 'Guided instructions for tool and platform usage that reduce support burden and speed adoption.' },
+      { title: 'Compliance Training', desc: 'Regulatory content with documentation, version tracking, and audit trail support.' },
+      { title: 'Onboarding Orientations', desc: 'New employee introduction series that deliver foundational knowledge consistently at scale.' },
+      { title: 'Safety Procedures', desc: 'Visual instructions for workplace safety protocols designed for clarity and retention.' },
+      { title: 'Policy Communications', desc: 'Company guideline updates and procedural change videos that reach every employee.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Instructional design principles are applied throughout: clear learning objectives, information chunked into digestible segments, visual reinforcement, and summary recaps. Your dedicated team builds training content with modularity in mind — sections that change can be updated without re-producing the entire video.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'This was the best experience we have had with a large project like this.',
+      name: 'Josh Kirshman',
+      role: 'Director of Marketing and Digital',
+      company: 'United Way',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'How do you handle training content for compliance and regulatory requirements?', a: 'Your team produces compliance training with documentation in mind. Every piece of content is version-tracked, and delivery records through your LMS create the audit trail your compliance team needs. Content is structured to cover required topics systematically, and your compliance team reviews all scripts before production to ensure regulatory accuracy.' },
+      { q: 'Can training videos include assessments or interactive elements?', a: 'Yes. Your team produces training content designed to work with interactive quiz overlays, knowledge check pause points, and branching scenarios that are supported by modern LMS platforms. The video structure is designed with natural break points where assessments can be inserted to verify comprehension before the learner progresses.' },
+      { q: 'How does video training compare to instructor-led training in effectiveness?', a: 'Video training provides consistency that instructor-led sessions cannot: every employee receives the same information, at the same quality, regardless of who trains them or when. Video also allows employees to revisit content as needed, which reinforces retention. The most effective approach combines video modules with live discussion sessions for complex topics.' },
+      { q: 'Can you produce training content for both desk-based and field employees?', a: 'Yes. Your team adjusts format, length, and delivery approach based on how employees will consume the content. Desk-based training can be longer and more detailed. Field-facing content is typically shorter, mobile-optimized, and designed for on-the-go consumption with clear visual instructions that work without audio when needed.' },
+      { q: 'What types of training are most effective in video format?', a: 'Process walkthroughs, software tutorials, compliance training, onboarding orientations, and safety procedures all translate exceptionally well to video. Topics that benefit from visual demonstration or step-by-step guidance see the biggest improvement in comprehension and retention compared to text-based training materials.' },
+      { q: 'How do you handle training content that needs frequent updates?', a: 'Your team builds training videos with modularity in mind. Sections that are likely to change (policy details, software interfaces, process steps) are produced as separate segments that can be swapped without re-producing the entire video. This keeps your training library current without requiring full reproductions every time something changes.' },
+      { q: 'Can training videos be integrated with our LMS or internal platforms?', a: 'Yes. Your team delivers content in formats compatible with major learning management systems, including SCORM and xAPI standards where needed. Videos are also delivered in standard web formats for embedding in intranets, internal wikis, or any platform your organization uses for employee communications.' },
+      { q: 'How do you ensure training videos actually improve knowledge retention?', a: 'Your team applies instructional design principles: clear learning objectives at the start, information chunked into digestible segments, visual reinforcement of key concepts, and summary recaps at the end. Videos are kept concise to avoid cognitive overload, and complex topics are broken into multi-part series rather than crammed into a single long video.' },
+    ],
+    relatedServices: [
+      { title: 'Corporate Video Production', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated creative team.' },
+      { title: 'Educational Video Production', slug: 'educational-video-production', desc: 'Educational video that builds authority and drives organic reach.' },
+      { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
+  'educational-video-production': {
+    title: 'Educational Video Production',
+    slug: 'educational-video-production',
+    category: 'Video',
+    heroHeading: 'Educational Video Production',
+    heroDescription: 'When you want to engage people and help them learn. A dedicated creative team that produces educational video content that builds authority and drives organic reach.',
+    seo: {
+      title: 'Educational Video Production | Moonb',
+      description: 'Educational video production from a dedicated creative team. Build authority, support customer success, and drive organic reach. Predictable monthly pricing.',
+    },
+    serviceTypes: [
+      { title: 'How-To & Tutorial Videos', desc: 'Step-by-step instructional content that teaches your audience a valuable skill or process.' },
+      { title: 'Concept Explanation Videos', desc: 'Clear, engaging videos that demystify complex ideas for general or specialist audiences.' },
+      { title: 'Customer Onboarding Series', desc: 'Structured onboarding sequences that teach customers how to get the most from your product.' },
+      { title: 'Thought Leadership Content', desc: 'Authority-building video that positions your brand as the expert voice in your category.' },
+      { title: 'Course & Certification Programs', desc: 'Progressive learning paths with modules, knowledge checks, and completion milestones.' },
+      { title: 'FAQ & Help Center Videos', desc: 'Video answers to common questions that reduce support volume and improve customer experience.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Educational video works best at the start of the customer journey — building awareness, trust, and authority before the prospect is ready to buy. Your dedicated team transforms your existing knowledge into video that attracts and educates your ideal audience continuously.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'The ability to quickly understand and adapt to the company branding was impressive.',
+      name: 'Diane Bizzle',
+      role: 'Director of Outreach',
+      company: 'Brainfuse',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+    },
+    faqs: [
+      { q: 'What makes educational video more effective than written documentation?', a: 'Video engages multiple senses simultaneously: visual demonstration, verbal explanation, and motion-based attention guidance work together to accelerate comprehension. Studies consistently show that learners retain significantly more from video instruction than from reading alone, especially for procedural and conceptual content.' },
+      { q: 'How do you handle educational content for highly technical subjects?', a: 'Your team combines subject matter expert input with visual communication expertise. Complex technical concepts are broken into visual building blocks: animated diagrams, process flows, and progressive reveal sequences that build understanding layer by layer. Technical accuracy is verified with your SMEs at every stage.' },
+      { q: 'Can educational video support customer onboarding and success?', a: 'Yes. Educational video libraries that teach customers how to get the most from your product reduce churn, increase feature adoption, and lower support ticket volume. Your team produces onboarding sequences, feature deep-dives, and best practice guides that help customers achieve their goals more effectively.' },
+      { q: 'How do you determine the right level of depth for educational video?', a: 'Your Creative Director works with your team to define the target audience\'s baseline knowledge and learning objectives. Content is then calibrated to meet viewers where they are: beginner content builds foundational understanding, intermediate content adds nuance, and advanced content addresses edge cases and expert-level concepts.' },
+      { q: 'Can educational video content be structured as a course or certification program?', a: 'Yes. Your team produces structured learning paths with progressive modules, knowledge checks, and completion milestones. This format is particularly effective for customer education programs, partner enablement, and thought leadership initiatives that benefit from a curriculum-based approach.' },
+      { q: 'How do you make educational content engaging rather than dry?', a: 'Your team uses visual storytelling techniques to keep educational content compelling: dynamic animations that visualize abstract concepts, real-world examples that ground theory in practice, and a pacing structure that alternates between information delivery and visual breaks. The goal is to make learning feel effortless, not like homework.' },
+      { q: 'What is the difference between educational video and explainer video?', a: 'Explainer videos focus on communicating what your product does and why it matters, typically in under two minutes. Educational videos go deeper into subject matter, teaching concepts, processes, or skills that your audience values. Educational content builds long-term authority, while explainers drive immediate product understanding.' },
+      { q: 'How does educational video content support lead generation?', a: 'Educational content attracts prospects who are actively researching solutions in your category. By providing genuine value through informative video, you build trust and authority that positions your brand as the natural choice when the viewer is ready to buy. Gated educational series and webinar content also capture contact information directly.' },
+    ],
+    relatedServices: [
+      { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
+      { title: 'Internal and Training Videos', slug: 'internal-and-training-videos', desc: 'Internal communications and training video at scale.' },
+      { title: 'Product Demo Video Production', slug: 'product-demo-video-production', desc: 'Show off your product with demos that get results.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    ],
+  },
+
 };
+
+const { slug } = Astro.params;
+const service = services[slug as string];
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
@@ -116,7 +726,7 @@ const breadcrumbSchema = {
 const faqSchema = service.faqs?.length ? {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": service.faqs.map(faq => ({
+  "mainEntity": service.faqs.map((faq: { q: string; a: string }) => ({
     "@type": "Question",
     "name": faq.q,
     "acceptedAnswer": { "@type": "Answer", "text": faq.a },
@@ -139,6 +749,17 @@ const logos = [
 export function getStaticPaths() {
   return [
     { params: { slug: 'corporate-video-production' } },
+    { params: { slug: 'marketing-video-production' } },
+    { params: { slug: 'social-media-video-production' } },
+    { params: { slug: 'explainer-video-production' } },
+    { params: { slug: 'advertising-video-production' } },
+    { params: { slug: 'commercial-video-production' } },
+    { params: { slug: 'branded-video-production' } },
+    { params: { slug: 'promotional-video-production' } },
+    { params: { slug: 'product-demo-video-production' } },
+    { params: { slug: 'video-series-video-production' } },
+    { params: { slug: 'internal-and-training-videos' } },
+    { params: { slug: 'educational-video-production' } },
   ];
 }
 ---

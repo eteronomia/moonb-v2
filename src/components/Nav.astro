@@ -7,10 +7,17 @@ const links = [
 ];
 
 const serviceItems = [
-  { label: 'Video Production', desc: 'Commercials, socials, corporate.', href: '/services/corporate-video-production', icon: 'video' },
-  { label: 'Motion Graphics', desc: 'Explainers, intros, branded motion.', href: '/services/motion-graphics', icon: 'motion' },
-  { label: 'Animation', desc: '2D, 3D, character, product.', href: '/services/animation', icon: 'animation' },
-  { label: 'Graphic Design', desc: 'Brand, social, print, decks.', href: '/services/graphic-design', icon: 'design' },
+  { label: 'Video Production', desc: 'Corporate, marketing, social, branded.', href: '/services/corporate-video-production', color: 'orange' },
+  { label: 'Motion Graphics', desc: 'Explainers, intros, branded motion.', href: '/services/motion-graphics', color: 'blue' },
+  { label: 'Animation', desc: '2D, 3D, character, product.', href: '/services/animation', color: 'purple' },
+  { label: 'Graphic Design', desc: 'Brand, social, print, decks.', href: '/services/graphic-design', color: 'green' },
+];
+
+const industryItems = [
+  { label: 'SaaS & Tech', desc: 'Product demos, onboarding, launches.', href: '/industries/saas-video-production', color: 'blue' },
+  { label: 'Financial Services', desc: 'Compliance-ready, investor content.', href: '/industries/financial-video-production', color: 'green' },
+  { label: 'Healthcare & Pharma', desc: 'Patient education, HCP training.', href: '/industries/healthcare-video-production', color: 'purple' },
+  { label: 'E-commerce', desc: 'Product videos, social ads, UGC.', href: '/industries/ecommerce-video-production', color: 'orange' },
 ];
 ---
 
@@ -25,38 +32,73 @@ const serviceItems = [
       {links.map((link) => (
         link.hasDropdown ? (
           <div class="nav__dropdown-wrap">
-            <a href={link.href} class="nav__link">
+            <button class="nav__link nav__link--trigger" type="button">
               {link.label}
               <svg class="nav__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
+            </button>
             <div class="nav__dropdown">
               <div class="nav__dropdown-inner">
-                {serviceItems.map((s) => (
-                  <a href={s.href} class="nav__dd-item">
-                    <div class={`nav__dd-icon nav__dd-icon--${s.icon}`}>
-                      {s.icon === 'video' && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                      )}
-                      {s.icon === 'motion' && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                      )}
-                      {s.icon === 'animation' && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                      )}
-                      {s.icon === 'design' && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                      )}
-                    </div>
-                    <div class="nav__dd-text">
-                      <span class="nav__dd-label">{s.label}</span>
-                      <span class="nav__dd-desc">{s.desc}</span>
-                    </div>
-                  </a>
-                ))}
-                <div class="nav__dd-footer">
-                  <a href="/services" class="nav__dd-all">All services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <div class="nav__dd-cols">
+                  <!-- Services column -->
+                  <div class="nav__dd-col">
+                    <span class="nav__dd-col-label">Services</span>
+                    {serviceItems.map((s) => (
+                      <a href={s.href} class={`nav__dd-item nav__dd-item--${s.color}`}>
+                        <div class="nav__dd-icon">
+                          {s.color === 'orange' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                          )}
+                          {s.color === 'blue' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                          )}
+                          {s.color === 'purple' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                          )}
+                          {s.color === 'green' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                          )}
+                        </div>
+                        <div class="nav__dd-text">
+                          <span class="nav__dd-label">{s.label}</span>
+                          <span class="nav__dd-desc">{s.desc}</span>
+                        </div>
+                      </a>
+                    ))}
+                    <a href="/services" class="nav__dd-all">All services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  </div>
+
+                  <!-- Divider -->
+                  <div class="nav__dd-divider"></div>
+
+                  <!-- Industries column -->
+                  <div class="nav__dd-col">
+                    <span class="nav__dd-col-label">Industries</span>
+                    {industryItems.map((s) => (
+                      <a href={s.href} class={`nav__dd-item nav__dd-item--${s.color}`}>
+                        <div class="nav__dd-icon">
+                          {s.color === 'blue' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                          )}
+                          {s.color === 'green' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                          )}
+                          {s.color === 'purple' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                          )}
+                          {s.color === 'orange' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                          )}
+                        </div>
+                        <div class="nav__dd-text">
+                          <span class="nav__dd-label">{s.label}</span>
+                          <span class="nav__dd-desc">{s.desc}</span>
+                        </div>
+                      </a>
+                    ))}
+                    <a href="/industries" class="nav__dd-all">All industries <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -147,48 +189,58 @@ const serviceItems = [
     padding: 8px 14px;
     transition: color 140ms ease;
     white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .nav__link:hover { color: var(--body-muted); }
+
+  /* Active trigger state — subtle pill bg like Aave "Products" */
+  .nav__link--trigger {
+    border-radius: 9999px;
+    transition: color 140ms ease, background 140ms ease;
+  }
+  .nav__dropdown-wrap:hover .nav__link--trigger {
+    background: var(--beige);
+  }
 
   .nav__arrow {
     width: 10px;
     height: 6px;
     opacity: 0.5;
-    transition: transform 250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  /* ── Dropdown — Aave style ── */
+  /* ── Mega dropdown — Aave liquid animation ── */
   .nav__dropdown-wrap {
     position: relative;
   }
 
   .nav__dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 16px;
+    padding-top: 8px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 200ms cubic-bezier(0.19, 1, 0.22, 1),
-                visibility 200ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1),
+                visibility 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .nav__dropdown-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
     background: var(--white);
-    border: none;
     border-radius: 20px;
-    padding: 8px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
-    min-width: 300px;
-    transform: translateY(6px) scale(0.97);
+    padding: 20px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.04);
+    min-width: 560px;
+    transform: translateY(10px) scale(0.96);
     opacity: 0;
-    transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1), opacity 200ms ease;
+    transform-origin: top center;
+    transition: transform 350ms cubic-bezier(0.19, 1, 0.22, 1),
+                opacity 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .nav__dropdown-wrap:hover .nav__dropdown {
@@ -206,47 +258,84 @@ const serviceItems = [
     transform: rotate(180deg);
   }
 
-  /* Dropdown items — Aave card style */
+  /* Two columns layout */
+  .nav__dd-cols {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+  }
+
+  .nav__dd-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav__dd-col-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--body-muted);
+    padding: 4px 12px 10px;
+  }
+
+  .nav__dd-divider {
+    width: 1px;
+    background: rgba(0, 0, 0, 0.06);
+    margin: 0 16px;
+    align-self: stretch;
+  }
+
+  /* Dropdown items — Aave card style with colored icon hover */
   .nav__dd-item {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 14px;
-    border-radius: 14px;
-    transition: background 160ms ease;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: background 180ms ease;
+    text-decoration: none;
   }
 
   .nav__dd-item:hover {
     background: var(--beige);
   }
 
-  /* Rounded icon containers */
+  /* Rounded icon containers — neutral gray default */
   .nav__dd-icon {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 12px;
-    background: #F3F3F3;
+    background: #F2F2F2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #666;
-    transition: background 160ms ease, color 160ms ease;
+    color: #888;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
   }
 
-  .nav__dd-item:hover .nav__dd-icon--video {
+  .nav__dd-item:hover .nav__dd-icon {
+    transform: scale(1.05);
+  }
+
+  /* Color on hover per accent */
+  .nav__dd-item--orange:hover .nav__dd-icon {
     background: rgba(255, 83, 16, 0.1);
     color: var(--accent);
   }
-  .nav__dd-item:hover .nav__dd-icon--motion {
+  .nav__dd-item--blue:hover .nav__dd-icon {
     background: rgba(0, 102, 255, 0.1);
     color: var(--accent-blue);
   }
-  .nav__dd-item:hover .nav__dd-icon--animation {
+  .nav__dd-item--purple:hover .nav__dd-icon {
     background: rgba(123, 97, 255, 0.1);
     color: var(--accent-purple);
   }
-  .nav__dd-item:hover .nav__dd-icon--design {
+  .nav__dd-item--green:hover .nav__dd-icon {
     background: rgba(0, 182, 122, 0.1);
     color: var(--accent-green);
   }
@@ -254,38 +343,33 @@ const serviceItems = [
   .nav__dd-text {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
   }
 
   .nav__dd-label {
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--heading);
     letter-spacing: -0.2px;
   }
 
   .nav__dd-desc {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--body-muted);
     line-height: 1.3;
   }
 
-  /* Footer link */
-  .nav__dd-footer {
-    border-top: 1px solid rgba(0,0,0,0.05);
-    margin-top: 4px;
-    padding-top: 4px;
-  }
-
+  /* Footer "All" links */
   .nav__dd-all {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
-    border-radius: 12px;
+    gap: 5px;
+    padding: 8px 12px;
+    margin-top: 4px;
+    border-radius: 10px;
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--body-muted);
     transition: color 140ms ease, background 140ms ease;

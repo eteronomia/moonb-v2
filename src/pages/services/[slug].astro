@@ -476,8 +476,7 @@ export function getStaticPaths() {
     border-radius: 24px;
     overflow: hidden;
     background: #000;
-    isolation: isolate;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    clip-path: inset(0 round 24px);
   }
 
   .svc__video-wrap iframe {

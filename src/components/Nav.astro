@@ -182,13 +182,14 @@ const serviceItems = [
     flex-direction: column;
     gap: 0;
     background: var(--white);
-    border: 1px solid rgba(0,0,0,0.06);
+    border: none;
     border-radius: 20px;
     padding: 8px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02);
-    min-width: 320px;
-    transform: translateY(4px) scale(0.98);
-    transition: transform 250ms cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+    min-width: 300px;
+    transform: translateY(6px) scale(0.97);
+    opacity: 0;
+    transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1), opacity 200ms ease;
   }
 
   .nav__dropdown-wrap:hover .nav__dropdown {
@@ -199,6 +200,7 @@ const serviceItems = [
 
   .nav__dropdown-wrap:hover .nav__dropdown-inner {
     transform: translateY(0) scale(1);
+    opacity: 1;
   }
 
   .nav__dropdown-wrap:hover .nav__arrow {

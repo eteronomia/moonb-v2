@@ -337,6 +337,22 @@ p { color: var(--body); }
 .final-cta__sub { margin-top: 16px; font-size: 17px; line-height: 26px; color: var(--body); }
 .final-cta__inner .btn { margin-top: 32px; }
 
+/* CTA text link — family.co "Download for iOS →" style */
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent-blue);
+  transition: opacity 160ms ease;
+}
+.cta-link:hover { opacity: 0.7; }
+.cta-link svg { width: 16px; height: 14px; transition: transform 160ms ease; }
+.cta-link:hover svg { transform: translateX(3px); }
+
 /* ==========================================================================
    FAQ — family.co EXACT: 2-column grid, heading LEFT, accordion RIGHT
    Orange "+" toggle built from 2 divs, animates to "/" on open

@@ -26,14 +26,14 @@ const service = {
     { title: 'Event & CSR', desc: 'Event recap packages, highlight reels, and corporate social responsibility stories.' },
   ],
   differentiator: {
-    heading: 'Not an agency. Your creative team.',
-    text: 'Traditional agencies scope and price each project individually, creating delays and unpredictable costs. Moonb embeds a dedicated creative team into your workflow with predictable monthly pricing. Your team learns your brand deeply, retains institutional knowledge, and produces faster with every project because they already understand your organization.',
+    heading: 'The agency model is broken. We fixed it.',
+    text: 'Legacy agencies scope and price each project individually — new briefs, new quotes, new onboarding every time. Moonb is a modern creative partner: one dedicated team, one monthly rate, no surprises. Your team learns your brand deeply and gets faster with every deliverable.',
     points: [
-      { label: 'Agency', value: 'New team every project', accent: false },
-      { label: 'Moonb', value: 'Same team, every time', accent: true },
-      { label: 'Agency', value: 'Per-project billing', accent: false },
+      { label: 'Legacy agency', value: 'New team every project', accent: false },
+      { label: 'Moonb', value: 'Same dedicated team', accent: true },
+      { label: 'Legacy agency', value: 'Per-project quotes & invoices', accent: false },
       { label: 'Moonb', value: 'One predictable monthly rate', accent: true },
-      { label: 'Agency', value: 'Weeks to deliver', accent: false },
+      { label: 'Legacy agency', value: 'Weeks of back-and-forth', accent: false },
       { label: 'Moonb', value: '5–10 business days', accent: true },
     ],
   },
@@ -370,7 +370,7 @@ export function getStaticPaths() {
       <div class="svc__container">
         <div class="svc__related-header" data-reveal>
           <h2 class="svc__section-heading">Related services</h2>
-          <a href="/services" class="cta-link">All services <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/services" class="cta-link" style="color: var(--accent-purple)">All services <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <div class="svc__related-grid">
           {service.relatedServices.map((rs, i) => (
@@ -390,7 +390,7 @@ export function getStaticPaths() {
         <div class="svc__container">
           <div class="svc__related-header" data-reveal>
             <h2 class="svc__section-heading">From the blog</h2>
-            <a href="/blog" class="cta-link">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="/blog" class="cta-link" style="color: var(--accent-green)">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
           <div class="svc__blog-grid">
             {service.relatedBlogPosts.map((bp) => (
@@ -611,9 +611,9 @@ export function getStaticPaths() {
 
   .svc__type-card:nth-child(2) .svc__type-num { color: var(--accent-blue); }
   .svc__type-card:nth-child(3) .svc__type-num { color: var(--accent-green); }
-  .svc__type-card:nth-child(4) .svc__type-num { color: var(--accent-purple); }
-  .svc__type-card:nth-child(5) .svc__type-num { color: var(--accent-blue); }
-  .svc__type-card:nth-child(6) .svc__type-num { color: var(--accent-green); }
+  .svc__type-card:nth-child(4) .svc__type-num { color: var(--accent); }
+  .svc__type-card:nth-child(5) .svc__type-num { color: var(--accent-purple); }
+  .svc__type-card:nth-child(6) .svc__type-num { color: var(--accent-blue); }
 
   .svc__type-title {
     font-family: var(--font-heading);

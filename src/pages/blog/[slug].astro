@@ -226,10 +226,10 @@ export function getStaticPaths() {
           <!-- Mid-article CTA -->
           <aside class="post__cta-banner">
             <div class="post__cta-content">
-              <p class="post__cta-text">Need a dedicated team for your video production?</p>
-              <p class="post__cta-sub">One monthly rate. Unlimited requests. Cancel anytime.</p>
+              <p class="post__cta-text">Looking for a creative partner?</p>
+              <p class="post__cta-sub">Moonb gives you a dedicated team for video, design, and motion — on demand.</p>
             </div>
-            <a href="#" class="btn btn--primary post__cta-btn" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote</a>
+            <a href="/pricing" class="post__cta-link">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M9 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </aside>
 
           <h2 id="the-production-process">The production process</h2>
@@ -604,9 +604,9 @@ export function getStaticPaths() {
     margin: 32px 0;
   }
 
-  /* Mid-article CTA banner — dark card */
+  /* Mid-article CTA banner — light/beige */
   .post__cta-banner {
-    background: var(--heading);
+    background: var(--beige);
     border-radius: 20px;
     padding: 36px 40px;
     margin: 56px 0;
@@ -614,6 +614,7 @@ export function getStaticPaths() {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    border: 1px solid var(--border);
   }
 
   .post__cta-content {}
@@ -623,24 +624,29 @@ export function getStaticPaths() {
     font-size: 20px;
     font-weight: 600;
     letter-spacing: -0.4px;
-    color: var(--white);
+    color: var(--heading);
   }
 
   .post__cta-sub {
     margin-top: 6px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--body);
+    max-width: 380px;
   }
 
-  .post__cta-btn {
-    background: var(--white) !important;
-    color: var(--heading) !important;
+  .post__cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent-blue);
     flex-shrink: 0;
-    height: 44px;
-    padding: 0 24px;
+    transition: gap 200ms ease;
   }
-  .post__cta-btn:hover {
-    background: var(--gray-light) !important;
+  .post__cta-link:hover {
+    gap: 10px;
   }
 
   /* Related services links */

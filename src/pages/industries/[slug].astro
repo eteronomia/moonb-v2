@@ -1,0 +1,1501 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+/*
+  Service page template — v2 redesign
+  All 12 services — data expanded from moonb.io scraped content
+*/
+
+// Shared work items (placeholder portfolio)
+const sharedWork = [
+  { title: 'Dell Technologies — Product Launch', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ec8c76e46b46c6b6f9_Portfolio%2001.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Toyota — Recruitment Campaign', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b70a_Portfolio%2003.webp', vimeo: 'https://vimeo.com/1084258404' },
+  { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1084258404' },
+];
+
+// Shared differentiator comparison points
+const sharedDiffPoints = [
+  { label: 'Legacy agency', value: 'New team every project', accent: false },
+  { label: 'Moonb', value: 'Same dedicated team', accent: true },
+  { label: 'Legacy agency', value: 'Per-project quotes & invoices', accent: false },
+  { label: 'Moonb', value: 'One predictable monthly rate', accent: true },
+  { label: 'Legacy agency', value: 'Weeks of back-and-forth', accent: false },
+  { label: 'Moonb', value: '5–10 business days', accent: true },
+];
+
+// Shared stats
+const sharedStats = [
+  { number: '500+', label: 'Videos produced' },
+  { number: '5–10', label: 'Business days to deliver' },
+  { number: '95%', label: 'Client retention' },
+];
+
+// Shared process
+const sharedProcess = [
+  { number: '01', title: 'Get onboarded', desc: 'Sign up and meet your dedicated Creative Director. We learn your brand, your goals, and your audience.', detail: 'Takes about 30 minutes' },
+  { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD manages the production pipeline and prioritizes the work.', detail: 'Unlimited requests' },
+  { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within 5–10 business days. Revisions are included — no revision caps or change-order fees.', detail: 'No revision caps' },
+];
+
+// Shared fallback testimonial
+const fallbackTestimonial = {
+  quote: "They've delivered above and beyond.",
+  name: 'Marius Godo',
+  role: 'Digital Marketing & Content Specialist',
+  company: 'Gnosis by Lesaffre',
+  avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+};
+
+const services: Record<string, any> = {
+
+  'ecommerce-video-production': {
+    title: 'Ecommerce Video Production',
+    slug: 'ecommerce-video-production',
+    category: 'Ecommerce',
+    heroHeading: 'Ecommerce Video Production',
+    heroDescription: 'Ecommerce brands live and die by content velocity. Product launches, seasonal campaigns, A/B-tested ad creative, and product page videos all compete for production capacity, and Moonb produces ecommerce video at the volume your growth team needs.',
+    seo: {
+      title: 'Ecommerce Video Production | Moonb',
+      description: 'Ecommerce video production from a dedicated creative team. Product videos, social ads, and campaign content at the volume your growth team needs.',
+    },
+    serviceTypes: [
+      { title: 'Product Demonstrations', desc: 'Show size, color, texture, and functionality to set realistic expectations and reduce returns.' },
+      { title: 'Lifestyle Content', desc: 'Aspirational content showing your products in real-world contexts that resonate with your audience.' },
+      { title: 'Social Ad Creative', desc: 'A/B-tested ad variations optimized for Meta, TikTok, and Google Shopping placements.' },
+      { title: 'Unboxing & Feature Highlights', desc: 'Engaging reveal content that builds excitement and showcases product quality.' },
+      { title: 'Email & Retargeting Video', desc: 'Short clips for abandoned cart emails, post-purchase sequences, and retargeting campaigns.' },
+      { title: 'Marketplace Content', desc: 'Video meeting technical specs of Amazon, Shopify, and other marketplace platforms.' },
+    ],
+    differentiator: {
+      heading: 'The agency model is broken. We fixed it.',
+      text: 'Traditional agencies scope and price each project individually, creating delays and unpredictable costs. Moonb embeds a dedicated creative team into your ecommerce workflow with predictable monthly pricing. Your team produces at the velocity your growth calendar demands.',
+      points: sharedDiffPoints,
+    },
+    stats: sharedStats,
+    process: sharedProcess,
+    work: sharedWork,
+    testimonial: {
+      quote: 'The ability to quickly understand and adapt to the company branding was impressive.',
+      name: 'Diane Brizzle',
+      role: 'Director of Outreach',
+      company: 'Brainfuse',
+      avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9834fa6be14f2cadf8f_Diana%20Weltzer.avif',
+    },
+    faqs: [
+      { q: 'How do you approach video for ecommerce brands with seasonal product lines?', a: 'The team establishes production templates and visual frameworks adaptable for new seasonal collections, allowing efficient production when new products arrive.' },
+      { q: 'Can video support ecommerce email marketing and retargeting?', a: 'Yes. Product video clips in abandoned cart emails, post-purchase follow-ups, and retargeting ads improve engagement and recovery rates.' },
+      { q: 'How does video reduce ecommerce return rates?', a: 'Product videos demonstrating size, color, texture, and functionality set realistic expectations, reducing surprises and return rates.' },
+      { q: 'Can product videos be used across marketplace platforms like Amazon?', a: 'Yes. The team produces video meeting technical specifications and content guidelines of major marketplace platforms.' },
+      { q: 'How do you optimize ecommerce video for mobile shoppers?', a: 'Video uses vertical/square aspect ratios, large readable text, compelling visuals without audio, and optimized file sizes for mobile-first viewing.' },
+      { q: 'Can you produce video at scale for large product catalogs?', a: 'Yes. Templated production workflows maintain quality while increasing throughput for dozens or hundreds of SKUs.' },
+      { q: 'What types of ecommerce video perform best?', a: 'Product demonstrations, lifestyle content, unboxing clips, and feature highlights drive strongest results.' },
+      { q: 'How does product video impact ecommerce conversion rates?', a: 'Product pages with video consistently see higher conversion rates compared to static images alone.' },
+    ],
+    relatedServices: [
+      { title: 'Social Media Video', slug: 'social-media-video-production', desc: 'Platform-native social video that stops the scroll.' },
+      { title: 'Product Demo Videos', slug: 'product-demo-video-production', desc: 'Clear product demos that drive conversions.' },
+      { title: 'Marketing Video', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2026-01-28' },
+    ],
+  },
+
+  'manufacturing-video-production': {
+    title: 'Manufacturing Video Production',
+    slug: 'manufacturing-video-production',
+    category: 'Manufacturing',
+    heroHeading: 'Manufacturing Video Production',
+    heroDescription: 'Manufacturing companies need video that communicates complex processes, meets safety standards, supports trade show presence, and trains workforces across global facilities.',
+    seo: {
+      title: 'Manufacturing Video Production | Moonb',
+      description: 'Manufacturing video production from a dedicated creative team. Process visualization, trade show content, safety training, and facility tours.',
+    },
+    serviceTypes: [
+      { title: 'Process Visualization', desc: '3D animation and motion graphics that break down complex manufacturing processes into clear visual narratives.' },
+      { title: 'Trade Show Content', desc: 'Booth display videos, product demos, and presentation content designed for the trade show environment.' },
+      { title: 'Safety & Training', desc: 'Consistent video-based safety training delivered to every employee regardless of shift or location.' },
+      { title: 'Product Demonstrations', desc: 'Polished 3D animations from CAD files revealing product functionality and assembly processes.' },
+      { title: 'Facility Tours', desc: 'Virtual tours showcasing capabilities, quality standards, and production environments for remote prospects.' },
+      { title: 'Sales Enablement', desc: 'Video demonstrating capabilities and quality standards to prospects who cannot visit your facility.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that learns your manufacturing processes, products, and audience. They produce faster with every project because they already understand your organization.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'This was the best experience we have had with a large project like this.', name: 'Josh Kirshman', role: 'Director of Marketing', company: 'United Way', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8fbc31af3dd6d055791_Josh%20Kirshman.avif' },
+    faqs: [
+      { q: 'Can you produce video content from CAD files and technical drawings?', a: 'Yes. Your team can transform CAD models, engineering drawings, and technical specifications into polished 3D animations that reveal product functionality, assembly processes, and internal mechanisms.' },
+      { q: 'How does video support trade show and exhibition marketing?', a: 'Your team produces booth display videos, product demonstration loops, and presentation content designed specifically for the trade show environment.' },
+      { q: 'Can manufacturing video help with workforce training and safety?', a: 'Yes. Video-based safety training delivers consistent instruction to every employee regardless of shift, location, or trainer availability.' },
+      { q: 'How do you handle proprietary or confidential manufacturing processes?', a: 'Your team operates under strict confidentiality agreements and only shows what you approve for public or client-facing use.' },
+      { q: 'Can video support our manufacturing sales process?', a: 'Yes. Video lets you demonstrate capabilities, quality standards, and production processes to prospects who cannot visit your facility.' },
+      { q: 'What types of manufacturing video drive the most business impact?', a: 'Product demonstration videos, facility overview content, and safety training videos consistently deliver the highest returns.' },
+      { q: 'How do you visualize complex industrial processes in video?', a: 'Your team uses 3D animation and motion graphics to break down multi-step manufacturing processes into clear, sequential visual narratives.' },
+      { q: 'Can you produce manufacturing videos without visiting our facility?', a: 'Yes. Your team works with photos, CAD files, technical drawings, and product samples you provide.' },
+    ],
+    relatedServices: [
+      { title: 'Corporate Video', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated team.' },
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for products and processes.' },
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos that simplify complexity.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Corporate training videos that work', slug: 'corporate-training-videos', date: '2026-01-14' },
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+    ],
+  },
+
+  'blockchain-video-production': {
+    title: 'Blockchain & Web3 Video Production',
+    slug: 'blockchain-video-production',
+    category: 'Blockchain',
+    heroHeading: 'Blockchain & Web3 Video Production',
+    heroDescription: 'Blockchain and Web3 companies face the hardest communication challenge in technology: explaining decentralized systems to audiences who are not yet familiar with the underlying concepts, making clear and engaging video content essential for adoption.',
+    seo: {
+      title: 'Blockchain & Web3 Video Production | Moonb',
+      description: 'Blockchain and Web3 video production from a dedicated creative team. Protocol explainers, tokenomics visualizations, and community content.',
+    },
+    serviceTypes: [
+      { title: 'Protocol Explainers', desc: 'Visual breakdowns of how your blockchain protocol works using step-by-step animations and real-world analogies.' },
+      { title: 'Tokenomics Visualization', desc: 'Animated flow diagrams showing token distribution, vesting schedules, and incentive structures.' },
+      { title: 'Developer Onboarding', desc: 'Integration tutorials, SDK walkthroughs, and API documentation videos with real code examples.' },
+      { title: 'Community Updates', desc: 'Governance updates, partnership announcements, and roadmap content for your community.' },
+      { title: 'Investor Content', desc: 'Pitch videos, ecosystem overviews, and tokenomics visualizations for institutional and retail investors.' },
+      { title: 'Mainstream Education', desc: 'Content using visual metaphors and real-world analogies to translate abstract concepts for mainstream audiences.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that understands blockchain technology and can adjust technical depth for any audience — from crypto-native developers to mainstream users.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'They did a great job with our brand even though it is in the early stages.', name: 'Sara Jayne Cops', role: 'Marketing Technology Lead', company: 'Livelife', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+    faqs: [
+      { q: 'Can you produce developer onboarding content for blockchain platforms?', a: 'The team creates integration tutorials, SDK walkthroughs, and API documentation videos using precise technical language with actual code examples and implementation workflows.' },
+      { q: 'How do you visualize tokenomics and economic models?', a: 'They produce animated flow diagrams showing token distribution, vesting schedules, supply mechanics, and incentive structures as visual narratives.' },
+      { q: 'Can video support blockchain project fundraising and investor relations?', a: 'Yes, they produce pitch videos, tokenomics visualizations, and ecosystem overviews for institutional and retail investors.' },
+      { q: 'How do you build credibility through blockchain video in a trust-sensitive industry?', a: 'Professional video content signals quality investment in communication and demonstrates transparency about technology without hype-driven language.' },
+      { q: 'What types of blockchain video drive the most community engagement?', a: 'Protocol explainers, governance updates, and partnership announcements consistently achieve highest engagement.' },
+      { q: 'How do you handle the fast pace of change in the blockchain industry?', a: 'The dedicated team stays current through ongoing engagement, enabling rapid content updates when projects evolve.' },
+      { q: 'Can you produce content for both crypto-native and mainstream audiences?', a: 'Yes, they adjust technical depth, terminology, and visual complexity based on target audience knowledge levels.' },
+      { q: 'How do you simplify blockchain concepts for mainstream audiences?', a: 'They use visual metaphors, step-by-step animations, and real-world analogies to translate abstract concepts intuitively.' },
+    ],
+    relatedServices: [
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos from a dedicated creative team.' },
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for complex concepts.' },
+      { title: 'Motion Graphics', slug: 'motion-graphics', desc: 'Animated content that brings ideas to life.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2026-01-28' },
+    ],
+  },
+
+  'startup-video-production': {
+    title: 'Startup Video Production',
+    slug: 'startup-video-production',
+    category: 'Startup',
+    heroHeading: 'Startup Video Production',
+    heroDescription: 'Startups need video at every stage: pitch decks that win funding, explainers that acquire users, product demos that convert prospects, and content that builds brand awareness, all without traditional agency overhead.',
+    seo: { title: 'Startup Video Production | Moonb', description: 'Startup video production from a dedicated creative team. Pitch videos, product demos, explainers, and launch content without agency overhead.' },
+    serviceTypes: [
+      { title: 'Pitch & Fundraising Videos', desc: 'Polished pitch videos and product demos that communicate vision and readiness more effectively than slides alone.' },
+      { title: 'Product Explainers', desc: 'Core product explainer for your website and short demos for sales conversations.' },
+      { title: 'Launch Content', desc: 'Launch videos optimized for Product Hunt, press outreach, and social platforms.' },
+      { title: 'Social & Growth Content', desc: 'High-volume short-form content for user acquisition across all social channels.' },
+      { title: 'Employer Brand', desc: 'Recruitment content showcasing mission, culture, and team to attract top talent.' },
+      { title: 'Sales Enablement', desc: 'Product demos and feature walkthroughs that help your sales team close faster.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb gives startups a dedicated creative team that scales with you — from seed-stage vision content through Series B market leadership narratives. No retainers, no per-project quotes, no overhead.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'They did a great job with our brand even though it is in the early stages.', name: 'Sara Jayne Cops', role: 'Marketing Technology Lead', company: 'Livelife', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+    faqs: [
+      { q: 'Can startup video content scale from seed stage through Series B and beyond?', a: 'Yes. Teams evolve with companies, adjusting production approaches from seed-stage vision content through Series A traction messaging to Series B market leadership narratives.' },
+      { q: 'How do you handle video production for pivots or major product changes?', a: 'Dedicated teams leverage existing brand knowledge to adapt without starting over, updating frameworks and assets to reflect new directions efficiently.' },
+      { q: 'Can video support Product Hunt launches and press outreach?', a: 'Yes. Launch videos optimized for platforms help journalists and early adopters understand and share products through attention-grabbing demos.' },
+      { q: 'How does video support startup hiring and employer brand?', a: 'Recruitment content showcasing mission, culture, and team helps candidates understand why startups are appealing workplaces amid competition.' },
+      { q: 'What video content should a startup prioritize first?', a: 'Start with a core product explainer for websites and short demos for sales conversations, addressing immediate conversion needs.' },
+      { q: 'How do you work with startups still iterating on their product?', a: 'Teams build flexibility into early-stage videos using updatable visual approaches, enabling efficient refinements as products mature.' },
+      { q: 'Can video help with fundraising and investor communications?', a: 'Yes. Polished pitch videos and product demos communicate vision and readiness more effectively than slides alone.' },
+      { q: 'When should a startup invest in professional video production?', a: 'After achieving product-market fit when scaling go-to-market efforts, professional video significantly improves conversion rates.' },
+    ],
+    relatedServices: [
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos from a dedicated team.' },
+      { title: 'Product Demo Videos', slug: 'product-demo-video-production', desc: 'Product demos that drive conversions.' },
+      { title: 'Social Media Video', slug: 'social-media-video-production', desc: 'Platform-native social video content.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Best Superside alternatives', slug: 'superside-alternatives', date: '2026-03-15' },
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+    ],
+  },
+
+  'fintech-video-production': {
+    title: 'Fintech Video Production',
+    slug: 'fintech-video-production',
+    category: 'Fintech',
+    heroHeading: 'Fintech Video Production',
+    heroDescription: 'Fintech products are inherently complex: payment infrastructure, lending platforms, wealth management tools, and blockchain applications all require clear, accurate video content that builds user trust and simplifies complexity.',
+    seo: { title: 'Fintech Video Production | Moonb', description: 'Fintech video production from a dedicated creative team. Product explainers, onboarding content, and compliance-ready video for financial technology.' },
+    serviceTypes: [
+      { title: 'Product Explainers', desc: 'Animated process flows and user journey visualizations showing how your product improves real financial workflows.' },
+      { title: 'User Onboarding', desc: 'Onboarding sequences guiding new users through setup and feature discovery to improve activation rates.' },
+      { title: 'B2B Sales Content', desc: 'Leave-behind demos, integration architecture visualizations, and ROI-focused content for different sales stages.' },
+      { title: 'Multi-Product Content', desc: 'Unified visual systems tying multiple products together while giving each distinct messaging.' },
+      { title: 'Compliance & Education', desc: 'Educational content proactively addressing regulatory questions and building compliance confidence.' },
+      { title: 'Lead Generation', desc: 'Product explainers on landing pages and feature walkthroughs that drive highest-quality leads.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that understands financial technology and can produce content for both consumer and enterprise fintech products — emphasizing simplicity for consumers and technical capability for enterprise.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'Moonb\'s quick responses and quality work in a very short amount of time were impressive.', name: 'Michael Boyer', role: 'Marketing Manager', company: 'Fortis', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+    faqs: [
+      { q: 'Can video support fintech B2B sales cycles?', a: 'Yes. B2B fintech sales cycles involve multiple stakeholders. The team produces leave-behind demos, integration architecture visualizations, and ROI-focused content for different sales stages.' },
+      { q: 'How do you handle fintech video for multi-product platforms?', a: 'The team creates a unified visual system tying multiple products together under the brand while giving each product distinct messaging and visual treatment.' },
+      { q: 'Can fintech video address regulatory concerns proactively?', a: 'Yes. Educational content can proactively address regulatory questions and build confidence in compliance posture.' },
+      { q: 'How do you produce fintech content that builds user trust?', a: 'Content demonstrates security, transparency, and expertise through clear explanations, visual walkthroughs, and professional production quality signaling credibility.' },
+      { q: 'How does video support fintech user onboarding and activation?', a: 'Onboarding sequences guide new users through setup and feature discovery, reducing support tickets and improving activation rates.' },
+      { q: 'Can you produce video for both consumer and enterprise fintech products?', a: 'Yes. Consumer content emphasizes simplicity and ease of use; enterprise content emphasizes technical capability and business outcomes.' },
+      { q: 'How do you make abstract financial technology tangible in video?', a: 'Using animated process flows and user journey visualizations to show how the product improves real financial workflows.' },
+      { q: 'What types of fintech video content generate the most qualified leads?', a: 'Product explainer videos on landing pages and feature walkthrough content in sales outreach consistently drive highest-quality leads.' },
+    ],
+    relatedServices: [
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos from a dedicated team.' },
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for complex concepts.' },
+      { title: 'Motion Graphics', slug: 'motion-graphics', desc: 'Animated content for product visualization.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Best Superside alternatives', slug: 'superside-alternatives', date: '2026-03-15' },
+    ],
+  },
+
+  'pharma-video-production': {
+    title: 'Pharmaceutical Video Production',
+    slug: 'pharma-video-production',
+    category: 'Pharma',
+    heroHeading: 'Pharmaceutical Video Production',
+    heroDescription: 'Pharmaceutical companies need video content that meets strict regulatory standards while remaining engaging and informative. From mechanism-of-action animations to patient education materials, every piece of pharma content requires accuracy, compliance, and production quality at enterprise scale.',
+    seo: { title: 'Pharmaceutical Video Production | Moonb', description: 'Pharmaceutical video production from a dedicated creative team. MOA animations, patient education, KOL content, and compliance-ready video.' },
+    serviceTypes: [
+      { title: 'Mechanism of Action', desc: 'MOA animations at multiple levels of scientific detail — molecular precision for HCPs, simplified metaphors for patients.' },
+      { title: 'Patient Education', desc: 'Adherence videos explaining treatment, expectations, and side effect management to improve compliance.' },
+      { title: 'KOL & Medical Affairs', desc: 'KOL interview content, advisory board summaries, and speaker training materials.' },
+      { title: 'Clinical Trial Recruitment', desc: 'Recruitment videos explaining trial purpose, process, and participant experience in accessible language.' },
+      { title: 'Sales Rep Training', desc: 'Video training helping reps understand mechanisms of action, clinical data, and compliant messaging.' },
+      { title: 'Multi-Therapeutic Content', desc: 'Separate reference libraries and visual approaches for each therapeutic area your organization covers.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that develops expertise in your therapeutic areas and maintains version-controlled production files. When clinical data evolves, your team updates existing content efficiently without rebuilding from scratch.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'They\'ve delivered above and beyond.', name: 'Marius Godo', role: 'Digital Marketing & Content Specialist', company: 'Gnosis by Lesaffre', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+    faqs: [
+      { q: 'Can you produce patient-facing content that improves treatment adherence?', a: 'Yes. Patient adherence videos that explain why a treatment works, what to expect during therapy, and how to manage side effects have been shown to improve compliance.' },
+      { q: 'How do you ensure pharma video content stays current with evolving clinical data?', a: 'Your dedicated team maintains version-controlled production files. When new clinical data emerges or new indications are approved, your team can update existing content without rebuilding from scratch.' },
+      { q: 'Can pharma video support key opinion leader (KOL) engagement programs?', a: 'Yes. Your team produces KOL interview content, advisory board meeting summaries, and speaker training materials that support your medical affairs engagement strategy.' },
+      { q: 'How do you handle fair balance requirements in pharma video?', a: 'Your team integrates fair balance into the creative structure from the scripting stage rather than appending it as a legal afterthought.' },
+      { q: 'What role does video play in pharmaceutical sales representative training?', a: 'Video training helps reps understand mechanisms of action, clinical data, and compliant messaging through education and practical guidance.' },
+      { q: 'How do you manage pharma video production across multiple therapeutic areas?', a: 'Your dedicated team develops expertise in each therapeutic area. They maintain separate reference libraries, terminology guides, and visual style approaches for each area.' },
+      { q: 'Can pharma video support clinical trial recruitment?', a: 'Yes. Recruitment videos that explain the trial purpose, process, and participant experience in accessible language help attract and retain qualified participants.' },
+      { q: 'How do you visualize mechanism-of-action content for different audiences?', a: 'Your team produces MOA animations at multiple levels of scientific detail. HCP-facing versions include molecular-level precision; patient-facing versions use simplified visual metaphors.' },
+    ],
+    relatedServices: [
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for scientific visualization.' },
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos for complex topics.' },
+      { title: 'Corporate Video', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Corporate training videos that work', slug: 'corporate-training-videos', date: '2026-01-14' },
+    ],
+  },
+
+  'financial-video-production': {
+    title: 'Financial Services Video Production',
+    slug: 'financial-video-production',
+    category: 'Financial',
+    heroHeading: 'Financial Services Video Production',
+    heroDescription: 'Financial services companies operate under some of the strictest communication regulations in any industry, and every piece of marketing content, client communication, and educational video must meet compliance standards while remaining engaging enough to connect with audiences.',
+    seo: { title: 'Financial Services Video Production | Moonb', description: 'Financial services video production from a dedicated creative team. Compliance-ready content for banking, insurance, wealth management, and advisory.' },
+    serviceTypes: [
+      { title: 'Client Education', desc: 'Market commentary, portfolio updates, and financial education content that strengthens relationships.' },
+      { title: 'Digital Banking Adoption', desc: 'Tutorial videos and feature walkthroughs helping customers adopt digital banking tools confidently.' },
+      { title: 'Wealth Management', desc: 'Premium content with sophisticated visuals and authoritative tone for high-net-worth audiences.' },
+      { title: 'Insurance Explainers', desc: 'Animated explainers clarifying coverage types, claim processes, and policy benefits.' },
+      { title: 'Advisor Training', desc: 'Scenario-based training modules helping advisors master products and compliance.' },
+      { title: 'ESG & Community', desc: 'Impact storytelling communicating ESG initiatives and social responsibility commitments.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that understands financial services regulations and produces compliance-aware content from the scripting stage. Separate messaging frameworks for each product line maintain brand consistency.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'The workflow was particularly awesome.', name: 'James Pais', role: 'Creative Services Director', company: 'Frame', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8b403f0791e7f30ab66_James%20Pais.avif' },
+    faqs: [
+      { q: 'Can financial video support community reinvestment and ESG communication?', a: 'Yes. Teams produce impact storytelling that communicates community involvement, ESG initiatives, and social responsibility commitments for both regulatory reporting and public-facing brand building.' },
+      { q: 'How do you produce video for insurance products?', a: 'Insurance complexity requires animated explainers clarifying coverage types, claim processes, and policy benefits in accessible visual language to inform decisions and reduce confusion.' },
+      { q: 'Can video support digital banking and mobile app adoption?', a: 'Yes. Tutorial videos and feature walkthroughs help customers adopt digital banking tools confidently through onboarding sequences and security education content.' },
+      { q: 'How do you handle video production for wealth management audiences?', a: 'Wealth management content requires premium production quality with sophisticated visuals, measured pacing, and authoritative tone for high-net-worth individuals.' },
+      { q: 'What types of financial video content work best for client retention?', a: 'Market commentary, portfolio updates, and financial education content strengthen relationships and reduce churn by keeping clients informed.' },
+      { q: 'How do you produce video for different financial product lines within one institution?', a: 'Separate messaging frameworks for each product line maintain brand consistency while preserving product-specific messaging clarity.' },
+      { q: 'Can video support financial advisor and representative training?', a: 'Yes. Scenario-based training modules help advisors master products, understand compliance, and improve client communication skills.' },
+      { q: 'How does video build trust with financial services clients?', a: 'Video humanizes brands through real advisors on screen and animated explainers demystifying complexity, signaling institutional credibility.' },
+    ],
+    relatedServices: [
+      { title: 'Corporate Video', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated team.' },
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos for complex topics.' },
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for data visualization.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Corporate training videos that work', slug: 'corporate-training-videos', date: '2026-01-14' },
+    ],
+  },
+
+  'healthcare-video-production': {
+    title: 'Healthcare Video Production',
+    slug: 'healthcare-video-production',
+    category: 'Healthcare',
+    heroHeading: 'Healthcare Video Production',
+    heroDescription: 'Healthcare organizations need video content that communicates with both clinical accuracy and genuine empathy, covering patient education, provider training, facility marketing, and public health messaging with the care and precision the sector demands.',
+    seo: { title: 'Healthcare Video Production | Moonb', description: 'Healthcare video production from a dedicated creative team. Patient education, provider training, facility marketing, and public health content.' },
+    serviceTypes: [
+      { title: 'Patient Education', desc: 'Pre-procedure videos, treatment explanations, and health information across literacy levels and cultural backgrounds.' },
+      { title: 'Provider Training', desc: 'Clinical training modules, procedure walkthroughs, and continuing education content.' },
+      { title: 'Facility Marketing', desc: 'Virtual tours, physician profiles, and service line promotions that attract patients.' },
+      { title: 'Telehealth Content', desc: 'Onboarding walkthroughs and feature tutorials optimized for in-app viewing and mobile screens.' },
+      { title: 'Staff Recruitment', desc: 'Recruitment videos showcasing culture, facilities, and employee experiences to attract talent.' },
+      { title: 'Multilingual Content', desc: 'Master versions with localization architecture for voiceover, text, and culturally sensitive elements.' },
+    ],
+    differentiator: { heading: 'The agency model is broken. We fixed it.', text: 'Moonb embeds a dedicated creative team that collaborates with your clinical and medical affairs teams. Scripts undergo medical accuracy review, and visual representations are verified against clinical references.', points: sharedDiffPoints },
+    stats: sharedStats, process: sharedProcess, work: sharedWork,
+    testimonial: { quote: 'They brought a unique style to video animation.', name: 'Sara Jayne Cops', role: 'Marketing Technology Lead', company: 'Livelife', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+    faqs: [
+      { q: 'What role does video play in community health education campaigns?', a: 'Video serves as the most accessible medium for reaching diverse populations with health information. Teams produce content across literacy levels using visual demonstration and clear narration.' },
+      { q: 'How do you handle healthcare video in multiple languages?', a: 'Master versions are produced with localization architecture built in. Voiceover scripts accommodate natural translation, text stays in editable layers, and culturally sensitive elements are flagged.' },
+      { q: 'Can you produce video content for multiple departments within a large health system?', a: 'Yes, through developing a system-wide visual framework maintaining brand consistency while adapting for each department\'s specific audience and messaging needs.' },
+      { q: 'How do you balance clinical accuracy with emotional storytelling?', a: 'Accuracy and empathy work as complementary priorities. Clinical facts build trust while patient-centered storytelling creates emotional connection.' },
+      { q: 'Can healthcare video be used for staff recruitment?', a: 'Yes, recruitment videos showcasing organizational culture, facilities, and employee experiences effectively attract clinical and administrative talent.' },
+      { q: 'How do you handle video production for telehealth and digital health platforms?', a: 'Teams produce onboarding walkthroughs, feature tutorials, and patient education optimized for in-app viewing, mobile screens, and low-bandwidth environments.' },
+      { q: 'Can healthcare video reduce patient anxiety before procedures?', a: 'Yes, pre-procedure education videos walking patients through expectations significantly reduce anxiety and improve compliance with preparation instructions.' },
+      { q: 'How do you ensure medical accuracy in healthcare video content?', a: 'Teams collaborate with clinical and medical affairs teams throughout production. Scripts undergo medical accuracy review before animation.' },
+    ],
+    relatedServices: [
+      { title: 'Animation', slug: 'animation', desc: '2D and 3D animation for medical visualization.' },
+      { title: 'Explainer Videos', slug: 'explainer-video-production', desc: 'Clear explainer videos for patient education.' },
+      { title: 'Corporate Video', slug: 'corporate-video-production', desc: 'Professional corporate video from a dedicated team.' },
+    ],
+    relatedBlogPosts: [
+      { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+      { title: 'Corporate training videos that work', slug: 'corporate-training-videos', date: '2026-01-14' },
+    ],
+  },
+
+};
+
+const { slug } = Astro.params;
+const service = services[slug as string];
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+const canonicalURL = new URL(`/industries/${service.slug}`, Astro.site || 'https://moonb-v2.vercel.app');
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "description": service.seo.description,
+  "provider": { "@type": "Organization", "name": "Moonb", "url": "https://www.moonb.io" },
+  "url": canonicalURL.toString(),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.moonb.io" },
+    { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://www.moonb.io/industries" },
+    { "@type": "ListItem", "position": 3, "name": service.title },
+  ],
+};
+
+const faqSchema = service.faqs?.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": service.faqs.map((faq: { q: string; a: string }) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+} : null;
+
+const logos = [
+  { name: 'Dell', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691db30dda671fbe474b31d3_Dell_Technologies_logo%201.svg' },
+  { name: 'Intel', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691dca52df40749fbcd69aa5_Intel.svg' },
+  { name: 'Toyota', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bef26792b6bec0f6d184_TOYOTA.svg' },
+  { name: 'Microsoft', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579be8830c130e5738402a3_MICROSOFT.svg' },
+  { name: 'Nestlé', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579be9467c7bc3dd79a4a1a_NESTLE.svg' },
+  { name: 'CyberArk', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bcdba5dd52502ff0dedc_CYBERARK.svg' },
+  { name: 'Gnosis', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bcf1769cf9352c288511_GNOSIS.svg' },
+  { name: 'State Street', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bedfe6e64721668b66ab_STATESTREET.svg' },
+  { name: 'Politico', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bec73f22d633fb4192bb_POLITICO.svg' },
+  { name: 'GSK', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6579bd0d4b4dccecf622b297_GSK.svg' },
+];
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'ecommerce-video-production' } },
+    { params: { slug: 'manufacturing-video-production' } },
+    { params: { slug: 'blockchain-video-production' } },
+    { params: { slug: 'startup-video-production' } },
+    { params: { slug: 'fintech-video-production' } },
+    { params: { slug: 'pharma-video-production' } },
+    { params: { slug: 'financial-video-production' } },
+    { params: { slug: 'healthcare-video-production' } },
+  ];
+}
+---
+
+<BaseLayout title={service.seo.title} description={service.seo.description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </Fragment>
+
+  <div class="svc">
+
+    <!-- Breadcrumbs -->
+    <div class="svc__container">
+      <nav class="svc__breadcrumbs" aria-label="Breadcrumb" data-reveal>
+        <a href="/">Home</a>
+        <span class="svc__sep">/</span>
+        <a href="/industries">Industries</a>
+        <span class="svc__sep">/</span>
+        <span>{service.title}</span>
+      </nav>
+    </div>
+
+    <!-- Hero — 2 column: text left, video right -->
+    <section class="svc__hero" data-reveal>
+      <div class="svc__container">
+        <div class="svc__hero-inner">
+          <div class="svc__hero-text">
+            <span class="svc__cat">{service.category}</span>
+            <h1 class="svc__title">{service.heroHeading}</h1>
+            <p class="svc__desc">{service.heroDescription}</p>
+            <a href="#work" class="btn btn--secondary">
+              <svg class="play-icon" width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true">
+                <path d="M1 1.5C1 0.7 1.9 0.2 2.6 0.6L11 5.8C11.6 6.2 11.6 7.1 11 7.5L2.6 12.7C1.9 13.1 1 12.6 1 11.8V1.5Z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/>
+              </svg>
+              See Selected Work
+            </a>
+          </div>
+          <div class="svc__hero-video">
+            <div class="svc__video-wrap">
+              <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" style="border:none" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Moonb Showreel"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client logos — infinite scroll marquee -->
+    <section class="svc__logos">
+      <div class="svc__logos-marquee">
+        <div class="svc__logos-track">
+          {[...logos, ...logos, ...logos].map((logo) => (
+            <img src={logo.src} alt={logo.name} class="svc__logo" loading="lazy" />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What we produce — card grid with numbering -->
+    <section class="svc__types section">
+      <div class="svc__container">
+        <div class="svc__types-header" data-reveal>
+          <h2 class="svc__section-heading">What we produce</h2>
+          <p class="svc__section-sub">Everything your corporate communications need, from one dedicated team.</p>
+        </div>
+        <div class="svc__types-grid">
+          {service.serviceTypes.map((t, i) => (
+            <div class="svc__type-card" data-reveal data-reveal-delay={String(Math.min(i, 5))}>
+              <span class="svc__type-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="svc__type-title">{t.title}</h3>
+              <p class="svc__type-desc">{t.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="svc__types-more" data-reveal>And much more. If it's video for your business, we produce it.</p>
+      </div>
+    </section>
+
+    <!-- Stats strip -->
+    <section class="svc__stats">
+      <div class="svc__container">
+        <div class="svc__stats-grid" data-reveal>
+          {service.stats.map((s) => (
+            <div class="svc__stat">
+              <span class="svc__stat-num">{s.number}</span>
+              <span class="svc__stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Differentiator — comparison style -->
+    <section class="svc__diff section section--beige">
+      <div class="svc__container">
+        <div class="svc__diff-inner">
+          <div class="svc__diff-text" data-reveal>
+            <h2 class="svc__section-heading">{service.differentiator.heading}</h2>
+            <p class="svc__diff-body">{service.differentiator.text}</p>
+          </div>
+          <div class="svc__diff-compare" data-reveal data-reveal-delay="1">
+            <div class="svc__compare-table">
+              {[0, 1, 2].map((row) => (
+                <div class="svc__compare-row">
+                  <div class="svc__compare-cell svc__compare-cell--agency">
+                    <span class="svc__compare-label">{service.differentiator.points[row * 2].label}</span>
+                    <span class="svc__compare-value">{service.differentiator.points[row * 2].value}</span>
+                  </div>
+                  <div class="svc__compare-vs">vs</div>
+                  <div class="svc__compare-cell svc__compare-cell--moonb">
+                    <span class="svc__compare-label">{service.differentiator.points[row * 2 + 1].label}</span>
+                    <span class="svc__compare-value">{service.differentiator.points[row * 2 + 1].value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work — thumbnail grid with play overlay -->
+    <section class="svc__work section" id="work">
+      <div class="svc__container">
+        <h2 class="svc__section-heading" data-reveal>Selected work</h2>
+        <div class="svc__work-grid">
+          {service.work.map((w, i) => (
+            <a href={w.vimeo} target="_blank" rel="noopener" class="svc__work-card" data-reveal data-reveal-delay={String(Math.min(i, 3))}>
+              <div class="svc__work-thumb">
+                <img src={w.thumb} alt={w.title} loading="lazy" />
+                <div class="svc__work-play">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#fff"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="svc__work-title">{w.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process — horizontal timeline with connecting line -->
+    <section class="svc__process section section--beige">
+      <div class="svc__container">
+        <div class="svc__process-header" data-reveal>
+          <h2 class="svc__section-heading">How it works</h2>
+          <p class="svc__section-sub">From signup to first delivery in under two weeks.</p>
+        </div>
+        <div class="svc__process-track">
+          <div class="svc__process-line" aria-hidden="true"></div>
+          {service.process.map((s, i) => (
+            <div class="svc__step" data-reveal data-reveal-delay={String(i)}>
+              <div class="svc__step-dot">
+                <span class="svc__step-num">{s.number}</span>
+              </div>
+              <div class="svc__step-content">
+                <h3 class="svc__step-title">{s.title}</h3>
+                <p class="svc__step-desc">{s.desc}</p>
+                <span class="svc__step-detail">{s.detail}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial — large centered quote -->
+    <section class="svc__testimonial section">
+      <div class="svc__container" data-reveal>
+        <div class="svc__quote-mark" aria-hidden="true">"</div>
+        <blockquote class="svc__quote">
+          <p class="svc__quote-text">{service.testimonial.quote}</p>
+          <footer class="svc__quote-footer">
+            <img src={service.testimonial.avatar} alt={service.testimonial.name} class="svc__quote-avatar" width="48" height="48" loading="lazy" />
+            <div>
+              <span class="svc__quote-name">{service.testimonial.name}</span>
+              <span class="svc__quote-role">{service.testimonial.role}, {service.testimonial.company}</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Mid-page CTA banner -->
+    <section class="svc__mid-cta">
+      <div class="svc__container">
+        <div class="svc__mid-cta-inner" data-reveal>
+          <h2 class="svc__mid-cta-title">Ready to start producing?</h2>
+          <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    {service.faqs?.length > 0 && (
+      <section class="svc__faq section section--beige" id="faq">
+        <div class="svc__container">
+          <div class="faq__inner">
+            <div class="faq__left" data-reveal>
+              <h2 class="faq__heading">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq__right">
+              <div class="faq__list" data-reveal>
+                {service.faqs.map((faq) => (
+                  <div class="faq__item" data-faq-item>
+                    <button class="faq__question" data-faq-trigger aria-expanded="false">
+                      <div class="faq__toggle" aria-hidden="true">
+                        <div class="faq__toggle-h"></div>
+                        <div class="faq__toggle-v"></div>
+                      </div>
+                      <span>{faq.q}</span>
+                    </button>
+                    <div class="faq__answer-wrap" data-faq-answer>
+                      <div class="faq__answer"><p>{faq.a}</p></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Related services -->
+    <section class="svc__related section">
+      <div class="svc__container">
+        <div class="svc__related-header" data-reveal>
+          <h2 class="svc__section-heading">Related services</h2>
+          <a href="/services" class="cta-link" style="color: var(--accent-purple)">All services <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="svc__related-grid">
+          {service.relatedServices.map((rs, i) => (
+            <a href={`/services/${rs.slug}`} class="svc__related-card" data-reveal data-reveal-delay={String(i)}>
+              <h3 class="svc__related-title">{rs.title}</h3>
+              <p class="svc__related-desc">{rs.desc}</p>
+              <span class="svc__related-arrow">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related blog posts -->
+    {service.relatedBlogPosts?.length > 0 && (
+      <section class="svc__blog section section--beige">
+        <div class="svc__container">
+          <div class="svc__related-header" data-reveal>
+            <h2 class="svc__section-heading">From the blog</h2>
+            <a href="/blog" class="cta-link" style="color: var(--accent-green)">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="svc__blog-grid">
+            {service.relatedBlogPosts.map((bp) => (
+              <a href={`/blog/${bp.slug}`} class="svc__blog-card" data-reveal>
+                <span class="svc__blog-date">{formatDate(bp.date)}</span>
+                <h3 class="svc__blog-title">{bp.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Pre-footer CTA -->
+    <section class="final-cta section section--beige">
+      <div class="container" data-reveal>
+        <div class="final-cta__inner">
+          <h2 class="final-cta__title">Ready to level up your creative?</h2>
+          <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+          <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  /* ==========================================================================
+     SERVICE PAGE — v2 redesign
+     ========================================================================== */
+
+  .svc__container {
+    max-width: calc(var(--max-w) + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Breadcrumbs */
+  .svc__breadcrumbs {
+    padding-top: 100px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  .svc__breadcrumbs a {
+    color: var(--body-muted);
+    transition: color 140ms ease;
+  }
+
+  .svc__breadcrumbs a:hover { color: var(--heading); }
+
+  .svc__sep {
+    margin: 0 6px;
+    opacity: 0.5;
+  }
+
+  .svc__breadcrumbs span:last-child { color: var(--body); }
+
+  /* ── Hero — 2 column: text left, video right ── */
+  .svc__hero {
+    padding-bottom: 64px;
+  }
+
+  .svc__hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .svc__hero-video {
+    width: 100%;
+  }
+
+  .svc__video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    clip-path: inset(0 round 24px);
+  }
+
+  .svc__video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .svc__cat {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .svc__title {
+    font-family: var(--font-heading);
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -1.35px;
+    line-height: 50px;
+    color: var(--heading);
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+
+  .svc__desc {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--body);
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+
+  /* ── Client logos — infinite marquee ── */
+  .svc__logos {
+    padding: 40px 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    overflow: hidden;
+  }
+
+  .svc__logos-marquee {
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .svc__logos-track {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    width: max-content;
+    animation: svc-marquee 40s linear infinite;
+    opacity: 0.7;
+    will-change: transform;
+  }
+
+  .svc__logos:hover .svc__logos-track {
+    opacity: 0.65;
+    animation-play-state: paused;
+  }
+
+  @keyframes svc-marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.333%, 0, 0); }
+  }
+
+  .svc__logo {
+    height: 32px;
+    min-width: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) opacity(0.6);
+    flex-shrink: 0;
+  }
+
+  /* ── Section headings ── */
+  .svc__section-heading {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    line-height: 38px;
+    color: var(--heading);
+  }
+
+  .svc__section-sub {
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 26px;
+    color: var(--body);
+    max-width: 520px;
+  }
+
+  .svc__types-header {
+    margin-bottom: 48px;
+  }
+
+  /* ── Service types grid with numbering ── */
+  .svc__types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+  }
+
+  .svc__type-card {
+    background: var(--white);
+    padding: 32px;
+    transition: background 200ms ease;
+    position: relative;
+  }
+
+  .svc__type-card:hover {
+    background: var(--beige);
+  }
+
+  .svc__type-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .svc__type-card:nth-child(2) .svc__type-num { color: var(--accent-blue); }
+  .svc__type-card:nth-child(3) .svc__type-num { color: var(--accent-green); }
+  .svc__type-card:nth-child(4) .svc__type-num { color: var(--accent); }
+  .svc__type-card:nth-child(5) .svc__type-num { color: var(--accent-blue); }
+  .svc__type-card:nth-child(6) .svc__type-num { color: var(--accent-green); }
+
+  .svc__type-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+
+  .svc__type-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+  }
+
+  .svc__types-more {
+    margin-top: 32px;
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--body-muted);
+    text-align: center;
+  }
+
+  /* ── Stats strip ── */
+  .svc__stats {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .svc__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+
+  .svc__stat-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--heading);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .svc__stat-label {
+    display: block;
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--body-muted);
+  }
+
+  /* ── Differentiator — comparison style ── */
+  .svc__diff-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .svc__diff-body {
+    font-size: 17px;
+    line-height: 27px;
+    color: var(--body);
+    margin-top: 16px;
+  }
+
+  .svc__compare-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .svc__compare-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .svc__compare-cell {
+    padding: 16px 20px;
+    border-radius: 12px;
+  }
+
+  .svc__compare-cell--agency {
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  .svc__compare-cell--moonb {
+    background: var(--heading);
+    color: var(--white);
+  }
+
+  .svc__compare-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+
+  .svc__compare-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .svc__compare-cell--agency .svc__compare-value {
+    color: var(--body-muted);
+  }
+
+  .svc__compare-vs {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--body-muted);
+    opacity: 0.4;
+  }
+
+  /* ── Work — thumbnail grid with play overlay ── */
+  .svc__work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .svc__work-card {
+    display: block;
+    text-decoration: none;
+  }
+
+  .svc__work-thumb {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #f0f0f0;
+  }
+
+  .svc__work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms var(--ease), filter 400ms ease;
+  }
+
+  .svc__work-card:hover .svc__work-thumb img {
+    transform: scale(1.04);
+    filter: brightness(0.85);
+  }
+
+  .svc__work-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 250ms ease;
+  }
+
+  .svc__work-play svg {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  }
+
+  .svc__work-card:hover .svc__work-play {
+    opacity: 1;
+  }
+
+  .svc__work-title {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--heading);
+    transition: color 140ms ease;
+  }
+
+  .svc__work-card:hover .svc__work-title {
+    color: var(--accent);
+  }
+
+  /* ── Process — horizontal timeline ── */
+  .svc__process-header {
+    margin-bottom: 64px;
+  }
+
+  .svc__process-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .svc__process-line {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: var(--border);
+  }
+
+  .svc__step {
+    position: relative;
+    padding-right: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .svc__step-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--heading);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    transition: transform 200ms ease;
+  }
+
+  .svc__step:hover .svc__step-dot {
+    transform: scale(1.1);
+  }
+
+  .svc__step-num {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .svc__step-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .svc__step-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--heading);
+    margin-bottom: 10px;
+  }
+
+  .svc__step-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+    margin-bottom: 12px;
+    flex: 1;
+  }
+
+  .svc__step-detail {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 83, 16, 0.08);
+  }
+
+  .svc__step:nth-child(3) .svc__step-detail {
+    color: var(--accent-blue);
+    background: rgba(0, 102, 255, 0.08);
+  }
+
+  .svc__step:nth-child(4) .svc__step-detail {
+    color: var(--accent-green);
+    background: rgba(0, 182, 122, 0.08);
+  }
+
+  /* ── Testimonial — large centered ── */
+  .svc__testimonial .svc__container {
+    text-align: center;
+  }
+
+  .svc__quote-mark {
+    font-family: var(--font-heading);
+    font-size: 120px;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 0.6;
+    opacity: 0.08;
+    margin-bottom: 0;
+  }
+
+  .svc__quote {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .svc__quote-text {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.6px;
+    line-height: 38px;
+    color: var(--heading);
+    font-style: normal;
+  }
+
+  .svc__quote-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .svc__quote-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .svc__quote-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+  }
+
+  .svc__quote-role {
+    display: block;
+    font-size: 13px;
+    color: var(--body-muted);
+    text-align: left;
+  }
+
+  /* ── Mid-page CTA banner ── */
+  .svc__mid-cta {
+    padding: 64px 0;
+  }
+
+  .svc__mid-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 48px 56px;
+    background: var(--heading);
+    border-radius: 20px;
+  }
+
+  .svc__mid-cta-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.6px;
+    color: var(--white);
+  }
+
+  .svc__mid-cta-inner .btn--primary {
+    background: var(--white);
+    color: var(--heading);
+  }
+
+  .svc__mid-cta-inner .btn--primary:hover {
+    background: var(--gray-light);
+  }
+
+  /* ── Related services ── */
+  .svc__related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+
+  .svc__related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .svc__related-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--beige);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+
+  .svc__related-card:hover {
+    background: #EAEAEA;
+    transform: translateY(-2px);
+  }
+
+  .svc__related-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+
+  .svc__related-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+    flex: 1;
+  }
+
+  .svc__related-arrow {
+    margin-top: 16px;
+    font-size: 18px;
+    color: var(--body-muted);
+    transition: transform 160ms ease, color 160ms ease;
+  }
+
+  .svc__related-card:hover .svc__related-arrow {
+    transform: translateX(4px);
+    color: var(--heading);
+  }
+
+  /* ── Blog cards ── */
+  .svc__blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .svc__blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--white);
+    transition: transform 160ms ease;
+  }
+
+  .svc__blog-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .svc__blog-date {
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  .svc__blog-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    line-height: 23px;
+    color: var(--heading);
+  }
+
+  /* ==========================================================================
+     RESPONSIVE
+     ========================================================================== */
+  @media (max-width: 860px) {
+    .svc__title {
+      font-size: 32px;
+      line-height: 38px;
+    }
+
+    .svc__hero-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .svc__types-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__diff-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .svc__work-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__process-track {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .svc__process-line {
+      display: none;
+    }
+
+    .svc__step {
+      padding-right: 0;
+    }
+
+    .svc__stats-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .svc__related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__logos-track {
+      gap: 36px;
+    }
+
+    .svc__logo {
+      height: 22px;
+      min-width: 60px;
+    }
+
+    .svc__related-header {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .svc__mid-cta-inner {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+      padding: 40px 32px;
+    }
+
+    .svc__compare-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .svc__compare-vs {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .svc__title {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .svc__quote-text {
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    .svc__mid-cta-title {
+      font-size: 22px;
+    }
+  }
+</style>

@@ -25,12 +25,15 @@ function initScrollReveal() {
       });
     },
     {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05,
+      rootMargin: '50px 0px -20px 0px',
     }
   );
 
-  revealElements.forEach((el) => observer.observe(el));
+  // Small delay to ensure layout is settled before observing
+  requestAnimationFrame(() => {
+    revealElements.forEach((el) => observer.observe(el));
+  });
 }
 
 // Run on DOM ready

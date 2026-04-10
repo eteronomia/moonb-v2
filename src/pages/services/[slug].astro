@@ -76,6 +76,8 @@ const service = {
   relatedBlogPosts: [
     { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
     { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+    { title: 'Corporate video production: everything you need to know', slug: 'corporate-video-production', date: '2025-08-15' },
+    { title: 'How long is the average commercial?', slug: 'how-long-is-the-average-commercial', date: '2025-06-20' },
   ],
 };
 
@@ -178,7 +180,7 @@ export function getStaticPaths() {
     <section class="svc__logos">
       <div class="svc__logos-marquee">
         <div class="svc__logos-track">
-          {[...logos, ...logos].map((logo) => (
+          {[...logos, ...logos, ...logos].map((logo) => (
             <img src={logo.src} alt={logo.name} class="svc__logo" loading="lazy" />
           ))}
         </div>
@@ -503,7 +505,7 @@ export function getStaticPaths() {
 
   /* ── Client logos — infinite marquee ── */
   .svc__logos {
-    padding: 32px 0;
+    padding: 40px 0;
     border-top: 1px solid var(--gray-light);
     border-bottom: 1px solid var(--gray-light);
     overflow: hidden;
@@ -511,41 +513,37 @@ export function getStaticPaths() {
 
   .svc__logos-marquee {
     position: relative;
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
 
   .svc__logos-track {
     display: flex;
     align-items: center;
-    gap: 56px;
+    gap: 48px;
     width: max-content;
-    animation: svc-marquee 30s linear infinite;
-    opacity: 0.35;
+    animation: svc-marquee 40s linear infinite;
+    opacity: 0.4;
+    will-change: transform;
   }
 
   .svc__logos:hover .svc__logos-track {
-    opacity: 0.6;
+    opacity: 0.65;
     animation-play-state: paused;
   }
 
   @keyframes svc-marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.333%, 0, 0); }
   }
 
   .svc__logo {
-    height: 24px;
+    height: 20px;
+    min-width: 60px;
     width: auto;
     object-fit: contain;
     filter: grayscale(1);
     flex-shrink: 0;
-    transition: filter 300ms ease, opacity 300ms ease;
-  }
-
-  .svc__logo:hover {
-    filter: grayscale(0);
-    opacity: 1;
   }
 
   /* ── Section headings ── */
@@ -1103,7 +1101,12 @@ export function getStaticPaths() {
     }
 
     .svc__logos-track {
-      gap: 40px;
+      gap: 36px;
+    }
+
+    .svc__logo {
+      height: 18px;
+      min-width: 50px;
     }
 
     .svc__related-header {

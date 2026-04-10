@@ -246,9 +246,10 @@ export function getStaticPaths() {
           <div class="post__services">
             <span class="post__services-label">Related services</span>
             <div class="post__services-links">
-              {post.relatedServices.map((s, i) => (
-                <a href={`/services/${s.slug}`} class={`post__services-link post__services-link--accent-${(i % 4) + 1}`}>{s.title} →</a>
-              ))}
+              {post.relatedServices.map((s, i) => {
+                const colors = ['var(--accent)', 'var(--accent-blue)', 'var(--accent-green)', 'var(--accent-purple)'];
+                return <a href={`/services/${s.slug}`} class="post__services-link" style={`color: ${colors[i % 4]}`}>{s.title} →</a>;
+              })}
             </div>
           </div>
 
@@ -724,10 +725,6 @@ export function getStaticPaths() {
   .post__related-card--accent-3 .post__related-cat { color: var(--accent-green); }
   .post__related-card--accent-4 .post__related-cat { color: var(--accent-purple); }
 
-  .post__services-link--accent-1 { color: var(--accent); }
-  .post__services-link--accent-2 { color: var(--accent-blue); }
-  .post__services-link--accent-3 { color: var(--accent-green); }
-  .post__services-link--accent-4 { color: var(--accent-purple); }
 
   /* ==========================================================================
      RESPONSIVE

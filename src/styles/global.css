@@ -109,7 +109,7 @@ p { color: var(--body); }
 .btn--primary { background: #171717; color: var(--btn-primary-text); }
 .btn--primary:hover { background: #121212; }
 .btn--secondary { background: #F6F4EF; color: #121212; }
-.btn--secondary:hover { background: #EAE6DD; }
+.btn--secondary:hover { background: rgba(123, 97, 255, 0.1); color: var(--accent-purple); }
 
 .btn .play-icon { flex-shrink: 0; }
 

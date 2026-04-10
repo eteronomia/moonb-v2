@@ -49,9 +49,9 @@ const service = {
   ],
   work: [
     { title: 'Dell Technologies — Product Launch', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ec8c76e46b46c6b6f9_Portfolio%2001.webp', vimeo: 'https://vimeo.com/1084258404' },
-    { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1176622548' },
+    { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1084258404' },
     { title: 'Toyota — Recruitment Campaign', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b70a_Portfolio%2003.webp', vimeo: 'https://vimeo.com/1084258404' },
-    { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1176622548' },
+    { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1084258404' },
   ],
   testimonial: {
     quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.',
@@ -466,7 +466,7 @@ export function getStaticPaths() {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     background: #000;
   }
@@ -599,10 +599,15 @@ export function getStaticPaths() {
     font-family: var(--font-heading);
     font-size: 12px;
     font-weight: 600;
-    color: var(--body-muted);
+    color: var(--accent);
     margin-bottom: 16px;
-    opacity: 0.5;
   }
+
+  .svc__type-card:nth-child(2) .svc__type-num { color: var(--accent-blue); }
+  .svc__type-card:nth-child(3) .svc__type-num { color: var(--accent-green); }
+  .svc__type-card:nth-child(4) .svc__type-num { color: var(--accent-purple); }
+  .svc__type-card:nth-child(5) .svc__type-num { color: var(--accent-blue); }
+  .svc__type-card:nth-child(6) .svc__type-num { color: var(--accent-green); }
 
   .svc__type-title {
     font-family: var(--font-heading);
@@ -737,7 +742,7 @@ export function getStaticPaths() {
 
   .svc__work-thumb {
     position: relative;
-    border-radius: 16px;
+    border-radius: 24px;
     overflow: hidden;
     aspect-ratio: 16 / 9;
     background: #f0f0f0;
@@ -867,6 +872,16 @@ export function getStaticPaths() {
     padding: 4px 12px;
     border-radius: var(--r-pill);
     background: rgba(255, 83, 16, 0.08);
+  }
+
+  .svc__step:nth-child(3) .svc__step-detail {
+    color: var(--accent-blue);
+    background: rgba(0, 102, 255, 0.08);
+  }
+
+  .svc__step:nth-child(4) .svc__step-detail {
+    color: var(--accent-green);
+    background: rgba(0, 182, 122, 0.08);
   }
 
   /* ── Testimonial — large centered ── */

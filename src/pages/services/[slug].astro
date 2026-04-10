@@ -11,42 +11,46 @@ const service = {
   title: 'Corporate Video Production',
   slug: 'corporate-video-production',
   category: 'Video',
-  heroHeading: 'Corporate video production from a dedicated creative team.',
-  heroDescription: 'From investor updates and executive messaging to recruitment content and internal communications. A team that already knows your brand, producing video continuously.',
+  heroHeading: 'Corporate Video Production',
+  heroDescription: 'A dedicated creative team that produces corporate video continuously, from investor updates and executive messaging to recruitment content and internal communications.',
   seo: {
     title: 'Corporate Video Production | Moonb',
     description: 'Corporate video production from a dedicated creative team. Investor updates, executive messaging, recruitment, internal comms. Predictable monthly pricing.',
   },
   serviceTypes: [
-    { title: 'Investor Relations', desc: 'Quarterly updates, earnings calls, and shareholder communications that build confidence.' },
-    { title: 'Executive Messaging', desc: 'CEO updates, thought leadership, and internal addresses that feel authentic.' },
-    { title: 'Recruitment & Employer Brand', desc: 'Culture videos, day-in-the-life content, and EVP campaigns that attract talent.' },
-    { title: 'Internal Communications', desc: 'Company updates, change management, and training content that actually gets watched.' },
-    { title: 'Training & Compliance', desc: 'Onboarding, safety, and regulatory content that holds attention and drives retention.' },
-    { title: 'Event Coverage', desc: 'Recaps, highlight reels, and live-stream content from conferences and launches.' },
+    { title: 'Investor Relations', desc: 'Earnings call visuals, annual report videos, and shareholder updates that build confidence.' },
+    { title: 'Executive Messaging', desc: 'Thought leadership content, town hall intros, and keynote support that feels authentic.' },
+    { title: 'Recruitment & Employer Brand', desc: 'Culture videos, role spotlights, and onboarding content that attracts talent.' },
+    { title: 'Internal Communications', desc: 'Policy updates, change management videos, and team announcements that actually get watched.' },
+    { title: 'Training & Compliance', desc: 'Process walkthroughs, safety protocols, and regulatory training that holds attention.' },
+    { title: 'Event & CSR', desc: 'Event recap packages, highlight reels, and corporate social responsibility stories.' },
   ],
   differentiator: {
     heading: 'Not an agency. Your creative team.',
-    text: 'Traditional agencies charge per project, assign whoever is available, and start from scratch every time. With Moonb, you get a dedicated team that learns your brand once and gets better with every deliverable. No onboarding lag, no scope creep, no surprise invoices.',
+    text: 'Traditional agencies scope and price each project individually, creating delays and unpredictable costs. Moonb embeds a dedicated creative team into your workflow with predictable monthly pricing. Your team learns your brand deeply, retains institutional knowledge, and produces faster with every project because they already understand your organization.',
     points: [
       { label: 'Agency', value: 'New team every project', accent: false },
       { label: 'Moonb', value: 'Same team, every time', accent: true },
       { label: 'Agency', value: 'Per-project billing', accent: false },
       { label: 'Moonb', value: 'One predictable monthly rate', accent: true },
       { label: 'Agency', value: 'Weeks to deliver', accent: false },
-      { label: 'Moonb', value: 'Days, not weeks', accent: true },
+      { label: 'Moonb', value: '5–10 business days', accent: true },
     ],
   },
   stats: [
     { number: '500+', label: 'Videos produced' },
-    { number: '48h', label: 'Average turnaround' },
+    { number: '5–10', label: 'Business days to deliver' },
     { number: '95%', label: 'Client retention' },
   ],
   process: [
-    { number: '01', title: 'Get onboarded', desc: 'Meet your Creative Director, share your brand guidelines, and set priorities for the first sprint.', detail: 'Takes about 30 minutes' },
-    { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD plans, prioritizes, and assigns the work to your team.', detail: 'Unlimited requests' },
-    { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within days. Revise until you\'re happy. Rinse and repeat.', detail: '5-10 day turnaround' },
+    { number: '01', title: 'Get onboarded', desc: 'Sign up and meet your dedicated Creative Director. We learn your brand, your stakeholders, and your communication priorities.', detail: 'Takes about 30 minutes' },
+    { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD manages the production pipeline, coordinates stakeholder reviews, and prioritizes the work.', detail: 'Unlimited requests' },
+    { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within 5–10 business days. Revisions are included — no revision caps or change-order fees.', detail: 'No revision caps' },
   ],
+  compound: {
+    heading: 'The compound effect of a dedicated team',
+    text: 'When the same team produces all your corporate video, they accumulate institutional knowledge about your brand, your executives, your audience, and what resonates. Scripts land faster because the team already understands your voice. Visual assets build on a growing library of approved elements. Stakeholder feedback loops shorten because the team anticipates preferences. Your corporate video program gets faster, more consistent, and more impactful with every month.',
+  },
   work: [
     { title: 'Dell Technologies — Product Launch', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ec8c76e46b46c6b6f9_Portfolio%2001.webp', vimeo: 'https://vimeo.com/1084258404' },
     { title: 'Gnosis — Brand Story', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ed8c76e46b46c6b704_Portfolio%2002.webp', vimeo: 'https://vimeo.com/1084258404' },
@@ -54,19 +58,21 @@ const service = {
     { title: 'Microsoft — Internal Comms', thumb: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/65e7d8ee8c76e46b46c6b710_Portfolio%2004.webp', vimeo: 'https://vimeo.com/1084258404' },
   ],
   testimonial: {
-    quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.',
+    quote: 'They\'ve delivered above and beyond.',
     name: 'Marius Godo',
-    role: 'Content Specialist',
-    company: 'Gnosis',
+    role: 'Digital Marketing & Content Specialist',
+    company: 'Gnosis by Lesaffre',
     avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
   },
   faqs: [
-    { q: 'Can Moonb handle multi-location corporate video production?', a: 'Yes. Our team coordinates production across locations, time zones, and languages. Your Creative Director manages the logistics so you don\'t have to.' },
-    { q: 'What does the production process look like?', a: 'After onboarding, you submit briefs through our platform. Your dedicated team produces the first draft within five to ten business days, then you review and we revise until you\'re happy.' },
-    { q: 'Can Moonb handle confidential corporate content?', a: 'Absolutely. We sign NDAs as standard practice and can work within your security protocols. Many of our clients are publicly traded companies.' },
-    { q: 'How is Moonb different from a traditional video agency?', a: 'Agencies charge per project and assign whoever is available. Moonb gives you a dedicated team with a Creative Director who knows your brand inside out. Predictable monthly pricing, no scope creep.' },
-    { q: 'What corporate video formats do you produce?', a: 'Everything from investor relations and executive messaging to recruitment, internal comms, training, event coverage, and CSR content. If it\'s video for your business, we produce it.' },
-    { q: 'How quickly can we get started?', a: 'You can be onboarded and briefing your team within the first week. Most clients receive their first deliverable within 5-10 business days of signing up.' },
+    { q: 'Can you produce corporate video for multi-location organizations?', a: 'Yes. Your team creates scalable production frameworks that maintain brand and quality consistency across regions and facilities. Location-specific content can be produced using animation and templated visual systems that keep every office\'s content aligned with the broader corporate identity.' },
+    { q: 'How do you approach corporate video for publicly traded companies?', a: 'Your team understands the additional layer of scrutiny that comes with public company communications. Content is produced with awareness of disclosure requirements, quiet period considerations, and the need for legal review before publication. Your Creative Director coordinates with your investor relations and legal teams.' },
+    { q: 'What types of corporate video generate the most internal engagement?', a: 'Executive updates that feel authentic rather than scripted, employee recognition and milestone celebration videos, and culture-focused content that showcases real team members consistently outperform generic corporate communications.' },
+    { q: 'How do you handle confidential or sensitive corporate content?', a: 'Your team operates under strict confidentiality protocols. All project files are stored securely, access is limited to assigned team members, and NDAs are standard practice. For particularly sensitive content, your Creative Director coordinates directly with your legal or communications team.' },
+    { q: 'How do you maintain brand consistency across different corporate video formats?', a: 'Your dedicated team builds a comprehensive brand guide at the start covering color palettes, typography, motion design language, voiceover tone, and music direction. Every video references this guide, so whether the output is a quarterly earnings summary or a recruitment piece, the identity stays consistent.' },
+    { q: 'What makes corporate video different from other types of video content?', a: 'Corporate video serves internal and external business communication goals rather than direct advertising or entertainment. It includes investor updates, executive messaging, company culture pieces, internal announcements, and stakeholder communications. The tone, pacing, and visual approach are calibrated for professional audiences who expect clarity and credibility.' },
+    { q: 'Can corporate video content be localized for international offices?', a: 'Yes. Your team produces master versions designed for localization from the start. Text overlays are kept in editable layers, voiceover scripts are written for easy translation, and culturally specific references are flagged during scripting.' },
+    { q: 'Can corporate video support change management initiatives?', a: 'Yes. Video is one of the most effective tools for communicating organizational change because it conveys tone and intent in ways that email and memos cannot. Your team produces content that explains the why behind changes and provides a consistent message that reaches every employee.' },
   ],
   relatedServices: [
     { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
@@ -818,6 +824,8 @@ export function getStaticPaths() {
   .svc__step {
     position: relative;
     padding-right: 32px;
+    display: flex;
+    flex-direction: column;
   }
 
   .svc__step-dot {
@@ -845,7 +853,11 @@ export function getStaticPaths() {
     color: var(--white);
   }
 
-  .svc__step-content {}
+  .svc__step-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
   .svc__step-title {
     font-family: var(--font-heading);
@@ -861,6 +873,7 @@ export function getStaticPaths() {
     line-height: 22px;
     color: var(--body);
     margin-bottom: 12px;
+    flex: 1;
   }
 
   .svc__step-detail {

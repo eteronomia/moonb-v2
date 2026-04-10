@@ -158,10 +158,19 @@ export function getStaticPaths() {
     <!-- Hero -->
     <section class="svc__hero" data-reveal>
       <div class="svc__container">
-        <span class="svc__cat">{service.category}</span>
-        <h1 class="svc__title">{service.heroHeading}</h1>
-        <p class="svc__desc">{service.heroDescription}</p>
-        <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call</a>
+        <div class="svc__hero-inner">
+          <div class="svc__hero-text">
+            <span class="svc__cat">{service.category}</span>
+            <h1 class="svc__title">{service.heroHeading}</h1>
+            <p class="svc__desc">{service.heroDescription}</p>
+            <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call</a>
+          </div>
+          <div class="svc__hero-video">
+            <div class="svc__video-wrap">
+              <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Moonb Showreel"></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -371,9 +380,37 @@ export function getStaticPaths() {
 
   .svc__breadcrumbs span:last-child { color: var(--body); }
 
-  /* Hero */
+  /* Hero — 2 column: text left, video right */
   .svc__hero {
     padding-bottom: 64px;
+  }
+
+  .svc__hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .svc__hero-video {
+    width: 100%;
+  }
+
+  .svc__video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    background: #000;
+  }
+
+  .svc__video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .svc__cat {
@@ -678,6 +715,11 @@ export function getStaticPaths() {
 
     .svc__types-grid {
       grid-template-columns: 1fr;
+    }
+
+    .svc__hero-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
 
     .svc__diff-inner {

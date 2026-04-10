@@ -225,8 +225,11 @@ export function getStaticPaths() {
 
           <!-- Mid-article CTA -->
           <aside class="post__cta-banner">
-            <p class="post__cta-text">Need a dedicated team for your video production?</p>
-            <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="post__cta-content">
+              <p class="post__cta-text">Need a dedicated team for your video production?</p>
+              <p class="post__cta-sub">One monthly rate. Unlimited requests. Cancel anytime.</p>
+            </div>
+            <a href="#" class="btn btn--primary post__cta-btn" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote</a>
           </aside>
 
           <h2 id="the-production-process">The production process</h2>
@@ -601,24 +604,43 @@ export function getStaticPaths() {
     margin: 32px 0;
   }
 
-  /* Mid-article CTA banner */
+  /* Mid-article CTA banner — dark card */
   .post__cta-banner {
-    background: var(--beige);
-    border-radius: var(--r-xl);
-    padding: 32px;
-    margin: 48px 0;
+    background: var(--heading);
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 56px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
   }
+
+  .post__cta-content {}
 
   .post__cta-text {
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    color: var(--heading);
-    margin-bottom: 4px;
+    letter-spacing: -0.4px;
+    color: var(--white);
   }
 
-  .post__cta-banner .cta-link {
-    margin-top: 12px;
+  .post__cta-sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .post__cta-btn {
+    background: var(--white) !important;
+    color: var(--heading) !important;
+    flex-shrink: 0;
+    height: 44px;
+    padding: 0 24px;
+  }
+  .post__cta-btn:hover {
+    background: var(--gray-light) !important;
   }
 
   /* Related services links */

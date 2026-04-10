@@ -150,31 +150,38 @@ export function getStaticPaths() {
         <span>{post.title}</span>
       </nav>
 
-      <!-- Article header -->
+      <!-- Article header — two column: text + hero image -->
       <header class="post__header" data-reveal>
-        <div class="post__meta-top">
-          <a href={`/blog?category=${post.category}`} class="post__category">{post.category}</a>
-          <span class="post__meta-dot">·</span>
-          <time datetime={formatDateISO(post.date)} class="post__date">{formatDate(post.date)}</time>
-          <span class="post__meta-dot">·</span>
-          <span class="post__reading-time">{post.readingTime} min read</span>
-        </div>
-        <h1 class="post__title">{post.title}</h1>
-        <p class="post__subtitle">{post.excerpt}</p>
+        <div class="post__header-inner">
+          <div class="post__header-text">
+            <div class="post__meta-top">
+              <a href={`/blog?category=${post.category}`} class="post__category">{post.category}</a>
+              <span class="post__meta-dot">·</span>
+              <time datetime={formatDateISO(post.date)} class="post__date">{formatDate(post.date)}</time>
+              <span class="post__meta-dot">·</span>
+              <span class="post__reading-time">{post.readingTime} min read</span>
+            </div>
+            <h1 class="post__title">{post.title}</h1>
+            <p class="post__subtitle">{post.excerpt}</p>
 
-        <!-- Author -->
-        <div class="post__author">
-          <img
-            src={post.author.avatar}
-            alt={post.author.name}
-            class="post__author-avatar"
-            width="40"
-            height="40"
-            loading="eager"
-          />
-          <div class="post__author-info">
-            <span class="post__author-name">{post.author.name}</span>
-            <span class="post__author-role">{post.author.role}</span>
+            <!-- Author -->
+            <div class="post__author">
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                class="post__author-avatar"
+                width="40"
+                height="40"
+                loading="eager"
+              />
+              <div class="post__author-info">
+                <span class="post__author-name">{post.author.name}</span>
+                <span class="post__author-role">{post.author.role}</span>
+              </div>
+            </div>
+          </div>
+          <div class="post__header-image">
+            <div class="placeholder placeholder--blog-hero"><span class="placeholder__label">Blog hero image</span></div>
           </div>
         </div>
       </header>
@@ -357,10 +364,27 @@ export function getStaticPaths() {
     color: var(--body);
   }
 
-  /* Article header */
+  /* Article header — two column */
   .post__header {
-    max-width: 680px;
     margin-bottom: 56px;
+  }
+  .post__header-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .post__header-text {
+    max-width: 680px;
+  }
+  .post__header-image {
+    width: 100%;
+  }
+  .placeholder--blog-hero {
+    min-height: 320px;
+    border-radius: 20px;
+    background: var(--beige);
+    border: 2px dashed var(--border);
   }
 
   .post__meta-top {
@@ -732,6 +756,11 @@ export function getStaticPaths() {
   @media (max-width: 860px) {
     .post {
       padding-top: 100px;
+    }
+
+    .post__header-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
 
     .post__layout {

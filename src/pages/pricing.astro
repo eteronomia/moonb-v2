@@ -1,0 +1,623 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const plan = {
+  name: 'Your Creative Team',
+  tagline: 'One plan, everything included',
+  description: 'A dedicated team of designers, editors, and motion artists that works as part of your brand. Great work, on repeat.',
+  features: [
+    'Dedicated Creative Director',
+    'Dedicated Creative Team',
+    'Design and Video Production',
+    'Multiple Weekly Deliveries',
+    'Weekly Calls',
+    '24/7 Direct Slack or Teams Chat',
+    'Support for Multiple Brands',
+  ],
+  guarantee: 'Not loving it after a week? Get 100% back, no questions asked.',
+};
+
+const included = [
+  { title: 'Unlimited Requests', desc: 'Submit as many creative briefs as you need. Your team manages the queue.', color: 'orange' },
+  { title: 'Unlimited Revisions', desc: 'We revise until you\'re happy. No revision caps, no change-order fees.', color: 'blue' },
+  { title: 'Full File Ownership', desc: 'You own everything we create. All working files, all IP. It\'s your work.', color: 'green' },
+  { title: 'Cancel Anytime', desc: 'No long-term contracts. Pause or cancel your subscription whenever you want.', color: 'purple' },
+];
+
+const comparison = [
+  { feature: 'Dedicated team that knows your brand', moonb: true, inhouse: true, agency: false },
+  { feature: 'Predictable monthly cost', moonb: true, inhouse: false, agency: false },
+  { feature: 'No hiring, onboarding, or HR overhead', moonb: true, inhouse: false, agency: true },
+  { feature: 'Video + design + motion in one team', moonb: true, inhouse: false, agency: false },
+  { feature: 'Scale up or down without commitments', moonb: true, inhouse: false, agency: true },
+  { feature: 'Deliveries within 5–10 business days', moonb: true, inhouse: true, agency: false },
+  { feature: 'No per-project quotes or surprise invoices', moonb: true, inhouse: true, agency: false },
+  { feature: 'Cancel anytime', moonb: true, inhouse: false, agency: true },
+];
+
+const stats = [
+  { number: '500+', label: 'Projects delivered' },
+  { number: '95%', label: 'Client retention' },
+  { number: '5–10', label: 'Business days avg. turnaround' },
+  { number: '100%', label: 'Money-back guarantee' },
+];
+
+const testimonials = [
+  { quote: 'Moonb has become an essential part of our creative workflow.', name: 'Rene Ugarte', role: 'Senior Producer', company: 'MOI', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif' },
+  { quote: 'Their creative flair and dedication to getting the storytelling style right are impressive.', name: 'Marius Godo', role: 'Content Specialist', company: 'Gnosis', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif' },
+  { quote: 'This was the best experience we have had with a large project like this.', name: 'Josh Kirshman', role: 'Director of Marketing', company: 'Frame', avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b8fbc31af3dd6d055791_Josh%20Kirshman.avif' },
+];
+
+const faqs = [
+  { q: 'How does pricing work?', a: 'Moonb offers a simple monthly subscription. You get a dedicated creative team, unlimited requests, and unlimited revisions for one predictable monthly rate. No per-project billing, no surprise invoices.' },
+  { q: 'Is there a minimum commitment?', a: 'No. You can cancel anytime. We also offer a 100% money-back guarantee for the first week — if you\'re not happy, you get a full refund, no questions asked.' },
+  { q: 'What\'s included in the plan?', a: 'Everything creative: video production, motion graphics, graphic design, animation, and a dedicated Creative Director who manages your projects. You also get weekly calls, 24/7 Slack or Teams access, and support for multiple brands.' },
+  { q: 'Can I pause my subscription?', a: 'Yes. If you need to take a break, you can pause your subscription and resume when you\'re ready. Your team and brand knowledge are preserved.' },
+  { q: 'How fast will I receive deliverables?', a: 'Most deliverables are completed within 5–10 business days, depending on complexity. Your Creative Director manages the timeline and keeps you updated at every stage.' },
+  { q: 'What if I need more output?', a: 'If your needs grow beyond what one team can handle, we can scale your plan to include additional team members or parallel workstreams. Request a quote and we\'ll scope it together.' },
+  { q: 'Who owns the work?', a: 'You do. All working files, source files, and intellectual property are yours. No licensing fees, no usage restrictions.' },
+  { q: 'How is this different from hiring an agency?', a: 'Traditional agencies charge per project, assign whoever is available, and start from scratch every time. Moonb gives you a dedicated team that learns your brand deeply and gets faster with every deliverable. One monthly rate, no scope creep.' },
+];
+
+const canonicalURL = new URL('/pricing', 'https://moonb-v2.vercel.app');
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.moonb.io" },
+    { "@type": "ListItem", "position": 2, "name": "Pricing" },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+---
+
+<BaseLayout title="Pricing | Moonb" description="One plan, one monthly rate. Dedicated creative team with unlimited requests and revisions. Request a quote.">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="pricing">
+
+    <!-- Breadcrumbs -->
+    <div class="pricing__container">
+      <nav class="pricing__breadcrumbs" aria-label="Breadcrumb" data-reveal>
+        <a href="/">Home</a>
+        <span class="pricing__sep">/</span>
+        <span>Pricing</span>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="pricing__hero" data-reveal>
+      <div class="pricing__container">
+        <h1 class="pricing__title">One plan. One monthly rate.<br/>Everything creative.</h1>
+        <p class="pricing__subtitle">No per-project quotes. No surprise invoices. Just a dedicated team producing great work, on repeat.</p>
+      </div>
+    </section>
+
+    <!-- Plan card -->
+    <section class="pricing__plan">
+      <div class="pricing__container">
+        <div class="pricing__card" data-reveal>
+          <div class="pricing__card-header">
+            <span class="pricing__card-name">{plan.name}</span>
+            <span class="pricing__card-tagline">{plan.tagline}</span>
+          </div>
+          <p class="pricing__card-desc">{plan.description}</p>
+          <ul class="pricing__card-features">
+            {plan.features.map((f) => (
+              <li class="pricing__card-feature">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 10L8.5 13.5L15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#" class="btn btn--primary pricing__card-cta" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote</a>
+          <p class="pricing__card-guarantee">{plan.guarantee}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's included -->
+    <section class="pricing__included section">
+      <div class="pricing__container">
+        <h2 class="pricing__section-heading" data-reveal>Included with every plan</h2>
+        <div class="pricing__included-grid">
+          {included.map((item, i) => (
+            <div class={`pricing__included-card pricing__included-card--${item.color}`} data-reveal data-reveal-delay={String(i)}>
+              <h3 class="pricing__included-title">{item.title}</h3>
+              <p class="pricing__included-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="pricing__compare section section--beige">
+      <div class="pricing__container">
+        <h2 class="pricing__section-heading" data-reveal>Moonb vs the alternatives</h2>
+        <p class="pricing__section-sub" data-reveal>See how a dedicated creative team compares to hiring in-house or working with a legacy agency.</p>
+        <div class="pricing__table-wrap" data-reveal>
+          <table class="pricing__table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="pricing__th--moonb">Moonb</th>
+                <th>In-house</th>
+                <th>Legacy agency</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row) => (
+                <tr>
+                  <td class="pricing__td-feature">{row.feature}</td>
+                  <td class="pricing__td-check">{row.moonb ? '✓' : '—'}</td>
+                  <td class="pricing__td-check">{row.inhouse ? '✓' : '—'}</td>
+                  <td class="pricing__td-check">{row.agency ? '✓' : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="pricing__stats section">
+      <div class="pricing__container">
+        <div class="pricing__stats-grid" data-reveal>
+          {stats.map((s) => (
+            <div class="pricing__stat">
+              <span class="pricing__stat-num">{s.number}</span>
+              <span class="pricing__stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="pricing__testimonials section section--beige">
+      <div class="pricing__container">
+        <h2 class="pricing__section-heading" data-reveal>What our clients say</h2>
+        <div class="pricing__testimonials-grid">
+          {testimonials.map((t, i) => (
+            <div class={`pricing__testimonial pricing__testimonial--accent-${(i % 4) + 1}`} data-reveal data-reveal-delay={String(i)}>
+              <p class="pricing__testimonial-quote">"{t.quote}"</p>
+              <div class="pricing__testimonial-footer">
+                <img src={t.avatar} alt={t.name} class="pricing__testimonial-avatar" width="40" height="40" loading="lazy" />
+                <div>
+                  <span class="pricing__testimonial-name">{t.name}</span>
+                  <span class="pricing__testimonial-role">{t.role}, {t.company}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Mid CTA -->
+    <section class="pricing__mid-cta">
+      <div class="pricing__container">
+        <div class="pricing__mid-cta-inner" data-reveal>
+          <h2 class="pricing__mid-cta-title">Ready to get started?</h2>
+          <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}' style="background: var(--white); color: var(--heading);">Request a Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pricing__faq section section--beige" id="faq">
+      <div class="pricing__container">
+        <div class="faq__inner">
+          <div class="faq__left" data-reveal>
+            <h2 class="faq__heading">Frequently Asked Questions</h2>
+          </div>
+          <div class="faq__right">
+            <div class="faq__list" data-reveal>
+              {faqs.map((faq) => (
+                <div class="faq__item" data-faq-item>
+                  <button class="faq__question" data-faq-trigger aria-expanded="false">
+                    <div class="faq__toggle" aria-hidden="true">
+                      <div class="faq__toggle-h"></div>
+                      <div class="faq__toggle-v"></div>
+                    </div>
+                    <span>{faq.q}</span>
+                  </button>
+                  <div class="faq__answer-wrap" data-faq-answer>
+                    <div class="faq__answer"><p>{faq.a}</p></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-footer CTA -->
+    <section class="final-cta section section--beige">
+      <div class="container" data-reveal>
+        <div class="final-cta__inner">
+          <h2 class="final-cta__title">Ready to level up your creative?</h2>
+          <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+          <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Request a Quote <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .pricing__container {
+    max-width: calc(var(--max-w) + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Breadcrumbs */
+  .pricing__breadcrumbs {
+    padding-top: 100px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+  .pricing__breadcrumbs a { color: var(--body-muted); transition: color 140ms ease; }
+  .pricing__breadcrumbs a:hover { color: var(--heading); }
+  .pricing__sep { margin: 0 6px; opacity: 0.5; }
+
+  /* Hero */
+  .pricing__hero {
+    padding-bottom: 64px;
+    text-align: center;
+  }
+  .pricing__title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: -1.6px;
+    line-height: 58px;
+    color: var(--heading);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .pricing__subtitle {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--body);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Plan card */
+  .pricing__plan {
+    padding-bottom: 80px;
+  }
+  .pricing__card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .pricing__card-header {
+    margin-bottom: 16px;
+  }
+  .pricing__card-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    color: var(--heading);
+  }
+  .pricing__card-tagline {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+    color: var(--body-muted);
+  }
+  .pricing__card-desc {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--body);
+    margin-bottom: 28px;
+  }
+  .pricing__card-features {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .pricing__card-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--heading);
+  }
+  .pricing__card-feature:nth-child(1) svg { color: var(--accent); }
+  .pricing__card-feature:nth-child(2) svg { color: var(--accent-blue); }
+  .pricing__card-feature:nth-child(3) svg { color: var(--accent-green); }
+  .pricing__card-feature:nth-child(4) svg { color: var(--accent-purple); }
+  .pricing__card-feature:nth-child(5) svg { color: var(--accent); }
+  .pricing__card-feature:nth-child(6) svg { color: var(--accent-blue); }
+  .pricing__card-feature:nth-child(7) svg { color: var(--accent-green); }
+
+  .pricing__card-cta {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+  }
+  .pricing__card-guarantee {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--accent-green);
+    font-weight: 500;
+  }
+
+  /* Section headings */
+  .pricing__section-heading {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    line-height: 38px;
+    color: var(--heading);
+    margin-bottom: 40px;
+  }
+  .pricing__section-sub {
+    margin-top: -28px;
+    margin-bottom: 48px;
+    font-size: 17px;
+    line-height: 26px;
+    color: var(--body);
+    max-width: 520px;
+  }
+
+  /* Included grid */
+  .pricing__included-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .pricing__included-card {
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--beige);
+    border-top: 3px solid transparent;
+    transition: transform 200ms ease;
+  }
+  .pricing__included-card:hover { transform: translateY(-2px); }
+  .pricing__included-card--orange { border-top-color: var(--accent); }
+  .pricing__included-card--blue { border-top-color: var(--accent-blue); }
+  .pricing__included-card--green { border-top-color: var(--accent-green); }
+  .pricing__included-card--purple { border-top-color: var(--accent-purple); }
+
+  .pricing__included-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+  .pricing__included-desc {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--body);
+  }
+
+  /* Comparison table */
+  .pricing__table-wrap {
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  .pricing__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .pricing__table thead th {
+    padding: 16px 20px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--body-muted);
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+  }
+  .pricing__table thead th:first-child {
+    text-align: left;
+  }
+  .pricing__th--moonb {
+    color: var(--heading) !important;
+    font-size: 16px !important;
+  }
+  .pricing__table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 140ms ease;
+  }
+  .pricing__table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+  .pricing__td-feature {
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--body);
+  }
+  .pricing__td-check {
+    padding: 16px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .pricing__td-check:nth-child(2) {
+    color: var(--accent-green);
+    font-weight: 600;
+  }
+  .pricing__td-check:nth-child(3),
+  .pricing__td-check:nth-child(4) {
+    color: var(--body-muted);
+  }
+
+  /* Stats */
+  .pricing__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+  .pricing__stat-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--heading);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .pricing__stat-label {
+    display: block;
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--body-muted);
+  }
+
+  /* Testimonials */
+  .pricing__testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .pricing__testimonial {
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 3px solid transparent;
+  }
+  .pricing__testimonial--accent-1 { border-top-color: var(--accent); }
+  .pricing__testimonial--accent-2 { border-top-color: var(--accent-blue); }
+  .pricing__testimonial--accent-3 { border-top-color: var(--accent-green); }
+  .pricing__testimonial--accent-4 { border-top-color: var(--accent-purple); }
+
+  .pricing__testimonial-quote {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 25px;
+    color: var(--heading);
+    flex: 1;
+  }
+  .pricing__testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pricing__testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .pricing__testimonial-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .pricing__testimonial-role {
+    display: block;
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  /* Mid CTA */
+  .pricing__mid-cta {
+    padding: 64px 0;
+  }
+  .pricing__mid-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 48px 56px;
+    background: var(--heading);
+    border-radius: 20px;
+  }
+  .pricing__mid-cta-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.6px;
+    color: var(--white);
+  }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .pricing__title {
+      font-size: 36px;
+      line-height: 42px;
+    }
+    .pricing__included-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing__stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .pricing__testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing__mid-cta-inner {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+      padding: 40px 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pricing__title {
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .pricing__included-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing__stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing__card {
+      padding: 28px;
+    }
+  }
+</style>

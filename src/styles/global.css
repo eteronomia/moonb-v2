@@ -258,8 +258,8 @@ p { color: var(--body); }
   opacity: 0; transform: translateY(8px);
   transition: opacity 300ms ease, transform 300ms ease;
   pointer-events: none;
-  display: flex; flex-direction: column; gap: 16px;
-  padding: 32px;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 24px;
   border-radius: var(--r-xl);
   background: var(--beige);
 }
@@ -272,8 +272,8 @@ p { color: var(--body); }
 .madefor__card--purple { border-top: 3px solid var(--accent-purple); }
 
 .madefor__card-role {
-  font-family: var(--font-heading); font-size: 14px; font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-heading); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
 }
 .madefor__card--orange .madefor__card-role { color: var(--accent); }
 .madefor__card--blue .madefor__card-role { color: var(--accent-blue); }
@@ -281,10 +281,10 @@ p { color: var(--body); }
 .madefor__card--purple .madefor__card-role { color: var(--accent-purple); }
 
 .madefor__card-desc {
-  font-size: 17px; line-height: 26px; color: var(--body);
+  font-size: 14px; line-height: 21px; color: var(--body);
 }
 
-.placeholder--madefor { min-height: 180px; border-radius: var(--r-lg); flex: 1; }
+.placeholder--madefor { min-height: 240px; border-radius: var(--r-lg); flex: 1; }
 
 /* ==========================================================================
    SERVICES

@@ -52,10 +52,13 @@ const post = {
     { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02', category: 'Video' },
     { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12', category: 'Marketing' },
     { title: 'The best software demo videos (and what makes them work)', slug: 'software-demo-video', date: '2025-12-05', category: 'Video' },
+    { title: 'Best Superside alternatives for creative teams', slug: 'superside-alternatives', date: '2026-03-15', category: 'Industry' },
   ],
   relatedServices: [
     { title: 'Corporate Video Production', slug: 'corporate-video-production' },
     { title: 'Marketing Video Production', slug: 'marketing-video-production' },
+    { title: 'Explainer Video Production', slug: 'explainer-video-production' },
+    { title: 'Branded Video Production', slug: 'branded-video-production' },
   ],
 };
 
@@ -243,8 +246,8 @@ export function getStaticPaths() {
           <div class="post__services">
             <span class="post__services-label">Related services</span>
             <div class="post__services-links">
-              {post.relatedServices.map((s) => (
-                <a href={`/services/${s.slug}`} class="post__services-link">{s.title} →</a>
+              {post.relatedServices.map((s, i) => (
+                <a href={`/services/${s.slug}`} class={`post__services-link post__services-link--accent-${(i % 4) + 1}`}>{s.title} →</a>
               ))}
             </div>
           </div>
@@ -279,11 +282,11 @@ export function getStaticPaths() {
       <section class="post__related" data-reveal>
         <div class="post__related-header">
           <h2 class="post__related-heading">You may also like</h2>
-          <a href="/blog" class="cta-link">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/blog" class="cta-link" style="color: var(--accent-green)">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <div class="post__related-grid">
-          {post.relatedPosts.map((rp) => (
-            <a href={`/blog/${rp.slug}`} class="post__related-card">
+          {post.relatedPosts.map((rp, i) => (
+            <a href={`/blog/${rp.slug}`} class={`post__related-card post__related-card--accent-${(i % 4) + 1}`}>
               <span class="post__related-date">{formatDate(rp.date)}</span>
               <h3 class="post__related-title">{rp.title}</h3>
               <span class="post__related-cat">{rp.category}</span>
@@ -677,8 +680,8 @@ export function getStaticPaths() {
 
   .post__related-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
   .post__related-card {
@@ -712,9 +715,19 @@ export function getStaticPaths() {
 
   .post__related-cat {
     font-size: 13px;
-    color: var(--body-muted);
+    font-weight: 500;
     margin-top: auto;
   }
+
+  .post__related-card--accent-1 .post__related-cat { color: var(--accent); }
+  .post__related-card--accent-2 .post__related-cat { color: var(--accent-blue); }
+  .post__related-card--accent-3 .post__related-cat { color: var(--accent-green); }
+  .post__related-card--accent-4 .post__related-cat { color: var(--accent-purple); }
+
+  .post__services-link--accent-1 { color: var(--accent); }
+  .post__services-link--accent-2 { color: var(--accent-blue); }
+  .post__services-link--accent-3 { color: var(--accent-green); }
+  .post__services-link--accent-4 { color: var(--accent-purple); }
 
   /* ==========================================================================
      RESPONSIVE
@@ -747,7 +760,7 @@ export function getStaticPaths() {
     }
 
     .post__related-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 

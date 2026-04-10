@@ -27,7 +27,7 @@ const post = {
   author: {
     name: 'Lorenzo Nicolini',
     role: 'CEO at Moonb',
-    avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821ba1672a50268f140277f_Rene%20Ugarte.avif',
+    avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6817c9701c8686a5b3636695_Lorenzo%20Avatar%201.avif',
     linkedin: 'https://www.linkedin.com/in/lorenzonicolini/',
   },
   excerpt: 'How to produce corporate video that actually engages your audience, from internal comms to brand films.',
@@ -252,6 +252,21 @@ export function getStaticPaths() {
         </div>
       </div>
 
+      <!-- Floating sticky CTA sidebar — Sprintlaw style, outside content area -->
+      <aside class="post__sidebar">
+        <div class="post__sidebar-card post__sidebar-card--dark">
+          <span class="post__sidebar-eyebrow">Need creative help?</span>
+          <strong class="post__sidebar-heading">Book a Free Consultation</strong>
+          <p class="post__sidebar-desc">Speak with a Creative Director about your needs.</p>
+          <a href="#" class="post__sidebar-btn" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call →</a>
+        </div>
+        <div class="post__sidebar-card post__sidebar-card--light">
+          <strong class="post__sidebar-heading">See our work</strong>
+          <p class="post__sidebar-desc">Browse projects from brands we've partnered with.</p>
+          <a href="/#showreel" class="post__sidebar-btn post__sidebar-btn--outline">Watch Showreel →</a>
+        </div>
+      </aside>
+
       <!-- FAQ section -->
       {post.faqs?.length > 0 && (
         <section class="post__faq" data-reveal>
@@ -325,6 +340,7 @@ export function getStaticPaths() {
     max-width: calc(var(--max-w) + 3rem);
     margin: 0 auto;
     padding: 0 1.5rem;
+    position: relative;
   }
 
   /* Breadcrumbs */
@@ -717,8 +733,117 @@ export function getStaticPaths() {
   }
 
   /* ==========================================================================
+     FLOATING STICKY CTA SIDEBAR — Sprintlaw style
+     Positioned absolutely to the right of content, sticky on scroll
+     ========================================================================== */
+  .post__sidebar {
+    position: fixed;
+    top: 140px;
+    right: max(24px, calc((100vw - var(--max-w)) / 2 - 260px));
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+  }
+
+  .post__sidebar-card {
+    border-radius: var(--r-xl);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .post__sidebar-card--dark {
+    background: var(--btn-primary-bg);
+    color: var(--white);
+  }
+
+  .post__sidebar-card--light {
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  .post__sidebar-eyebrow {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .post__sidebar-heading {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+
+  .post__sidebar-card--dark .post__sidebar-heading {
+    color: var(--white);
+  }
+
+  .post__sidebar-card--light .post__sidebar-heading {
+    color: var(--heading);
+  }
+
+  .post__sidebar-desc {
+    font-size: 13px;
+    line-height: 19px;
+    margin-bottom: 16px;
+  }
+
+  .post__sidebar-card--dark .post__sidebar-desc {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .post__sidebar-card--light .post__sidebar-desc {
+    color: var(--body-muted);
+  }
+
+  .post__sidebar-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 160ms ease;
+  }
+
+  .post__sidebar-card--dark .post__sidebar-btn {
+    background: var(--white);
+    color: var(--heading);
+  }
+
+  .post__sidebar-card--dark .post__sidebar-btn:hover {
+    background: #F0F0F0;
+  }
+
+  .post__sidebar-btn--outline {
+    background: transparent;
+    color: var(--heading);
+    border: 1.5px solid var(--border);
+  }
+
+  .post__sidebar-btn--outline:hover {
+    border-color: var(--heading);
+  }
+
+  /* ==========================================================================
      RESPONSIVE
      ========================================================================== */
+  @media (max-width: 1400px) {
+    .post__sidebar {
+      display: none;
+    }
+  }
+
   @media (max-width: 860px) {
     .post {
       padding-top: 100px;

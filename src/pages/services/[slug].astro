@@ -1,0 +1,727 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+/*
+  Service page template — family.co editorial + SEO optimized
+  TODO: Replace hardcoded content with Sanity CMS fetch
+  GROQ: *[_type == "servicePage" && slug.current == $slug][0]{
+    title, slug, shortDescription, heroHeading, heroDescription, body,
+    faqs, testimonial, relatedServices[]->{ title, slug, shortDescription },
+    relatedIndustries[]->{ title, slug }, relatedBlogPosts[]->{ title, slug, publishDate, excerpt },
+    seo { title, description, image, noIndex }
+  }
+*/
+
+/* Hardcoded sample for template development */
+const service = {
+  title: 'Corporate Video Production',
+  slug: 'corporate-video-production',
+  category: 'Video',
+  heroHeading: 'Corporate video production from a dedicated creative team.',
+  heroDescription: 'From investor updates and executive messaging to recruitment content and internal communications. A team that already knows your brand, producing video continuously.',
+  seo: {
+    title: 'Corporate Video Production | Moonb',
+    description: 'Corporate video production from a dedicated creative team. Investor updates, executive messaging, recruitment, internal comms. Predictable monthly pricing.',
+  },
+  serviceTypes: [
+    { title: 'Investor Relations', desc: 'Quarterly updates, earnings calls, and shareholder communications that build confidence.' },
+    { title: 'Executive Messaging', desc: 'CEO updates, thought leadership, and internal addresses that feel authentic.' },
+    { title: 'Recruitment & Employer Brand', desc: 'Culture videos, day-in-the-life content, and EVP campaigns that attract talent.' },
+    { title: 'Internal Communications', desc: 'Company updates, change management, and training content that actually gets watched.' },
+    { title: 'Training & Compliance', desc: 'Onboarding, safety, and regulatory content that holds attention and drives retention.' },
+    { title: 'Event Coverage', desc: 'Recaps, highlight reels, and live-stream content from conferences and launches.' },
+  ],
+  differentiator: {
+    heading: 'Not an agency. Your creative team.',
+    text: 'Traditional agencies charge per project, assign whoever is available, and start from scratch every time. With Moonb, you get a dedicated team that learns your brand once and gets better with every deliverable. No onboarding lag, no scope creep, no surprise invoices.',
+  },
+  process: [
+    { number: '01', title: 'Get onboarded', desc: 'Meet your Creative Director, share your brand guidelines, and set priorities.' },
+    { number: '02', title: 'Request anything', desc: 'Submit briefs through our platform. Your CD plans and prioritizes the work.' },
+    { number: '03', title: 'Review and approve', desc: 'Receive polished deliverables within days. Revise, approve, repeat.' },
+  ],
+  testimonial: {
+    quote: 'Their creative flair and dedication to getting the animation and storytelling style right are impressive.',
+    name: 'Marius Godo',
+    role: 'Content Specialist',
+    company: 'Gnosis',
+    avatar: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/6821b9dc6aa65e5d0a7ebe4e_Marius%20Godo.avif',
+  },
+  faqs: [
+    { q: 'Can Moonb handle multi-location corporate video production?', a: 'Yes. Our team coordinates production across locations, time zones, and languages. Your Creative Director manages the logistics so you don\'t have to.' },
+    { q: 'What does the production process look like?', a: 'After onboarding, you submit briefs through our platform. Your dedicated team produces the first draft within five to ten business days, then you review and we revise until you\'re happy.' },
+    { q: 'Can Moonb handle confidential corporate content?', a: 'Absolutely. We sign NDAs as standard practice and can work within your security protocols. Many of our clients are publicly traded companies.' },
+    { q: 'How is Moonb different from a traditional video agency?', a: 'Agencies charge per project and assign whoever is available. Moonb gives you a dedicated team with a Creative Director who knows your brand inside out. Predictable monthly pricing, no scope creep.' },
+    { q: 'What corporate video formats do you produce?', a: 'Everything from investor relations and executive messaging to recruitment, internal comms, training, event coverage, and CSR content. If it\'s video for your business, we produce it.' },
+    { q: 'How quickly can we get started?', a: 'You can be onboarded and briefing your team within the first week. Most clients receive their first deliverable within 5-10 business days of signing up.' },
+  ],
+  relatedServices: [
+    { title: 'Marketing Video Production', slug: 'marketing-video-production', desc: 'Continuous marketing video from a dedicated creative team.' },
+    { title: 'Branded Video Production', slug: 'branded-video-production', desc: 'Creating authentic connections through compelling video narratives.' },
+    { title: 'Explainer Video Production', slug: 'explainer-video-production', desc: 'Clear, engaging explainer videos from a dedicated creative team.' },
+  ],
+  relatedBlogPosts: [
+    { title: 'The complete guide to video production', slug: 'video-production-guide', date: '2026-02-02' },
+    { title: 'Video marketing ROI: how to measure what matters', slug: 'video-marketing-roi', date: '2025-10-12' },
+  ],
+};
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function formatDateISO(dateStr: string): string {
+  return new Date(dateStr).toISOString();
+}
+
+const canonicalURL = new URL(`/services/${service.slug}`, Astro.site || 'https://moonb-v2.vercel.app');
+
+/* JSON-LD: Service */
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "description": service.seo.description,
+  "provider": {
+    "@type": "Organization",
+    "name": "Moonb",
+    "url": "https://www.moonb.io",
+  },
+  "url": canonicalURL.toString(),
+};
+
+/* JSON-LD: BreadcrumbList */
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.moonb.io" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.moonb.io/services" },
+    { "@type": "ListItem", "position": 3, "name": service.title },
+  ],
+};
+
+/* JSON-LD: FAQPage */
+const faqSchema = service.faqs?.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": service.faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+} : null;
+
+/* Client logos */
+const logos = [
+  { name: 'Dell', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691db30dda671fbe474b31d3_Dell_Technologies_logo%201.svg' },
+  { name: 'Intel', src: 'https://cdn.prod.website-files.com/64c4234d0856ecf478afcf82/691dca52df40749fbcd69aa5_Intel.svg' },
+  { name: 'Toyota', src: '/assets/logos/toyota.svg' },
+  { name: 'Microsoft', src: '/assets/logos/microsoft.svg' },
+  { name: 'Nestlé', src: '/assets/logos/nestle.svg' },
+  { name: 'OPKO Health', src: '/assets/logos/opko.svg' },
+];
+
+export function getStaticPaths() {
+  /* TODO: Fetch all slugs from Sanity */
+  return [
+    { params: { slug: 'corporate-video-production' } },
+  ];
+}
+---
+
+<BaseLayout
+  title={service.seo.title}
+  description={service.seo.description}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </Fragment>
+
+  <div class="svc">
+
+    <!-- Breadcrumbs -->
+    <div class="svc__container">
+      <nav class="svc__breadcrumbs" aria-label="Breadcrumb" data-reveal>
+        <a href="/">Home</a>
+        <span class="svc__sep">/</span>
+        <a href="/services">Services</a>
+        <span class="svc__sep">/</span>
+        <span>{service.title}</span>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="svc__hero" data-reveal>
+      <div class="svc__container">
+        <span class="svc__cat">{service.category}</span>
+        <h1 class="svc__title">{service.heroHeading}</h1>
+        <p class="svc__desc">{service.heroDescription}</p>
+        <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call</a>
+      </div>
+    </section>
+
+    <!-- Client logos -->
+    <section class="svc__logos">
+      <div class="svc__container">
+        <div class="svc__logos-row">
+          {logos.map((logo) => (
+            <img src={logo.src} alt={logo.name} class="svc__logo" loading="lazy" />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What we produce -->
+    <section class="svc__types section">
+      <div class="svc__container">
+        <h2 class="svc__section-heading" data-reveal>What we produce</h2>
+        <div class="svc__types-grid">
+          {service.serviceTypes.map((t, i) => (
+            <div class="svc__type-card" data-reveal>
+              <h3 class="svc__type-title">{t.title}</h3>
+              <p class="svc__type-desc">{t.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Differentiator -->
+    <section class="svc__diff section section--beige">
+      <div class="svc__container">
+        <div class="svc__diff-inner" data-reveal>
+          <div class="svc__diff-text">
+            <h2 class="svc__section-heading">{service.differentiator.heading}</h2>
+            <p class="svc__diff-body">{service.differentiator.text}</p>
+            <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="svc__diff-visual">
+            <div class="placeholder placeholder--tall"><span class="placeholder__label">Illustration: Dedicated team</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work examples -->
+    <section class="svc__work section">
+      <div class="svc__container">
+        <h2 class="svc__section-heading" data-reveal>Selected work</h2>
+        <div class="svc__work-grid" data-reveal>
+          <div class="placeholder placeholder--work-lg"><span class="placeholder__label">Video: Corporate showreel</span></div>
+          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">Video: Client project</span></div>
+          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">Video: Client project</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="svc__process section section--beige">
+      <div class="svc__container">
+        <h2 class="svc__section-heading svc__section-heading--center" data-reveal>Simple to start, easy to love.</h2>
+        <div class="svc__process-steps">
+          {service.process.map((s, i) => (
+            <div class="svc__step" data-reveal>
+              <span class="svc__step-num">{s.number}</span>
+              <h3 class="svc__step-title">{s.title}</h3>
+              <p class="svc__step-desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="svc__testimonial section">
+      <div class="svc__container" data-reveal>
+        <blockquote class="svc__quote">
+          <p class="svc__quote-text">"{service.testimonial.quote}"</p>
+          <footer class="svc__quote-footer">
+            <img src={service.testimonial.avatar} alt={service.testimonial.name} class="svc__quote-avatar" width="48" height="48" loading="lazy" />
+            <div>
+              <span class="svc__quote-name">{service.testimonial.name}</span>
+              <span class="svc__quote-role">{service.testimonial.role}, {service.testimonial.company}</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    {service.faqs?.length > 0 && (
+      <section class="svc__faq section section--beige" id="faq">
+        <div class="svc__container">
+          <div class="faq__inner">
+            <div class="faq__left" data-reveal>
+              <h2 class="faq__heading">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq__right">
+              <div class="faq__list" data-reveal>
+                {service.faqs.map((faq) => (
+                  <div class="faq__item" data-faq-item>
+                    <button class="faq__question" data-faq-trigger aria-expanded="false">
+                      <div class="faq__toggle" aria-hidden="true">
+                        <div class="faq__toggle-h"></div>
+                        <div class="faq__toggle-v"></div>
+                      </div>
+                      <span>{faq.q}</span>
+                    </button>
+                    <div class="faq__answer-wrap" data-faq-answer>
+                      <div class="faq__answer"><p>{faq.a}</p></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Related services -->
+    <section class="svc__related section">
+      <div class="svc__container">
+        <div class="svc__related-header" data-reveal>
+          <h2 class="svc__section-heading">Related services</h2>
+          <a href="/services" class="cta-link">All services <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="svc__related-grid">
+          {service.relatedServices.map((rs) => (
+            <a href={`/services/${rs.slug}`} class="svc__related-card" data-reveal>
+              <h3 class="svc__related-title">{rs.title}</h3>
+              <p class="svc__related-desc">{rs.desc}</p>
+              <span class="svc__related-arrow">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related blog posts -->
+    {service.relatedBlogPosts?.length > 0 && (
+      <section class="svc__blog section section--beige">
+        <div class="svc__container">
+          <div class="svc__related-header" data-reveal>
+            <h2 class="svc__section-heading">From the blog</h2>
+            <a href="/blog" class="cta-link">All posts <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="svc__blog-grid">
+            {service.relatedBlogPosts.map((bp) => (
+              <a href={`/blog/${bp.slug}`} class="svc__blog-card" data-reveal>
+                <span class="svc__blog-date">{formatDate(bp.date)}</span>
+                <h3 class="svc__blog-title">{bp.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Pre-footer CTA -->
+    <section class="final-cta section section--beige">
+      <div class="container" data-reveal>
+        <div class="final-cta__inner">
+          <h2 class="final-cta__title">Ready to level up your creative?</h2>
+          <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+          <a href="#" class="cta-link" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Book a Call <svg width="18" height="15" viewBox="0 0 18 15" fill="none" aria-hidden="true"><path d="M1 7.5H17M17 7.5L11 1.5M17 7.5L11 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ==========================================================================
+     SERVICE PAGE — family.co editorial style
+     ========================================================================== */
+
+  .svc__container {
+    max-width: calc(var(--max-w) + 3rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Breadcrumbs */
+  .svc__breadcrumbs {
+    padding-top: 100px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  .svc__breadcrumbs a {
+    color: var(--body-muted);
+    transition: color 140ms ease;
+  }
+
+  .svc__breadcrumbs a:hover { color: var(--heading); }
+
+  .svc__sep {
+    margin: 0 6px;
+    opacity: 0.5;
+  }
+
+  .svc__breadcrumbs span:last-child { color: var(--body); }
+
+  /* Hero */
+  .svc__hero {
+    padding-bottom: 64px;
+  }
+
+  .svc__cat {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .svc__title {
+    font-family: var(--font-heading);
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -1.35px;
+    line-height: 50px;
+    color: var(--heading);
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+
+  .svc__desc {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--body);
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+
+  /* Client logos */
+  .svc__logos {
+    padding: 32px 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .svc__logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    opacity: 0.4;
+  }
+
+  .svc__logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+  }
+
+  /* Section headings */
+  .svc__section-heading {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    line-height: 38px;
+    color: var(--heading);
+    margin-bottom: 40px;
+  }
+
+  .svc__section-heading--center {
+    text-align: center;
+  }
+
+  /* Service types grid */
+  .svc__types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .svc__type-card {
+    background: var(--beige);
+    border-radius: var(--r-xl);
+    padding: 28px;
+  }
+
+  .svc__type-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+
+  .svc__type-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+  }
+
+  /* Differentiator — 2 column */
+  .svc__diff-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .svc__diff-body {
+    font-size: 17px;
+    line-height: 27px;
+    color: var(--body);
+    margin-top: 16px;
+  }
+
+  /* Work grid */
+  .svc__work-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 0;
+  }
+
+  /* Process steps */
+  .svc__process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .svc__step-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--body-muted);
+    margin-bottom: 12px;
+  }
+
+  .svc__step-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--heading);
+    margin-bottom: 10px;
+  }
+
+  .svc__step-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+  }
+
+  /* Testimonial */
+  .svc__quote {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .svc__quote-text {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.6px;
+    line-height: 38px;
+    color: var(--heading);
+    font-style: normal;
+  }
+
+  .svc__quote-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .svc__quote-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .svc__quote-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+  }
+
+  .svc__quote-role {
+    display: block;
+    font-size: 13px;
+    color: var(--body-muted);
+    text-align: left;
+  }
+
+  /* Related services */
+  .svc__related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+
+  .svc__related-header .svc__section-heading {
+    margin-bottom: 0;
+  }
+
+  .svc__related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .svc__related-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--beige);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+
+  .svc__related-card:hover {
+    background: #EAEAEA;
+    transform: translateY(-2px);
+  }
+
+  .svc__related-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+  }
+
+  .svc__related-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--body);
+    flex: 1;
+  }
+
+  .svc__related-arrow {
+    margin-top: 16px;
+    font-size: 18px;
+    color: var(--body-muted);
+    transition: transform 160ms ease;
+  }
+
+  .svc__related-card:hover .svc__related-arrow {
+    transform: translateX(4px);
+    color: var(--heading);
+  }
+
+  /* Blog cards */
+  .svc__blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .svc__blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px;
+    border-radius: var(--r-xl);
+    background: var(--white);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+
+  .svc__blog-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .svc__blog-date {
+    font-size: 13px;
+    color: var(--body-muted);
+  }
+
+  .svc__blog-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    line-height: 23px;
+    color: var(--heading);
+  }
+
+  /* ==========================================================================
+     RESPONSIVE
+     ========================================================================== */
+  @media (max-width: 860px) {
+    .svc__title {
+      font-size: 32px;
+      line-height: 38px;
+    }
+
+    .svc__types-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__diff-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .svc__work-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__process-steps {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .svc__related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc__logos-row {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .svc__related-header {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .svc__title {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .svc__quote-text {
+      font-size: 22px;
+      line-height: 30px;
+    }
+  }
+</style>

@@ -42,7 +42,7 @@
   --sh-card: inset 0 0 0 1px var(--border-light);
   --sh-card-hover: 0 4px 12px rgba(0,0,0,0.06), inset 0 0 0 1px var(--border-light);
   --max-w: 1040px;
-  --nav-h: 64px;
+  --nav-h: 80px;
   --z-nav: 100;
   --ease: cubic-bezier(0.19, 1, 0.22, 1);
   --dur: 300ms;

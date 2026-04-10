@@ -6,18 +6,36 @@ const links = [
   { label: 'Blog', href: '/blog' },
 ];
 
-const serviceItems = [
-  { label: 'Video Production', desc: 'Corporate, marketing, social, branded.', href: '/services/corporate-video-production', color: 'orange' },
-  { label: 'Motion Graphics', desc: 'Explainers, intros, branded motion.', href: '/services/motion-graphics', color: 'blue' },
-  { label: 'Animation', desc: '2D, 3D, character, product.', href: '/services/animation', color: 'purple' },
-  { label: 'Graphic Design', desc: 'Brand, social, print, decks.', href: '/services/graphic-design', color: 'green' },
-];
-
-const industryItems = [
-  { label: 'SaaS & Tech', desc: 'Product demos, onboarding, launches.', href: '/industries/saas-video-production', color: 'blue' },
-  { label: 'Financial Services', desc: 'Compliance-ready, investor content.', href: '/industries/financial-video-production', color: 'green' },
-  { label: 'Healthcare & Pharma', desc: 'Patient education, HCP training.', href: '/industries/healthcare-video-production', color: 'purple' },
-  { label: 'E-commerce', desc: 'Product videos, social ads, UGC.', href: '/industries/ecommerce-video-production', color: 'orange' },
+/* 4 items like Aave's 4 products — single column, branded icons */
+const dropdownItems = [
+  {
+    label: 'Video Production',
+    desc: 'Corporate, marketing, social, branded.',
+    href: '/services/corporate-video-production',
+    gradient: 'linear-gradient(135deg, #FF5310 0%, #FF8A65 100%)',
+    iconColor: '#fff',
+  },
+  {
+    label: 'Motion & Animation',
+    desc: 'Explainers, 2D/3D, product, motion.',
+    href: '/services/motion-graphics',
+    gradient: 'linear-gradient(135deg, #0066FF 0%, #5C9AFF 100%)',
+    iconColor: '#fff',
+  },
+  {
+    label: 'Graphic Design',
+    desc: 'Brand, social, print, presentations.',
+    href: '/services/graphic-design',
+    gradient: 'linear-gradient(135deg, #00B67A 0%, #4FD9A6 100%)',
+    iconColor: '#fff',
+  },
+  {
+    label: 'Industry Solutions',
+    desc: 'SaaS, finance, healthcare, e-commerce.',
+    href: '/industries/saas-video-production',
+    gradient: 'linear-gradient(135deg, #7B61FF 0%, #A78BFA 100%)',
+    iconColor: '#fff',
+  },
 ];
 ---
 
@@ -39,67 +57,29 @@ const industryItems = [
               </svg>
             </button>
             <div class="nav__dropdown">
-              <div class="nav__dropdown-inner">
-                <div class="nav__dd-cols">
-                  <!-- Services column -->
-                  <div class="nav__dd-col">
-                    <span class="nav__dd-col-label">Services</span>
-                    {serviceItems.map((s) => (
-                      <a href={s.href} class={`nav__dd-item nav__dd-item--${s.color}`}>
-                        <div class="nav__dd-icon">
-                          {s.color === 'orange' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                          )}
-                          {s.color === 'blue' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                          )}
-                          {s.color === 'purple' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                          )}
-                          {s.color === 'green' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                          )}
-                        </div>
-                        <div class="nav__dd-text">
-                          <span class="nav__dd-label">{s.label}</span>
-                          <span class="nav__dd-desc">{s.desc}</span>
-                        </div>
-                      </a>
-                    ))}
-                    <a href="/services" class="nav__dd-all">All services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                  </div>
-
-                  <!-- Divider -->
-                  <div class="nav__dd-divider"></div>
-
-                  <!-- Industries column -->
-                  <div class="nav__dd-col">
-                    <span class="nav__dd-col-label">Industries</span>
-                    {industryItems.map((s) => (
-                      <a href={s.href} class={`nav__dd-item nav__dd-item--${s.color}`}>
-                        <div class="nav__dd-icon">
-                          {s.color === 'blue' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-                          )}
-                          {s.color === 'green' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                          )}
-                          {s.color === 'purple' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                          )}
-                          {s.color === 'orange' && (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-                          )}
-                        </div>
-                        <div class="nav__dd-text">
-                          <span class="nav__dd-label">{s.label}</span>
-                          <span class="nav__dd-desc">{s.desc}</span>
-                        </div>
-                      </a>
-                    ))}
-                    <a href="/industries" class="nav__dd-all">All industries <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                  </div>
-                </div>
+              <div class="nav__dropdown-card">
+                {dropdownItems.map((item) => (
+                  <a href={item.href} class="nav__dd-item">
+                    <div class="nav__dd-icon" style={`background: ${item.gradient}`}>
+                      {item.label === 'Video Production' && (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                      )}
+                      {item.label === 'Motion & Animation' && (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                      )}
+                      {item.label === 'Graphic Design' && (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                      )}
+                      {item.label === 'Industry Solutions' && (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l5-4 5 4v12"/><path d="M9 20v-4h2v4"/><path d="M15 20V12l5-2v10"/></svg>
+                      )}
+                    </div>
+                    <div class="nav__dd-text">
+                      <span class="nav__dd-label">{item.label}</span>
+                      <span class="nav__dd-desc">{item.desc}</span>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -196,148 +176,96 @@ const industryItems = [
 
   .nav__link:hover { color: var(--body-muted); }
 
-  /* Active trigger state — subtle pill bg like Aave "Products" */
+  /* Trigger pill — like Aave "Products" gets a border on hover */
   .nav__link--trigger {
     border-radius: 9999px;
-    transition: color 140ms ease, background 140ms ease;
+    border: 1.5px solid transparent;
+    transition: border-color 200ms ease, color 140ms ease;
   }
+
   .nav__dropdown-wrap:hover .nav__link--trigger {
-    background: var(--beige);
+    border-color: rgba(0, 0, 0, 0.12);
   }
 
   .nav__arrow {
     width: 10px;
     height: 6px;
-    opacity: 0.5;
-    transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  /* ── Mega dropdown — Aave liquid animation ── */
-  .nav__dropdown-wrap {
-    position: relative;
-  }
-
-  .nav__dropdown {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    padding-top: 8px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1),
-                visibility 250ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .nav__dropdown-inner {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.04);
-    min-width: 560px;
-    transform: translateY(10px) scale(0.96);
-    opacity: 0;
-    transform-origin: top center;
-    transition: transform 350ms cubic-bezier(0.19, 1, 0.22, 1),
-                opacity 250ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .nav__dropdown-wrap:hover .nav__dropdown {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .nav__dropdown-wrap:hover .nav__dropdown-inner {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+    opacity: 0.45;
+    transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .nav__dropdown-wrap:hover .nav__arrow {
     transform: rotate(180deg);
   }
 
-  /* Two columns layout */
-  .nav__dd-cols {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0;
+  /* ── Dropdown — Aave liquid animation ── */
+  .nav__dropdown-wrap {
+    position: relative;
   }
 
-  .nav__dd-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  .nav__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 12px;
+    pointer-events: none;
   }
 
-  .nav__dd-col-label {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--body-muted);
-    padding: 4px 12px 10px;
+  .nav__dropdown-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    min-width: 280px;
+
+    /* Aave liquid: starts scaled down + faded + shifted up */
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+    transform-origin: top center;
+    transition:
+      opacity 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .nav__dd-divider {
-    width: 1px;
-    background: rgba(0, 0, 0, 0.06);
-    margin: 0 16px;
-    align-self: stretch;
+  .nav__dropdown-wrap:hover .nav__dropdown {
+    pointer-events: auto;
   }
 
-  /* Dropdown items — Aave card style with colored icon hover */
+  .nav__dropdown-wrap:hover .nav__dropdown-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* ── Items — single column, no dividers ── */
   .nav__dd-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 12px;
-    border-radius: 12px;
-    transition: background 180ms ease;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    transition: background 150ms ease;
     text-decoration: none;
   }
 
   .nav__dd-item:hover {
-    background: var(--beige);
+    background: rgba(0, 0, 0, 0.03);
   }
 
-  /* Rounded icon containers — neutral gray default */
+  /* Branded gradient icons — colored bg, white stroke */
   .nav__dd-icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
-    background: #F2F2F2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #888;
-    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .nav__dd-item:hover .nav__dd-icon {
-    transform: scale(1.05);
-  }
-
-  /* Color on hover per accent */
-  .nav__dd-item--orange:hover .nav__dd-icon {
-    background: rgba(255, 83, 16, 0.1);
-    color: var(--accent);
-  }
-  .nav__dd-item--blue:hover .nav__dd-icon {
-    background: rgba(0, 102, 255, 0.1);
-    color: var(--accent-blue);
-  }
-  .nav__dd-item--purple:hover .nav__dd-icon {
-    background: rgba(123, 97, 255, 0.1);
-    color: var(--accent-purple);
-  }
-  .nav__dd-item--green:hover .nav__dd-icon {
-    background: rgba(0, 182, 122, 0.1);
-    color: var(--accent-green);
+    transform: scale(1.06);
   }
 
   .nav__dd-text {
@@ -348,36 +276,16 @@ const industryItems = [
 
   .nav__dd-label {
     font-family: var(--font-heading);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--heading);
     letter-spacing: -0.2px;
   }
 
   .nav__dd-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--body-muted);
     line-height: 1.3;
-  }
-
-  /* Footer "All" links */
-  .nav__dd-all {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 8px 12px;
-    margin-top: 4px;
-    border-radius: 10px;
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--body-muted);
-    transition: color 140ms ease, background 140ms ease;
-  }
-
-  .nav__dd-all:hover {
-    color: var(--heading);
-    background: var(--beige);
   }
 
   /* ── CTA ── */
@@ -472,7 +380,6 @@ const industryItems = [
 </style>
 
 <script>
-  // Nav scroll
   const nav = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {

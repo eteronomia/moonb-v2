@@ -221,9 +221,28 @@ export function getStaticPaths() {
       <div class="svc__container">
         <h2 class="svc__section-heading" data-reveal>Selected work</h2>
         <div class="svc__work-grid" data-reveal>
-          <div class="placeholder placeholder--work-lg"><span class="placeholder__label">Video: Corporate showreel</span></div>
-          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">Video: Client project</span></div>
-          <div class="placeholder placeholder--work-sm"><span class="placeholder__label">Video: Client project</span></div>
+          <!-- Row 1: 2 horizontal -->
+          <div class="svc__work-item svc__work-item--h">
+            <div class="svc__video-wrap">
+              <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Corporate showreel"></iframe>
+            </div>
+          </div>
+          <div class="svc__work-item svc__work-item--v">
+            <div class="svc__video-wrap svc__video-wrap--v">
+              <iframe src="https://player.vimeo.com/video/1176622548?h=db1c34091d&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
+            </div>
+          </div>
+          <!-- Row 2: 2 horizontal -->
+          <div class="svc__work-item svc__work-item--h">
+            <div class="svc__video-wrap">
+              <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
+            </div>
+          </div>
+          <div class="svc__work-item svc__work-item--h">
+            <div class="svc__video-wrap">
+              <iframe src="https://player.vimeo.com/video/1176622548?h=db1c34091d&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -521,12 +540,26 @@ export function getStaticPaths() {
     margin-top: 16px;
   }
 
-  /* Work grid */
+  /* Work grid — 2 horizontal + 1 vertical on row 1, 2 horizontal on row 2 */
   .svc__work-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 20px;
-    margin-top: 0;
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .svc__work-item--v {
+    grid-row: 1 / 3;
+    grid-column: 2;
+  }
+
+  .svc__work-item {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+  }
+
+  .svc__video-wrap--v {
+    padding-bottom: 177.78%; /* 9:16 vertical */
   }
 
   /* Process steps */
@@ -729,6 +762,11 @@ export function getStaticPaths() {
 
     .svc__work-grid {
       grid-template-columns: 1fr;
+    }
+
+    .svc__work-item--v {
+      grid-row: auto;
+      grid-column: auto;
     }
 
     .svc__process-steps {

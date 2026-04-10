@@ -220,25 +220,23 @@ export function getStaticPaths() {
     <section class="svc__work section">
       <div class="svc__container">
         <h2 class="svc__section-heading" data-reveal>Selected work</h2>
-        <div class="svc__work-grid" data-reveal>
-          <!-- Row 1: 2 horizontal -->
-          <div class="svc__work-item svc__work-item--h">
+        <div class="svc__work-scroll">
+          <div class="svc__work-item">
             <div class="svc__video-wrap">
               <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Corporate showreel"></iframe>
             </div>
           </div>
-          <div class="svc__work-item svc__work-item--v">
-            <div class="svc__video-wrap svc__video-wrap--v">
+          <div class="svc__work-item">
+            <div class="svc__video-wrap">
               <iframe src="https://player.vimeo.com/video/1176622548?h=db1c34091d&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
             </div>
           </div>
-          <!-- Row 2: 2 horizontal -->
-          <div class="svc__work-item svc__work-item--h">
+          <div class="svc__work-item">
             <div class="svc__video-wrap">
               <iframe src="https://player.vimeo.com/video/1084258404?h=bf1bb4d67b&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
             </div>
           </div>
-          <div class="svc__work-item svc__work-item--h">
+          <div class="svc__work-item">
             <div class="svc__video-wrap">
               <iframe src="https://player.vimeo.com/video/1176622548?h=db1c34091d&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Client project"></iframe>
             </div>
@@ -473,6 +471,11 @@ export function getStaticPaths() {
     justify-content: space-between;
     gap: 32px;
     opacity: 0.4;
+    transition: opacity 300ms ease;
+  }
+
+  .svc__logos-row:hover {
+    opacity: 0.7;
   }
 
   .svc__logo {
@@ -480,6 +483,11 @@ export function getStaticPaths() {
     width: auto;
     object-fit: contain;
     filter: grayscale(1);
+    transition: filter 300ms ease;
+  }
+
+  .svc__logo:hover {
+    filter: grayscale(0);
   }
 
   /* Section headings */
@@ -508,6 +516,12 @@ export function getStaticPaths() {
     background: var(--beige);
     border-radius: var(--r-xl);
     padding: 28px;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+
+  .svc__type-card:hover {
+    background: #EAEAEA;
+    transform: translateY(-3px);
   }
 
   .svc__type-title {
@@ -540,26 +554,32 @@ export function getStaticPaths() {
     margin-top: 16px;
   }
 
-  /* Work grid — 2 horizontal + 1 vertical on row 1, 2 horizontal on row 2 */
-  .svc__work-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    grid-template-rows: auto auto;
+  /* Work — horizontal scroll carousel */
+  .svc__work-scroll {
+    display: flex;
     gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
   }
 
-  .svc__work-item--v {
-    grid-row: 1 / 3;
-    grid-column: 2;
+  .svc__work-scroll::-webkit-scrollbar {
+    display: none;
   }
 
   .svc__work-item {
+    flex-shrink: 0;
+    width: 420px;
     border-radius: var(--r-xl);
     overflow: hidden;
+    scroll-snap-align: start;
+    transition: transform 200ms ease;
   }
 
-  .svc__video-wrap--v {
-    padding-bottom: 177.78%; /* 9:16 vertical */
+  .svc__work-item:hover {
+    transform: scale(1.02);
   }
 
   /* Process steps */
@@ -599,6 +619,11 @@ export function getStaticPaths() {
     max-width: 680px;
     margin: 0 auto;
     text-align: center;
+    transition: transform 300ms ease;
+  }
+
+  .svc__quote:hover {
+    transform: scale(1.01);
   }
 
   .svc__quote-text {
@@ -760,13 +785,8 @@ export function getStaticPaths() {
       gap: 40px;
     }
 
-    .svc__work-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .svc__work-item--v {
-      grid-row: auto;
-      grid-column: auto;
+    .svc__work-item {
+      width: 300px;
     }
 
     .svc__process-steps {

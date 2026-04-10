@@ -1,0 +1,393 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+/*
+  Blog listing page — family.co editorial style
+  3-column row layout: date | category pill | title + excerpt
+  No images, pure typography. Border separators between posts.
+
+  TODO: Replace hardcoded posts with Sanity CMS fetch once @sanity/astro is wired up.
+  GROQ: *[_type == "blogPost"] | order(publishDate desc) { title, slug, publishDate, excerpt, category->{ name, slug } }
+*/
+
+const categories = ['All', 'Video', 'Design', 'Marketing', 'Industry'];
+
+const posts = [
+  {
+    title: 'How long is the average commercial?',
+    slug: 'how-long-is-the-average-commercial',
+    date: '2026-03-28',
+    category: 'Video',
+    excerpt: 'A breakdown of commercial lengths across TV, digital, and social, and how to choose the right duration for your campaign.',
+  },
+  {
+    title: 'Best Superside alternatives for creative teams',
+    slug: 'superside-alternatives',
+    date: '2026-03-15',
+    category: 'Industry',
+    excerpt: 'Looking for a Superside alternative? We compare the top creative production services for teams that need quality, speed, and a dedicated creative partner.',
+  },
+  {
+    title: 'The complete guide to video production',
+    slug: 'video-production-guide',
+    date: '2026-02-02',
+    category: 'Video',
+    excerpt: 'Everything you need to know about producing professional video content, from planning to post-production and distribution.',
+  },
+  {
+    title: 'Corporate video production: the definitive guide',
+    slug: 'corporate-video-production',
+    date: '2026-01-20',
+    category: 'Video',
+    excerpt: 'How to produce corporate video that actually engages your audience, from internal comms to brand films.',
+  },
+  {
+    title: 'How to create brand guidelines that work',
+    slug: 'how-to-create-brand-guidelines',
+    date: '2026-01-10',
+    category: 'Design',
+    excerpt: 'A practical guide to building brand guidelines your team will actually follow, from visual identity to tone of voice.',
+  },
+  {
+    title: 'Marketing strategy implementation: from plan to execution',
+    slug: 'marketing-strategy-implementation',
+    date: '2025-12-18',
+    category: 'Marketing',
+    excerpt: 'Bridge the gap between strategy and results. A step-by-step framework for turning your marketing plan into real output.',
+  },
+  {
+    title: 'The best software demo videos (and what makes them work)',
+    slug: 'software-demo-video',
+    date: '2025-12-05',
+    category: 'Video',
+    excerpt: 'What separates a great software demo video from a forgettable one? We break down the best examples and the principles behind them.',
+  },
+  {
+    title: 'Non-copyright music sites for video creators',
+    slug: 'non-copyright-music-sites',
+    date: '2025-11-22',
+    category: 'Video',
+    excerpt: 'The best royalty-free and Creative Commons music sources for video production, with pros, cons, and pricing.',
+  },
+  {
+    title: 'Corporate training videos that people actually watch',
+    slug: 'corporate-training-videos',
+    date: '2025-11-08',
+    category: 'Video',
+    excerpt: 'How to produce training videos that hold attention, boost retention, and actually change behavior.',
+  },
+  {
+    title: 'The design process in graphic design, explained',
+    slug: 'design-process-in-graphic-design',
+    date: '2025-10-25',
+    category: 'Design',
+    excerpt: 'From brief to final delivery, a clear walkthrough of the graphic design process and how to get the most from your creative team.',
+  },
+  {
+    title: 'Video marketing ROI: how to measure what matters',
+    slug: 'video-marketing-roi',
+    date: '2025-10-12',
+    category: 'Marketing',
+    excerpt: 'A practical framework for measuring the return on your video marketing investment, beyond views and vanity metrics.',
+  },
+  {
+    title: 'Instagram video ads: best examples and what to learn from them',
+    slug: 'instagram-video-ads-examples',
+    date: '2025-09-28',
+    category: 'Marketing',
+    excerpt: 'The best Instagram video ad examples from 2025, broken down by format, objective, and creative approach.',
+  },
+];
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Blog | Moonb"
+  description="Insights on video production, design, motion graphics, and creative strategy from the Moonb team."
+>
+
+  <section class="blog-listing">
+    <div class="container">
+
+      <!-- Header row: title left, filters right -->
+      <div class="blog-listing__header" data-reveal>
+        <div class="blog-listing__header-left">
+          <h1 class="blog-listing__title">Blog</h1>
+          <p class="blog-listing__sub">Insights on creative production, video, and design.</p>
+        </div>
+        <div class="blog-listing__filters">
+          {categories.map((cat, i) => (
+            <button
+              class={`blog-listing__filter${i === 0 ? ' is-active' : ''}`}
+              data-filter={cat === 'All' ? 'all' : cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Post list -->
+      <ul class="blog-listing__list" data-reveal data-reveal-delay="2">
+        {posts.map((post) => (
+          <li class="blog-listing__item" data-category={post.category}>
+            <a href={`/blog/${post.slug}`} class="blog-listing__link">
+              <span class="blog-listing__date">{formatDate(post.date)}</span>
+              <span class="blog-listing__cat">{post.category}</span>
+              <div class="blog-listing__content">
+                <h2 class="blog-listing__post-title">{post.title}</h2>
+                <p class="blog-listing__excerpt">{post.excerpt}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- Pre-footer CTA -->
+  <section class="final-cta section section--beige">
+    <div class="container" data-reveal>
+      <div class="final-cta__inner">
+        <h2 class="final-cta__title">Ready to level up your creative?</h2>
+        <p class="final-cta__sub">Book a call with us. No commitment, no pressure.</p>
+        <a href="#" class="btn btn--primary" data-cal-link="team/moonb/book-a-demo" data-cal-namespace="book-a-demo" data-cal-config='{"layout":"month_view"}'>Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  /* ==========================================================================
+     BLOG LISTING — family.co editorial style
+     3-column grid per row: date | category | title + excerpt
+     No images, pure typography. Border separators.
+     ========================================================================== */
+
+  /* ==========================================================================
+     BLOG LISTING — family.co exact specs
+     3-column grid: 0.85fr date | 1.75fr category | 2.5fr title+excerpt
+     6rem row padding, 1px gray-light borders, opacity hover
+     ========================================================================== */
+
+  .blog-listing {
+    padding-top: 140px;
+    padding-bottom: 32px;
+  }
+
+  /* Header row — title left, filters right */
+  .blog-listing__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0;
+  }
+
+  .blog-listing__header-left {
+    flex-shrink: 0;
+  }
+
+  .blog-listing__title {
+    font-family: var(--font-heading);
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: -1.35px;
+    line-height: 48px;
+    color: var(--heading);
+  }
+
+  .blog-listing__sub {
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.13px;
+    color: var(--body-muted);
+  }
+
+  /* Filter pills — right-aligned, family.co specs */
+  .blog-listing__filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .blog-listing__filter {
+    padding: 0.45rem 0.75rem;
+    border: none;
+    border-radius: 2rem;
+    background: var(--beige);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--body);
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+  }
+
+  .blog-listing__filter:hover {
+    background: #EAEAEA;
+    color: var(--heading);
+  }
+
+  .blog-listing__filter.is-active {
+    background: #EAEAEA;
+    color: var(--heading);
+    pointer-events: none;
+  }
+
+  /* Post list — family.co: ul padding 0.75rem 0 4.75rem */
+  .blog-listing__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 0 4.75rem;
+  }
+
+  .blog-listing__item {
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .blog-listing__item:first-child {
+    border-top: 1px solid var(--gray-light);
+  }
+
+  /* Each row — 3-column grid, generous row padding */
+  .blog-listing__link {
+    display: grid;
+    grid-template-columns: 140px 120px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    transition: opacity 160ms ease;
+  }
+
+  .blog-listing__link:hover {
+    opacity: 0.75;
+  }
+
+  /* Date column — family.co: 15px, body color, -0.13px tracking */
+  .blog-listing__date {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--body);
+    letter-spacing: -0.13px;
+    padding-top: 2px;
+  }
+
+  /* Category column — family.co: plain text, same body styles */
+  .blog-listing__cat {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--body-muted);
+    letter-spacing: -0.13px;
+    padding-top: 2px;
+  }
+
+  /* Content column — family.co: 17px/400 title, body text excerpt */
+  .blog-listing__post-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.22px;
+    line-height: 26px;
+    color: var(--heading);
+  }
+
+  .blog-listing__excerpt {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.13px;
+    color: var(--body);
+  }
+
+  /* Hidden items for filter */
+  .blog-listing__item.is-hidden {
+    display: none;
+  }
+
+  /* ==========================================================================
+     RESPONSIVE
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .blog-listing {
+      padding-top: 120px;
+    }
+
+    .blog-listing__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .blog-listing__filters {
+      justify-content: flex-start;
+    }
+
+    .blog-listing__link {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 2.75rem 0;
+    }
+
+    .blog-listing__date {
+      font-size: 13px;
+      padding-top: 0;
+      order: 1;
+    }
+
+    .blog-listing__cat {
+      font-size: 13px;
+      padding-top: 0;
+      order: 2;
+    }
+
+    .blog-listing__content {
+      order: 3;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .blog-listing__title {
+      font-size: 32px;
+      letter-spacing: -0.69px;
+      line-height: 36px;
+    }
+  }
+</style>
+
+<script is:inline>
+  /* Category filter for blog listing */
+  (function () {
+    var filters = document.querySelectorAll('[data-filter]');
+    var items = document.querySelectorAll('[data-category]');
+    if (!filters.length || !items.length) return;
+
+    filters.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var cat = btn.getAttribute('data-filter');
+
+        filters.forEach(function (f) { f.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        items.forEach(function (item) {
+          if (cat === 'all' || item.getAttribute('data-category') === cat) {
+            item.classList.remove('is-hidden');
+          } else {
+            item.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  })();
+</script>

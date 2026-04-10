@@ -59,13 +59,14 @@ const links = [
   }
 
   .nav.is-scrolled {
-    background: #F8F7F5;
+    background: var(--white);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
   }
 
   .nav__inner {
     display: flex;
     align-items: center;
-    max-width: var(--max-w);
+    max-width: calc(var(--max-w) + 3rem);
     margin: 0 auto;
     padding: 0 1.5rem;
     height: 64px;

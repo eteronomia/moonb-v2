@@ -237,14 +237,54 @@ p { color: var(--body); }
 .madefor__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
 .madefor__pill {
   height: 40px; padding: 0 20px;
-  border: 1.5px solid #E8E6E3; border-radius: var(--r-pill);
-  background: transparent; font-family: var(--font-heading);
-  font-size: 14px; font-weight: 700; color: var(--heading);
+  border: 1.5px solid transparent; border-radius: 32px;
+  background: var(--beige); font-family: var(--font-heading);
+  font-size: 15px; font-weight: 500; color: var(--body-muted);
   cursor: pointer; transition: all 200ms ease;
   display: inline-flex; align-items: center;
 }
-.madefor__pill:hover { background: var(--beige); border-color: #D4D2CF; }
-.madefor__pill.is-active { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
+.madefor__pill:hover { border-color: #D4D2CF; color: var(--heading); }
+
+/* Active states — each color gets a pale bg + colored text */
+.madefor__pill--orange.is-active { background: rgba(255, 83, 16, 0.08); color: var(--accent); border-color: rgba(255, 83, 16, 0.2); }
+.madefor__pill--blue.is-active { background: rgba(0, 102, 255, 0.08); color: var(--accent-blue); border-color: rgba(0, 102, 255, 0.2); }
+.madefor__pill--green.is-active { background: rgba(0, 182, 122, 0.08); color: var(--accent-green); border-color: rgba(0, 182, 122, 0.2); }
+.madefor__pill--purple.is-active { background: rgba(123, 97, 255, 0.08); color: var(--accent-purple); border-color: rgba(123, 97, 255, 0.2); }
+
+/* Right panel cards */
+.madefor__right { position: relative; min-height: 380px; }
+.madefor__card {
+  position: absolute; inset: 0;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 300ms ease, transform 300ms ease;
+  pointer-events: none;
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 32px;
+  border-radius: var(--r-xl);
+  background: var(--beige);
+}
+.madefor__card.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Card color accents */
+.madefor__card--orange { border-top: 3px solid var(--accent); }
+.madefor__card--blue { border-top: 3px solid var(--accent-blue); }
+.madefor__card--green { border-top: 3px solid var(--accent-green); }
+.madefor__card--purple { border-top: 3px solid var(--accent-purple); }
+
+.madefor__card-role {
+  font-family: var(--font-heading); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.madefor__card--orange .madefor__card-role { color: var(--accent); }
+.madefor__card--blue .madefor__card-role { color: var(--accent-blue); }
+.madefor__card--green .madefor__card-role { color: var(--accent-green); }
+.madefor__card--purple .madefor__card-role { color: var(--accent-purple); }
+
+.madefor__card-desc {
+  font-size: 17px; line-height: 26px; color: var(--body);
+}
+
+.placeholder--madefor { min-height: 180px; border-radius: var(--r-lg); flex: 1; }
 
 /* ==========================================================================
    SERVICES

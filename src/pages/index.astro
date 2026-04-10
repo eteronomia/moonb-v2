@@ -4,9 +4,11 @@ import Footer from '../components/Footer.astro';
 
 /* Roles for "Made for" section */
 const roles = [
-  'Creative Directors', 'CMOs', 'Marketing Leaders',
-  'Founders', 'Brand Managers', 'Content Teams',
-  'Agencies', 'Startups',
+  { name: 'Creative Directors', desc: 'Your vision, our execution. A dedicated team that turns creative direction into polished deliverables — fast.', color: 'orange' },
+  { name: 'Marketing Leaders', desc: 'Never miss a campaign deadline. Continuous creative output aligned with your marketing calendar.', color: 'blue' },
+  { name: 'Founders', desc: 'World-class creative without the overhead of building an in-house team. Scale up or down as you grow.', color: 'green' },
+  { name: 'Brand Managers', desc: 'Consistent brand identity across every touchpoint. One team that knows your guidelines inside out.', color: 'purple' },
+  { name: 'Content Teams', desc: 'Multiply your output without multiplying your headcount. Video, design, and motion on demand.', color: 'orange' },
 ];
 
 /* Services */
@@ -26,7 +28,7 @@ const details = [
 ];
 
 /* Feature checklist for phone mockup section */
-const checklistItems = ['Dedicated Creative Director', 'Real-time Project Tracking', 'Unlimited Revisions', 'Predictable Monthly Pricing'];
+const checklistItems = ['Dedicated Creative Director', 'Real-time Project Tracking', 'Unlimited Revisions', 'Flexible Pricing Plans'];
 
 /* How it works */
 const steps = [
@@ -93,15 +95,41 @@ const faqs = [
           <h2 class="section-heading">Made for the people<br/>who build brands.</h2>
           <p class="section-sub">Whether you lead creative, run marketing, or founded the company, Moonb becomes your team.</p>
           <div class="madefor__pills">
-            {roles.map((role, i) => <button class={`madefor__pill${i === 0 ? ' is-active' : ''}`}>{role}</button>)}
+            {roles.map((role, i) => (
+              <button
+                class={`madefor__pill madefor__pill--${role.color}${i === 0 ? ' is-active' : ''}`}
+                data-madefor-pill={String(i)}
+              >{role.name}</button>
+            ))}
           </div>
         </div>
         <div class="madefor__right" data-reveal data-reveal-delay="1">
-          <div class="placeholder placeholder--tall"><span class="placeholder__label">Illustration: Role-specific visual</span></div>
+          {roles.map((role, i) => (
+            <div class={`madefor__card madefor__card--${role.color}${i === 0 ? ' is-active' : ''}`} data-madefor-card={String(i)}>
+              <span class="madefor__card-role">{role.name}</span>
+              <p class="madefor__card-desc">{role.desc}</p>
+              <div class="placeholder placeholder--madefor"><span class="placeholder__label">Illustration: {role.name}</span></div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const pills = document.querySelectorAll('[data-madefor-pill]');
+    const cards = document.querySelectorAll('[data-madefor-card]');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const idx = pill.getAttribute('data-madefor-pill');
+        pills.forEach(p => p.classList.remove('is-active'));
+        cards.forEach(c => c.classList.remove('is-active'));
+        pill.classList.add('is-active');
+        document.querySelector(`[data-madefor-card="${idx}"]`)?.classList.add('is-active');
+      });
+    });
+  </script>
 
 
   <!-- ═══════ SERVICES ═══════ -->
